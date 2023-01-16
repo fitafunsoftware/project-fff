@@ -11,6 +11,12 @@ config_version=4
 [application]
 
 config/name="project-fff"
+run/main_scene="res://scenes/world.tscn"
+boot_splash/show_image=false
+
+[autoload]
+
+ExitShortcut="*res://autoloads/exit_shortcut.gd"
 
 [display]
 
