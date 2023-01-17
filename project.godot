@@ -11,9 +11,11 @@ config_version=5
 [application]
 
 config/name="project-fff"
-run/main_scene="res://scenes/world.tscn"
+run/main_scene="res://scenes/godot_splash.tscn"
 config/features=PackedStringArray("4.0")
+boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
+boot_splash/use_filter=false
 
 [autoload]
 
