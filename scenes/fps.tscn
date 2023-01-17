@@ -1,18 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://lpturakyx3rf"]
 
-[ext_resource path="res://assets/fonts/DotGothic16-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://scripts/fps.gd" type="Script" id=2]
-
-[sub_resource type="DynamicFont" id=1]
-outline_size = 1
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 1 )
+[ext_resource type="Script" path="res://scripts/fps.gd" id="2"]
 
 [node name="FPSCounter" type="Label"]
-margin_left = 5.0
-margin_top = 5.0
-margin_right = 40.0
-margin_bottom = 14.0
-custom_fonts/font = SubResource( 1 )
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 40.0
+offset_bottom = 14.0
 text = "FPS: 0"
-script = ExtResource( 2 )
+script = ExtResource("2")

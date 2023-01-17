@@ -6,7 +6,6 @@ const float CURVE_HEIGHT = 0.75;
 const float FLOOR_ANGLE = 0.5236;
 
 const float MAX_ANGLE = 1.109;
-const float COMPLEMENTARY_ANGLE = 0.4618;
 
 uniform sampler2D texture_albedo;
 
@@ -14,7 +13,6 @@ float get_new_y(float z, float camera_z) {
 	float CURVE_RADIUS = CURVE_HEIGHT/0.1;
 	float CURVE_LENGTH = CURVE_RADIUS*0.45;
 	float CURVE_L = MAX_ANGLE*CURVE_RADIUS;
-	float COMPLEMENTARY_HEIGHT = CURVE_RADIUS - CURVE_HEIGHT;
 	
 	float new_y = 0.0;
 	
@@ -52,9 +50,8 @@ float get_new_y(float z, float camera_z) {
 }
 
 void vertex() {
-	float world_z = (WORLD_MATRIX * vec4(VERTEX, 1.0)).z;
-	float camera_z = (CAMERA_MATRIX * vec4(vec3(0.0), 1.0)).z;
-	VERTEX.y += get_new_y(world_z, camera_z);
+	vec4 world = (MODEL_MATRIX * vec4(VERTEX, 1.0));
+	VERTEX.y += get_new_y(world.z, CAMERA_POSITION_WORLD.z);
 }
 
 void fragment() {

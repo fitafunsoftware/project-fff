@@ -12,5 +12,6 @@ func _input(event) -> void:
 
 
 func _exit() -> void:
-	get_tree().set_input_as_handled()
-	get_tree().notification(MainLoop.NOTIFICATION_WM_QUIT_REQUEST)
+	get_viewport().set_input_as_handled()
+	get_tree().get_root().notification(NOTIFICATION_WM_CLOSE_REQUEST)
+	get_tree().quit()
