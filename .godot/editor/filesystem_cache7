@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1673967504
+::res://::1673969750
 export_presets.cfg::TextFile::-1::1673953852::0::1::::<><>::
 README.md::TextFile::-1::1673962381::0::1::::<><>::
 ::res://assets/::1673953291
@@ -12,14 +12,14 @@ DotGothic16-Regular.ttf::FontFile::837405552934653565::1649803585::1673952905::1
 exit_shortcut.gd::GDScript::-1::1673953808::0::1::::<>Node<>::
 ::res://proprietary/::1673952865
 README.md::TextFile::-1::1673903064::0::1::::<><>::
-::res://scenes/::1673967715
+::res://scenes/::1673969113
 fps.tscn::PackedScene::804233178454229295::1673953737::0::1::::<><>::res://scripts/fps.gd
-godot_splash.tscn::PackedScene::6933205281684336570::1673967907::0::1::::<><>::uid://1pnnrwxuqj62<>res://scenes/godot_splash.gd
-godot_splash.gd::GDScript::-1::1673967892::0::1::::<>Control<>::
-world.tscn::PackedScene::5270035590808751694::1673954485::0::1::::<><>::res://shaders/vertical.gdshader<>res://shaders/horizontal.gdshader<>res://scripts/camera_body.gd<>uid://cc3g621pch04b<>uid://lpturakyx3rf
-::res://scripts/::1673953180
+godot_splash.tscn::PackedScene::7223557327813028676::1673969113::0::1::::<><>::uid://1pnnrwxuqj62<>res://scripts/godot_splash.gd
+world.tscn::PackedScene::5270035590808751694::1673969093::0::1::::<><>::res://shaders/vertical.gdshader<>res://shaders/horizontal.gdshader<>res://scripts/camera_body.gd<>uid://cc3g621pch04b<>uid://lpturakyx3rf
+::res://scripts/::1673969075
 camera_body.gd::GDScript::-1::1673953118::0::1::::<>CharacterBody3D<>::
 fps.gd::GDScript::-1::1673953180::0::1::::<>Label<>::
+godot_splash.gd::GDScript::-1::1673969075::0::1::::<>Control<>::
 ::res://shaders/::1673954492
 horizontal.gdshader::Shader::-1::1673954492::0::1::::<><>::
 vertical.gdshader::Shader::-1::1673953737::0::1::::<><>::

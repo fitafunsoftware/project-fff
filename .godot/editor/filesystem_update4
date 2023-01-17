@@ -1,3 +1,2 @@
 res://scenes/godot_splash.tscn
-res://scripts/godot_splash.gd
-res://scenes/world.tscn
+res://autoloads/exit_shortcut.gd
