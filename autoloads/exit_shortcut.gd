@@ -13,5 +13,5 @@ func _input(event) -> void:
 
 func _exit() -> void:
 	get_viewport().set_input_as_handled()
-	get_tree().get_root().propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
-	get_tree().quit()
+	get_tree().change_scene_to_file("res://scenes/exit_scene.tscn")
+	queue_free()

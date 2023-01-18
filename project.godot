@@ -28,6 +28,11 @@ window/size/viewport_height=480
 window/size/resizable=false
 window/size/borderless=true
 
+[editor]
+
+run/main_run_args="--verbose"
+export/convert_text_resources_to_binary=true
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
