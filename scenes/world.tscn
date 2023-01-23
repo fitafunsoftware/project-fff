@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://chc3yl7i7eyy5"]
+[gd_scene load_steps=11 format=3 uid="uid://chc3yl7i7eyy5"]
 
 [ext_resource type="Shader" path="res://shaders/vertical.gdshader" id="1"]
 [ext_resource type="Shader" path="res://shaders/horizontal.gdshader" id="2"]
 [ext_resource type="Script" path="res://scripts/camera_body.gd" id="4"]
 [ext_resource type="Texture2D" uid="uid://cc3g621pch04b" path="res://assets/art/icon.png" id="4_ak3i4"]
-[ext_resource type="PackedScene" uid="uid://lpturakyx3rf" path="res://scenes/fps.tscn" id="5"]
 
 [sub_resource type="BoxShape3D" id="5"]
 size = Vector3(200, 2, 200)
@@ -56,9 +55,8 @@ keep_aspect = 0
 projection = 1
 current = true
 size = 5.0
+far = 100.0
 
 [node name="Square" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 mesh = SubResource("4")
-
-[node name="FPSCounter" parent="." instance=ExtResource("5")]
