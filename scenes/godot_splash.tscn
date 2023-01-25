@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://da6e60qvpx7sy"]
 
-[ext_resource type="Texture2D" uid="uid://1pnnrwxuqj62" path="res://assets/art/godot_logo_vertical.svg" id="1_2r5p5"]
+[ext_resource type="Texture2D" uid="uid://cjw2xjtuvq04w" path="res://assets/art/godot_logo_vertical.svg" id="1_2r5p5"]
 [ext_resource type="Script" path="res://scripts/godot_splash.gd" id="1_l8ce2"]
 
 [node name="GodotSplash" type="Control"]

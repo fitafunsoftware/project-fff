@@ -3,7 +3,7 @@
 [ext_resource type="Shader" path="res://shaders/vertical.gdshader" id="1"]
 [ext_resource type="Shader" path="res://shaders/horizontal.gdshader" id="2"]
 [ext_resource type="Script" path="res://scripts/camera_body.gd" id="4"]
-[ext_resource type="Texture2D" uid="uid://cc3g621pch04b" path="res://assets/art/icon.png" id="4_ak3i4"]
+[ext_resource type="Texture2D" uid="uid://bd5gaalmib0sy" path="res://assets/art/icon.png" id="4_ak3i4"]
 
 [sub_resource type="BoxShape3D" id="5"]
 size = Vector3(200, 2, 200)

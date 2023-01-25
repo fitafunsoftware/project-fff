@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://lpturakyx3rf"]
 
-[ext_resource type="FontFile" uid="uid://l6v7g4hwneaf" path="res://assets/fonts/DotGothic16-Regular.ttf" id="1_mllbe"]
+[ext_resource type="FontFile" uid="uid://cycthwf41yy30" path="res://assets/fonts/DotGothic16-Regular.ttf" id="1_mllbe"]
 [ext_resource type="Script" path="res://scripts/fps.gd" id="2"]
 
 [node name="FPSCounter" type="Label"]
