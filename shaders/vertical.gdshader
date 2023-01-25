@@ -1,11 +1,10 @@
 shader_type spatial;
 
-const float CAMERA_Y_OFFSET = -0.25;
-const float CAMERA_Z_OFFSET = 20.0;
-const float CURVE_HEIGHT = 0.75;
-const float FLOOR_ANGLE = 0.5236;
-
-const float MAX_ANGLE = 1.109;
+global uniform float CAMERA_Y_OFFSET;
+global uniform float CAMERA_Z_OFFSET;
+global uniform float CURVE_HEIGHT;
+global uniform float FLOOR_ANGLE;
+global uniform float MAX_ANGLE;
 
 uniform sampler2D texture_albedo;
 
