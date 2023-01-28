@@ -17,6 +17,10 @@ boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
 boot_splash/use_filter=false
 
+[audio]
+
+driver/driver=""
+
 [autoload]
 
 ExitShortcut="*res://autoloads/exit_shortcut.gd"
@@ -27,8 +31,7 @@ window/size/viewport_width=640
 window/size/viewport_height=360
 window/size/resizable=false
 window/size/borderless=true
-window/size/window_width_override=640
-window/size/window_height_override=360
+window/dpi/allow_hidpi=false
 
 [editor]
 
@@ -210,9 +213,14 @@ common/enable_pause_aware_picking=true
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_s3tc=false
 textures/vram_compression/import_etc2=false
 textures/lossless_compression/force_png=true
+shading/overrides/force_vertex_shading=true
+shading/overrides/force_lambert_over_burley=true
+driver/depth_prepass/enable=false
+camera/depth_of_field/depth_of_field_bokeh_shape=0
 2d/snap/snap_2d_transforms_to_pixel=true
 2d/snap/snap_2d_vertices_to_pixel=true
 2d/snapping/use_gpu_pixel_snap=true
