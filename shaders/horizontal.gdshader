@@ -1,4 +1,5 @@
 shader_type spatial;
+render_mode blend_mix,diffuse_toon,specular_disabled;
 
 global uniform float CAMERA_Y_OFFSET;
 global uniform float CAMERA_Z_OFFSET;
@@ -6,7 +7,7 @@ global uniform float CURVE_HEIGHT;
 global uniform float FLOOR_ANGLE;
 global uniform float MAX_ANGLE;
 
-uniform sampler2D texture_albedo;
+uniform sampler2D sprite_texture : filter_nearest;
 
 float get_new_y(float z, float camera_z) {
 	float CURVE_RADIUS = CURVE_HEIGHT/0.1;
@@ -55,6 +56,9 @@ void vertex() {
 }
 
 void fragment() {
-	vec4 albedo_tex = texture(texture_albedo,UV);
-	ALBEDO = vec3(0.2, 0.5, 0.2);
+	if (!FRONT_FACING) {
+		discard;
+	}
+	vec4 color = texture(sprite_texture,UV);
+	ALBEDO = color.rgb;
 }
