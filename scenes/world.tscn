@@ -18,7 +18,7 @@ shader_parameter/sprite_texture = ExtResource("4_ak3i4")
 [sub_resource type="PlaneMesh" id="PlaneMesh_75act"]
 material = SubResource("ShaderMaterial_i8tyc")
 size = Vector2(6.4, 6.4)
-subdivide_depth = 64
+subdivide_depth = 410
 
 [sub_resource type="SphereShape3D" id="1"]
 
@@ -43,7 +43,7 @@ mesh = SubResource("PlaneMesh_75act")
 script = ExtResource("2_l3mat")
 texture = ExtResource("4_ak3i4")
 pixel_size = 0.1
-subdivisions_per_meter = 10
+subdivisions_per_meter_depth = 64
 
 [node name="Camera3D" type="CharacterBody3D" parent="."]
 script = ExtResource("4")

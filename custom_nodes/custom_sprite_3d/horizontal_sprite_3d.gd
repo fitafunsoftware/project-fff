@@ -13,9 +13,14 @@ class_name HorizontalSprite3D
 		pixel_size = value
 		_recalculate_size_and_subdivisions()
 
-@export var subdivisions_per_meter : int = 1:
+@export var subdivisions_per_meter_width : int = 0:
 	set(value):
-		subdivisions_per_meter = value
+		subdivisions_per_meter_width = value
+		_recalculate_subdivisions()
+
+@export var subdivisions_per_meter_depth : int = 0:
+	set(value):
+		subdivisions_per_meter_depth = value
 		_recalculate_subdivisions()
 
 
@@ -49,7 +54,8 @@ func _recalculate_subdivisions():
 	if not mesh:
 		return
 	
-	mesh.subdivide_depth = roundi(mesh.size.y * subdivisions_per_meter)
+	mesh.subdivide_width = roundi(mesh.size.x * subdivisions_per_meter_width)
+	mesh.subdivide_depth = roundi(mesh.size.y * subdivisions_per_meter_depth)
 
 
 func _apply_material():
