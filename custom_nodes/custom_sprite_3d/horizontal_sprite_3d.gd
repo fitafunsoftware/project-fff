@@ -26,9 +26,7 @@ func _ready():
 		_recalculate_size_and_subdivisions()
 	
 	if not mesh.material:
-		var shader_material := ShaderMaterial.new()
-		shader_material.shader = load("res://shaders/horizontal.gdshader")
-		mesh.material = shader_material
+		_apply_material()
 		_apply_texture()
 
 
@@ -52,6 +50,12 @@ func _recalculate_subdivisions():
 		return
 	
 	mesh.subdivide_depth = roundi(mesh.size.y * subdivisions_per_meter)
+
+
+func _apply_material():
+	var shader_material := ShaderMaterial.new()
+	shader_material.shader = load("res://shaders/horizontal.gdshader")
+	mesh.material = shader_material
 
 
 func _apply_texture():

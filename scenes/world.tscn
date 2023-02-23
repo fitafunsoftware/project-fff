@@ -1,11 +1,11 @@
-[gd_scene load_steps=13 format=3]
+[gd_scene load_steps=12 format=3 uid="uid://ci8k18olmg3pn"]
 
 [ext_resource type="Shader" path="res://shaders/vertical.gdshader" id="1"]
 [ext_resource type="Shader" path="res://shaders/horizontal.gdshader" id="2"]
 [ext_resource type="Script" path="res://custom_nodes/custom_sprite_3d/horizontal_sprite_3d.gd" id="2_l3mat"]
 [ext_resource type="Script" path="res://scripts/camera_body.gd" id="4"]
 [ext_resource type="Texture2D" uid="uid://bd5gaalmib0sy" path="res://assets/art/icon.png" id="4_ak3i4"]
-[ext_resource type="Script" path="res://custom_nodes/custom_sprite_3d/vertical_animated_sprite_3d.gd" id="4_ns0b0"]
+[ext_resource type="Script" path="res://custom_nodes/custom_sprite_3d/vertical_sprite_3d.gd" id="4_ns0b0"]
 
 [sub_resource type="BoxShape3D" id="5"]
 size = Vector3(200, 2, 200)
@@ -17,25 +17,15 @@ shader_parameter/sprite_texture = ExtResource("4_ak3i4")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_75act"]
 material = SubResource("ShaderMaterial_i8tyc")
-size = Vector2(12.7911, 12.7911)
-subdivide_depth = 128
+size = Vector2(6.4, 6.4)
+subdivide_depth = 64
 
 [sub_resource type="SphereShape3D" id="1"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_p3hin"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gaciq"]
 render_priority = 0
 shader = ExtResource("1")
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_66raf"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_ak3i4")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+shader_parameter/sprite_texture = ExtResource("4_ak3i4")
 
 [node name="World3D" type="Node3D"]
 
@@ -70,8 +60,8 @@ current = true
 size = 5.0
 far = 100.0
 
-[node name="VerticalAnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-material_override = SubResource("ShaderMaterial_p3hin")
+[node name="VerticalSprite3D" type="Sprite3D" parent="."]
+material_override = SubResource("ShaderMaterial_gaciq")
 offset = Vector2(0, 32)
-sprite_frames = SubResource("SpriteFrames_66raf")
+texture = ExtResource("4_ak3i4")
 script = ExtResource("4_ns0b0")
