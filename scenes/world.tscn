@@ -54,9 +54,9 @@ shape = SubResource("1")
 
 [node name="Camera3D" type="Camera3D" parent="Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
-keep_aspect = 0
 projection = 1
 current = true
+fov = 37.8493
 size = 5.0
 far = 100.0
 

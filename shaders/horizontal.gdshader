@@ -7,7 +7,7 @@ global uniform float CURVE_HEIGHT;
 global uniform float FLOOR_ANGLE;
 global uniform float MAX_ANGLE;
 
-uniform sampler2D sprite_texture : filter_nearest;
+uniform sampler2D sprite_texture : source_color, filter_nearest;
 
 float get_new_y(float z, float camera_z) {
 	float CURVE_RADIUS = CURVE_HEIGHT/0.1;
