@@ -17,3 +17,4 @@ func _on_window_resized():
 	
 	set_size(BASE_SIZE*new_scale)
 	stretch_shrink = new_scale
+	set_offsets_preset(Control.PRESET_CENTER,Control.PRESET_MODE_KEEP_SIZE)
