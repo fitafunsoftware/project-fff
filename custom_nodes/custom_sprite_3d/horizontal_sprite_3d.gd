@@ -2,6 +2,8 @@
 extends MeshInstance3D
 class_name HorizontalSprite3D
 
+var FLOOR_ANGLE : float = 0.524
+
 @export var texture : Texture2D:
 	set(value):
 		texture = value
@@ -25,6 +27,9 @@ class_name HorizontalSprite3D
 
 
 func _ready():
+	if not Engine.is_editor_hint():
+		FLOOR_ANGLE = GlobalParams.get_global_shader_param("FLOOR_ANGLE")
+	
 	if not mesh:
 		mesh = PlaneMesh.new()
 		mesh.orientation = PlaneMesh.FACE_Y
@@ -43,9 +48,7 @@ func _recalculate_size_and_subdivisions():
 		mesh.size = Vector2(1, 1)
 	else:
 		mesh.size = texture.get_size() * pixel_size
-	
-	var floor_angle : float = GlobalParams.get_global_shader_param("FLOOR_ANGLE");
-	mesh.size.y /= sin(floor_angle)
+		mesh.size.y /= sin(FLOOR_ANGLE)
 	
 	_recalculate_subdivisions()
 

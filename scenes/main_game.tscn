@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b3mg5fxet8dhl"]
 
-[ext_resource type="PackedScene" uid="uid://cyj31r0l1ta27" path="res://scenes/game_viewport_container.tscn" id="1_va8sl"]
+[ext_resource type="PackedScene" path="res://scenes/game_viewport_container.tscn" id="1_va8sl"]
 [ext_resource type="PackedScene" uid="uid://lpturakyx3rf" path="res://scenes/fps.tscn" id="2_iotp4"]
 
 [node name="Game" type="Control"]

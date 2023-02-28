@@ -1,5 +1,10 @@
 extends CharacterBody3D
 
+@onready var PIXEL_SIZE : float = GlobalParams.get_global_param("PIXEL_SIZE") \
+		if not Engine.is_editor_hint() else 0.01
+@onready var FLOOR_ANGLE : float = GlobalParams.get_global_shader_param("FLOOR_ANGLE") \
+		if not Engine.is_editor_hint() else 0.524
+
 const SPEED : float = 5.0
 const JUMP_VELOCITY : float = 4.5
 
@@ -32,3 +37,10 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	
 	move_and_slide()
+	_snap_position()
+
+
+func _snap_position():
+	position.x = snappedf(position.x, PIXEL_SIZE)
+	position.y = snappedf(position.y, PIXEL_SIZE)
+	position.z = snappedf(position.z, PIXEL_SIZE/sin(FLOOR_ANGLE))
