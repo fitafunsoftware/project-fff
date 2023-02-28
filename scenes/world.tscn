@@ -1,15 +1,15 @@
-[gd_scene load_steps=16 format=3 uid="uid://ci8k18olmg3pn"]
+[gd_scene load_steps=16 format=3 uid="uid://y5unwk4xfuxg"]
 
 [ext_resource type="Shader" path="res://shaders/vertical.gdshader" id="1"]
 [ext_resource type="Shader" path="res://shaders/horizontal.gdshader" id="2"]
 [ext_resource type="Texture2D" uid="uid://dfmvmv5m8ew5x" path="res://assets/art/ground.png" id="2_fd3tu"]
-[ext_resource type="Script" path="res://custom_nodes/custom_sprite_3d/horizontal_sprite_3d.gd" id="2_l3mat"]
+[ext_resource type="Script" path="res://custom_nodes/sprite_3d/horizontal_sprite_3d.gd" id="3_2oefh"]
 [ext_resource type="Script" path="res://scripts/camera_body.gd" id="4"]
 [ext_resource type="Texture2D" uid="uid://bd5gaalmib0sy" path="res://assets/art/icon.png" id="4_ak3i4"]
-[ext_resource type="Script" path="res://grass_generator.gd" id="4_edk3n"]
-[ext_resource type="Script" path="res://custom_nodes/custom_sprite_3d/vertical_sprite_3d.gd" id="4_ns0b0"]
+[ext_resource type="Script" path="res://custom_nodes/grass/grass_generator.gd" id="4_wnc51"]
 [ext_resource type="Texture2D" uid="uid://btk5a1rwtajxh" path="res://assets/art/grass.png" id="5_8nxoq"]
 [ext_resource type="Texture2D" uid="uid://btk4a6v03e14q" path="res://assets/art/bitmap.png" id="6_csct1"]
+[ext_resource type="Script" path="res://custom_nodes/sprite_3d/vertical_sprite_3d.gd" id="10_cndng"]
 
 [sub_resource type="BoxShape3D" id="5"]
 size = Vector3(200, 2, 200)
@@ -44,13 +44,13 @@ shape = SubResource("5")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
 mesh = SubResource("PlaneMesh_1h247")
-script = ExtResource("2_l3mat")
+script = ExtResource("3_2oefh")
 texture = ExtResource("2_fd3tu")
 subdivisions_per_meter_depth = 64
 
 [node name="GrassGenerator" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005, 0, 0)
-script = ExtResource("4_edk3n")
+script = ExtResource("4_wnc51")
 grass_texture = ExtResource("5_8nxoq")
 grass_map = ExtResource("6_csct1")
 
@@ -74,4 +74,4 @@ far = 40.0
 material_override = SubResource("ShaderMaterial_gaciq")
 offset = Vector2(0, 32)
 texture = ExtResource("4_ak3i4")
-script = ExtResource("4_ns0b0")
+script = ExtResource("10_cndng")
