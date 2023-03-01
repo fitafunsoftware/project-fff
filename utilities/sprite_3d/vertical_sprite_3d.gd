@@ -1,0 +1,44 @@
+@tool
+extends Sprite3D
+class_name VerticalSprite3D
+
+@onready var occluder : Occluder = Occluder.new()
+@onready var current_camera : Camera3D = get_viewport().get_camera_3d()
+
+
+func _ready() -> void:
+	if not material_override:
+		_apply_material_override()
+	
+	_apply_texture()
+	texture_changed.connect(_apply_texture)
+
+
+func _process(_delta):
+	_occlude()
+
+
+func _apply_material_override():
+	var shader_material = ShaderMaterial.new()
+	shader_material.shader = load("res://shaders/vertical.gdshader")
+	material_override = shader_material
+
+
+func _apply_texture():
+	var shader_material : ShaderMaterial = material_override
+	shader_material.set_shader_parameter("sprite_texture", texture)
+	
+	var CAMERA_Z_OFFSET = 15.0 if Engine.is_editor_hint() else \
+			GlobalParams.get_global_shader_param("CAMERA_Z_OFFSET")
+	occluder.set_height(texture.get_size().y * pixel_size, CAMERA_Z_OFFSET)
+
+
+func _occlude():
+	if not current_camera.current:
+		current_camera = get_viewport().get_camera_3d()
+	
+	var camera_position = current_camera.global_position
+	if occluder.to_occlude(global_position.z, camera_position.z):
+		hide()
+	else:
+		show()

@@ -1,15 +1,15 @@
-[gd_scene load_steps=16 format=3 uid="uid://y5unwk4xfuxg"]
+[gd_scene load_steps=16 format=3 uid="uid://dgbohy7xcnbfo"]
 
 [ext_resource type="Shader" path="res://shaders/vertical.gdshader" id="1"]
 [ext_resource type="Shader" path="res://shaders/horizontal.gdshader" id="2"]
 [ext_resource type="Texture2D" uid="uid://dfmvmv5m8ew5x" path="res://assets/art/ground.png" id="2_fd3tu"]
-[ext_resource type="Script" path="res://custom_nodes/sprite_3d/horizontal_sprite_3d.gd" id="3_2oefh"]
+[ext_resource type="Script" path="res://utilities/sprite_3d/horizontal_sprite_3d.gd" id="3_xqkqx"]
 [ext_resource type="Script" path="res://scripts/camera_body.gd" id="4"]
 [ext_resource type="Texture2D" uid="uid://bd5gaalmib0sy" path="res://assets/art/icon.png" id="4_ak3i4"]
-[ext_resource type="Script" path="res://custom_nodes/grass/grass_generator.gd" id="4_wnc51"]
+[ext_resource type="Script" path="res://utilities/grass/grass_generator.gd" id="4_varia"]
 [ext_resource type="Texture2D" uid="uid://btk5a1rwtajxh" path="res://assets/art/grass.png" id="5_8nxoq"]
 [ext_resource type="Texture2D" uid="uid://btk4a6v03e14q" path="res://assets/art/bitmap.png" id="6_csct1"]
-[ext_resource type="Script" path="res://custom_nodes/sprite_3d/vertical_sprite_3d.gd" id="10_cndng"]
+[ext_resource type="Script" path="res://utilities/sprite_3d/vertical_sprite_3d.gd" id="10_enjwq"]
 
 [sub_resource type="BoxShape3D" id="5"]
 size = Vector3(200, 2, 200)
@@ -44,13 +44,13 @@ shape = SubResource("5")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
 mesh = SubResource("PlaneMesh_1h247")
-script = ExtResource("3_2oefh")
+script = ExtResource("3_xqkqx")
 texture = ExtResource("2_fd3tu")
 subdivisions_per_meter_depth = 64
 
 [node name="GrassGenerator" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005, 0, 0)
-script = ExtResource("4_wnc51")
+script = ExtResource("4_varia")
 grass_texture = ExtResource("5_8nxoq")
 grass_map = ExtResource("6_csct1")
 
@@ -62,16 +62,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("1")
 
 [node name="Camera3D" type="Camera3D" parent="Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15)
 keep_aspect = 0
 projection = 1
 current = true
 fov = 37.8493
 size = 6.4
-far = 40.0
+far = 30.0
 
 [node name="VerticalSprite3D" type="Sprite3D" parent="."]
 material_override = SubResource("ShaderMaterial_gaciq")
 offset = Vector2(0, 32)
 texture = ExtResource("4_ak3i4")
-script = ExtResource("10_cndng")
+script = ExtResource("10_enjwq")

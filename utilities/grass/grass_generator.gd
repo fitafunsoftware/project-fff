@@ -4,6 +4,7 @@ class_name GrassGenerator
 
 var PIXEL_SIZE : float = 0.01
 var FLOOR_ANGLE : float = 0.524
+var CAMERA_Z_OFFSET : float = 15.0
 
 @export var grass_texture : Texture2D
 @export var grass_map : Texture2D
@@ -14,12 +15,19 @@ var FLOOR_ANGLE : float = 0.524
 		if value:
 			_clear_grass()
 			_generate_grass()
+@export var clear_grass : bool = false :
+	set(value):
+		clear_grass = false
+		
+		if value:
+			_clear_grass()
 
 
 func _ready():
 	if not Engine.is_editor_hint():
 		PIXEL_SIZE = GlobalParams.get_global_param("PIXEL_SIZE")
 		FLOOR_ANGLE = GlobalParams.get_global_shader_param("FLOOR_ANGLE")
+		CAMERA_Z_OFFSET = GlobalParams.get_global_shader_param("CAMERA_Z_OFFSET")
 	
 	if get_child_count() == 0:
 		_generate_grass()
@@ -48,6 +56,9 @@ func _generate_grass():
 	var start_x_position = fmod(row_length/2.0, 0.01)
 	position.x = start_x_position
 	
+	var occluder : Occluder = Occluder.new()
+	occluder.set_height(row_height, CAMERA_Z_OFFSET)
+	
 	for row in rows:
 		var grass_instance := GrassInstance3D.new()
 		region.position.y = row
@@ -60,3 +71,4 @@ func _generate_grass():
 		
 		add_child(grass_instance)
 		grass_instance.position.z = start_z_position + (row * stretched_height)
+		grass_instance.occluder = occluder

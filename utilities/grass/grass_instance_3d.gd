@@ -22,6 +22,10 @@ class_name GrassInstance3D
 		bitmap = value
 		_set_bitmap()
 
+var occluder : Occluder
+
+@onready var current_camera : Camera3D = get_viewport().get_camera_3d()
+
 
 func _init():
 	if not mesh:
@@ -33,6 +37,21 @@ func _init():
 		var shader_material := ShaderMaterial.new()
 		shader_material.shader = load("res://shaders/grass.gdshader")
 		mesh.material = shader_material
+
+
+func _process(_delta):
+	_occlude()
+
+
+func _occlude():
+	if not current_camera.current:
+		current_camera = get_viewport().get_camera_3d()
+	
+	var camera_position = current_camera.global_position
+	if occluder.to_occlude(global_position.z, camera_position.z):
+		hide()
+	else:
+		show()
 
 
 func _set_texture():
