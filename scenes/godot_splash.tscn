@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://da6e60qvpx7sy"]
+[gd_scene load_steps=3 format=3 uid="uid://cr5t5w65cja06"]
 
 [ext_resource type="Texture2D" uid="uid://cjw2xjtuvq04w" path="res://assets/art/godot_logo_vertical.svg" id="1_2r5p5"]
-[ext_resource type="Script" path="res://scripts/godot_splash.gd" id="1_l8ce2"]
+[ext_resource type="Script" path="res://scripts/splash_screen.gd" id="1_jlf4u"]
 
 [node name="GodotSplash" type="Control"]
 layout_mode = 3
@@ -10,7 +10,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_l8ce2")
+script = ExtResource("1_jlf4u")
+next_scene = "res://proprietary/scenes/fita_splash.tscn"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
