@@ -60,9 +60,13 @@ func _generate_grass():
 	occluder.set_height(row_height, CAMERA_Z_OFFSET)
 	
 	for row in rows:
-		var grass_instance := GrassInstance3D.new()
 		region.position.y = row
 		var row_image : Image = grass_map_image.get_region(region)
+		
+		if row_image.is_invisible():
+			continue
+		
+		var grass_instance := GrassInstance3D.new()
 		
 		grass_instance.sprite_texture = grass_texture
 		grass_instance.size = Vector2(row_length, row_height)
