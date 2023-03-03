@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dgbohy7xcnbfo"]
+[gd_scene load_steps=18 format=3 uid="uid://dgbohy7xcnbfo"]
 
 [ext_resource type="Shader" path="res://shaders/vertical.gdshader" id="1"]
 [ext_resource type="Shader" path="res://shaders/horizontal.gdshader" id="2"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" path="res://utilities/grass/grass_generator.gd" id="4_varia"]
 [ext_resource type="Texture2D" uid="uid://btk5a1rwtajxh" path="res://assets/art/grass.png" id="5_8nxoq"]
 [ext_resource type="Texture2D" uid="uid://btk4a6v03e14q" path="res://assets/art/bitmap.png" id="6_csct1"]
+[ext_resource type="Texture2D" uid="uid://cfegoofxh6aji" path="res://assets/art/sun.png" id="8_30ww1"]
+[ext_resource type="Script" path="res://utilities/sprite_3d/parallax_sprite_3d.gd" id="9_k2mbj"]
 [ext_resource type="Script" path="res://utilities/sprite_3d/vertical_sprite_3d.gd" id="10_enjwq"]
 
 [sub_resource type="BoxShape3D" id="5"]
@@ -69,6 +71,11 @@ current = true
 fov = 37.8493
 size = 6.4
 far = 30.0
+
+[node name="ParallaxSprite3D" type="Sprite3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 1.3, -5)
+texture = ExtResource("8_30ww1")
+script = ExtResource("9_k2mbj")
 
 [node name="VerticalSprite3D" type="Sprite3D" parent="."]
 material_override = SubResource("ShaderMaterial_gaciq")
