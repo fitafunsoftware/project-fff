@@ -14,6 +14,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
 	set_up_direction(Vector3.UP)
+	$AnimationPlayer.play("idle")
 
 
 func _physics_process(delta):
