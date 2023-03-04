@@ -10,6 +10,10 @@ var PIXEL_SIZE : float = GlobalParams.get_global_param("PIXEL_SIZE")
 var _left_over := Vector3.ZERO
 
 
+func _init():
+	cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+
+
 func _process(_delta):
 	var displacement : Vector3 = _prev_position - global_position
 	var scaled_displacement : Vector3 = displacement * Vector3(x_scale, y_scale, z_scale)

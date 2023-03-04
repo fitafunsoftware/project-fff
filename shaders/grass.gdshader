@@ -54,7 +54,9 @@ float get_new_y(float z, float camera_z) {
 
 void vertex() {
 	vec4 world = (MODEL_MATRIX * vec4(VERTEX, 1.0));
-	VERTEX.y += get_new_y(world.z, CAMERA_POSITION_WORLD.z);
+	float y_offset = get_new_y(world.z, CAMERA_POSITION_WORLD.z);
+	vec3 final_position = VERTEX + vec3(0.0, y_offset, 0.0);
+	POSITION = PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(final_position, 1.0);
 }
 
 void fragment() {

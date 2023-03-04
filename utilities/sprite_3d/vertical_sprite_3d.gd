@@ -6,6 +6,10 @@ class_name VerticalSprite3D
 @onready var current_camera : Camera3D = get_viewport().get_camera_3d()
 
 
+func _init():
+	cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+
+
 func _ready() -> void:
 	if not material_override:
 		_apply_material_override()
@@ -15,7 +19,8 @@ func _ready() -> void:
 
 
 func _process(_delta):
-	_occlude()
+	if not Engine.is_editor_hint():
+		_occlude()
 
 
 func _apply_material_override():

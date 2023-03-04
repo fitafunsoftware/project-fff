@@ -26,6 +26,10 @@ var FLOOR_ANGLE : float = 0.524
 		_recalculate_subdivisions()
 
 
+func _init():
+	cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+
+
 func _ready():
 	if not Engine.is_editor_hint():
 		FLOOR_ANGLE = GlobalParams.get_global_shader_param("FLOOR_ANGLE")

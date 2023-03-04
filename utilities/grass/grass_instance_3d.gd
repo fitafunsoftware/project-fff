@@ -37,10 +37,13 @@ func _init():
 		var shader_material := ShaderMaterial.new()
 		shader_material.shader = load("res://shaders/grass.gdshader")
 		mesh.material = shader_material
+	
+	cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 
 
 func _process(_delta):
-	_occlude()
+	if not Engine.is_editor_hint():
+		_occlude()
 
 
 func _occlude():
