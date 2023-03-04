@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=4 format=3 uid="uid://bur1mj2v6fgui"]
 
 [ext_resource type="Script" path="res://scripts/game_viewport.gd" id="1_6igo6"]
 [ext_resource type="Script" path="res://scripts/game_viewport_container.gd" id="1_vuilk"]
-[ext_resource type="PackedScene" uid="uid://da6e60qvpx7sy" path="res://scenes/godot_splash.tscn" id="2_5qwqw"]
+[ext_resource type="PackedScene" uid="uid://cr5t5w65cja06" path="res://scenes/godot_splash.tscn" id="2_5qwqw"]
 
 [node name="GameViewportContainer" type="SubViewportContainer"]
 texture_filter = 1

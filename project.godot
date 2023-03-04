@@ -16,7 +16,7 @@ config/features=PackedStringArray("4.0")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
 boot_splash/use_filter=false
-config/icon="res://proprietary/assets/art/project-fff-android-icon.png"
+config/icon="res://proprietary/assets/art/logos/project-fff-android-icon.png"
 
 [audio]
 
@@ -32,6 +32,8 @@ GlobalParams="*res://autoloads/global_params.gd"
 window/size/viewport_width=640
 window/size/viewport_height=360
 window/size/resizable=false
+window/size/window_width_override=1280
+window/size/window_height_override=720
 window/dpi/allow_hidpi=false
 window/stretch/aspect="ignore"
 
