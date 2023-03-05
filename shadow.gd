@@ -8,3 +8,4 @@ func _init():
 	alpha_cut = SpriteBase3D.ALPHA_CUT_DISCARD
 	texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
 	cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_SHADOWS_ONLY
+
