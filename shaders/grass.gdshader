@@ -8,9 +8,10 @@ global uniform float FLOOR_ANGLE;
 global uniform float MAX_ANGLE;
 
 uniform sampler2D sprite_texture : source_color, filter_nearest, repeat_enable;
-uniform float sprites_per_row;
-uniform sampler2D bitmap : hint_default_transparent, filter_nearest;
-
+uniform float columns = 1.0;
+uniform float rows = 1.0;
+uniform sampler2D bitmap_texture : filter_nearest, hint_default_transparent;
+uniform vec3 top_most;
 
 float get_new_y(float z, float camera_z) {
 	float CURVE_RADIUS = CURVE_HEIGHT/0.1;
@@ -63,9 +64,9 @@ void fragment() {
 	if (!FRONT_FACING) {
 		discard;
 	}
-	vec4 color = texture(sprite_texture, vec2(UV.x*sprites_per_row, UV.y));
-	float bitmap_alpha = texture(bitmap, UV).a;
-	
+	float row = (NODE_POSITION_WORLD.z - top_most.z) / top_most.x;
+	vec4 color = texture(sprite_texture, vec2(UV.x * columns, UV.y));
+	vec4 bitmap = texture(bitmap_texture, vec2(UV.x, row));
 	ALBEDO = color.rgb;
-	ALPHA = color.a * bitmap_alpha;
+	ALPHA = color.a * bitmap.a;
 }

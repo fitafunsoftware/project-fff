@@ -8,71 +8,95 @@ var CAMERA_Z_OFFSET : float = 15.0
 
 @export var grass_texture : Texture2D
 @export var grass_map : Texture2D
-@export var generate : bool = false :
+
+@export var generate_grass : bool = false:
 	set(value):
-		generate = false
-		
+		generate_grass = false
 		if value:
 			_clear_grass()
 			_generate_grass()
-@export var clear_grass : bool = false :
-	set(value):
-		clear_grass = false
-		
-		if value:
-			_clear_grass()
+
+var _mesh : Mesh
+var _columns : int
+var _rows : int
+var _row_length : float
+var _row_height : float
+var _distance_between_rows : float
 
 
 func _ready():
+	_generate_grass()
+
+
+func _generate_grass():
 	if not Engine.is_editor_hint():
 		PIXEL_SIZE = GlobalParams.get_global_param("PIXEL_SIZE")
 		FLOOR_ANGLE = GlobalParams.get_global_shader_param("FLOOR_ANGLE")
 		CAMERA_Z_OFFSET = GlobalParams.get_global_shader_param("CAMERA_Z_OFFSET")
 	
-	if get_child_count() == 0:
-		_generate_grass()
+	_create_mesh()
+	_create_grass_instances()
 
 
 func _clear_grass():
 	for child in get_children():
-		remove_child(child)
 		child.queue_free()
+	
+	_mesh = null
 
 
-func _generate_grass():
+func _create_mesh():
 	if not grass_texture or not grass_map:
 		return
 	
-	var grass_map_image : Image = grass_map.get_image()
-	var rows : int = grass_map_image.get_height()
-	var columns : int = grass_map_image.get_width()
-	var region := Rect2i(Vector2i.ZERO, Vector2i(columns, 1))
+	_columns = grass_map.get_width()
+	_rows = grass_map.get_height()
 	
-	var row_length : float = grass_texture.get_width() * columns * PIXEL_SIZE
-	var row_height : float = grass_texture.get_height() * PIXEL_SIZE
-	var stretched_height : float = row_height / sin(FLOOR_ANGLE)
+	_row_length = grass_texture.get_width() * _columns * PIXEL_SIZE
+	_row_height = grass_texture.get_height() * PIXEL_SIZE
+	_distance_between_rows = _row_height / sin(FLOOR_ANGLE)
 	
-	var start_z_position = -rows/2.0 * stretched_height
-	var start_x_position = fmod(row_length/2.0, 0.01)
-	position.x = start_x_position
+	position.y = _row_height / 2.0
 	
-	var occluder : Occluder = Occluder.new()
-	occluder.set_height(row_height, CAMERA_Z_OFFSET)
+	var shader_material := ShaderMaterial.new()
+	shader_material.shader = load("res://shaders/grass.gdshader")
+	shader_material.set_shader_parameter("sprite_texture", grass_texture)
+	shader_material.set_shader_parameter("columns", _columns)
+	shader_material.set_shader_parameter("rows", _rows)
+	shader_material.set_shader_parameter("bitmap_texture", grass_map)
 	
-	for row in rows:
-		region.position.y = row
-		var row_image : Image = grass_map_image.get_region(region)
-		
-		if row_image.is_invisible():
-			continue
-		
+	var quad_mesh := QuadMesh.new()
+	quad_mesh.orientation = PlaneMesh.FACE_Z
+	quad_mesh.size = Vector2(_row_length, _row_height)
+	quad_mesh.material = shader_material
+	
+	_mesh = quad_mesh
+
+
+func _create_grass_instances():
+	if not grass_texture or not grass_map:
+		return
+	
+	var start_z_position : float = -_rows/2.0 * _distance_between_rows
+	var start_x_position : float = -_row_length/2.0
+	
+	var grass_position := Vector3(0.0, 0.0, 0.0)
+	grass_position.z = start_z_position
+	position.x += fmod(start_x_position, PIXEL_SIZE)
+	
+	var top_most := to_global(grass_position)
+	top_most = Vector3(_distance_between_rows * _rows, 0.0, top_most.z)
+	_mesh.material.set_shader_parameter("top_most", top_most)
+	
+	var occluder := Occluder.new()
+	occluder.set_height(_row_height, CAMERA_Z_OFFSET)
+	
+	for row in _rows:
 		var grass_instance := GrassInstance3D.new()
-		
-		grass_instance.sprite_texture = grass_texture
-		grass_instance.size = Vector2(row_length, row_height)
-		grass_instance.sprites_per_row = columns
-		grass_instance.bitmap = ImageTexture.create_from_image(row_image)
+		grass_instance.mesh = _mesh
+		grass_instance.occluder = occluder
+		grass_instance.position = grass_position
 		
 		add_child(grass_instance)
-		grass_instance.position.z = start_z_position + (row * stretched_height)
-		grass_instance.occluder = occluder
+		
+		grass_position.z += _distance_between_rows

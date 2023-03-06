@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dgbohy7xcnbfo"]
+[gd_scene load_steps=22 format=3 uid="uid://dgbohy7xcnbfo"]
 
 [ext_resource type="Shader" path="res://shaders/vertical.gdshader" id="1"]
 [ext_resource type="Shader" path="res://shaders/horizontal.gdshader" id="2"]
@@ -9,7 +9,10 @@
 [ext_resource type="Script" path="res://utilities/sprite_3d/parallax_sprite_3d.gd" id="9_k2mbj"]
 [ext_resource type="Script" path="res://utilities/sprite_3d/vertical_sprite_3d.gd" id="10_enjwq"]
 [ext_resource type="Texture2D" uid="uid://b2ns136twwcpe" path="res://proprietary/assets/art/tia/tia.png" id="11_jeidp"]
+[ext_resource type="Texture2D" uid="uid://btk4a6v03e14q" path="res://assets/art/bitmap.png" id="12_t4hvn"]
 [ext_resource type="PackedScene" uid="uid://bfu1gbaj16um7" path="res://proprietary/scenes/tree.tscn" id="13_ko2qx"]
+[ext_resource type="Texture2D" uid="uid://btk5a1rwtajxh" path="res://assets/art/grass.png" id="13_o88ft"]
+[ext_resource type="Script" path="res://utilities/grass/grass_generator.gd" id="14_e5md4"]
 
 [sub_resource type="BoxShape3D" id="5"]
 size = Vector3(200, 2, 200)
@@ -160,3 +163,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.39071, 0, -4.91292)
 
 [node name="Tree8" parent="Trees" instance=ExtResource("13_ko2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.83625, 0, -5.92284)
+
+[node name="GrassGenerator" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.025, 0.03, 0)
+script = ExtResource("14_e5md4")
+grass_texture = ExtResource("13_o88ft")
+grass_map = ExtResource("12_t4hvn")
