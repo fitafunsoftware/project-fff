@@ -165,7 +165,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.39071, 0, -4.91292)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.83625, 0, -5.92284)
 
 [node name="GrassGenerator" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.025, 0.03, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.035, 0.03, 0)
 script = ExtResource("14_e5md4")
 grass_texture = ExtResource("13_o88ft")
 grass_map = ExtResource("12_t4hvn")
