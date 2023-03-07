@@ -65,8 +65,11 @@ void fragment() {
 		discard;
 	}
 	float row = (NODE_POSITION_WORLD.z - top_most.z) / top_most.x;
-	vec4 color = texture(sprite_texture, vec2(UV.x * columns, UV.y));
-	vec4 bitmap = texture(bitmap_texture, vec2(UV.x, row));
+	int x_size = textureSize(sprite_texture, 0).x;
+	float floor_half_size = float(x_size / 2) / float(x_size);
+	float row_offset = mod(row * rows, 2.0) * floor_half_size;
+	vec4 color = texture(sprite_texture, vec2(UV.x * columns + row_offset, UV.y));
+	vec4 bitmap = texture(bitmap_texture, vec2(UV.x + row_offset/columns, row));
 	ALBEDO = color.rgb;
 	ALPHA = color.a * bitmap.a;
 }

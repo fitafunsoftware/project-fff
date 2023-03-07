@@ -9,9 +9,9 @@
 [ext_resource type="Script" path="res://utilities/sprite_3d/parallax_sprite_3d.gd" id="9_k2mbj"]
 [ext_resource type="Script" path="res://utilities/sprite_3d/vertical_sprite_3d.gd" id="10_enjwq"]
 [ext_resource type="Texture2D" uid="uid://b2ns136twwcpe" path="res://proprietary/assets/art/tia/tia.png" id="11_jeidp"]
-[ext_resource type="Texture2D" uid="uid://btk4a6v03e14q" path="res://assets/art/bitmap.png" id="12_t4hvn"]
+[ext_resource type="Texture2D" uid="uid://br3fmrddavtcx" path="res://assets/art/tall_grass.png" id="12_gxa50"]
+[ext_resource type="Texture2D" uid="uid://cacdyi45h4aay" path="res://assets/art/tall_bitmap.png" id="13_ke6p6"]
 [ext_resource type="PackedScene" uid="uid://bfu1gbaj16um7" path="res://proprietary/scenes/tree.tscn" id="13_ko2qx"]
-[ext_resource type="Texture2D" uid="uid://btk5a1rwtajxh" path="res://assets/art/grass.png" id="13_o88ft"]
 [ext_resource type="Script" path="res://utilities/grass/grass_generator.gd" id="14_e5md4"]
 
 [sub_resource type="BoxShape3D" id="5"]
@@ -125,7 +125,7 @@ x_scale = 0.05
 z_scale = 0.05
 
 [node name="Tia" type="Sprite3D" parent="Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
 material_override = SubResource("ShaderMaterial_0yrqi")
 cast_shadow = 0
 offset = Vector2(0, 48)
@@ -165,7 +165,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.39071, 0, -4.91292)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.83625, 0, -5.92284)
 
 [node name="GrassGenerator" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06, 0.03, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14, 0.09, 0)
 script = ExtResource("14_e5md4")
-grass_texture = ExtResource("13_o88ft")
-grass_map = ExtResource("12_t4hvn")
+grass_texture = ExtResource("12_gxa50")
+grass_map = ExtResource("13_ke6p6")
+y_offset = 10

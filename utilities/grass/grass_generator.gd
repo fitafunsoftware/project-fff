@@ -6,15 +6,17 @@ var PIXEL_SIZE : float = 0.01
 var FLOOR_ANGLE : float = 0.524
 var CAMERA_Z_OFFSET : float = 15.0
 
-@export var grass_texture : Texture2D
-@export var grass_map : Texture2D
-
 @export var generate_grass : bool = false:
 	set(value):
 		generate_grass = false
 		if value:
 			_clear_grass()
 			_generate_grass()
+
+@export_category("Grass Properties")
+@export var grass_texture : Texture2D
+@export var grass_map : Texture2D
+@export_range(-32, 32, 1, "suffix:pixels") var y_offset : int = 0
 
 var _mesh : Mesh
 var _columns : int
@@ -54,7 +56,7 @@ func _create_mesh():
 	
 	_row_length = grass_texture.get_width() * _columns * PIXEL_SIZE
 	_row_height = grass_texture.get_height() * PIXEL_SIZE
-	_distance_between_rows = _row_height / sin(FLOOR_ANGLE)
+	_distance_between_rows = (_row_height - y_offset * PIXEL_SIZE) / sin(FLOOR_ANGLE)
 	
 	position.y = _row_height / 2.0
 	
