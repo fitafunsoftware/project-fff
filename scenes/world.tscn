@@ -24,8 +24,8 @@ shader_parameter/sprite_texture = ExtResource("2_fd3tu")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_1h247"]
 material = SubResource("ShaderMaterial_dluhh")
-size = Vector2(6.4, 12.7911)
-subdivide_depth = 819
+size = Vector2(20.48, 40.9316)
+subdivide_depth = 2620
 
 [sub_resource type="SphereShape3D" id="1"]
 
@@ -165,7 +165,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.39071, 0, -4.91292)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.83625, 0, -5.92284)
 
 [node name="GrassGenerator" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.035, 0.03, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06, 0.03, 0)
 script = ExtResource("14_e5md4")
 grass_texture = ExtResource("13_o88ft")
 grass_map = ExtResource("12_t4hvn")
