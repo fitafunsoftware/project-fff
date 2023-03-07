@@ -1,3 +1,4 @@
+@tool
 extends Sprite3D
 class_name Shadow3D
 
