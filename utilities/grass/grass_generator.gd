@@ -27,15 +27,19 @@ var _distance_between_rows : float
 
 
 func _ready():
-	_generate_grass()
+	_assign_consts()
+	_assign_variables()
+	
+	var occluder := Occluder.new()
+	occluder.set_height(_row_height, CAMERA_Z_OFFSET)
+	
+	for grass in get_children():
+		grass.occluder = occluder
 
 
 func _generate_grass():
-	if not Engine.is_editor_hint():
-		PIXEL_SIZE = GlobalParams.get_global_param("PIXEL_SIZE")
-		FLOOR_ANGLE = GlobalParams.get_global_shader_param("FLOOR_ANGLE")
-		CAMERA_Z_OFFSET = GlobalParams.get_global_shader_param("CAMERA_Z_OFFSET")
-	
+	_assign_consts()
+	_assign_variables()
 	_create_mesh()
 	_create_grass_instances()
 
@@ -47,7 +51,14 @@ func _clear_grass():
 	_mesh = null
 
 
-func _create_mesh():
+func _assign_consts():
+	if not Engine.is_editor_hint():
+		PIXEL_SIZE = GlobalParams.get_global_param("PIXEL_SIZE")
+		FLOOR_ANGLE = GlobalParams.get_global_shader_param("FLOOR_ANGLE")
+		CAMERA_Z_OFFSET = GlobalParams.get_global_shader_param("CAMERA_Z_OFFSET")
+
+
+func _assign_variables():
 	if not grass_texture or not grass_map:
 		return
 	
@@ -59,6 +70,11 @@ func _create_mesh():
 	_distance_between_rows = (_row_height - y_offset * PIXEL_SIZE) / sin(FLOOR_ANGLE)
 	
 	position.y = _row_height / 2.0
+
+
+func _create_mesh():
+	if not grass_texture or not grass_map:
+		return
 	
 	var shader_material := ShaderMaterial.new()
 	shader_material.shader = load("res://shaders/grass.gdshader")
@@ -84,21 +100,18 @@ func _create_grass_instances():
 	
 	var grass_position := Vector3(0.0, 0.0, 0.0)
 	grass_position.z = start_z_position
-	position.x += fmod(start_x_position, PIXEL_SIZE)
+	global_position.x = snappedf(global_position.x, 0.01) + fmod(start_x_position, PIXEL_SIZE)
 	
 	var top_most := to_global(grass_position)
 	top_most = Vector3(_distance_between_rows * _rows, 0.0, top_most.z)
 	_mesh.material.set_shader_parameter("top_most", top_most)
 	
-	var occluder := Occluder.new()
-	occluder.set_height(_row_height, CAMERA_Z_OFFSET)
-	
 	for row in _rows:
 		var grass_instance := GrassInstance3D.new()
 		grass_instance.mesh = _mesh
-		grass_instance.occluder = occluder
 		grass_instance.position = grass_position
 		
 		add_child(grass_instance)
+		grass_instance.owner = owner
 		
 		grass_position.z += _distance_between_rows

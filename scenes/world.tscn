@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bjqrvelx8fvya"]
+[gd_scene load_steps=28 format=3 uid="uid://bjqrvelx8fvya"]
 
 [ext_resource type="Shader" path="res://shaders/vertical.gdshader" id="1"]
 [ext_resource type="Shader" path="res://shaders/horizontal.gdshader" id="2"]
@@ -11,10 +11,12 @@
 [ext_resource type="Texture2D" uid="uid://bmko5ii6lvusk" path="res://assets/art/small_shadow.png" id="10_ywhh5"]
 [ext_resource type="Script" path="res://utilities/shadow/shadow.gd" id="11_86x2q"]
 [ext_resource type="Texture2D" uid="uid://b2ns136twwcpe" path="res://proprietary/assets/art/tia/tia.png" id="11_jeidp"]
-[ext_resource type="Texture2D" uid="uid://br3fmrddavtcx" path="res://assets/art/tall_grass.png" id="12_gxa50"]
-[ext_resource type="Texture2D" uid="uid://cacdyi45h4aay" path="res://assets/art/tall_bitmap.png" id="13_ke6p6"]
+[ext_resource type="Script" path="res://utilities/grass/grass_generator.gd" id="13_giqmr"]
 [ext_resource type="PackedScene" path="res://proprietary/scenes/tree.tscn" id="13_ko2qx"]
-[ext_resource type="Script" path="res://utilities/grass/grass_generator.gd" id="14_e5md4"]
+[ext_resource type="Texture2D" uid="uid://br3fmrddavtcx" path="res://assets/art/tall_grass.png" id="14_whl8h"]
+[ext_resource type="Texture2D" uid="uid://cacdyi45h4aay" path="res://assets/art/tall_bitmap.png" id="15_pto5b"]
+[ext_resource type="Shader" path="res://shaders/grass.gdshader" id="16_7ywox"]
+[ext_resource type="Script" path="res://utilities/grass/grass_instance_3d.gd" id="17_qwvbc"]
 
 [sub_resource type="BoxShape3D" id="5"]
 size = Vector3(200, 2, 200)
@@ -74,6 +76,19 @@ _data = {
 "RESET": SubResource("Animation_i637q"),
 "idle": SubResource("Animation_4i11b")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_54lnc"]
+render_priority = 0
+shader = ExtResource("16_7ywox")
+shader_parameter/columns = 205
+shader_parameter/rows = 256
+shader_parameter/top_most = Vector3(40.9316, 0, -20.4658)
+shader_parameter/sprite_texture = ExtResource("14_whl8h")
+shader_parameter/bitmap_texture = ExtResource("15_pto5b")
+
+[sub_resource type="QuadMesh" id="QuadMesh_ogx1u"]
+material = SubResource("ShaderMaterial_54lnc")
+size = Vector2(20.5, 0.18)
 
 [node name="World3D" type="Node3D"]
 
@@ -178,8 +193,1544 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.39071, 0, -4.91292)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.83625, 0, -5.92284)
 
 [node name="GrassGenerator" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19, 0.09, 0)
-script = ExtResource("14_e5md4")
-grass_texture = ExtResource("12_gxa50")
-grass_map = ExtResource("13_ke6p6")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0.09, 0)
+script = ExtResource("13_giqmr")
+grass_texture = ExtResource("14_whl8h")
+grass_map = ExtResource("15_pto5b")
 y_offset = 10
+
+[node name="@@19206" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20.4658)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19207" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20.3059)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19208" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20.146)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19209" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.9861)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19210" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.8262)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19211" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.6663)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19212" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.5064)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19213" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.3466)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19214" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.1867)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19215" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.0268)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19216" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18.8669)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19217" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18.707)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19218" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18.5471)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19219" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18.3872)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19220" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18.2273)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19221" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18.0674)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19222" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17.9076)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19223" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17.7477)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19224" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17.5878)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19225" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17.4279)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19226" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17.268)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19227" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17.1081)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19228" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.9482)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19229" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.7883)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19230" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.6284)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19231" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.4685)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19232" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.3087)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19233" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.1488)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19234" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.9889)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19235" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.829)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19236" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.6691)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19237" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.5092)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19238" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.3493)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19239" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.1894)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19240" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.0295)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19241" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14.8697)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19242" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14.7098)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19243" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14.5499)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19244" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14.39)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19245" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14.2301)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19246" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14.0702)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19247" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.9103)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19248" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.7504)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19249" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.5905)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19250" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.4307)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19251" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.2708)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19252" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.1109)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19253" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.951)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19254" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.7911)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19255" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.6312)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19256" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.4713)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19257" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.3114)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19258" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.1515)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19259" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.9916)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19260" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.8318)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19261" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.6719)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19262" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.512)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19263" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.3521)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19264" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.1922)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19265" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.0323)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19266" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.8724)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19267" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.7125)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19268" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.5526)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19269" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.3928)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19270" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.2329)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19271" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.073)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19272" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.91309)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19273" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.7532)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19274" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.59331)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19275" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.43342)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19276" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.27353)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19277" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.11364)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19278" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.95375)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19279" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.79387)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19280" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.63398)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19281" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.47409)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19282" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.3142)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19283" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.15431)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19284" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.99442)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19285" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.83453)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19286" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.67464)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19287" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.51475)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19288" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.35486)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19289" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.19498)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19290" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.03509)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19291" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.8752)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19292" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.71531)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19293" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.55542)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19294" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.39553)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19295" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.23564)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19296" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.07575)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19297" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.91587)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19298" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.75598)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19299" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.59609)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19300" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.4362)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19301" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.27631)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19302" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.11642)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19303" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.95653)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19304" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.79664)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19305" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.63676)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19306" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.47687)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19307" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.31698)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19308" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.15709)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19309" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.9972)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19310" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.83731)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19311" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.67742)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19312" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.51753)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19313" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.35764)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19314" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.19776)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19315" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.03787)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19316" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.87798)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19317" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.71809)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19318" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5582)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19319" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.39831)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19320" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.23842)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19321" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.07853)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19322" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.91864)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19323" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.75876)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19324" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.59887)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19325" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.43898)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19326" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.27909)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19327" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.1192)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19328" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.959311)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19329" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.799422)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19330" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.639533)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19331" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.479644)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19332" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.319755)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19333" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.159866)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19334" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.25963e-05)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19335" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.159911)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19336" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.3198)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19337" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.479689)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19338" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.639578)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19339" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.799467)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19340" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.959356)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19341" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.11924)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19342" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.27913)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19343" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.43902)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19344" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.59891)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19345" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.7588)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19346" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.91869)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19347" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.07858)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19348" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.23847)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19349" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.39836)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19350" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.55825)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19351" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.71813)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19352" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.87802)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19353" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.03791)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19354" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.1978)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19355" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.35769)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19356" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.51758)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19357" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.67747)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19358" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.83736)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19359" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.99725)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19360" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.15714)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19361" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.31702)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19362" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.47691)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19363" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.6368)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19364" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.79669)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19365" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.95658)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19366" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.11647)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19367" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.27636)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19368" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.43624)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19369" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.59613)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19370" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.75602)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19371" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.91591)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19372" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.0758)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19373" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.23569)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19374" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.39558)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19375" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.55547)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19376" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.71535)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19377" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.87524)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19378" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.03513)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19379" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.19502)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19380" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.35491)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19381" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.5148)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19382" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.67469)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19383" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.83458)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19384" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.99446)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19385" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.15435)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19386" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.31424)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19387" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.47413)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19388" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.63402)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19389" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.79391)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19390" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.9538)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19391" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.11369)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19392" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.27358)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19393" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.43347)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19394" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.59336)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19395" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.75325)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19396" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.91314)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19397" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.073)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19398" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.2329)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19399" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.3928)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19400" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.5527)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19401" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.7126)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19402" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.8725)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19403" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.0324)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19404" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.1922)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19405" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.3521)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19406" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.512)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19407" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.6719)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19408" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.8318)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19409" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.9917)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19410" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.1516)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19411" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.3115)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19412" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.4714)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19413" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.6313)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19414" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.7911)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19415" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.951)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19416" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13.1109)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19417" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13.2708)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19418" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13.4307)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19419" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13.5906)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19420" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13.7505)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19421" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13.9104)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19422" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14.0703)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19423" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14.2301)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19424" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14.39)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19425" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14.5499)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19426" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14.7098)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19427" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14.8697)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19428" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15.0296)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19429" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15.1895)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19430" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15.3494)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19431" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15.5093)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19432" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15.6691)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19433" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15.829)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19434" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15.9889)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19435" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16.1488)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19436" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16.3087)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19437" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16.4686)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19438" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16.6285)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19439" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16.7884)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19440" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16.9483)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19441" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17.1082)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19442" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17.268)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19443" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17.4279)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19444" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17.5878)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19445" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17.7477)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19446" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17.9076)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19447" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18.0675)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19448" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18.2274)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19449" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18.3873)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19450" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18.5472)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19451" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18.707)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19452" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18.8669)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19453" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19.0268)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19454" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19.1867)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19455" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19.3466)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19456" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19.5065)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19457" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19.6664)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19458" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19.8263)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19459" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19.9862)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19460" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20.146)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
+
+[node name="@@19461" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20.3059)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_ogx1u")
+script = ExtResource("17_qwvbc")
