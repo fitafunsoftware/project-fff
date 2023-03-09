@@ -31,6 +31,7 @@ offset_left = -320.0
 offset_top = -180.0
 offset_right = 320.0
 offset_bottom = 180.0
+start_scene = "res://scenes/godot_splash.tscn"
 
 [node name="FPSCounter" parent="." instance=ExtResource("2_iotp4")]
 layout_mode = 2

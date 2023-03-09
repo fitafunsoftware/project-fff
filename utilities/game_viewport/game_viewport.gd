@@ -19,7 +19,8 @@ func change_scene(path: String) -> void:
 
 
 func change_scene_node(next_scene: Node):
-	get_child(0).queue_free()
+	if get_child_count() > 0:
+		get_child(0).queue_free()
 	add_child(next_scene)
 
 

@@ -14,5 +14,5 @@ func _input(event) -> void:
 func _exit() -> void:
 	get_viewport().set_input_as_handled()
 	get_tree().unload_current_scene()
-	get_tree().change_scene_to_file("res://scenes/exit_scene.tscn")
+	get_tree().change_scene_to_file("res://utilities/exit_scene/exit_scene.tscn")
 	queue_free()
