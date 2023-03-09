@@ -25,6 +25,7 @@ driver/driver=""
 [autoload]
 
 ExitShortcut="*res://autoloads/exit_shortcut.gd"
+ResourceQueue="*res://autoloads/resource_queue.gd"
 GlobalParams="*res://autoloads/global_params.gd"
 
 [display]
