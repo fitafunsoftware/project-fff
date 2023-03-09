@@ -4,7 +4,9 @@ extends Control
 @export var fade_in_duration := 2.0
 @export var on_screen_delay := 1.0
 @export var fade_out_duration := 0.5
+@export_group("NextScene")
 @export_file("*.tscn") var next_scene : String
+@export var to_loading_screen := false
 
 @onready var _logo := $Logo
 
@@ -14,7 +16,8 @@ var _tween : Tween
 func _ready():
 	_logo.modulate = Color.TRANSPARENT
 	
-	get_viewport().queue_scene(next_scene)
+	if not to_loading_screen:
+		get_viewport().queue_scene(next_scene)
 	
 	_tween = create_tween()
 	_tween.tween_property(_logo, "modulate", Color.WHITE, fade_in_duration).set_delay(start_delay)
@@ -42,4 +45,7 @@ func _skip_splash():
 
 
 func _change_scene():
-	get_viewport().change_scene_to_file(next_scene)
+	if to_loading_screen:
+		get_viewport().change_to_loading_scene(next_scene)
+	else:
+		get_viewport().change_scene(next_scene)
