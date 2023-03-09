@@ -2,8 +2,12 @@ extends SubViewport
 class_name GameViewport
 
 
+func queue_scene(path: String) -> void:
+	ResourceQueue.queue_resource(path)
+
+
 func change_scene_to_file(path: String) -> void:
-	var new_scene_resource: Resource = load(path)
+	var new_scene_resource: Resource = ResourceQueue.get_resource(path)
 	
 	if not new_scene_resource:
 		return

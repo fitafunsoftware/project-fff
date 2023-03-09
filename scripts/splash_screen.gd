@@ -14,6 +14,8 @@ var _tween : Tween
 func _ready():
 	_logo.modulate = Color.TRANSPARENT
 	
+	get_viewport().queue_scene(next_scene)
+	
 	_tween = create_tween()
 	_tween.tween_property(_logo, "modulate", Color.WHITE, fade_in_duration).set_delay(start_delay)
 	_tween.tween_property(_logo, "modulate", Color.TRANSPARENT, fade_out_duration).set_delay(on_screen_delay)
@@ -34,6 +36,7 @@ func _skip_splash():
 		_tween.custom_step(time_to_skip)
 	
 	if elapsed_time > first_tweener_duration:
+		_logo.modulate = Color.TRANSPARENT
 		_tween.kill()
 		_change_scene()
 

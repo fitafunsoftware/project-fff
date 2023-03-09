@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dgbohy7xcnbfo"]
+[gd_scene load_steps=24 format=3 uid="uid://bjqrvelx8fvya"]
 
 [ext_resource type="Shader" path="res://shaders/vertical.gdshader" id="1"]
 [ext_resource type="Shader" path="res://shaders/horizontal.gdshader" id="2"]
@@ -9,11 +9,11 @@
 [ext_resource type="Script" path="res://utilities/sprite_3d/parallax_sprite_3d.gd" id="9_k2mbj"]
 [ext_resource type="Script" path="res://utilities/sprite_3d/vertical_sprite_3d.gd" id="10_enjwq"]
 [ext_resource type="Texture2D" uid="uid://bmko5ii6lvusk" path="res://assets/art/small_shadow.png" id="10_ywhh5"]
-[ext_resource type="Script" path="res://shadow.gd" id="11_fqcai"]
+[ext_resource type="Script" path="res://utilities/shadow/shadow.gd" id="11_86x2q"]
 [ext_resource type="Texture2D" uid="uid://b2ns136twwcpe" path="res://proprietary/assets/art/tia/tia.png" id="11_jeidp"]
 [ext_resource type="Texture2D" uid="uid://br3fmrddavtcx" path="res://assets/art/tall_grass.png" id="12_gxa50"]
 [ext_resource type="Texture2D" uid="uid://cacdyi45h4aay" path="res://assets/art/tall_bitmap.png" id="13_ke6p6"]
-[ext_resource type="PackedScene" uid="uid://bfu1gbaj16um7" path="res://proprietary/scenes/tree.tscn" id="13_ko2qx"]
+[ext_resource type="PackedScene" path="res://proprietary/scenes/tree.tscn" id="13_ko2qx"]
 [ext_resource type="Script" path="res://utilities/grass/grass_generator.gd" id="14_e5md4"]
 
 [sub_resource type="BoxShape3D" id="5"]
@@ -145,7 +145,7 @@ double_sided = false
 alpha_cut = 1
 texture_filter = 0
 texture = ExtResource("10_ywhh5")
-script = ExtResource("11_fqcai")
+script = ExtResource("11_86x2q")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D"]
 libraries = {
@@ -178,7 +178,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.39071, 0, -4.91292)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.83625, 0, -5.92284)
 
 [node name="GrassGenerator" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18, 0.09, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19, 0.09, 0)
 script = ExtResource("14_e5md4")
 grass_texture = ExtResource("12_gxa50")
 grass_map = ExtResource("13_ke6p6")
