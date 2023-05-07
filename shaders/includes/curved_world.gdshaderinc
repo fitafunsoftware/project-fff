@@ -1,15 +1,10 @@
-shader_type spatial;
-render_mode blend_mix,diffuse_toon,specular_disabled;
-
 global uniform float CAMERA_Y_OFFSET;
 global uniform float CAMERA_Z_OFFSET;
 global uniform float CURVE_HEIGHT;
 global uniform float FLOOR_ANGLE;
 global uniform float MAX_ANGLE;
 
-uniform sampler2D sprite_texture : source_color, filter_nearest;
-
-float get_new_y(float z, float camera_z) {
+float get_curved_y(float z, float camera_z) {
 	float CURVE_RADIUS = CURVE_HEIGHT/0.1;
 	float CURVE_LENGTH = CURVE_RADIUS*0.45;
 	float CURVE_L = MAX_ANGLE*CURVE_RADIUS;
@@ -20,8 +15,7 @@ float get_new_y(float z, float camera_z) {
 	float curve_peak = camera_z - CAMERA_Z_OFFSET;
 	float curve_end = camera_z - CAMERA_Z_OFFSET + CURVE_LENGTH;
 	
-	if (z <= curve_start) 
-	{
+	if (z <= curve_start) {
 		float z_offset = z - curve_start;
 		float y_offset = z_offset*sin(FLOOR_ANGLE);
 		new_y = y_offset + CAMERA_Y_OFFSET;
@@ -48,19 +42,4 @@ float get_new_y(float z, float camera_z) {
 	}
 	
 	return new_y;
-}
-
-void vertex() {
-	vec4 world = (MODEL_MATRIX * vec4(VERTEX, 1.0));
-	float y_offset = get_new_y(world.z, CAMERA_POSITION_WORLD.z);
-	vec3 final_position = VERTEX + vec3(0.0, y_offset, 0.0);
-	POSITION = PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(final_position, 1.0);
-}
-
-void fragment() {
-	if (!FRONT_FACING) {
-		discard;
-	}
-	vec4 color = texture(sprite_texture,UV);
-	ALBEDO = color.rgb;
 }

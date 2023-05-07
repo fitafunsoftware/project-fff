@@ -33,16 +33,9 @@ GlobalParams="*res://autoloads/global_params.gd"
 window/size/viewport_width=640
 window/size/viewport_height=360
 window/size/resizable=false
-window/size/window_width_override=1280
-window/size/window_height_override=720
-window/dpi/allow_hidpi=false
+window/size/borderless=true
 window/stretch/aspect="ignore"
-
-[editor]
-
-run/canvas_textures/default_texture_filter=1
-run/size/mode=0
-run/size/borderless=true
+window/dpi/allow_hidpi=false
 
 [gui]
 
@@ -209,6 +202,11 @@ rightyp={
 ]
 }
 
+[layer_names]
+
+3d_render/layer_1="Shaded"
+3d_render/layer_2="Unshaded"
+
 [logging]
 
 file_logging/enable_file_logging.pc=false
@@ -217,11 +215,12 @@ file_logging/enable_file_logging.pc=false
 
 2d/run_on_separate_thread=true
 3d/run_on_separate_thread=true
-common/physics_ticks_per_second=30
 common/enable_pause_aware_picking=true
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="mobile"
 textures/vram_compression/import_etc2_astc=true
 textures/lossless_compression/force_png=true
 lights_and_shadows/directional_shadow/soft_shadow_filter_quality=0
@@ -236,7 +235,6 @@ environment/glow/upscale_mode=0
 environment/defaults/default_clear_color=Color(0.364706, 0.611765, 0.933333, 1)
 2d/snap/snap_2d_transforms_to_pixel=true
 2d/snap/snap_2d_vertices_to_pixel=true
-textures/canvas_textures/default_texture_filter=0
 2d/snapping/use_gpu_pixel_snap=true
 misc/lossless_compression/force_png=true
 textures/vram_compression/import_s3tc=true

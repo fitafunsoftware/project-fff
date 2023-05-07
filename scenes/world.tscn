@@ -1,8 +1,8 @@
-[gd_scene load_steps=29 format=3 uid="uid://bjqrvelx8fvya"]
+[gd_scene load_steps=29 format=3]
 
-[ext_resource type="Shader" path="res://shaders/vertical.gdshader" id="1"]
+[ext_resource type="Shader" path="res://shaders/transparent_mesh.gdshader" id="1"]
 [ext_resource type="PackedScene" uid="uid://cyqfdstjjg7vi" path="res://scenes/lights.tscn" id="1_04on7"]
-[ext_resource type="Shader" path="res://shaders/horizontal.gdshader" id="2"]
+[ext_resource type="Shader" path="res://shaders/opaque_mesh.gdshader" id="2"]
 [ext_resource type="Texture2D" uid="uid://dfmvmv5m8ew5x" path="res://assets/art/ground.png" id="2_fd3tu"]
 [ext_resource type="Script" path="res://utilities/sprite_3d/horizontal_sprite_3d.gd" id="3_xqkqx"]
 [ext_resource type="Script" path="res://scripts/camera_body.gd" id="4"]
@@ -28,9 +28,7 @@ shader = ExtResource("2")
 shader_parameter/sprite_texture = ExtResource("2_fd3tu")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_1h247"]
-lightmap_size_hint = Vector2i(104, 206)
 material = SubResource("ShaderMaterial_dluhh")
-add_uv2 = true
 size = Vector2(20.48, 40.9316)
 subdivide_depth = 2620
 
