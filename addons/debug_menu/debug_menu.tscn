@@ -364,7 +364,6 @@ NVIDIA GeForce RTX 1234, 123.45.67"
 horizontal_alignment = 2
 
 [node name="Settings" type="Label" parent="VBoxContainer"]
-visible = false
 modulate = Color(0.8, 0.84, 1, 0.752941)
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)

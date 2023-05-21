@@ -105,6 +105,7 @@ func _ready() -> void:
 	frame_time_gradient.add_point(0.6667, Color8(128, 226, 95))  # 50-50 mix of lime-400 and green-400
 
 	get_viewport().size_changed.connect(update_settings_label)
+	get_viewport().size_changed.connect(update_scale)
 
 	# Display loading text while information is being queried,
 	# in case the user toggles the full debug menu just after starting the project.
@@ -117,6 +118,7 @@ func _ready() -> void:
 			RenderingServer.viewport_set_measure_render_time(get_viewport().get_viewport_rid(), true)
 			update_information_label()
 			update_settings_label()
+			update_scale()
 	)
 
 func _input(event: InputEvent) -> void:
@@ -201,6 +203,21 @@ func update_settings_label() -> void:
 
 	if not antialiasing_2d_string.is_empty():
 		settings.text += "\n2D Antialiasing: %s" % antialiasing_2d_string
+
+
+func update_scale() -> void:
+	var viewport_size : Vector2i = get_viewport().size
+	var possible_scale : Vector2 = Vector2(viewport_size) / size
+	var new_scale : float = minf(possible_scale.x, possible_scale.y)
+	var descendents : Array = get_children().duplicate()
+	
+	while not descendents.is_empty():
+		var current : Node = descendents.pop_front()
+		if current.get_child_count() > 0:
+			descendents.append_array(current.get_children())
+		if current is Label:
+			var font_size : int = current.get_theme_font_size("font_size", "Label")
+			current.add_theme_font_size_override("font_size", roundi(font_size*new_scale))
 
 
 ## Update hardware/software information label (this never changes at runtime).
