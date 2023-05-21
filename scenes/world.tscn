@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3]
+[gd_scene load_steps=29 format=3 uid="uid://bxvxqo4qyc1ir"]
 
 [ext_resource type="Shader" path="res://shaders/transparent_mesh.gdshader" id="1"]
 [ext_resource type="PackedScene" uid="uid://cyqfdstjjg7vi" path="res://scenes/lights.tscn" id="1_04on7"]
@@ -13,7 +13,7 @@
 [ext_resource type="Script" path="res://utilities/shadow/shadow.gd" id="11_86x2q"]
 [ext_resource type="Texture2D" uid="uid://b2ns136twwcpe" path="res://proprietary/assets/art/tia/tia.png" id="11_jeidp"]
 [ext_resource type="Script" path="res://utilities/grass/grass_generator.gd" id="13_giqmr"]
-[ext_resource type="PackedScene" uid="uid://bb773rgdll22k" path="res://proprietary/scenes/tree.tscn" id="13_ko2qx"]
+[ext_resource type="PackedScene" path="res://proprietary/scenes/tree.tscn" id="13_ko2qx"]
 [ext_resource type="Texture2D" uid="uid://br3fmrddavtcx" path="res://assets/art/tall_grass.png" id="14_whl8h"]
 [ext_resource type="Texture2D" uid="uid://cacdyi45h4aay" path="res://assets/art/tall_bitmap.png" id="15_pto5b"]
 [ext_resource type="Shader" path="res://shaders/grass.gdshader" id="16_7ywox"]

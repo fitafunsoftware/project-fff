@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwc7efbhggpqk"]
+[gd_scene load_steps=4 format=3 uid="uid://bwc7efbhggpqk"]
 
 [ext_resource type="PackedScene" uid="uid://da7ffarvsi43c" path="res://utilities/game_viewport/game_viewport.tscn" id="1_va8sl"]
 [ext_resource type="PackedScene" path="res://utilities/fps_counter/fps.tscn" id="2_iotp4"]
+[ext_resource type="PackedScene" uid="uid://cggqb75a8w8r" path="res://addons/debug_menu/debug_menu.tscn" id="3_1bibq"]
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -34,8 +35,12 @@ offset_bottom = 180.0
 start_scene = "res://scenes/godot_splash.tscn"
 
 [node name="FPSCounter" parent="." instance=ExtResource("2_iotp4")]
+visible = false
 layout_mode = 2
 offset_left = 15.0
 offset_top = 10.0
 offset_right = 63.0
 offset_bottom = 37.0
+
+[node name="DebugMenu" parent="." instance=ExtResource("3_1bibq")]
+layout_mode = 1
