@@ -111,15 +111,12 @@ func _ready() -> void:
 	# in case the user toggles the full debug menu just after starting the project.
 	information.text = "Loading hardware information...\n\n "
 	settings.text = "Loading project information..."
-	thread.start(
-		func():
-			# Enable required time measurements to display CPU/GPU frame time information.
-			# These lines are time-consuming operations, so run them in a separate thread.
-			RenderingServer.viewport_set_measure_render_time(get_viewport().get_viewport_rid(), true)
-			update_information_label()
-			update_settings_label()
-			update_scale()
-	)
+	
+	RenderingServer.viewport_set_measure_render_time(get_viewport().get_viewport_rid(), true)
+	update_information_label()
+	update_settings_label()
+	update_scale()
+
 
 func _input(event: InputEvent) -> void:
 	#if event.is_action_pressed(&"cycle_debug_menu"):
