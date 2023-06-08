@@ -1,10 +1,15 @@
 [gd_scene load_steps=3 format=3 uid="uid://bem12orht20qh"]
 
-[ext_resource type="Texture2D" uid="uid://cjw2xjtuvq04w" path="res://assets/art/godot_logo_vertical.svg" id="1_2r5p5"]
 [ext_resource type="PackedScene" uid="uid://d25bgeeg7wsw8" path="res://utilities/splash_screen/splash_screen.tscn" id="1_a22ei"]
+[ext_resource type="Texture2D" uid="uid://couimanexj1g4" path="res://assets/art/godot_logo_vertical.png" id="2_ra2ns"]
 
 [node name="GodotSplash" instance=ExtResource("1_a22ei")]
 next_scene = "res://proprietary/scenes/fita_splash.tscn"
 
 [node name="Logo" parent="." index="1"]
-texture = ExtResource("1_2r5p5")
+offset_left = -119.5
+offset_top = -140.0
+offset_right = 119.5
+offset_bottom = 140.0
+texture = ExtResource("2_ra2ns")
+expand_mode = 0
