@@ -31,6 +31,7 @@ const GRAPH_MIN_FPS = 10
 const GRAPH_MAX_FPS = 160
 const GRAPH_MIN_FRAMETIME = 1.0 / GRAPH_MIN_FPS
 const GRAPH_MAX_FRAMETIME = 1.0 / GRAPH_MAX_FPS
+@onready var GRAPH_TRANSFORM : Transform2D = Transform2D().translated(Vector2(GRAPH_SIZE.x/HISTORY_NUM_FRAMES, 0.0))
 
 ## Debug menu display style.
 enum Style {
@@ -63,9 +64,6 @@ var last_tick := 0
 
 var thread := Thread.new()
 
-## Returns the sum of all values of an array (use as a parameter to `Array.reduce()`).
-var sum_func := func avg(accum: float, number: float) -> float: return accum + number
-
 # History of the last `HISTORY_NUM_FRAMES` rendered frames.
 var frame_history_total: Array[float] = []
 var frame_history_cpu: Array[float] = []
@@ -77,7 +75,17 @@ var frametime_cpu_avg := GRAPH_MAX_FRAMETIME
 var frametime_gpu_avg := GRAPH_MIN_FRAMETIME
 var frames_per_second := float(GRAPH_MIN_FPS)
 
+var frametime_total := 0.0
+var frametime_cpu_total := 0.0
+var frametime_gpu_total := 0.0
+
 var frame_time_gradient := Gradient.new()
+
+var fps_polyline := PackedVector2Array()
+var total_polyline := PackedVector2Array()
+var cpu_polyline := PackedVector2Array()
+var gpu_polyline := PackedVector2Array()
+
 
 func _init() -> void:
 	# This must be done here instead of `_ready()` to avoid having `visibility_changed` be emitted immediately.
@@ -266,52 +274,40 @@ func update_information_label() -> void:
 
 
 func _fps_graph_draw() -> void:
-	var fps_polyline := PackedVector2Array()
-	fps_polyline.resize(HISTORY_NUM_FRAMES)
-	for fps_index in fps_history.size():
-		fps_polyline[fps_index] = Vector2(
-				remap(fps_index, 0, fps_history.size(), 0, GRAPH_SIZE.x),
-				remap(clampf(fps_history[fps_index], GRAPH_MIN_FPS, GRAPH_MAX_FPS), GRAPH_MIN_FPS, GRAPH_MAX_FPS, GRAPH_SIZE.y, 0.0)
-		)
+	fps_polyline.remove_at(0)
+	fps_polyline *= GRAPH_TRANSFORM
+	fps_polyline.append(Vector2(GRAPH_SIZE.x,
+			remap(clampf(fps_history.back(), GRAPH_MIN_FPS, GRAPH_MAX_FPS), GRAPH_MIN_FPS, GRAPH_MAX_FPS, GRAPH_SIZE.y, 0.0)))
 	# Don't use antialiasing to speed up line drawing, but use a width that scales with
 	# viewport scale to keep the line easily readable on hiDPI displays.
 	fps_graph.draw_polyline(fps_polyline, frame_time_gradient.sample(remap(frames_per_second, GRAPH_MIN_FPS, GRAPH_MAX_FPS, 0.0, 1.0)), 1.0)
 
 
 func _total_graph_draw() -> void:
-	var total_polyline := PackedVector2Array()
-	total_polyline.resize(HISTORY_NUM_FRAMES)
-	for total_index in frame_history_total.size():
-		total_polyline[total_index] = Vector2(
-				remap(total_index, 0, frame_history_total.size(), 0, GRAPH_SIZE.x),
-				remap(clampf(frame_history_total[total_index], GRAPH_MIN_FPS, GRAPH_MAX_FPS), GRAPH_MIN_FPS, GRAPH_MAX_FPS, GRAPH_SIZE.y, 0.0)
-		)
+	total_polyline.remove_at(0)
+	total_polyline *= GRAPH_TRANSFORM
+	total_polyline.append(Vector2(GRAPH_SIZE.x,
+			remap(clampf(frame_history_total.back(), GRAPH_MIN_FPS, GRAPH_MAX_FPS), GRAPH_MIN_FPS, GRAPH_MAX_FPS, GRAPH_SIZE.y, 0.0)))
 	# Don't use antialiasing to speed up line drawing, but use a width that scales with
 	# viewport scale to keep the line easily readable on hiDPI displays.
 	total_graph.draw_polyline(total_polyline, frame_time_gradient.sample(remap(1000.0 / frametime_avg, GRAPH_MIN_FPS, GRAPH_MAX_FPS, 0.0, 1.0)), 1.0)
 
 
 func _cpu_graph_draw() -> void:
-	var cpu_polyline := PackedVector2Array()
-	cpu_polyline.resize(HISTORY_NUM_FRAMES)
-	for cpu_index in frame_history_cpu.size():
-		cpu_polyline[cpu_index] = Vector2(
-				remap(cpu_index, 0, frame_history_cpu.size(), 0, GRAPH_SIZE.x),
-				remap(clampf(frame_history_cpu[cpu_index], GRAPH_MIN_FPS, GRAPH_MAX_FPS), GRAPH_MIN_FPS, GRAPH_MAX_FPS, GRAPH_SIZE.y, 0.0)
-		)
+	cpu_polyline.remove_at(0)
+	cpu_polyline *= GRAPH_TRANSFORM
+	cpu_polyline.append(Vector2(GRAPH_SIZE.x,
+			remap(clampf(frame_history_cpu.back(), GRAPH_MIN_FPS, GRAPH_MAX_FPS), GRAPH_MIN_FPS, GRAPH_MAX_FPS, GRAPH_SIZE.y, 0.0)))
 	# Don't use antialiasing to speed up line drawing, but use a width that scales with
 	# viewport scale to keep the line easily readable on hiDPI displays.
 	cpu_graph.draw_polyline(cpu_polyline, frame_time_gradient.sample(remap(1000.0 / frametime_cpu_avg, GRAPH_MIN_FPS, GRAPH_MAX_FPS, 0.0, 1.0)), 1.0)
 
 
 func _gpu_graph_draw() -> void:
-	var gpu_polyline := PackedVector2Array()
-	gpu_polyline.resize(HISTORY_NUM_FRAMES)
-	for gpu_index in frame_history_gpu.size():
-		gpu_polyline[gpu_index] = Vector2(
-				remap(gpu_index, 0, frame_history_gpu.size(), 0, GRAPH_SIZE.x),
-				remap(clampf(frame_history_gpu[gpu_index], GRAPH_MIN_FPS, GRAPH_MAX_FPS), GRAPH_MIN_FPS, GRAPH_MAX_FPS, GRAPH_SIZE.y, 0.0)
-		)
+	gpu_polyline.remove_at(0)
+	gpu_polyline *= GRAPH_TRANSFORM
+	gpu_polyline.append(Vector2(GRAPH_SIZE.x,
+			remap(clampf(frame_history_gpu.back(), GRAPH_MIN_FPS, GRAPH_MAX_FPS), GRAPH_MIN_FPS, GRAPH_MAX_FPS, GRAPH_SIZE.y, 0.0)))
 	# Don't use antialiasing to speed up line drawing, but use a width that scales with
 	# viewport scale to keep the line easily readable on hiDPI displays.
 	gpu_graph.draw_polyline(gpu_polyline, frame_time_gradient.sample(remap(1000.0 / frametime_gpu_avg, GRAPH_MIN_FPS, GRAPH_MAX_FPS, 0.0, 1.0)), 1.0)
@@ -327,13 +323,14 @@ func _process(_delta: float) -> void:
 		# Difference between the last two rendered frames in milliseconds.
 		var frametime := (Time.get_ticks_usec() - last_tick) * 0.001
 
+		frametime_total += frametime
 		frame_history_total.push_back(frametime)
 		if frame_history_total.size() > HISTORY_NUM_FRAMES:
-			frame_history_total.pop_front()
+			frametime_total -= frame_history_total.pop_front()
 
 		# Frametimes are colored following FPS logic (red = 10 FPS, yellow = 60 FPS, green = 110 FPS, cyan = 160 FPS).
 		# This makes the color gradient non-linear.
-		frametime_avg = frame_history_total.reduce(sum_func) / frame_history_total.size()
+		frametime_avg = frametime_total / frame_history_total.size()
 		frame_history_total_avg.text = str(frametime_avg).pad_decimals(2)
 		frame_history_total_avg.modulate = frame_time_gradient.sample(remap(1000.0 / frametime_avg, GRAPH_MIN_FPS, GRAPH_MAX_FPS, 0.0, 1.0))
 
@@ -350,11 +347,12 @@ func _process(_delta: float) -> void:
 
 		var viewport_rid := get_viewport().get_viewport_rid()
 		var frametime_cpu := RenderingServer.viewport_get_measured_render_time_cpu(viewport_rid) + RenderingServer.get_frame_setup_time_cpu()
+		frametime_cpu_total += frametime_cpu
 		frame_history_cpu.push_back(frametime_cpu)
 		if frame_history_cpu.size() > HISTORY_NUM_FRAMES:
-			frame_history_cpu.pop_front()
+			frametime_cpu_total -= frame_history_cpu.pop_front()
 
-		frametime_cpu_avg = frame_history_cpu.reduce(sum_func) / frame_history_cpu.size()
+		frametime_cpu_avg = frametime_cpu_total / frame_history_cpu.size()
 		frame_history_cpu_avg.text = str(frametime_cpu_avg).pad_decimals(2)
 		frame_history_cpu_avg.modulate = frame_time_gradient.sample(remap(1000.0 / frametime_cpu_avg, GRAPH_MIN_FPS, GRAPH_MAX_FPS, 0.0, 1.0))
 
@@ -370,11 +368,12 @@ func _process(_delta: float) -> void:
 		frame_history_cpu_last.modulate = frame_time_gradient.sample(remap(1000.0 / frametime_cpu, GRAPH_MIN_FPS, GRAPH_MAX_FPS, 0.0, 1.0))
 
 		var frametime_gpu := RenderingServer.viewport_get_measured_render_time_gpu(viewport_rid)
+		frametime_gpu_total += frametime_gpu
 		frame_history_gpu.push_back(frametime_gpu)
 		if frame_history_gpu.size() > HISTORY_NUM_FRAMES:
-			frame_history_gpu.pop_front()
+			frametime_gpu_total -= frame_history_gpu.pop_front()
 
-		frametime_gpu_avg = frame_history_gpu.reduce(sum_func) / frame_history_gpu.size()
+		frametime_gpu_avg = frametime_gpu_total / frame_history_gpu.size()
 		frame_history_gpu_avg.text = str(frametime_gpu_avg).pad_decimals(2)
 		frame_history_gpu_avg.modulate = frame_time_gradient.sample(remap(1000.0 / frametime_gpu_avg, GRAPH_MIN_FPS, GRAPH_MAX_FPS, 0.0, 1.0))
 
@@ -433,16 +432,53 @@ func _process(_delta: float) -> void:
 
 
 func _on_visibility_changed() -> void:
-	if visible:
-		# Reset graphs to prevent them from looking strange before `HISTORY_NUM_FRAMES` frames
-		# have been drawn.
-		var frametime_last := (Time.get_ticks_usec() - last_tick) * 0.001
-		fps_history.resize(HISTORY_NUM_FRAMES)
-		fps_history.fill(1000.0 / frametime_last)
-		frame_history_total.resize(HISTORY_NUM_FRAMES)
-		frame_history_total.fill(frametime_last)
-		frame_history_cpu.resize(HISTORY_NUM_FRAMES)
-		var viewport_rid := get_viewport().get_viewport_rid()
-		frame_history_cpu.fill(RenderingServer.viewport_get_measured_render_time_cpu(viewport_rid) + RenderingServer.get_frame_setup_time_cpu())
-		frame_history_gpu.resize(HISTORY_NUM_FRAMES)
-		frame_history_gpu.fill(RenderingServer.viewport_get_measured_render_time_gpu(viewport_rid))
+	if not visible:
+		return
+	
+	# Reset graphs to prevent them from looking strange before `HISTORY_NUM_FRAMES` frames
+	# have been drawn.
+	var frametime_last := (Time.get_ticks_usec() - last_tick) * 0.001
+	var viewport_rid := get_viewport().get_viewport_rid()
+	
+	fps_history.resize(HISTORY_NUM_FRAMES)
+	fps_history.fill(1000.0 / frametime_last)
+	
+	frame_history_total.resize(HISTORY_NUM_FRAMES)
+	frame_history_total.fill(frametime_last)
+	frametime_total = frametime_last*HISTORY_NUM_FRAMES
+	
+	frame_history_cpu.resize(HISTORY_NUM_FRAMES)
+	frame_history_cpu.fill(RenderingServer.viewport_get_measured_render_time_cpu(viewport_rid) + RenderingServer.get_frame_setup_time_cpu())
+	frametime_cpu_total = frame_history_cpu.back()*HISTORY_NUM_FRAMES
+	
+	frame_history_gpu.resize(HISTORY_NUM_FRAMES)
+	frame_history_gpu.fill(RenderingServer.viewport_get_measured_render_time_gpu(viewport_rid))
+	frametime_gpu_total = frame_history_gpu.back()*HISTORY_NUM_FRAMES
+	
+	fps_polyline.resize(HISTORY_NUM_FRAMES)
+	for fps_index in fps_history.size():
+		fps_polyline[fps_index] = Vector2(
+				remap(fps_index, 0, fps_history.size(), 0, GRAPH_SIZE.x),
+				remap(clampf(fps_history[fps_index], GRAPH_MIN_FPS, GRAPH_MAX_FPS), GRAPH_MIN_FPS, GRAPH_MAX_FPS, GRAPH_SIZE.y, 0.0)
+		)
+	
+	total_polyline.resize(HISTORY_NUM_FRAMES)
+	for total_index in frame_history_total.size():
+		total_polyline[total_index] = Vector2(
+				remap(total_index, 0, frame_history_total.size(), 0, GRAPH_SIZE.x),
+				remap(clampf(frame_history_total[total_index], GRAPH_MIN_FPS, GRAPH_MAX_FPS), GRAPH_MIN_FPS, GRAPH_MAX_FPS, GRAPH_SIZE.y, 0.0)
+		)
+	
+	cpu_polyline.resize(HISTORY_NUM_FRAMES)
+	for cpu_index in frame_history_cpu.size():
+		cpu_polyline[cpu_index] = Vector2(
+				remap(cpu_index, 0, frame_history_cpu.size(), 0, GRAPH_SIZE.x),
+				remap(clampf(frame_history_cpu[cpu_index], GRAPH_MIN_FPS, GRAPH_MAX_FPS), GRAPH_MIN_FPS, GRAPH_MAX_FPS, GRAPH_SIZE.y, 0.0)
+		)
+	
+	gpu_polyline.resize(HISTORY_NUM_FRAMES)
+	for gpu_index in frame_history_gpu.size():
+		gpu_polyline[gpu_index] = Vector2(
+				remap(gpu_index, 0, frame_history_gpu.size(), 0, GRAPH_SIZE.x),
+				remap(clampf(frame_history_gpu[gpu_index], GRAPH_MIN_FPS, GRAPH_MAX_FPS), GRAPH_MIN_FPS, GRAPH_MAX_FPS, GRAPH_SIZE.y, 0.0)
+		)

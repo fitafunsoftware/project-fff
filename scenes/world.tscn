@@ -3,19 +3,19 @@
 [ext_resource type="Shader" path="res://shaders/transparent_mesh.gdshader" id="1"]
 [ext_resource type="PackedScene" uid="uid://cyqfdstjjg7vi" path="res://scenes/lights.tscn" id="1_04on7"]
 [ext_resource type="Shader" path="res://shaders/opaque_mesh.gdshader" id="2"]
-[ext_resource type="Texture2D" uid="uid://dfmvmv5m8ew5x" path="res://assets/art/ground.png" id="2_fd3tu"]
+[ext_resource type="Texture2D" uid="uid://bjbsy43mpseke" path="res://assets/art/ground.png" id="2_fd3tu"]
 [ext_resource type="Script" path="res://utilities/sprite_3d/horizontal_sprite_3d.gd" id="3_xqkqx"]
 [ext_resource type="Script" path="res://scripts/camera_body.gd" id="4"]
-[ext_resource type="Texture2D" uid="uid://cfegoofxh6aji" path="res://assets/art/sun.png" id="8_30ww1"]
+[ext_resource type="Texture2D" uid="uid://mgv7wgykgqku" path="res://assets/art/sun.png" id="8_30ww1"]
 [ext_resource type="Script" path="res://utilities/sprite_3d/parallax_sprite_3d.gd" id="9_k2mbj"]
 [ext_resource type="Script" path="res://utilities/sprite_3d/vertical_sprite_3d.gd" id="10_enjwq"]
-[ext_resource type="Texture2D" uid="uid://bmko5ii6lvusk" path="res://assets/art/small_shadow.png" id="10_ywhh5"]
+[ext_resource type="Texture2D" uid="uid://d061ns1cwyfdk" path="res://assets/art/small_shadow.png" id="10_ywhh5"]
 [ext_resource type="Script" path="res://utilities/shadow/shadow.gd" id="11_86x2q"]
 [ext_resource type="Texture2D" uid="uid://b2ns136twwcpe" path="res://proprietary/assets/art/tia/tia.png" id="11_jeidp"]
 [ext_resource type="Script" path="res://utilities/grass/grass_generator.gd" id="13_giqmr"]
 [ext_resource type="PackedScene" path="res://proprietary/scenes/tree.tscn" id="13_ko2qx"]
-[ext_resource type="Texture2D" uid="uid://br3fmrddavtcx" path="res://assets/art/tall_grass.png" id="14_whl8h"]
-[ext_resource type="Texture2D" uid="uid://cacdyi45h4aay" path="res://assets/art/tall_bitmap.png" id="15_pto5b"]
+[ext_resource type="Texture2D" uid="uid://dv54ehioiie57" path="res://assets/art/tall_grass.png" id="14_whl8h"]
+[ext_resource type="Texture2D" uid="uid://b8l3hesi0j27h" path="res://assets/art/tall_bitmap.png" id="15_pto5b"]
 [ext_resource type="Shader" path="res://shaders/grass.gdshader" id="16_7ywox"]
 [ext_resource type="Script" path="res://utilities/grass/grass_instance_3d.gd" id="17_qwvbc"]
 
@@ -78,17 +78,17 @@ _data = {
 "idle": SubResource("Animation_4i11b")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_s7i63"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0unau"]
 render_priority = 0
 shader = ExtResource("16_7ywox")
-shader_parameter/columns = 205
-shader_parameter/rows = 256
+shader_parameter/columns = 205.0
+shader_parameter/rows = 256.0
 shader_parameter/top_most = Vector3(40.9316, 0, -20.4658)
 shader_parameter/sprite_texture = ExtResource("14_whl8h")
 shader_parameter/bitmap_texture = ExtResource("15_pto5b")
 
-[sub_resource type="QuadMesh" id="QuadMesh_fi32r"]
-material = SubResource("ShaderMaterial_s7i63")
+[sub_resource type="QuadMesh" id="QuadMesh_pah4p"]
+material = SubResource("ShaderMaterial_0unau")
 size = Vector2(20.5, 0.18)
 
 [node name="World3D" type="Node3D"]
@@ -183,1544 +183,1544 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.39071, 0, -4.91292)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.83625, 0, -5.92284)
 
 [node name="GrassGenerator" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03, 0.09, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09, 0)
 script = ExtResource("13_giqmr")
 grass_texture = ExtResource("14_whl8h")
 grass_map = ExtResource("15_pto5b")
 y_offset = 10
 
-[node name="@@56244" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20.4658)
+[node name="@MeshInstance3D@30812" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -20.4658)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56245" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20.3059)
+[node name="@MeshInstance3D@30813" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -20.3059)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56246" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20.146)
+[node name="@MeshInstance3D@30814" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -20.146)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56247" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.9861)
+[node name="@MeshInstance3D@30815" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -19.9861)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56248" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.8262)
+[node name="@MeshInstance3D@30816" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -19.8262)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56249" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.6663)
+[node name="@MeshInstance3D@30817" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -19.6663)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56250" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.5064)
+[node name="@MeshInstance3D@30818" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -19.5064)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56251" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.3466)
+[node name="@MeshInstance3D@30819" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -19.3466)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56252" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.1867)
+[node name="@MeshInstance3D@30820" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -19.1867)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56253" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.0268)
+[node name="@MeshInstance3D@30821" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -19.0268)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56254" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18.8669)
+[node name="@MeshInstance3D@30822" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -18.8669)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56255" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18.707)
+[node name="@MeshInstance3D@30823" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -18.707)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56256" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18.5471)
+[node name="@MeshInstance3D@30824" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -18.5471)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56257" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18.3872)
+[node name="@MeshInstance3D@30825" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -18.3872)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56258" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18.2273)
+[node name="@MeshInstance3D@30826" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -18.2273)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56259" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18.0674)
+[node name="@MeshInstance3D@30827" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -18.0674)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56260" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17.9076)
+[node name="@MeshInstance3D@30828" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -17.9076)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56261" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17.7477)
+[node name="@MeshInstance3D@30829" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -17.7477)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56262" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17.5878)
+[node name="@MeshInstance3D@30830" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -17.5878)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56263" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17.4279)
+[node name="@MeshInstance3D@30831" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -17.4279)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56264" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17.268)
+[node name="@MeshInstance3D@30832" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -17.268)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56265" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17.1081)
+[node name="@MeshInstance3D@30833" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -17.1081)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56266" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.9482)
+[node name="@MeshInstance3D@30834" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -16.9482)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56267" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.7883)
+[node name="@MeshInstance3D@30835" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -16.7883)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56268" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.6284)
+[node name="@MeshInstance3D@30836" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -16.6284)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56269" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.4685)
+[node name="@MeshInstance3D@30837" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -16.4685)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56270" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.3087)
+[node name="@MeshInstance3D@30838" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -16.3087)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56271" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.1488)
+[node name="@MeshInstance3D@30839" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -16.1488)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56272" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.9889)
+[node name="@MeshInstance3D@30840" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -15.9889)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56273" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.829)
+[node name="@MeshInstance3D@30841" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -15.829)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56274" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.6691)
+[node name="@MeshInstance3D@30842" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -15.6691)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56275" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.5092)
+[node name="@MeshInstance3D@30843" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -15.5092)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56276" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.3493)
+[node name="@MeshInstance3D@30844" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -15.3493)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56277" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.1894)
+[node name="@MeshInstance3D@30845" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -15.1894)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56278" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.0295)
+[node name="@MeshInstance3D@30846" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -15.0295)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56279" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14.8697)
+[node name="@MeshInstance3D@30847" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -14.8697)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56280" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14.7098)
+[node name="@MeshInstance3D@30848" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -14.7098)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56281" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14.5499)
+[node name="@MeshInstance3D@30849" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -14.5499)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56282" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14.39)
+[node name="@MeshInstance3D@30850" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -14.39)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56283" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14.2301)
+[node name="@MeshInstance3D@30851" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -14.2301)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56284" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14.0702)
+[node name="@MeshInstance3D@30852" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -14.0702)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56285" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.9103)
+[node name="@MeshInstance3D@30853" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -13.9103)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56286" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.7504)
+[node name="@MeshInstance3D@30854" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -13.7504)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56287" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.5905)
+[node name="@MeshInstance3D@30855" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -13.5905)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56288" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.4307)
+[node name="@MeshInstance3D@30856" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -13.4307)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56289" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.2708)
+[node name="@MeshInstance3D@30857" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -13.2708)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56290" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.1109)
+[node name="@MeshInstance3D@30858" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -13.1109)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56291" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.951)
+[node name="@MeshInstance3D@30859" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -12.951)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56292" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.7911)
+[node name="@MeshInstance3D@30860" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -12.7911)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56293" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.6312)
+[node name="@MeshInstance3D@30861" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -12.6312)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56294" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.4713)
+[node name="@MeshInstance3D@30862" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -12.4713)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56295" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.3114)
+[node name="@MeshInstance3D@30863" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -12.3114)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56296" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.1515)
+[node name="@MeshInstance3D@30864" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -12.1515)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56297" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.9916)
+[node name="@MeshInstance3D@30865" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -11.9916)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56298" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.8318)
+[node name="@MeshInstance3D@30866" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -11.8318)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56299" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.6719)
+[node name="@MeshInstance3D@30867" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -11.6719)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56300" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.512)
+[node name="@MeshInstance3D@30868" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -11.512)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56301" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.3521)
+[node name="@MeshInstance3D@30869" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -11.3521)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56302" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.1922)
+[node name="@MeshInstance3D@30870" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -11.1922)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56303" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.0323)
+[node name="@MeshInstance3D@30871" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -11.0323)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56304" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.8724)
+[node name="@MeshInstance3D@30872" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -10.8724)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56305" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.7125)
+[node name="@MeshInstance3D@30873" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -10.7125)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56306" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.5526)
+[node name="@MeshInstance3D@30874" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -10.5526)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56307" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.3928)
+[node name="@MeshInstance3D@30875" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -10.3928)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56308" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.2329)
+[node name="@MeshInstance3D@30876" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -10.2329)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56309" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.073)
+[node name="@MeshInstance3D@30877" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -10.073)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56310" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.91309)
+[node name="@MeshInstance3D@30878" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -9.91309)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56311" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.7532)
+[node name="@MeshInstance3D@30879" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -9.7532)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56312" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.59331)
+[node name="@MeshInstance3D@30880" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -9.59331)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56313" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.43342)
+[node name="@MeshInstance3D@30881" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -9.43342)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56314" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.27353)
+[node name="@MeshInstance3D@30882" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -9.27353)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56315" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.11364)
+[node name="@MeshInstance3D@30883" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -9.11364)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56316" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.95375)
+[node name="@MeshInstance3D@30884" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -8.95375)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56317" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.79387)
+[node name="@MeshInstance3D@30885" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -8.79387)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56318" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.63398)
+[node name="@MeshInstance3D@30886" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -8.63398)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56319" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.47409)
+[node name="@MeshInstance3D@30887" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -8.47409)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56320" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.3142)
+[node name="@MeshInstance3D@30888" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -8.3142)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56321" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.15431)
+[node name="@MeshInstance3D@30889" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -8.15431)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56322" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.99442)
+[node name="@MeshInstance3D@30890" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -7.99442)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56323" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.83453)
+[node name="@MeshInstance3D@30891" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -7.83453)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56324" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.67464)
+[node name="@MeshInstance3D@30892" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -7.67464)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56325" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.51475)
+[node name="@MeshInstance3D@30893" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -7.51475)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56326" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.35486)
+[node name="@MeshInstance3D@30894" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -7.35486)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56327" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.19498)
+[node name="@MeshInstance3D@30895" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -7.19498)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56328" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.03509)
+[node name="@MeshInstance3D@30896" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -7.03509)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56329" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.8752)
+[node name="@MeshInstance3D@30897" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -6.8752)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56330" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.71531)
+[node name="@MeshInstance3D@30898" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -6.71531)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56331" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.55542)
+[node name="@MeshInstance3D@30899" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -6.55542)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56332" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.39553)
+[node name="@MeshInstance3D@30900" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -6.39553)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56333" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.23564)
+[node name="@MeshInstance3D@30901" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -6.23564)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56334" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.07575)
+[node name="@MeshInstance3D@30902" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -6.07575)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56335" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.91587)
+[node name="@MeshInstance3D@30903" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -5.91587)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56336" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.75598)
+[node name="@MeshInstance3D@30904" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -5.75598)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56337" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.59609)
+[node name="@MeshInstance3D@30905" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -5.59609)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56338" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.4362)
+[node name="@MeshInstance3D@30906" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -5.4362)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56339" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.27631)
+[node name="@MeshInstance3D@30907" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -5.27631)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56340" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.11642)
+[node name="@MeshInstance3D@30908" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -5.11642)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56341" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.95653)
+[node name="@MeshInstance3D@30909" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -4.95653)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56342" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.79664)
+[node name="@MeshInstance3D@30910" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -4.79664)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56343" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.63676)
+[node name="@MeshInstance3D@30911" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -4.63676)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56344" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.47687)
+[node name="@MeshInstance3D@30912" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -4.47687)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56345" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.31698)
+[node name="@MeshInstance3D@30913" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -4.31698)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56346" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.15709)
+[node name="@MeshInstance3D@30914" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -4.15709)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56347" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.9972)
+[node name="@MeshInstance3D@30915" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -3.9972)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56348" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.83731)
+[node name="@MeshInstance3D@30916" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -3.83731)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56349" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.67742)
+[node name="@MeshInstance3D@30917" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -3.67742)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56350" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.51753)
+[node name="@MeshInstance3D@30918" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -3.51753)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56351" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.35764)
+[node name="@MeshInstance3D@30919" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -3.35764)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56352" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.19776)
+[node name="@MeshInstance3D@30920" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -3.19776)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56353" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.03787)
+[node name="@MeshInstance3D@30921" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -3.03787)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56354" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.87798)
+[node name="@MeshInstance3D@30922" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -2.87798)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56355" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.71809)
+[node name="@MeshInstance3D@30923" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -2.71809)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56356" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5582)
+[node name="@MeshInstance3D@30924" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -2.5582)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56357" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.39831)
+[node name="@MeshInstance3D@30925" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -2.39831)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56358" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.23842)
+[node name="@MeshInstance3D@30926" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -2.23842)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56359" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.07853)
+[node name="@MeshInstance3D@30927" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -2.07853)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56360" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.91864)
+[node name="@MeshInstance3D@30928" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -1.91864)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56361" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.75876)
+[node name="@MeshInstance3D@30929" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -1.75876)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56362" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.59887)
+[node name="@MeshInstance3D@30930" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -1.59887)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56363" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.43898)
+[node name="@MeshInstance3D@30931" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -1.43898)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56364" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.27909)
+[node name="@MeshInstance3D@30932" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -1.27909)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56365" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.1192)
+[node name="@MeshInstance3D@30933" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -1.1192)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56366" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.959311)
+[node name="@MeshInstance3D@30934" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -0.959311)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56367" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.799422)
+[node name="@MeshInstance3D@30935" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -0.799422)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56368" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.639533)
+[node name="@MeshInstance3D@30936" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -0.639533)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56369" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.479644)
+[node name="@MeshInstance3D@30937" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -0.479644)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56370" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.319755)
+[node name="@MeshInstance3D@30938" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -0.319755)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56371" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.159866)
+[node name="@MeshInstance3D@30939" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, -0.159866)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56372" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.25963e-05)
+[node name="@MeshInstance3D@30940" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 2.25963e-05)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56373" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.159911)
+[node name="@MeshInstance3D@30941" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 0.159911)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56374" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.3198)
+[node name="@MeshInstance3D@30942" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 0.3198)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56375" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.479689)
+[node name="@MeshInstance3D@30943" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 0.479689)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56376" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.639578)
+[node name="@MeshInstance3D@30944" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 0.639578)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56377" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.799467)
+[node name="@MeshInstance3D@30945" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 0.799467)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56378" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.959356)
+[node name="@MeshInstance3D@30946" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 0.959356)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56379" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.11924)
+[node name="@MeshInstance3D@30947" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 1.11924)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56380" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.27913)
+[node name="@MeshInstance3D@30948" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 1.27913)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56381" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.43902)
+[node name="@MeshInstance3D@30949" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 1.43902)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56382" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.59891)
+[node name="@MeshInstance3D@30950" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 1.59891)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56383" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.7588)
+[node name="@MeshInstance3D@30951" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 1.7588)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56384" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.91869)
+[node name="@MeshInstance3D@30952" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 1.91869)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56385" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.07858)
+[node name="@MeshInstance3D@30953" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 2.07858)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56386" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.23847)
+[node name="@MeshInstance3D@30954" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 2.23847)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56387" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.39836)
+[node name="@MeshInstance3D@30955" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 2.39836)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56388" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.55825)
+[node name="@MeshInstance3D@30956" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 2.55825)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56389" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.71813)
+[node name="@MeshInstance3D@30957" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 2.71813)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56390" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.87802)
+[node name="@MeshInstance3D@30958" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 2.87802)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56391" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.03791)
+[node name="@MeshInstance3D@30959" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 3.03791)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56392" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.1978)
+[node name="@MeshInstance3D@30960" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 3.1978)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56393" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.35769)
+[node name="@MeshInstance3D@30961" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 3.35769)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56394" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.51758)
+[node name="@MeshInstance3D@30962" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 3.51758)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56395" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.67747)
+[node name="@MeshInstance3D@30963" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 3.67747)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56396" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.83736)
+[node name="@MeshInstance3D@30964" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 3.83736)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56397" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.99725)
+[node name="@MeshInstance3D@30965" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 3.99725)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56398" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.15714)
+[node name="@MeshInstance3D@30966" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 4.15714)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56399" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.31702)
+[node name="@MeshInstance3D@30967" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 4.31702)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56400" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.47691)
+[node name="@MeshInstance3D@30968" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 4.47691)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56401" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.6368)
+[node name="@MeshInstance3D@30969" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 4.6368)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56402" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.79669)
+[node name="@MeshInstance3D@30970" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 4.79669)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56403" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.95658)
+[node name="@MeshInstance3D@30971" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 4.95658)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56404" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.11647)
+[node name="@MeshInstance3D@30972" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 5.11647)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56405" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.27636)
+[node name="@MeshInstance3D@30973" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 5.27636)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56406" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.43624)
+[node name="@MeshInstance3D@30974" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 5.43624)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56407" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.59613)
+[node name="@MeshInstance3D@30975" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 5.59613)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56408" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.75602)
+[node name="@MeshInstance3D@30976" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 5.75602)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56409" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.91591)
+[node name="@MeshInstance3D@30977" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 5.91591)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56410" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.0758)
+[node name="@MeshInstance3D@30978" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 6.0758)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56411" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.23569)
+[node name="@MeshInstance3D@30979" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 6.23569)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56412" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.39558)
+[node name="@MeshInstance3D@30980" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 6.39558)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56413" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.55547)
+[node name="@MeshInstance3D@30981" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 6.55547)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56414" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.71535)
+[node name="@MeshInstance3D@30982" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 6.71535)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56415" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.87524)
+[node name="@MeshInstance3D@30983" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 6.87524)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56416" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.03513)
+[node name="@MeshInstance3D@30984" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 7.03513)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56417" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.19502)
+[node name="@MeshInstance3D@30985" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 7.19502)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56418" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.35491)
+[node name="@MeshInstance3D@30986" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 7.35491)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56419" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.5148)
+[node name="@MeshInstance3D@30987" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 7.5148)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56420" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.67469)
+[node name="@MeshInstance3D@30988" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 7.67469)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56421" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.83458)
+[node name="@MeshInstance3D@30989" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 7.83458)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56422" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.99446)
+[node name="@MeshInstance3D@30990" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 7.99446)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56423" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.15435)
+[node name="@MeshInstance3D@30991" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 8.15435)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56424" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.31424)
+[node name="@MeshInstance3D@30992" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 8.31424)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56425" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.47413)
+[node name="@MeshInstance3D@30993" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 8.47413)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56426" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.63402)
+[node name="@MeshInstance3D@30994" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 8.63402)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56427" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.79391)
+[node name="@MeshInstance3D@30995" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 8.79391)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56428" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.9538)
+[node name="@MeshInstance3D@30996" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 8.9538)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56429" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.11369)
+[node name="@MeshInstance3D@30997" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 9.11369)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56430" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.27358)
+[node name="@MeshInstance3D@30998" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 9.27358)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56431" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.43347)
+[node name="@MeshInstance3D@30999" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 9.43347)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56432" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.59336)
+[node name="@MeshInstance3D@31000" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 9.59336)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56433" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.75325)
+[node name="@MeshInstance3D@31001" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 9.75325)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56434" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.91314)
+[node name="@MeshInstance3D@31002" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 9.91314)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56435" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.073)
+[node name="@MeshInstance3D@31003" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 10.073)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56436" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.2329)
+[node name="@MeshInstance3D@31004" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 10.2329)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56437" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.3928)
+[node name="@MeshInstance3D@31005" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 10.3928)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56438" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.5527)
+[node name="@MeshInstance3D@31006" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 10.5527)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56439" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.7126)
+[node name="@MeshInstance3D@31007" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 10.7126)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56440" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.8725)
+[node name="@MeshInstance3D@31008" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 10.8725)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56441" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.0324)
+[node name="@MeshInstance3D@31009" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 11.0324)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56442" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.1922)
+[node name="@MeshInstance3D@31010" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 11.1922)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56443" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.3521)
+[node name="@MeshInstance3D@31011" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 11.3521)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56444" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.512)
+[node name="@MeshInstance3D@31012" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 11.512)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56445" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.6719)
+[node name="@MeshInstance3D@31013" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 11.6719)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56446" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.8318)
+[node name="@MeshInstance3D@31014" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 11.8318)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56447" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.9917)
+[node name="@MeshInstance3D@31015" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 11.9917)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56448" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.1516)
+[node name="@MeshInstance3D@31016" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 12.1516)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56449" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.3115)
+[node name="@MeshInstance3D@31017" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 12.3115)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56450" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.4714)
+[node name="@MeshInstance3D@31018" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 12.4714)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56451" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.6313)
+[node name="@MeshInstance3D@31019" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 12.6313)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56452" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.7911)
+[node name="@MeshInstance3D@31020" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 12.7911)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56453" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.951)
+[node name="@MeshInstance3D@31021" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 12.951)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56454" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13.1109)
+[node name="@MeshInstance3D@31022" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 13.1109)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56455" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13.2708)
+[node name="@MeshInstance3D@31023" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 13.2708)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56456" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13.4307)
+[node name="@MeshInstance3D@31024" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 13.4307)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56457" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13.5906)
+[node name="@MeshInstance3D@31025" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 13.5906)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56458" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13.7505)
+[node name="@MeshInstance3D@31026" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 13.7505)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56459" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13.9104)
+[node name="@MeshInstance3D@31027" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 13.9104)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56460" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14.0703)
+[node name="@MeshInstance3D@31028" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 14.0703)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56461" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14.2301)
+[node name="@MeshInstance3D@31029" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 14.2301)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56462" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14.39)
+[node name="@MeshInstance3D@31030" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 14.39)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56463" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14.5499)
+[node name="@MeshInstance3D@31031" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 14.5499)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56464" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14.7098)
+[node name="@MeshInstance3D@31032" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 14.7098)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56465" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14.8697)
+[node name="@MeshInstance3D@31033" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 14.8697)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56466" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15.0296)
+[node name="@MeshInstance3D@31034" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 15.0296)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56467" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15.1895)
+[node name="@MeshInstance3D@31035" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 15.1895)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56468" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15.3494)
+[node name="@MeshInstance3D@31036" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 15.3494)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56469" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15.5093)
+[node name="@MeshInstance3D@31037" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 15.5093)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56470" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15.6691)
+[node name="@MeshInstance3D@31038" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 15.6691)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56471" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15.829)
+[node name="@MeshInstance3D@31039" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 15.829)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56472" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15.9889)
+[node name="@MeshInstance3D@31040" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 15.9889)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56473" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16.1488)
+[node name="@MeshInstance3D@31041" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 16.1488)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56474" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16.3087)
+[node name="@MeshInstance3D@31042" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 16.3087)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56475" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16.4686)
+[node name="@MeshInstance3D@31043" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 16.4686)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56476" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16.6285)
+[node name="@MeshInstance3D@31044" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 16.6285)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56477" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16.7884)
+[node name="@MeshInstance3D@31045" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 16.7884)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56478" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16.9483)
+[node name="@MeshInstance3D@31046" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 16.9483)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56479" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17.1082)
+[node name="@MeshInstance3D@31047" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 17.1082)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56480" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17.268)
+[node name="@MeshInstance3D@31048" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 17.268)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56481" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17.4279)
+[node name="@MeshInstance3D@31049" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 17.4279)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56482" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17.5878)
+[node name="@MeshInstance3D@31050" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 17.5878)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56483" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17.7477)
+[node name="@MeshInstance3D@31051" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 17.7477)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56484" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17.9076)
+[node name="@MeshInstance3D@31052" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 17.9076)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56485" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18.0675)
+[node name="@MeshInstance3D@31053" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 18.0675)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56486" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18.2274)
+[node name="@MeshInstance3D@31054" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 18.2274)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56487" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18.3873)
+[node name="@MeshInstance3D@31055" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 18.3873)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56488" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18.5472)
+[node name="@MeshInstance3D@31056" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 18.5472)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56489" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18.707)
+[node name="@MeshInstance3D@31057" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 18.707)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56490" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18.8669)
+[node name="@MeshInstance3D@31058" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 18.8669)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56491" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19.0268)
+[node name="@MeshInstance3D@31059" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 19.0268)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56492" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19.1867)
+[node name="@MeshInstance3D@31060" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 19.1867)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56493" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19.3466)
+[node name="@MeshInstance3D@31061" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 19.3466)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56494" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19.5065)
+[node name="@MeshInstance3D@31062" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 19.5065)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56495" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19.6664)
+[node name="@MeshInstance3D@31063" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 19.6664)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56496" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19.8263)
+[node name="@MeshInstance3D@31064" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 19.8263)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56497" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19.9862)
+[node name="@MeshInstance3D@31065" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 19.9862)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56498" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20.146)
+[node name="@MeshInstance3D@31066" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 20.146)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
 
-[node name="@@56499" type="MeshInstance3D" parent="GrassGenerator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20.3059)
+[node name="@MeshInstance3D@31067" type="MeshInstance3D" parent="GrassGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 20.3059)
 cast_shadow = 0
-mesh = SubResource("QuadMesh_fi32r")
+mesh = SubResource("QuadMesh_pah4p")
 script = ExtResource("17_qwvbc")
