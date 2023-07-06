@@ -31,12 +31,6 @@ func _init():
 
 
 func _ready():
-	if is_nan(FLOOR_ANGLE):
-		if Engine.is_editor_hint():
-			FLOOR_ANGLE = EditorGlobalParams.get_global_shader_param("FLOOR_ANGLE")
-		else:
-			FLOOR_ANGLE = GlobalParams.get_global_shader_param("FLOOR_ANGLE")
-	
 	if not mesh:
 		mesh = PlaneMesh.new()
 		mesh.orientation = PlaneMesh.FACE_Y
@@ -50,6 +44,12 @@ func _ready():
 func _recalculate_size_and_subdivisions():
 	if not mesh:
 		return
+	
+	if is_nan(FLOOR_ANGLE):
+		if Engine.is_editor_hint():
+			FLOOR_ANGLE = EditorGlobalParams.get_global_shader_param("FLOOR_ANGLE")
+		else:
+			FLOOR_ANGLE = GlobalParams.get_global_shader_param("FLOOR_ANGLE")
 	
 	if not texture:
 		mesh.size = Vector2(1, 1)
