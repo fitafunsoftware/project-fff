@@ -2,7 +2,7 @@
 extends MeshInstance3D
 class_name HorizontalSprite3D
 
-var FLOOR_ANGLE : float = 0.524
+static var FLOOR_ANGLE : float = NAN
 
 @export var texture : Texture2D:
 	set(value):
@@ -31,8 +31,11 @@ func _init():
 
 
 func _ready():
-	if not Engine.is_editor_hint():
-		FLOOR_ANGLE = GlobalParams.get_global_shader_param("FLOOR_ANGLE")
+	if is_nan(FLOOR_ANGLE):
+		if Engine.is_editor_hint():
+			FLOOR_ANGLE = EditorGlobalParams.get_global_shader_param("FLOOR_ANGLE")
+		else:
+			FLOOR_ANGLE = GlobalParams.get_global_shader_param("FLOOR_ANGLE")
 	
 	if not mesh:
 		mesh = PlaneMesh.new()

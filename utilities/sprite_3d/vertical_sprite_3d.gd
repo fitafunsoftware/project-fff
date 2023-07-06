@@ -33,9 +33,7 @@ func _apply_texture():
 	var shader_material : ShaderMaterial = material_override
 	shader_material.set_shader_parameter("sprite_texture", texture)
 	
-	var CAMERA_Z_OFFSET = 15.0 if Engine.is_editor_hint() else \
-			GlobalParams.get_global_shader_param("CAMERA_Z_OFFSET")
-	occluder.set_height(texture.get_size().y * pixel_size, CAMERA_Z_OFFSET)
+	occluder.set_height(texture.get_size().y * pixel_size)
 
 
 func _occlude():

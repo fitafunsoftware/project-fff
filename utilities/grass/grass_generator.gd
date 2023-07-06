@@ -2,9 +2,8 @@
 extends Node3D
 class_name GrassGenerator
 
-var PIXEL_SIZE : float = 0.01
-var FLOOR_ANGLE : float = 0.524
-var CAMERA_Z_OFFSET : float = 15.0
+static var PIXEL_SIZE : float = NAN
+static var FLOOR_ANGLE : float = NAN
 
 @export var generate_grass : bool = false:
 	set(value):
@@ -27,18 +26,18 @@ var _distance_between_rows : float
 
 
 func _ready():
-	_assign_consts()
+	_assign_globals()
 	_assign_variables()
 	
 	var occluder := Occluder.new()
-	occluder.set_height(_row_height, CAMERA_Z_OFFSET)
+	occluder.set_height(_row_height)
 	
 	for grass in get_children():
 		grass.occluder = occluder
 
 
 func _generate_grass():
-	_assign_consts()
+	_assign_globals()
 	_assign_variables()
 	_create_mesh()
 	_create_grass_instances()
@@ -51,11 +50,14 @@ func _clear_grass():
 	_mesh = null
 
 
-func _assign_consts():
-	if not Engine.is_editor_hint():
-		PIXEL_SIZE = GlobalParams.get_global_param("PIXEL_SIZE")
-		FLOOR_ANGLE = GlobalParams.get_global_shader_param("FLOOR_ANGLE")
-		CAMERA_Z_OFFSET = GlobalParams.get_global_shader_param("CAMERA_Z_OFFSET")
+func _assign_globals():
+	if [PIXEL_SIZE, FLOOR_ANGLE].has(NAN):
+		if Engine.is_editor_hint():
+			PIXEL_SIZE = EditorGlobalParams.get_global_param("PIXEL_SIZE")
+			FLOOR_ANGLE = EditorGlobalParams.get_global_shader_param("FLOOR_ANGLE")
+		else:
+			PIXEL_SIZE = GlobalParams.get_global_param("PIXEL_SIZE")
+			FLOOR_ANGLE = GlobalParams.get_global_shader_param("FLOOR_ANGLE")
 
 
 func _assign_variables():
@@ -79,8 +81,8 @@ func _create_mesh():
 	var shader_material := ShaderMaterial.new()
 	shader_material.shader = load("res://shaders/grass.gdshader")
 	shader_material.set_shader_parameter("sprite_texture", grass_texture)
-	shader_material.set_shader_parameter("columns", _columns)
-	shader_material.set_shader_parameter("rows", _rows)
+	shader_material.set_shader_parameter("columns", float(_columns))
+	shader_material.set_shader_parameter("rows", float(_rows))
 	shader_material.set_shader_parameter("bitmap_texture", grass_map)
 	
 	var quad_mesh := QuadMesh.new()

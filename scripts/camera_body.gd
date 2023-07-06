@@ -1,9 +1,7 @@
 extends CharacterBody3D
 
-@onready var PIXEL_SIZE : float = GlobalParams.get_global_param("PIXEL_SIZE") \
-		if not Engine.is_editor_hint() else 0.01
-@onready var FLOOR_ANGLE : float = GlobalParams.get_global_shader_param("FLOOR_ANGLE") \
-		if not Engine.is_editor_hint() else 0.524
+static var PIXEL_SIZE : float = NAN
+static var FLOOR_ANGLE : float = NAN
 
 const SPEED : float = 5.0
 const JUMP_VELOCITY : float = 4.5
@@ -13,8 +11,19 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 
 func _ready():
+	_assign_globals()
 	set_up_direction(Vector3.UP)
 	$AnimationPlayer.play("idle")
+
+
+func _assign_globals():
+	if [PIXEL_SIZE, FLOOR_ANGLE].has(NAN):
+		if Engine.is_editor_hint():
+			PIXEL_SIZE = EditorGlobalParams.get_global_param("PIXEL_SIZE")
+			FLOOR_ANGLE = EditorGlobalParams.get_global_shader_param("FLOOR_ANGLE")
+		else:
+			PIXEL_SIZE = GlobalParams.get_global_param("PIXEL_SIZE")
+			FLOOR_ANGLE = GlobalParams.get_global_shader_param("FLOOR_ANGLE")
 
 
 func _physics_process(delta):

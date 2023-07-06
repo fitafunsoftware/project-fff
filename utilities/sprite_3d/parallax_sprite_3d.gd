@@ -5,9 +5,17 @@ class_name ParallaxSprite3D
 @export var y_scale : float = 0.0
 @export var z_scale : float = 0.0
 
-var PIXEL_SIZE : float = GlobalParams.get_global_param("PIXEL_SIZE")
+var PIXEL_SIZE : float = NAN
 @onready var _prev_position : Vector3 = global_position
 var _left_over := Vector3.ZERO
+
+
+func _ready():
+	if is_nan(PIXEL_SIZE):
+		if Engine.is_editor_hint():
+			PIXEL_SIZE = EditorGlobalParams.get_global_param("PIXEL_SIZE")
+		else:
+			PIXEL_SIZE = GlobalParams.get_global_param("PIXEL_SIZE")
 
 
 func _init():
