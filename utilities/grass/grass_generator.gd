@@ -100,7 +100,7 @@ func _create_grass_instances():
 	
 	var grass_position := Vector3(0.0, 0.0, 0.0)
 	grass_position.z = start_z_position
-	global_position.x = snappedf(to_global(-position).x, 0.01) + fmod(start_x_position, PIXEL_SIZE)
+	grass_position.x = snappedf(global_position.x, 0.01) + fmod(start_x_position, PIXEL_SIZE)
 	
 	var top_most := to_global(grass_position)
 	top_most = Vector3(_distance_between_rows * _rows, 0.0, top_most.z)
