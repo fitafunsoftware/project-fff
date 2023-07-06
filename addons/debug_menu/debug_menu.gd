@@ -120,10 +120,10 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	#if event.is_action_pressed(&"cycle_debug_menu"):
-	if event.is_action_pressed("paddle1"):
+	if event.is_action_pressed("leftshoulder"):
 		style = wrapi(style - 1, 0, Style.MAX) as Style
 	
-	if event.is_action_pressed("paddle2"):
+	if event.is_action_pressed("rightshoulder"):
 		style = wrapi(style + 1, 0, Style.MAX) as Style
 
 
