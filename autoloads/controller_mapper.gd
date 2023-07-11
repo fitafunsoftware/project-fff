@@ -7,6 +7,7 @@ var gamecontrollerdb : Dictionary = {}
 
 func _ready():
 	_load()
+	_update_current_joypads()
 	Input.joy_connection_changed.connect(_joy_connection_changed)
 
 
@@ -26,10 +27,17 @@ func _load():
 	file.close()
 
 
+func _update_current_joypads():
+	for device_id in Input.get_connected_joypads():
+		_add_mapping_from_guid(Input.get_joy_guid(device_id))
+
+
 func _joy_connection_changed(device, connected):
 	if not connected:
 		return
-	
-	var mapping : String = gamecontrollerdb[Input.get_joy_guid(device)]
-	Input.add_joy_mapping(mapping, true)
+	_add_mapping_from_guid(Input.get_joy_guid(device))
 
+
+func _add_mapping_from_guid(guid : String):
+	var mapping : String = gamecontrollerdb[guid]
+	Input.add_joy_mapping(mapping, true)
