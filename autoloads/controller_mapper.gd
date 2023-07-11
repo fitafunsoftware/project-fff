@@ -39,5 +39,9 @@ func _joy_connection_changed(device, connected):
 
 
 func _add_mapping_from_guid(guid : String):
+	if not gamecontrollerdb.has(guid):
+		return
+	
 	var mapping : String = gamecontrollerdb[guid]
+	Input.remove_joy_mapping(guid)
 	Input.add_joy_mapping(mapping, true)
