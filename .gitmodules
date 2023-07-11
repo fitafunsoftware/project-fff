@@ -3,3 +3,8 @@
 	url = https://github.com/gabomdq/SDL_GameControllerDB.git
 	branch = master
 	ignore = dirty
+[submodule "proprietary"]
+	path = proprietary
+	url = https://github.com/MTareqAzim/proprietary.git
+	branch = main
+
