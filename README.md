@@ -1,4 +1,4 @@
 # Project FFF
-Repository for the unnamed Godot game project with the code name FFF.
+Repository for the open source components of Project FFF, placeholder name, by Fita Fun Software.
 
-Made in Godot v4.0. Targetted to work on the RG353M (OpenGLES 3.2, 2GB RAM, 1GB VRAM, 640x480 resolution).
+Made in Godot v4.1. Targetted to work on the Retroid Pocket Flip (Android 11, Vulkan 1.1, 4GB RAM, 1280x720 resolution).
