@@ -1,30 +1,37 @@
 extends Node
 
 const GAMECONTROLLERDB_PATH : String = "res://assets/gamecontrollerdb/gamecontrollerdb.txt"
+const MAPPINGS_PER_FRAME : int = 64
 
-var gamecontrollerdb : Dictionary = {}
-
+var _gamecontrollerdb : Dictionary = {}
+var _file : FileAccess
 
 func _ready():
+	_file = FileAccess.open(GAMECONTROLLERDB_PATH, FileAccess.READ)
 	_load()
-	_update_current_joypads()
 	Input.joy_connection_changed.connect(_joy_connection_changed)
 
 
 func _load():
-	var file : FileAccess = FileAccess.open(GAMECONTROLLERDB_PATH, FileAccess.READ)
-	
-	while file.get_position() < file.get_length():
-		var current_line : String = file.get_line()
+	for count in MAPPINGS_PER_FRAME:
+		var current_line : String = _file.get_line()
 		if current_line.begins_with('#'):
 			continue
 		if current_line.is_empty():
 			continue
 		
 		var guid : String = current_line.get_slice(',', 0)
-		gamecontrollerdb[guid] = current_line
+		_gamecontrollerdb[guid] = current_line
+		
+		if _file.get_position() >= _file.get_length():
+			break
 	
-	file.close()
+	if _file.get_position() < _file.get_length():
+		call_deferred("_load")
+		return
+	
+	_file.close()
+	_update_current_joypads()
 
 
 func _update_current_joypads():
@@ -39,9 +46,9 @@ func _joy_connection_changed(device, connected):
 
 
 func _add_mapping_from_guid(guid : String):
-	if not gamecontrollerdb.has(guid):
+	if not _gamecontrollerdb.has(guid):
 		return
 	
-	var mapping : String = gamecontrollerdb[guid]
+	var mapping : String = _gamecontrollerdb[guid]
 	Input.remove_joy_mapping(guid)
 	Input.add_joy_mapping(mapping, true)
