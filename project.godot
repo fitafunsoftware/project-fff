@@ -27,7 +27,7 @@ driver/driver=""
 ExitShortcut="*res://autoloads/exit_shortcut.gd"
 ResourceQueue="*res://autoloads/resource_queue.gd"
 GlobalParams="*res://autoloads/global_params.gd"
-FlipControllerMap="*res://autoloads/flip_controller_map.gd"
+ControllerMapper="*res://autoloads/controller_mapper.gd"
 DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
 
 [display]
