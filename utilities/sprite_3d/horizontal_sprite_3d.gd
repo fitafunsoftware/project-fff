@@ -2,8 +2,16 @@
 extends MeshInstance3D
 class_name HorizontalSprite3D
 
-static var FLOOR_ANGLE : float = NAN
+static var FLOOR_GRADIENT : float = NAN
 
+@export var generate_sprite : bool = false:
+	set(value):
+		generate_sprite = false
+		if value:
+			_recalculate_size_and_subdivisions()
+			_apply_texture()
+
+@export_category("Sprite Properties")
 @export var texture : Texture2D:
 	set(value):
 		texture = value
@@ -45,17 +53,17 @@ func _recalculate_size_and_subdivisions():
 	if not mesh:
 		return
 	
-	if is_nan(FLOOR_ANGLE):
+	if is_nan(FLOOR_GRADIENT):
 		if Engine.is_editor_hint():
-			FLOOR_ANGLE = EditorGlobalParams.get_global_shader_param("FLOOR_ANGLE")
+			FLOOR_GRADIENT = EditorGlobalParams.get_global_shader_param("FLOOR_GRADIENT")
 		else:
-			FLOOR_ANGLE = GlobalParams.get_global_shader_param("FLOOR_ANGLE")
+			FLOOR_GRADIENT = GlobalParams.get_global_shader_param("FLOOR_GRADIENT")
 	
 	if not texture:
 		mesh.size = Vector2(1, 1)
 	else:
 		mesh.size = texture.get_size() * pixel_size
-		mesh.size.y /= sin(FLOOR_ANGLE)
+		mesh.size.y /= FLOOR_GRADIENT
 	
 	_recalculate_subdivisions()
 

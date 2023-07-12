@@ -3,7 +3,7 @@ extends Node3D
 class_name GrassGenerator
 
 static var PIXEL_SIZE : float = NAN
-static var FLOOR_ANGLE : float = NAN
+static var FLOOR_GRADIENT : float = NAN
 
 @export var generate_grass : bool = false:
 	set(value):
@@ -51,13 +51,13 @@ func _clear_grass():
 
 
 func _assign_globals():
-	if [PIXEL_SIZE, FLOOR_ANGLE].has(NAN):
+	if [PIXEL_SIZE, FLOOR_GRADIENT].has(NAN):
 		if Engine.is_editor_hint():
 			PIXEL_SIZE = EditorGlobalParams.get_global_param("PIXEL_SIZE")
-			FLOOR_ANGLE = EditorGlobalParams.get_global_shader_param("FLOOR_ANGLE")
+			FLOOR_GRADIENT = EditorGlobalParams.get_global_shader_param("FLOOR_GRADIENT")
 		else:
 			PIXEL_SIZE = GlobalParams.get_global_param("PIXEL_SIZE")
-			FLOOR_ANGLE = GlobalParams.get_global_shader_param("FLOOR_ANGLE")
+			FLOOR_GRADIENT = GlobalParams.get_global_shader_param("FLOOR_GRADIENT")
 
 
 func _assign_variables():
@@ -69,7 +69,7 @@ func _assign_variables():
 	
 	_row_length = grass_texture.get_width() * _columns * PIXEL_SIZE
 	_row_height = grass_texture.get_height() * PIXEL_SIZE
-	_distance_between_rows = (_row_height - y_offset * PIXEL_SIZE) / sin(FLOOR_ANGLE)
+	_distance_between_rows = (_row_height - y_offset * PIXEL_SIZE) / FLOOR_GRADIENT
 	
 	position.y = _row_height / 2.0
 
@@ -110,10 +110,11 @@ func _create_grass_instances():
 	
 	for row in _rows:
 		var grass_instance := GrassInstance3D.new()
+		grass_instance.name = "GrassInstance"
 		grass_instance.mesh = _mesh
 		grass_instance.position = grass_position
 		
-		add_child(grass_instance)
+		add_child(grass_instance, Engine.is_editor_hint())
 		grass_instance.owner = owner
 		
 		grass_position.z += _distance_between_rows

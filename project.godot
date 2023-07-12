@@ -268,10 +268,6 @@ textures/vram_compression/import_etc2=true
 
 [shader_globals]
 
-CAMERA_Y_OFFSET={
-"type": "float",
-"value": 0.0
-}
 CAMERA_Z_OFFSET={
 "type": "float",
 "value": 0.0
@@ -280,11 +276,11 @@ CURVE_HEIGHT={
 "type": "float",
 "value": 0.0
 }
-FLOOR_ANGLE={
+CURVE_HEIGHT_RATIO={
 "type": "float",
 "value": 0.0
 }
-MAX_ANGLE={
+CAMERA_Y_OFFSET={
 "type": "float",
 "value": 0.0
 }

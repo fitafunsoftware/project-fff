@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 static var PIXEL_SIZE : float = NAN
-static var FLOOR_ANGLE : float = NAN
+static var FLOOR_GRADIENT : float = NAN
 
 const SPEED : float = 5.0
 const JUMP_VELOCITY : float = 4.5
@@ -17,13 +17,13 @@ func _ready():
 
 
 func _assign_globals():
-	if [PIXEL_SIZE, FLOOR_ANGLE].has(NAN):
+	if [PIXEL_SIZE, FLOOR_GRADIENT].has(NAN):
 		if Engine.is_editor_hint():
 			PIXEL_SIZE = EditorGlobalParams.get_global_param("PIXEL_SIZE")
-			FLOOR_ANGLE = EditorGlobalParams.get_global_shader_param("FLOOR_ANGLE")
+			FLOOR_GRADIENT = EditorGlobalParams.get_global_shader_param("FLOOR_GRADIENT")
 		else:
 			PIXEL_SIZE = GlobalParams.get_global_param("PIXEL_SIZE")
-			FLOOR_ANGLE = GlobalParams.get_global_shader_param("FLOOR_ANGLE")
+			FLOOR_GRADIENT = GlobalParams.get_global_shader_param("FLOOR_GRADIENT")
 
 
 func _physics_process(delta):
@@ -53,4 +53,4 @@ func _physics_process(delta):
 func _snap_position():
 	position.x = snappedf(position.x, PIXEL_SIZE)
 	position.y = snappedf(position.y, PIXEL_SIZE)
-	position.z = snappedf(position.z, PIXEL_SIZE/sin(FLOOR_ANGLE))
+	position.z = snappedf(position.z, PIXEL_SIZE*FLOOR_GRADIENT)
