@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwc7efbhggpqk"]
+[gd_scene load_steps=3 format=3 uid="uid://ewpuko8047km"]
 
-[ext_resource type="PackedScene" uid="uid://da7ffarvsi43c" path="res://utilities/game_viewport/game_viewport.tscn" id="1_va8sl"]
-[ext_resource type="PackedScene" uid="uid://cggqb75a8w8r" path="res://addons/debug_menu/debug_menu.tscn" id="3_1bibq"]
+[ext_resource type="PackedScene" uid="uid://c5j4ctxcvr6bu" path="res://utilities/game_viewport/game_viewport.tscn" id="1_va8sl"]
+[ext_resource type="PackedScene" uid="uid://ulqi71m1kbko" path="res://addons/debug_menu/debug_menu.tscn" id="3_1bibq"]
 
 [node name="Game" type="Control"]
 layout_mode = 3

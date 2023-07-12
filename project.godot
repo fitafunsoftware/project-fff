@@ -45,6 +45,11 @@ window/dpi/allow_hidpi=false
 
 enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg")
 
+[filesystem]
+
+import/blender/enabled=false
+import/fbx/enabled=false
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
