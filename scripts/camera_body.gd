@@ -3,7 +3,7 @@ extends CharacterBody3D
 static var PIXEL_SIZE : float = NAN
 static var FLOOR_GRADIENT : float = NAN
 
-const SPEED : float = 5.0
+const SPEED : float = 3.0
 const JUMP_VELOCITY : float = 4.5
 
 # Get the gravity from the project settings to be synced with RigidBody3D nodes.
