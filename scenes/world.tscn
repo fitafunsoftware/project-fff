@@ -9,9 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://fonutb54isl3" path="res://assets/art/sun.png" id="8_30ww1"]
 [ext_resource type="Script" path="res://utilities/sprite_3d/parallax_sprite_3d.gd" id="9_k2mbj"]
 [ext_resource type="Script" path="res://utilities/sprite_3d/vertical_sprite_3d.gd" id="10_enjwq"]
-[ext_resource type="Texture2D" uid="uid://ddvdt55bg1x88" path="res://assets/art/small_shadow.png" id="10_ywhh5"]
-[ext_resource type="Script" path="res://utilities/shadow/shadow.gd" id="11_86x2q"]
 [ext_resource type="Texture2D" uid="uid://d3a6sih22ja0c" path="res://proprietary/assets/art/tia/tia.png" id="11_jeidp"]
+[ext_resource type="Texture2D" uid="uid://ddvdt55bg1x88" path="res://assets/art/small_shadow.png" id="11_v21hf"]
+[ext_resource type="Script" path="res://utilities/shadow/shadow.gd" id="12_w2dy5"]
 [ext_resource type="Script" path="res://utilities/grass/grass_generator.gd" id="13_giqmr"]
 [ext_resource type="PackedScene" uid="uid://w6mh3oensxpv" path="res://proprietary/scenes/tree.tscn" id="13_ko2qx"]
 [ext_resource type="Texture2D" uid="uid://bbr1lter2ep8a" path="res://assets/art/tall_grass.png" id="14_whl8h"]
@@ -122,10 +122,11 @@ projection = 1
 current = true
 fov = 37.8493
 size = 6.4
-far = 30.0
+near = 0.2
+far = 25.0
 
 [node name="ParallaxSprite3D" type="Sprite3D" parent="Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 1.3, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 1.3, -14)
 cast_shadow = 0
 texture = ExtResource("8_30ww1")
 script = ExtResource("9_k2mbj")
@@ -134,7 +135,6 @@ z_scale = 0.05
 
 [node name="Tia" type="Sprite3D" parent="Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
-visible = false
 material_override = SubResource("ShaderMaterial_0yrqi")
 cast_shadow = 0
 offset = Vector2(0, 48)
@@ -150,8 +150,8 @@ axis = 1
 double_sided = false
 alpha_cut = 1
 texture_filter = 0
-texture = ExtResource("10_ywhh5")
-script = ExtResource("11_86x2q")
+texture = ExtResource("11_v21hf")
+script = ExtResource("12_w2dy5")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D"]
 libraries = {
@@ -161,27 +161,28 @@ libraries = {
 [node name="Trees" type="Node3D" parent="."]
 
 [node name="Tree" parent="Trees" instance=ExtResource("13_ko2qx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.61, 0, -1.23)
 
 [node name="Tree2" parent="Trees" instance=ExtResource("13_ko2qx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.735082, 0, 1.59212)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.74, 0, 1.59)
 
 [node name="Tree3" parent="Trees" instance=ExtResource("13_ko2qx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.33637, 0, 3.7978)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.34, 0, 3.8)
 
 [node name="Tree4" parent="Trees" instance=ExtResource("13_ko2qx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.47959, 0, 4.79697)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.48, 0, 4.8)
 
 [node name="Tree5" parent="Trees" instance=ExtResource("13_ko2qx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.16692, 0, -0.317456)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.17, 0, -0.32)
 
 [node name="Tree6" parent="Trees" instance=ExtResource("13_ko2qx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.807392, 0, -3.37678)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.81, 0, -3.38)
 
 [node name="Tree7" parent="Trees" instance=ExtResource("13_ko2qx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.39071, 0, -4.91292)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.39, 0, -4.91)
 
 [node name="Tree8" parent="Trees" instance=ExtResource("13_ko2qx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.83625, 0, -5.92284)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, 0, -5.9)
 
 [node name="GrassGenerator" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09, 0)
