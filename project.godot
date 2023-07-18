@@ -39,6 +39,7 @@ window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/aspect="ignore"
 window/dpi/allow_hidpi=false
+window/vsync/vsync_mode=2
 
 [editor_plugins]
 
@@ -71,7 +72,7 @@ texture={
 "process/normal_map_invert_y": false,
 "process/premult_alpha": false,
 "process/size_limit": 0,
-"roughness/mode": 0,
+"roughness/mode": 1,
 "roughness/src_normal": ""
 }
 
@@ -246,27 +247,38 @@ common/enable_pause_aware_picking=true
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
 textures/vram_compression/import_etc2_astc=true
-textures/lossless_compression/force_png=true
+lights_and_shadows/directional_shadow/size=1024
+lights_and_shadows/directional_shadow/size.mobile=1024
 lights_and_shadows/directional_shadow/soft_shadow_filter_quality=0
 lights_and_shadows/positional_shadow/soft_shadow_filter_quality=0
+2d/shadow_atlas/size=1024
 global_illumination/gi/use_half_resolution=true
 shading/overrides/force_vertex_shading.mobile=false
 shading/overrides/force_lambert_over_burley=true
 driver/depth_prepass/enable=false
+textures/default_filters/use_nearest_mipmap_filter=true
 textures/default_filters/anisotropic_filtering_level=0
 camera/depth_of_field/depth_of_field_bokeh_shape=0
 camera/depth_of_field/depth_of_field_bokeh_quality=0
 environment/ssao/quality=0
 environment/ssil/quality=0
 anti_aliasing/screen_space_roughness_limiter/enabled=false
+textures/decals/filter=0
+textures/light_projectors/filter=0
 environment/glow/upscale_mode=0
+environment/screen_space_reflection/roughness_quality=0
+environment/subsurface_scattering/subsurface_scattering_quality=0
 global_illumination/sdfgi/probe_ray_count=0
+global_illumination/sdfgi/frames_to_converge=0
+global_illumination/sdfgi/frames_to_update_lights=4
 environment/volumetric_fog/use_filter=0
 environment/defaults/default_clear_color=Color(0.364706, 0.611765, 0.933333, 1)
+mesh_lod/lod_change/threshold_pixels=0.0
 2d/snap/snap_2d_transforms_to_pixel=true
 2d/snap/snap_2d_vertices_to_pixel=true
+lights_and_shadows/positional_shadow/atlas_size=1024
+lights_and_shadows/positional_shadow/atlas_size.mobile=1024
 2d/snapping/use_gpu_pixel_snap=true
-misc/lossless_compression/force_png=true
 textures/vram_compression/import_s3tc=true
 textures/vram_compression/import_etc2=true
 
@@ -285,6 +297,26 @@ CURVE_HEIGHT_RATIO={
 "value": 0.0
 }
 CAMERA_Y_OFFSET={
+"type": "float",
+"value": 0.0
+}
+FRONT_FADE_START_DISTANCE={
+"type": "float",
+"value": inf_neg
+}
+FRONT_FADE_END_DISTANCE={
+"type": "float",
+"value": inf_neg
+}
+BACK_FADE_END_DISTANCE={
+"type": "float",
+"value": inf
+}
+BACK_FADE_START_DISTANCE={
+"type": "float",
+"value": inf
+}
+DITHER_FULL_RATIO={
 "type": "float",
 "value": 0.0
 }

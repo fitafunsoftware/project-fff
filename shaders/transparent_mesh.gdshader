@@ -1,15 +1,15 @@
 shader_type spatial;
-render_mode blend_mix,diffuse_toon,specular_disabled;
+render_mode blend_mix,diffuse_toon,specular_disabled,world_vertex_coords;
 
 #include "includes/curved_world.gdshaderinc"
+#include "includes/distance_fade.gdshaderinc"
 
 uniform sampler2D sprite_texture : source_color, filter_nearest;
 
 void vertex() {
-	vec4 world = (MODEL_MATRIX * vec4(VERTEX, 1.0));
-	float y_offset = get_curved_y(world.z, CAMERA_POSITION_WORLD.z);
+	float y_offset = get_curved_y(VERTEX.z, CAMERA_POSITION_WORLD.z);
 	vec3 final_position = VERTEX + vec3(0.0, y_offset, 0.0);
-	POSITION = PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(final_position, 1.0);
+	POSITION = PROJECTION_MATRIX * VIEW_MATRIX * vec4(final_position, 1.0);
 }
 
 void fragment() {
@@ -18,5 +18,8 @@ void fragment() {
 	}
 	vec4 color = texture(sprite_texture, UV);
 	ALBEDO = color.rgb;
-	ALPHA = color.a;
+	
+	vec2 pixel_position = UV * vec2(textureSize(sprite_texture, 0));
+	float fade_multiplier = get_fade_multiplier(NODE_POSITION_WORLD.z, CAMERA_POSITION_WORLD.z, pixel_position);
+	ALPHA = fade_multiplier * color.a;
 }
