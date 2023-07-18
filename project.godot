@@ -300,23 +300,27 @@ CAMERA_Y_OFFSET={
 "type": "float",
 "value": 0.0
 }
-FRONT_FADE_START_DISTANCE={
-"type": "float",
-"value": inf_neg
-}
-FRONT_FADE_END_DISTANCE={
-"type": "float",
-"value": inf_neg
-}
-BACK_FADE_END_DISTANCE={
-"type": "float",
-"value": inf
-}
-BACK_FADE_START_DISTANCE={
-"type": "float",
-"value": inf
-}
 DITHER_FULL_RATIO={
 "type": "float",
 "value": 0.0
+}
+DISTANCE_FRONT_START={
+"type": "float",
+"value": inf_neg
+}
+DISTANCE_FRONT_END={
+"type": "float",
+"value": inf_neg
+}
+DISTANCE_BACK_END={
+"type": "float",
+"value": inf
+}
+DISTANCE_BACK_START={
+"type": "float",
+"value": inf
+}
+DITHER_MULTIPLIER={
+"type": "float",
+"value": 1.0
 }

@@ -78,7 +78,7 @@ func _recalculate_subdivisions():
 
 func _apply_material():
 	var shader_material := ShaderMaterial.new()
-	shader_material.shader = load("res://shaders/horizontal.gdshader")
+	shader_material.shader = load("res://shaders/opaque_mesh.gdshader")
 	mesh.material = shader_material
 
 

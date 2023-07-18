@@ -25,7 +25,8 @@ func _process(_delta):
 
 func _apply_material_override():
 	var shader_material = ShaderMaterial.new()
-	shader_material.shader = load("res://shaders/vertical.gdshader")
+	shader_material.shader = load("res://shaders/transparent_mesh.gdshader")
+	
 	material_override = shader_material
 
 
