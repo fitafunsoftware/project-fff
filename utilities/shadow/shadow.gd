@@ -1,6 +1,6 @@
 @tool
-extends Sprite3D
 class_name Shadow3D
+extends Sprite3D
 
 
 func _init():

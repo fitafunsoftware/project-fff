@@ -1,6 +1,6 @@
 @tool
-extends MeshInstance3D
 class_name GrassInstance3D
+extends MeshInstance3D
 
 var occluder : Occluder
 

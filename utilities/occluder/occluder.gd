@@ -1,5 +1,5 @@
-extends Resource
 class_name Occluder
+extends Resource
 
 static var CAMERA_Z_OFFSET : float = NAN
 static var CURVE_HEIGHT : float = NAN

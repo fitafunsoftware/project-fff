@@ -1,6 +1,6 @@
 @tool
-extends Node3D
 class_name GrassGenerator
+extends Node3D
 
 static var PIXEL_SIZE : float = NAN
 static var FLOOR_GRADIENT : float = NAN

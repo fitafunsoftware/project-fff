@@ -1,5 +1,5 @@
-extends SubViewport
 class_name GameViewport
+extends SubViewport
 
 var _loading_scene : Resource = preload("res://utilities/loading_screen/loading_screen.tscn")
 
