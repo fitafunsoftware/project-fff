@@ -1,6 +1,7 @@
 @tool
-extends MeshInstance3D
+@icon("res://utilities/sprite_3d/Sprite3D.svg")
 class_name HorizontalSprite3D
+extends MeshInstance3D
 
 static var FLOOR_GRADIENT : float = NAN
 

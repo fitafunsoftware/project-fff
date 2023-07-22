@@ -1,5 +1,5 @@
-extends Sprite3D
 class_name ParallaxSprite3D
+extends Sprite3D
 
 @export var x_scale : float = 0.0
 @export var y_scale : float = 0.0

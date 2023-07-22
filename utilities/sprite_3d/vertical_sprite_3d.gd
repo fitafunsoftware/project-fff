@@ -1,6 +1,6 @@
 @tool
-extends Sprite3D
 class_name VerticalSprite3D
+extends Sprite3D
 
 @onready var occluder : Occluder = Occluder.new()
 @onready var current_camera : Camera3D = get_viewport().get_camera_3d()
