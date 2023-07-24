@@ -53,4 +53,4 @@ func _physics_process(delta):
 func _snap_position():
 	position.x = snappedf(position.x, PIXEL_SIZE)
 	position.y = snappedf(position.y, PIXEL_SIZE)
-	position.z = snappedf(position.z, PIXEL_SIZE*FLOOR_GRADIENT)
+	position.z = snappedf(position.z, PIXEL_SIZE/FLOOR_GRADIENT)

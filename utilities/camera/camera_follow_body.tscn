@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5hbie8rpbdue"]
+
+[ext_resource type="Script" path="res://utilities/camera/camera_body.gd" id="1_7mak0"]
+[ext_resource type="Script" path="res://utilities/camera/camera_follow_input_handler.gd" id="2_76bii"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kxi5s"]
+radius = 0.25
+
+[node name="CameraFollowBody" type="CharacterBody3D"]
+collision_layer = 0
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+floor_constant_speed = true
+platform_on_leave = 1
+script = ExtResource("1_7mak0")
+center_height_offset = 25
+x_drag_margin = 180
+y_drag_margin = 50
+z_drag_margin = 80
+current = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+shape = SubResource("SphereShape3D_kxi5s")
+
+[node name="CameraFollowInputHandler" type="Node" parent="." node_paths=PackedStringArray("body")]
+script = ExtResource("2_76bii")
+body = NodePath("..")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.7463)
+keep_aspect = 0
+projection = 1
+current = true
+size = 6.4
+near = 0.4
+far = 25.0
