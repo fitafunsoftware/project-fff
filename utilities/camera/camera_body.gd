@@ -22,6 +22,9 @@ var x_drag_margin : int = 0
 var y_drag_margin : int = 0
 
 @export_range(0, 180, 1, "or_greater", "suffix:px", "hide_slider")
+var negative_y_drag_margin : int = 0
+
+@export_range(0, 180, 1, "or_greater", "suffix:px", "hide_slider")
 var z_drag_margin : int = 0
 
 @export var current : bool = false :
@@ -64,11 +67,13 @@ func _ready():
 func _set_input_handler_properties():
 	var x_distance : float = x_drag_margin * PIXEL_SIZE
 	var y_distance : float = y_drag_margin * PIXEL_SIZE
+	var negative_y_distance : float = negative_y_drag_margin * PIXEL_SIZE
 	var z_distance : float = z_drag_margin * PIXEL_SIZE / FLOOR_GRADIENT
 	
 	_input_handler.body = self
 	_input_handler.speed = speed
 	_input_handler.leash_distance = Vector3(x_distance, y_distance, z_distance)
+	_input_handler.negative_y_leash_distance = negative_y_distance
 	_input_handler.set_target(target)
 
 
