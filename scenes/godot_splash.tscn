@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://y8xyerc2baaf"]
 
 [ext_resource type="PackedScene" path="res://utilities/splash_screen/splash_screen.tscn" id="1_a22ei"]
-[ext_resource type="Texture2D" path="res://assets/art/godot_logo_vertical.png" id="2_ra2ns"]
+[ext_resource type="Texture2D" uid="uid://wdj1yd8vnyjw" path="res://assets/art/godot_logo_vertical.png" id="2_ra2ns"]
 
 [node name="GodotSplash" instance=ExtResource("1_a22ei")]
 next_scene = "res://proprietary/scenes/fita_splash.tscn"
