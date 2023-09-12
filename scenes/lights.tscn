@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://w6tsyqjokrk8"]
+[gd_scene format=3]
 
 [node name="Lights" type="Node3D"]
 
