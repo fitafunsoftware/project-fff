@@ -71,5 +71,4 @@ func _add_mapping_from_guid(guid : String):
 		return
 	
 	var mapping : String = _gamecontrollerdb[guid]
-	Input.remove_joy_mapping(guid)
 	Input.add_joy_mapping(mapping, true)
