@@ -58,7 +58,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_constants/line_spacing = 0
 theme_override_font_sizes/font_size = 18
-text = "60 FPS"
+text = "60 FPS | 60 PFPS"
 horizontal_alignment = 2
 
 [node name="FrameTime" type="Label" parent="VBoxContainer"]

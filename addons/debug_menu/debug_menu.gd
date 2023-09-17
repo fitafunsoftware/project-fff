@@ -64,6 +64,10 @@ var last_tick := 0
 
 var thread := Thread.new()
 
+var physics_frames_per_second : int = 0
+var physics_frames_so_far : int = 0
+var physics_time_so_far := 0.0
+
 # History of the last `HISTORY_NUM_FRAMES` rendered frames.
 var frame_history_total: Array[float] = []
 var frame_history_cpu: Array[float] = []
@@ -389,7 +393,7 @@ func _process(_delta: float) -> void:
 		if fps_history.size() > HISTORY_NUM_FRAMES:
 			fps_history.pop_front()
 
-		fps.text = str(floor(frames_per_second)) + " FPS"
+		fps.text = str(floor(frames_per_second)) + " FPS | " + str(physics_frames_per_second) + " PFPS"
 		var frame_time_color := frame_time_gradient.sample(remap(frames_per_second, GRAPH_MIN_FPS, GRAPH_MAX_FPS, 0.0, 1.0))
 		fps.modulate = frame_time_color
 
@@ -425,6 +429,16 @@ func _process(_delta: float) -> void:
 		frame_number.text = "Frame: " + str(Engine.get_frames_drawn())
 
 	last_tick = Time.get_ticks_usec()
+
+
+func _physics_process(delta):
+	if physics_time_so_far >= 1.0:
+		physics_frames_per_second = physics_frames_so_far
+		physics_frames_so_far = 0
+		physics_time_so_far = 0.0
+	
+	physics_frames_so_far += 1
+	physics_time_so_far += delta
 
 
 func _on_visibility_changed() -> void:
