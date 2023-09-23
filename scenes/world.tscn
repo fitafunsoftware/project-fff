@@ -183,7 +183,6 @@ libraries = {
 }
 
 [node name="Trees" type="Node3D" parent="."]
-visible = false
 
 [node name="Tree" parent="Trees" instance=ExtResource("13_ko2qx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.61, 0, -1.23)
@@ -219,7 +218,6 @@ material_override = SubResource("ShaderMaterial_vyskm")
 
 [node name="GrassGenerator" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09, 0)
-visible = false
 script = ExtResource("13_giqmr")
 grass_texture = ExtResource("14_whl8h")
 grass_map = ExtResource("15_pto5b")
@@ -1765,7 +1763,7 @@ script = ExtResource("17_qwvbc")
 target = NodePath("../Player")
 
 [node name="WolfFlat" parent="." instance=ExtResource("19_73v6y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 10.3517)
 
 [node name="WolfDepth" parent="." instance=ExtResource("20_y1nsg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 10.3517)
