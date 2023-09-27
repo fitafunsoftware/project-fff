@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://clqhyj6p24vuh"]
+[gd_scene load_steps=43 format=3 uid="uid://clqhyj6p24vuh"]
 
 [ext_resource type="Shader" path="res://shaders/transparent_mesh.gdshader" id="1"]
 [ext_resource type="PackedScene" uid="uid://ypwkw5b68kln" path="res://scenes/lights.tscn" id="1_04on7"]
@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://dc27hwodjir5a" path="res://scenes/wolf_depth.tscn" id="20_y1nsg"]
 
 [sub_resource type="BoxShape3D" id="5"]
-size = Vector3(200, 2, 200)
+size = Vector3(30, 2, 60)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dluhh"]
 render_priority = 0
@@ -133,11 +133,25 @@ shader_parameter/bitmap_texture = ExtResource("15_pto5b")
 material = SubResource("ShaderMaterial_qhlwa")
 size = Vector2(20.5, 0.18)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_bm1cj"]
+size = Vector3(1, 4, 60)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xh3q2"]
+size = Vector3(24, 4, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ldtrl"]
+size = Vector3(1, 4, 60)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sek2w"]
+size = Vector3(24, 4, 1)
+
 [node name="World3D" type="Node3D"]
 
 [node name="Lights" parent="." instance=ExtResource("1_04on7")]
 
 [node name="Ground" type="StaticBody3D" parent="."]
+collision_layer = 256
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -151,7 +165,7 @@ texture = ExtResource("2_fd3tu")
 subdivisions_per_meter_depth = 64
 
 [node name="Player" type="CharacterBody3D" parent="."]
-collision_layer = 0
+collision_mask = 256
 script = ExtResource("4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
@@ -1767,3 +1781,45 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 10.3517)
 
 [node name="WolfDepth" parent="." instance=ExtResource("20_y1nsg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 10.3517)
+
+[node name="WorldBounds" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+collision_layer = 256
+collision_mask = 0
+
+[node name="West" type="CollisionShape3D" parent="WorldBounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
+shape = SubResource("BoxShape3D_bm1cj")
+
+[node name="East" type="CollisionShape3D" parent="WorldBounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
+shape = SubResource("BoxShape3D_bm1cj")
+
+[node name="South" type="CollisionShape3D" parent="WorldBounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 28)
+shape = SubResource("BoxShape3D_xh3q2")
+
+[node name="North" type="CollisionShape3D" parent="WorldBounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -28)
+shape = SubResource("BoxShape3D_xh3q2")
+
+[node name="CameraBounds" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+collision_layer = 512
+collision_mask = 0
+
+[node name="West" type="CollisionShape3D" parent="CameraBounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2, 0, 0)
+shape = SubResource("BoxShape3D_ldtrl")
+
+[node name="East" type="CollisionShape3D" parent="CameraBounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2, 0, 0)
+shape = SubResource("BoxShape3D_ldtrl")
+
+[node name="South" type="CollisionShape3D" parent="CameraBounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 23)
+shape = SubResource("BoxShape3D_sek2w")
+
+[node name="North" type="CollisionShape3D" parent="CameraBounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23)
+shape = SubResource("BoxShape3D_sek2w")

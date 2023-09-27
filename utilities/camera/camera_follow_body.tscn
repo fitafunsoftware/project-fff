@@ -8,11 +8,14 @@ radius = 0.25
 
 [node name="CameraFollowBody" type="CharacterBody3D"]
 collision_layer = 0
+collision_mask = 768
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 floor_constant_speed = true
 platform_on_leave = 1
+platform_floor_layers = 4294966783
+platform_wall_layers = 512
 script = ExtResource("1_7mak0")
 center_height_offset = 25
 x_drag_margin = 180
