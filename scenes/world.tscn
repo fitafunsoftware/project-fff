@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://clqhyj6p24vuh"]
+[gd_scene load_steps=41 format=3 uid="uid://clqhyj6p24vuh"]
 
 [ext_resource type="Shader" path="res://shaders/transparent_mesh.gdshader" id="1"]
 [ext_resource type="PackedScene" uid="uid://ypwkw5b68kln" path="res://scenes/lights.tscn" id="1_04on7"]
@@ -17,9 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://bibl3215drlsb" path="res://assets/art/tall_bitmap.png" id="15_pto5b"]
 [ext_resource type="Shader" path="res://shaders/grass.gdshader" id="16_7ywox"]
 [ext_resource type="Script" path="res://utilities/grass/grass_instance_3d.gd" id="17_qwvbc"]
-[ext_resource type="PackedScene" uid="uid://b5f4d2dsqrma2" path="res://scenes/wolf_flat.tscn" id="19_73v6y"]
 [ext_resource type="PackedScene" uid="uid://ddqvb0a4lifyo" path="res://utilities/camera/camera_follow_body.tscn" id="20_0bncb"]
-[ext_resource type="PackedScene" uid="uid://dc27hwodjir5a" path="res://scenes/wolf_depth.tscn" id="20_y1nsg"]
 
 [sub_resource type="BoxShape3D" id="5"]
 size = Vector3(30, 2, 60)
@@ -1775,12 +1773,6 @@ script = ExtResource("17_qwvbc")
 
 [node name="CameraFollowBody" parent="." node_paths=PackedStringArray("target") instance=ExtResource("20_0bncb")]
 target = NodePath("../Player")
-
-[node name="WolfFlat" parent="." instance=ExtResource("19_73v6y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 10.3517)
-
-[node name="WolfDepth" parent="." instance=ExtResource("20_y1nsg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 10.3517)
 
 [node name="WorldBounds" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
