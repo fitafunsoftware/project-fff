@@ -1,7 +1,7 @@
 class_name CameraFollowInputHandler
 extends Node
 
-@export var body : CameraFollowBody
+@export var body : Entity
 
 var speed : float = 3.0
 var leash_distance : Vector3 = Vector3.ZERO
