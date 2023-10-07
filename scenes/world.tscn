@@ -29,8 +29,8 @@ shader_parameter/sprite_texture = ExtResource("2_fd3tu")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_1h247"]
 material = SubResource("ShaderMaterial_dluhh")
-size = Vector2(20.48, 56.2721)
-subdivide_depth = 3601
+size = Vector2(20.48, 20.48)
+subdivide_depth = 1311
 
 [sub_resource type="SphereShape3D" id="1"]
 
@@ -229,7 +229,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, 0, -5.9)
 material_override = SubResource("ShaderMaterial_vyskm")
 
 [node name="GrassGenerator" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09, 0)
 script = ExtResource("13_giqmr")
 grass_texture = ExtResource("14_whl8h")
 grass_map = ExtResource("15_pto5b")
@@ -1772,7 +1771,7 @@ mesh = SubResource("QuadMesh_nir17")
 script = ExtResource("17_qwvbc")
 
 [node name="CameraFollowBody" parent="." node_paths=PackedStringArray("target") instance=ExtResource("20_0bncb")]
-target = NodePath("../Player")
+target = NodePath("")
 
 [node name="WorldBounds" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)

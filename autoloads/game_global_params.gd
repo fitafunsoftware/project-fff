@@ -1,5 +1,5 @@
 extends Node
-## GlobalParams autoload.
+## GameGlobalParams autoload.
 ##
 ## Stores all the global paramaters for centralization. Shader parameters are
 ## loaded to the [RenderingServer] after initialization. Other constants

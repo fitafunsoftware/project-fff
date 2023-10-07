@@ -12,10 +12,7 @@ var _left_over := Vector3.ZERO
 
 func _ready():
 	if is_nan(PIXEL_SIZE):
-		if Engine.is_editor_hint():
-			PIXEL_SIZE = EditorGlobalParams.get_global_param("PIXEL_SIZE")
-		else:
-			PIXEL_SIZE = GlobalParams.get_global_param("PIXEL_SIZE")
+		PIXEL_SIZE = GlobalParams.get_global_param("PIXEL_SIZE")
 
 
 func _init():

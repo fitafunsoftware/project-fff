@@ -52,12 +52,8 @@ func _clear_grass():
 
 func _assign_globals():
 	if [PIXEL_SIZE, FLOOR_GRADIENT].has(NAN):
-		if Engine.is_editor_hint():
-			PIXEL_SIZE = EditorGlobalParams.get_global_param("PIXEL_SIZE")
-			FLOOR_GRADIENT = EditorGlobalParams.get_global_shader_param("FLOOR_GRADIENT")
-		else:
-			PIXEL_SIZE = GlobalParams.get_global_param("PIXEL_SIZE")
-			FLOOR_GRADIENT = GlobalParams.get_global_shader_param("FLOOR_GRADIENT")
+		PIXEL_SIZE = GlobalParams.get_global_param("PIXEL_SIZE")
+		FLOOR_GRADIENT = GlobalParams.get_global_shader_param("FLOOR_GRADIENT")
 
 
 func _assign_variables():

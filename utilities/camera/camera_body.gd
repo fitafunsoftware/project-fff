@@ -46,18 +46,11 @@ static var RADIUS : float = NAN
 func _ready():
 	super()
 	if [PIXEL_SIZE, FLOOR_GRADIENT, CAMERA_Y_OFFSET, CAMERA_Z_OFFSET, CURVE_HEIGHT, ARC_LENGTH, FLOOR_GRADIENT, RADIUS].has(NAN):
-		if Engine.is_editor_hint():
-			CAMERA_Y_OFFSET = EditorGlobalParams.get_global_shader_param("CAMERA_Y_OFFSET")
-			CAMERA_Z_OFFSET = EditorGlobalParams.get_global_shader_param("CAMERA_Z_OFFSET")
-			CURVE_HEIGHT = EditorGlobalParams.get_global_shader_param("CURVE_HEIGHT")
-			ARC_LENGTH = EditorGlobalParams.get_global_shader_param("ARC_LENGTH")
-			RADIUS = EditorGlobalParams.get_global_shader_param("RADIUS")
-		else:
-			CAMERA_Y_OFFSET = GlobalParams.get_global_shader_param("CAMERA_Y_OFFSET")
-			CAMERA_Z_OFFSET = GlobalParams.get_global_shader_param("CAMERA_Z_OFFSET")
-			CURVE_HEIGHT = GlobalParams.get_global_shader_param("CURVE_HEIGHT")
-			ARC_LENGTH = GlobalParams.get_global_shader_param("ARC_LENGTH")
-			RADIUS = GlobalParams.get_global_shader_param("RADIUS")
+		CAMERA_Y_OFFSET = GlobalParams.get_global_shader_param("CAMERA_Y_OFFSET")
+		CAMERA_Z_OFFSET = GlobalParams.get_global_shader_param("CAMERA_Z_OFFSET")
+		CURVE_HEIGHT = GlobalParams.get_global_shader_param("CURVE_HEIGHT")
+		ARC_LENGTH = GlobalParams.get_global_shader_param("ARC_LENGTH")
+		RADIUS = GlobalParams.get_global_shader_param("RADIUS")
 	
 	_camera.current = current
 	_move_camera()
