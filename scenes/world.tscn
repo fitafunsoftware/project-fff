@@ -32,9 +32,8 @@ material = SubResource("ShaderMaterial_dluhh")
 size = Vector2(20.48, 56.2721)
 subdivide_depth = 3601
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y7ogg"]
-radius = 0.1
-height = 0.8
+[sub_resource type="BoxShape3D" id="BoxShape3D_fn6na"]
+size = Vector3(0.2, 0.8, 0.2)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lga2g"]
 render_priority = 0
@@ -182,7 +181,7 @@ script = ExtResource("4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
-shape = SubResource("CapsuleShape3D_y7ogg")
+shape = SubResource("BoxShape3D_fn6na")
 
 [node name="Tia" type="Sprite3D" parent="Player"]
 material_override = SubResource("ShaderMaterial_lga2g")

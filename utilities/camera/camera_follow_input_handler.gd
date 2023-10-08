@@ -3,6 +3,7 @@ extends Node
 
 @export var body : CameraFollowBody
 
+var speed : float = 3.0
 var leash_distance : Vector3 = Vector3.ZERO
 var negative_y_leash_distance : float = 0.0
 var _target : Node3D :
