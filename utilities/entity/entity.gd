@@ -65,13 +65,13 @@ func _apply_acceleration(_velocity: Vector3, _target_velocity_2d: Vector2, delta
 	var velocity_2d := Vector2(_velocity.x, _velocity.z)
 	var final_acceleration := 0.0
 	
-	if target_velocity_2d == Vector2.ZERO:
+	if target_velocity_2d.is_equal_approx(Vector2.ZERO):
 		final_acceleration = friction
 	else:
 		if velocity_2d.is_equal_approx(Vector2.ZERO):
 			final_acceleration = acceleration
-		elif signf(target_velocity_2d.x) != signf(velocity_2d.x) \
-				or signf(target_velocity_2d.y) != signf(velocity_2d.y):
+		elif is_equal_approx(signf(target_velocity_2d.x), -signf(velocity_2d.x)) \
+				or is_equal_approx(signf(target_velocity_2d.y), -signf(velocity_2d.y)):
 			final_acceleration = friction + acceleration
 		else:
 			final_acceleration = acceleration

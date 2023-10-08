@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://utilities/camera/camera_body.gd" id="1_7mak0"]
 [ext_resource type="Script" path="res://utilities/camera/camera_follow_input_handler.gd" id="2_76bii"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_kxi5s"]
-radius = 0.25
+[sub_resource type="BoxShape3D" id="BoxShape3D_qjuhv"]
+size = Vector3(0.5, 0.5, 0.5)
 
 [node name="CameraFollowBody" type="CharacterBody3D"]
 collision_layer = 0
@@ -23,10 +23,12 @@ y_drag_margin = 50
 negative_y_drag_margin = 20
 z_drag_margin = 80
 current = true
+friction = 100.0
+acceleration = 100.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
-shape = SubResource("SphereShape3D_kxi5s")
+shape = SubResource("BoxShape3D_qjuhv")
 
 [node name="CameraFollowInputHandler" type="Node" parent="." node_paths=PackedStringArray("body")]
 script = ExtResource("2_76bii")

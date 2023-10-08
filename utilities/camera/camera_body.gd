@@ -64,7 +64,6 @@ func _set_input_handler_properties():
 	var z_distance : float = z_drag_margin * PIXEL_SIZE / FLOOR_GRADIENT
 	
 	_input_handler.body = self
-	_input_handler.speed = speed
 	_input_handler.leash_distance = Vector3(x_distance, y_distance, z_distance)
 	_input_handler.negative_y_leash_distance = negative_y_distance
 	_input_handler.set_target(target)
