@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://clqhyj6p24vuh"]
+[gd_scene load_steps=42 format=3 uid="uid://clqhyj6p24vuh"]
 
 [ext_resource type="Shader" path="res://shaders/transparent_mesh.gdshader" id="1"]
 [ext_resource type="PackedScene" uid="uid://ypwkw5b68kln" path="res://scenes/lights.tscn" id="1_04on7"]
@@ -32,11 +32,14 @@ material = SubResource("ShaderMaterial_dluhh")
 size = Vector2(20.48, 56.2721)
 subdivide_depth = 3601
 
-[sub_resource type="SphereShape3D" id="1"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y7ogg"]
+radius = 0.1
+height = 0.8
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lga2g"]
 render_priority = 0
 shader = ExtResource("1")
+shader_parameter/opacity = 1.0
 shader_parameter/sprite_texture = ExtResource("11_jeidp")
 
 [sub_resource type="Animation" id="Animation_i637q"]
@@ -78,44 +81,55 @@ _data = {
 "idle": SubResource("Animation_4i11b")
 }
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_5kcq1"]
+size = Vector3(0.6, 1, 0.02)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_666dh"]
 render_priority = 0
 shader = ExtResource("1")
+shader_parameter/opacity = 1.0
 shader_parameter/sprite_texture = ExtResource("14_ifqa3")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xn240"]
 render_priority = 0
 shader = ExtResource("1")
+shader_parameter/opacity = 1.0
 shader_parameter/sprite_texture = ExtResource("14_ifqa3")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_84adn"]
 render_priority = 0
 shader = ExtResource("1")
+shader_parameter/opacity = 1.0
 shader_parameter/sprite_texture = ExtResource("14_ifqa3")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y32fv"]
 render_priority = 0
 shader = ExtResource("1")
+shader_parameter/opacity = 1.0
 shader_parameter/sprite_texture = ExtResource("14_ifqa3")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qrhm8"]
 render_priority = 0
 shader = ExtResource("1")
+shader_parameter/opacity = 1.0
 shader_parameter/sprite_texture = ExtResource("14_ifqa3")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k3j60"]
 render_priority = 0
 shader = ExtResource("1")
+shader_parameter/opacity = 1.0
 shader_parameter/sprite_texture = ExtResource("14_ifqa3")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_acsgu"]
 render_priority = 0
 shader = ExtResource("1")
+shader_parameter/opacity = 1.0
 shader_parameter/sprite_texture = ExtResource("14_ifqa3")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vyskm"]
 render_priority = 0
 shader = ExtResource("1")
+shader_parameter/opacity = 1.0
 shader_parameter/sprite_texture = ExtResource("14_ifqa3")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qhlwa"]
@@ -167,8 +181,8 @@ collision_mask = 256
 script = ExtResource("4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("1")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+shape = SubResource("CapsuleShape3D_y7ogg")
 
 [node name="Tia" type="Sprite3D" parent="Player"]
 material_override = SubResource("ShaderMaterial_lga2g")
@@ -193,6 +207,14 @@ script = ExtResource("12_w2dy5")
 libraries = {
 "": SubResource("AnimationLibrary_qhb7g")
 }
+
+[node name="Area3D" type="Area3D" parent="Player"]
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.025)
+shape = SubResource("BoxShape3D_5kcq1")
 
 [node name="Trees" type="Node3D" parent="."]
 

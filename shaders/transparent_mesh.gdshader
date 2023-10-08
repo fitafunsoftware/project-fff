@@ -6,6 +6,7 @@ render_mode blend_mix,diffuse_toon,specular_disabled,world_vertex_coords;
 #include "includes/distance_dither.gdshaderinc"
 
 uniform sampler2D sprite_texture : source_color, filter_nearest;
+uniform float opacity : hint_range(0.0, 1.0) = 1.0;
 
 void vertex() {
 	float y_offset = get_curved_y(VERTEX.z, CAMERA_POSITION_WORLD.z);
@@ -26,5 +27,5 @@ void fragment() {
 		ALBEDO = color.rgb;
 	else
 		ALBEDO = mix(vec3(0.0), color.rgb, fade_multiplier * dither_multiplier);
-	ALPHA = min(fade_multiplier*dither_multiplier/DITHER_FULL_RATIO, 1.0)*color.a;
+	ALPHA = min(fade_multiplier*dither_multiplier/DITHER_FULL_RATIO, 1.0)*opacity*color.a;
 }

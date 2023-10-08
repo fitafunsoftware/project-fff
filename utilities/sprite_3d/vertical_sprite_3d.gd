@@ -5,6 +5,8 @@ extends Sprite3D
 @onready var occluder : Occluder = Occluder.new()
 @onready var current_camera : Camera3D = get_viewport().get_camera_3d()
 
+@export_range(0.0, 1.0, 0.1) var entity_detected_opacity : float = 0.5
+
 
 func _init():
 	cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
@@ -21,6 +23,11 @@ func _ready() -> void:
 func _process(_delta):
 	if not Engine.is_editor_hint():
 		_occlude()
+
+
+func set_shader_opacity(opacity: float):
+	var shader_material : ShaderMaterial = material_override
+	shader_material.set_shader_parameter("opacity", opacity)
 
 
 func _apply_material_override():
@@ -46,3 +53,11 @@ func _occlude():
 		hide()
 	else:
 		show()
+
+
+func _on_entity_detected():
+	set_shader_opacity(entity_detected_opacity)
+
+
+func _on_entity_lost():
+	set_shader_opacity(1.0)

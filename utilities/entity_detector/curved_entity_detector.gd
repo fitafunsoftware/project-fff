@@ -2,6 +2,9 @@
 class_name CurvedEntityDetector
 extends Area3D
 
+signal entity_detected
+signal entity_lost
+
 static var ARC_HEIGHT : float = NAN
 static var ARC_LENGTH : float = NAN
 static var floor_vector : Vector2 = Vector2.ZERO
@@ -15,6 +18,21 @@ static var floor_vector : Vector2 = Vector2.ZERO
 
 func _init():
 	monitorable = false
+
+
+func _ready():
+	connect("area_entered", _signal_entity_status)
+	connect("area_exited", _signal_entity_status)
+
+
+func _signal_entity_status(_body: Node3D):
+	if get_overlapping_areas().size() > 1:
+		return
+	
+	if has_overlapping_areas():
+		emit_signal("entity_detected")
+	else:
+		emit_signal("entity_lost")
 
 
 func _generate_areas():
