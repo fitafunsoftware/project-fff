@@ -1,6 +1,6 @@
 extends SubViewportContainer
 
-const BASE_SIZE := Vector2i(640, 360)
+const BASE_SIZE := Vector2(640, 480)
 
 @export_file("*.tscn") var start_scene : String
 
@@ -15,8 +15,8 @@ func _ready():
 
 
 func _on_window_resized():
-	var window_scale : Vector2i = window.size/BASE_SIZE
-	var new_scale : int = int(min(window_scale.x, window_scale.y))
+	var window_scale : Vector2 = Vector2(window.size)/BASE_SIZE
+	var new_scale : int = int(min(ceilf(window_scale.x), ceilf(window_scale.y)))
 	
 	set_size(BASE_SIZE*new_scale)
 	stretch_shrink = new_scale
