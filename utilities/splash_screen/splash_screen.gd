@@ -26,8 +26,12 @@ func _ready():
 
 
 func _input(event):
-	if event.is_action_pressed("start"):
+	if not event.is_pressed():
+		return
+	
+	if event.is_action("ui_accept") or event is InputEventScreenTouch:
 		_skip_splash()
+		return
 
 
 func _skip_splash():
