@@ -1,7 +1,7 @@
 extends SubViewportContainer
 
 const BASE_SIZE := Vector2i(640, 360)
-const MAX_BASE_SIZE := Vector2i(666, 400)
+const MAX_BASE_SIZE := Vector2i(640, 400)
 
 @export_file("*.tscn") var start_scene : String
 
