@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://bhcjms64rvd7c"
-path="res://.godot/imported/LanaPixel_BitmapOnly.ttf-16009a0c0ed0caa863fd36fd0301cb87.fontdata"
+uid="uid://cn2i1ndx8rioa"
+path="res://.godot/imported/LanaPixel.ttf-28819e80c9426512d1a9cd63f7a6eb30.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/LanaPixel/LanaPixel_BitmapOnly.ttf"
-dest_files=["res://.godot/imported/LanaPixel_BitmapOnly.ttf-16009a0c0ed0caa863fd36fd0301cb87.fontdata"]
+source_file="res://assets/fonts/LanaPixel/LanaPixel.ttf"
+dest_files=["res://.godot/imported/LanaPixel.ttf-28819e80c9426512d1a9cd63f7a6eb30.fontdata"]
 
 [params]
 
@@ -26,7 +26,7 @@ oversampling=0.0
 Fallbacks=null
 fallbacks=[]
 Compress=null
-compress=false
+compress=true
 preload=[{
 "chars": [],
 "glyphs": [],

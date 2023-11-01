@@ -52,6 +52,10 @@ import/fbx/enabled=false
 
 [gui]
 
+theme/custom_font="res://assets/fonts/LanaPixel/LanaPixel.ttf"
+theme/default_font_antialiasing=0
+theme/default_font_hinting=0
+theme/default_font_subpixel_positioning=0
 common/drop_mouse_on_gui_input_disabled=true
 
 [importer_defaults]
