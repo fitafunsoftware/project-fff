@@ -24,9 +24,11 @@ func _on_window_resized():
 		MAX_BASE_SIZE_X = GlobalParams.get_global_param("MAX_BASE_SIZE_X")
 		MAX_BASE_SIZE_Y = GlobalParams.get_global_param("MAX_BASE_SIZE_Y")
 	
+	@warning_ignore("narrowing_conversion")
 	var window_scale : Vector2i = window.size/Vector2i(BASE_SIZE_X, BASE_SIZE_Y)
 	var new_scale : int = mini(window_scale.x, window_scale.y)
 	var new_unscaled_size : Vector2i = window.size/new_scale
+	@warning_ignore("narrowing_conversion")
 	var new_base_size : Vector2i = Vector2i(
 			mini(MAX_BASE_SIZE_X, new_unscaled_size.x),
 			mini(MAX_BASE_SIZE_Y, new_unscaled_size.y))
