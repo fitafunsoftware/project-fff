@@ -16,7 +16,7 @@ config/features=PackedStringArray("4.2")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
 boot_splash/use_filter=false
-config/icon="res://proprietary/assets/art/logos/project-fff-android-icon.png"
+config/icon="res://assets/art/logos/project-fff-android-icon.png"
 
 [audio]
 
