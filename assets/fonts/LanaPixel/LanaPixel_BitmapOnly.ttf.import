@@ -1,0 +1,41 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://bhcjms64rvd7c"
+path="res://.godot/imported/LanaPixel_BitmapOnly.ttf-16009a0c0ed0caa863fd36fd0301cb87.fontdata"
+
+[deps]
+
+source_file="res://assets/fonts/LanaPixel/LanaPixel_BitmapOnly.ttf"
+dest_files=["res://.godot/imported/LanaPixel_BitmapOnly.ttf-16009a0c0ed0caa863fd36fd0301cb87.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=0
+generate_mipmaps=false
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=false
+force_autohinter=false
+hinting=1
+subpixel_positioning=0
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=false
+preload=[{
+"chars": [],
+"glyphs": [],
+"name": "New Configuration",
+"size": Vector2i(16, 0),
+"variation_embolden": 0.0
+}]
+language_support={}
+script_support={}
+opentype_features={
+1801810542: 1
+}
