@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://chon7b2ynn5md"]
 
-[ext_resource type="PackedScene" uid="uid://611jopnpjsx0" path="res://utilities/game_viewport/game_viewport.tscn" id="1_va8sl"]
-[ext_resource type="PackedScene" uid="uid://bqbcsfkaiujt4" path="res://addons/debug_menu/debug_menu.tscn" id="3_1bibq"]
+[ext_resource type="PackedScene" uid="uid://611jopnpjsx0" path="res://utilities/game_viewport/game_viewport.tscn" id="1_xkw8u"]
+[ext_resource type="PackedScene" uid="uid://bqbcsfkaiujt4" path="res://addons/debug_menu/debug_menu.tscn" id="2_ssqe5"]
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -20,7 +20,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="GameViewportContainer" parent="." instance=ExtResource("1_va8sl")]
+[node name="GameViewportContainer" parent="." instance=ExtResource("1_xkw8u")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -33,5 +33,5 @@ offset_right = 320.0
 offset_bottom = 180.0
 start_scene = "res://utilities/splash_screen/godot_splash.tscn"
 
-[node name="DebugMenu" parent="." instance=ExtResource("3_1bibq")]
+[node name="DebugMenu" parent="." instance=ExtResource("2_ssqe5")]
 layout_mode = 1
