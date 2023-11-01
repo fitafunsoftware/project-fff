@@ -1,7 +1,9 @@
 extends SubViewportContainer
 
-const BASE_SIZE := Vector2i(640, 360)
-const MAX_BASE_SIZE := Vector2i(640, 400)
+static var BASE_SIZE_X : float = NAN
+static var BASE_SIZE_Y : float = NAN
+static var MAX_BASE_SIZE_X : float = NAN
+static var MAX_BASE_SIZE_Y : float = NAN
 
 @export_file("*.tscn") var start_scene : String
 
@@ -16,12 +18,18 @@ func _ready():
 
 
 func _on_window_resized():
-	var window_scale : Vector2i = window.size/BASE_SIZE
+	if [BASE_SIZE_X, BASE_SIZE_Y, MAX_BASE_SIZE_X, MAX_BASE_SIZE_Y].has(NAN):
+		BASE_SIZE_X = GlobalParams.get_global_param("BASE_SIZE_X")
+		BASE_SIZE_Y = GlobalParams.get_global_param("BASE_SIZE_Y")
+		MAX_BASE_SIZE_X = GlobalParams.get_global_param("MAX_BASE_SIZE_X")
+		MAX_BASE_SIZE_Y = GlobalParams.get_global_param("MAX_BASE_SIZE_Y")
+	
+	var window_scale : Vector2i = window.size/Vector2i(BASE_SIZE_X, BASE_SIZE_Y)
 	var new_scale : int = mini(window_scale.x, window_scale.y)
 	var new_unscaled_size : Vector2i = window.size/new_scale
 	var new_base_size : Vector2i = Vector2i(
-			mini(MAX_BASE_SIZE.x, new_unscaled_size.x),
-			mini(MAX_BASE_SIZE.y, new_unscaled_size.y))
+			mini(MAX_BASE_SIZE_X, new_unscaled_size.x),
+			mini(MAX_BASE_SIZE_Y, new_unscaled_size.y))
 	
 	set_size(new_base_size*new_scale)
 	stretch_shrink = new_scale
