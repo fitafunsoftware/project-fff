@@ -52,7 +52,7 @@ import/fbx/enabled=false
 
 [gui]
 
-theme/custom_font="res://assets/fonts/LanaPixel/LanaPixel.ttf"
+theme/custom="res://utilities/themes/pixel_theme.tres"
 theme/default_font_antialiasing=0
 theme/default_font_hinting=0
 theme/default_font_subpixel_positioning=0

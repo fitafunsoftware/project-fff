@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://cn2i1ndx8rioa"
-path="res://.godot/imported/LanaPixel.ttf-28819e80c9426512d1a9cd63f7a6eb30.fontdata"
+path="res://.godot/imported/LanaPixel.ttf-d007bd4b5f087628b43a8b96c226094f.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/LanaPixel/LanaPixel.ttf"
-dest_files=["res://.godot/imported/LanaPixel.ttf-28819e80c9426512d1a9cd63f7a6eb30.fontdata"]
+source_file="res://utilities/themes/LanaPixel/LanaPixel.ttf"
+dest_files=["res://.godot/imported/LanaPixel.ttf-d007bd4b5f087628b43a8b96c226094f.fontdata"]
 
 [params]
 
