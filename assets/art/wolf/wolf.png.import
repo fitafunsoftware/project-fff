@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7jc4rpg3fy02"
-path="res://.godot/imported/tall_grass.png-ff58d4cfe668e422b118f5273619b5a2.ctex"
+uid="uid://cky26jpawej83"
+path="res://.godot/imported/wolf.png-97f1b75102eeb453aceef36027146952.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/tall_grass.png"
-dest_files=["res://.godot/imported/tall_grass.png-ff58d4cfe668e422b118f5273619b5a2.ctex"]
+source_file="res://assets/art/wolf/wolf.png"
+dest_files=["res://.godot/imported/wolf.png-97f1b75102eeb453aceef36027146952.ctex"]
 
 [params]
 
