@@ -215,6 +215,7 @@ func update_scale() -> void:
 	var possible_scale : Vector2 = Vector2(viewport_size) / size
 	var new_scale : float = minf(possible_scale.x, possible_scale.y)
 	var descendents : Array = get_children().duplicate()
+	var default_font_size : int = get_theme_default_font_size()
 	
 	while not descendents.is_empty():
 		var current : Node = descendents.pop_front()
@@ -222,7 +223,9 @@ func update_scale() -> void:
 			descendents.append_array(current.get_children())
 		if current is Label:
 			var font_size : int = current.get_theme_font_size("font_size", "Label")
-			current.add_theme_font_size_override("font_size", roundi(font_size*new_scale))
+			var new_font_size : int = snappedi(font_size*new_scale, default_font_size)
+			new_font_size = maxi(new_font_size, default_font_size)
+			current.add_theme_font_size_override("font_size", new_font_size)
 
 
 ## Update hardware/software information label (this never changes at runtime).
