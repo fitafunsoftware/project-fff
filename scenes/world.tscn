@@ -3,18 +3,18 @@
 [ext_resource type="Shader" path="res://shaders/transparent_mesh.gdshader" id="1"]
 [ext_resource type="PackedScene" uid="uid://ypwkw5b68kln" path="res://utilities/light/lights.tscn" id="1_04on7"]
 [ext_resource type="Shader" path="res://shaders/opaque_mesh.gdshader" id="2"]
-[ext_resource type="Texture2D" uid="uid://b3o0nd4un4axh" path="res://assets/art/ground.png" id="2_fd3tu"]
+[ext_resource type="Texture2D" uid="uid://b3o0nd4un4axh" path="res://assets/art/grass/ground.png" id="2_fd3tu"]
 [ext_resource type="Script" path="res://utilities/sprite_3d/horizontal_sprite_3d.gd" id="3_xqkqx"]
 [ext_resource type="Script" path="res://scripts/camera_body.gd" id="4"]
 [ext_resource type="Script" path="res://utilities/sprite_3d/vertical_sprite_3d.gd" id="10_enjwq"]
 [ext_resource type="Texture2D" uid="uid://cwu04dmx0ajss" path="res://proprietary/assets/art/tia/tia.png" id="11_jeidp"]
-[ext_resource type="Texture2D" uid="uid://c7yoyyn7h1gel" path="res://assets/art/small_shadow.png" id="11_v21hf"]
+[ext_resource type="Texture2D" uid="uid://c7yoyyn7h1gel" path="res://assets/art/shadow/small_shadow.png" id="11_v21hf"]
+[ext_resource type="Texture2D" uid="uid://cgkcggr4imqbd" path="res://assets/art/tree/tree.png" id="12_qaut7"]
 [ext_resource type="Script" path="res://utilities/shadow/shadow.gd" id="12_w2dy5"]
 [ext_resource type="Script" path="res://utilities/grass/grass_generator.gd" id="13_giqmr"]
 [ext_resource type="PackedScene" uid="uid://bg6n0slpar7eg" path="res://scenes/tree.tscn" id="13_ko2qx"]
-[ext_resource type="Texture2D" uid="uid://clt1gsjyts0rd" path="res://proprietary/assets/art/tree/tree.png" id="14_ifqa3"]
-[ext_resource type="Texture2D" uid="uid://c7jc4rpg3fy02" path="res://assets/art/tall_grass.png" id="14_whl8h"]
-[ext_resource type="Texture2D" uid="uid://bibl3215drlsb" path="res://assets/art/tall_bitmap.png" id="15_pto5b"]
+[ext_resource type="Texture2D" uid="uid://c7jc4rpg3fy02" path="res://assets/art/grass/tall_grass.png" id="14_whl8h"]
+[ext_resource type="Texture2D" uid="uid://bibl3215drlsb" path="res://assets/art/grass/tall_bitmap.png" id="15_pto5b"]
 [ext_resource type="Shader" path="res://shaders/grass.gdshader" id="16_7ywox"]
 [ext_resource type="Script" path="res://utilities/grass/grass_instance_3d.gd" id="17_qwvbc"]
 [ext_resource type="PackedScene" uid="uid://ddqvb0a4lifyo" path="res://utilities/camera/camera_follow_body.tscn" id="20_0bncb"]
@@ -87,49 +87,49 @@ size = Vector3(0.6, 1, 0.02)
 render_priority = 0
 shader = ExtResource("1")
 shader_parameter/opacity = 1.0
-shader_parameter/sprite_texture = ExtResource("14_ifqa3")
+shader_parameter/sprite_texture = ExtResource("12_qaut7")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xn240"]
 render_priority = 0
 shader = ExtResource("1")
 shader_parameter/opacity = 1.0
-shader_parameter/sprite_texture = ExtResource("14_ifqa3")
+shader_parameter/sprite_texture = ExtResource("12_qaut7")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_84adn"]
 render_priority = 0
 shader = ExtResource("1")
 shader_parameter/opacity = 1.0
-shader_parameter/sprite_texture = ExtResource("14_ifqa3")
+shader_parameter/sprite_texture = ExtResource("12_qaut7")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y32fv"]
 render_priority = 0
 shader = ExtResource("1")
 shader_parameter/opacity = 1.0
-shader_parameter/sprite_texture = ExtResource("14_ifqa3")
+shader_parameter/sprite_texture = ExtResource("12_qaut7")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qrhm8"]
 render_priority = 0
 shader = ExtResource("1")
 shader_parameter/opacity = 1.0
-shader_parameter/sprite_texture = ExtResource("14_ifqa3")
+shader_parameter/sprite_texture = ExtResource("12_qaut7")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k3j60"]
 render_priority = 0
 shader = ExtResource("1")
 shader_parameter/opacity = 1.0
-shader_parameter/sprite_texture = ExtResource("14_ifqa3")
+shader_parameter/sprite_texture = ExtResource("12_qaut7")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_acsgu"]
 render_priority = 0
 shader = ExtResource("1")
 shader_parameter/opacity = 1.0
-shader_parameter/sprite_texture = ExtResource("14_ifqa3")
+shader_parameter/sprite_texture = ExtResource("12_qaut7")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vyskm"]
 render_priority = 0
 shader = ExtResource("1")
 shader_parameter/opacity = 1.0
-shader_parameter/sprite_texture = ExtResource("14_ifqa3")
+shader_parameter/sprite_texture = ExtResource("12_qaut7")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qhlwa"]
 render_priority = 0
