@@ -5,7 +5,7 @@ render_mode blend_mix,diffuse_toon,specular_disabled,world_vertex_coords;
 #include "includes/distance_fade.gdshaderinc"
 #include "includes/distance_dither.gdshaderinc"
 
-uniform sampler2D sprite_texture : source_color, filter_nearest;
+uniform sampler2D sprite_texture : source_color, filter_nearest, repeat_disable;
 uniform float opacity : hint_range(0.0, 1.0) = 1.0;
 
 void vertex() {
