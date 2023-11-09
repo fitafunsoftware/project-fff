@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://clqhyj6p24vuh"]
+[gd_scene load_steps=43 format=3 uid="uid://clqhyj6p24vuh"]
 
 [ext_resource type="Shader" path="res://shaders/transparent_mesh.gdshader" id="1"]
 [ext_resource type="PackedScene" uid="uid://ypwkw5b68kln" path="res://utilities/light/lights.tscn" id="1_04on7"]
@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://b3o0nd4un4axh" path="res://assets/art/grass/ground.png" id="2_fd3tu"]
 [ext_resource type="Script" path="res://utilities/sprite_3d/horizontal_sprite_3d.gd" id="3_xqkqx"]
 [ext_resource type="Script" path="res://scripts/camera_body.gd" id="4"]
+[ext_resource type="Texture2D" uid="uid://cum3245fwrm1q" path="res://assets/art/player/base.png" id="7_mvygr"]
 [ext_resource type="Script" path="res://utilities/sprite_3d/vertical_sprite_3d.gd" id="10_enjwq"]
-[ext_resource type="Texture2D" uid="uid://cwu04dmx0ajss" path="res://proprietary/assets/art/tia/tia.png" id="11_jeidp"]
 [ext_resource type="Texture2D" uid="uid://c7yoyyn7h1gel" path="res://assets/art/shadow/small_shadow.png" id="11_v21hf"]
 [ext_resource type="Texture2D" uid="uid://cgkcggr4imqbd" path="res://assets/art/tree/tree.png" id="12_qaut7"]
 [ext_resource type="Script" path="res://utilities/shadow/shadow.gd" id="12_w2dy5"]
@@ -39,14 +39,14 @@ size = Vector3(0.2, 0.8, 0.2)
 render_priority = 0
 shader = ExtResource("1")
 shader_parameter/opacity = 1.0
-shader_parameter/sprite_texture = ExtResource("11_jeidp")
+shader_parameter/sprite_texture = ExtResource("7_mvygr")
 
 [sub_resource type="Animation" id="Animation_i637q"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Tia:frame")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -64,20 +64,38 @@ step = 0.15
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Tia:frame")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_7frk5"]
+resource_name = "walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7]
+"values": [9, 10, 11, 12, 13, 14, 15, 16]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qhb7g"]
 _data = {
 "RESET": SubResource("Animation_i637q"),
-"idle": SubResource("Animation_4i11b")
+"idle": SubResource("Animation_4i11b"),
+"walk": SubResource("Animation_7frk5")
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5kcq1"]
@@ -183,17 +201,17 @@ script = ExtResource("4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
 shape = SubResource("BoxShape3D_fn6na")
 
-[node name="Tia" type="Sprite3D" parent="Player"]
+[node name="Sprite" type="Sprite3D" parent="Player"]
 material_override = SubResource("ShaderMaterial_lga2g")
 cast_shadow = 0
 offset = Vector2(0, 48)
-texture = ExtResource("11_jeidp")
-hframes = 5
-vframes = 2
+texture = ExtResource("7_mvygr")
+hframes = 6
+vframes = 3
 script = ExtResource("10_enjwq")
 
-[node name="Shadow3D" type="Sprite3D" parent="Player/Tia"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06, 0.42, 0)
+[node name="Shadow3D" type="Sprite3D" parent="Player/Sprite"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03, 0.42, 0)
 cast_shadow = 3
 axis = 1
 double_sided = false

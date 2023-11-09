@@ -9,11 +9,15 @@ const JUMP_VELOCITY : float = 4.5
 # Get the gravity from the project settings to be synced with RigidBody3D nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+@onready var animation_player := $AnimationPlayer
+@onready var sprite := $Sprite
+@onready var shadow := $Sprite/Shadow3D
+
 
 func _ready():
 	_assign_globals()
 	set_up_direction(Vector3.UP)
-	$AnimationPlayer.play("idle")
+	animation_player.play("idle")
 
 
 func _assign_globals():
@@ -44,6 +48,19 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	_snap_position()
+	
+	var velocity_2d := Vector2(velocity.x, velocity.z)
+	
+	if is_on_floor() and not velocity_2d.is_equal_approx(Vector2.ZERO):
+		if animation_player.current_animation != "walk":
+			animation_player.play("walk")
+	else:
+		if animation_player.current_animation != "idle":
+			animation_player.play("idle")
+	
+	if not is_zero_approx(velocity.x):
+		sprite.flip_h = sign(velocity.x) < 0
+		shadow.position.x = -0.03 * sign(velocity.x)
 
 
 func _snap_position():
