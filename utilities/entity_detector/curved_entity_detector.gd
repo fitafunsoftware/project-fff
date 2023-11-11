@@ -30,9 +30,9 @@ func _signal_entity_status(_body: Node3D):
 		return
 	
 	if has_overlapping_areas():
-		emit_signal("entity_detected")
+		entity_detected.emit()
 	else:
-		emit_signal("entity_lost")
+		entity_lost.emit()
 
 
 func _generate_areas():
