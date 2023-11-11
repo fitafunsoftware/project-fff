@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://wdj1yd8vnyjw" path="res://utilities/splash_screen/logos/godot_logo_vertical.png" id="2_lgk5u"]
 
 [node name="GodotSplash" instance=ExtResource("1_v5gqv")]
-next_scene = "res://utilities/splash_screen/fita_splash.tscn"
 
 [node name="Logo" parent="." index="1"]
 offset_left = -119.5

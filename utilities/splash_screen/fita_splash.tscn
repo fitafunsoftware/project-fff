@@ -4,8 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://dgpsi2jkyjnac" path="res://utilities/splash_screen/logos/ffs_logo.png" id="2_jfsja"]
 
 [node name="FitaSplash" instance=ExtResource("1_hjds4")]
-next_scene = "res://scenes/world.tscn"
-to_loading_screen = true
 
 [node name="Logo" parent="." index="1"]
 offset_left = -250.0

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dx8wsflxvx1sk"]
+
+[ext_resource type="PackedScene" uid="uid://chon7b2ynn5md" path="res://utilities/main_game/main_game.tscn" id="1_62hyn"]
+
+[node name="Game" instance=ExtResource("1_62hyn")]
+starting_scene = "res://scenes/splash_screens/godot_splash.tscn"

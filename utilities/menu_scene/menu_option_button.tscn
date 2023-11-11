@@ -1,8 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://blnfliijmyoe2"]
 
-[ext_resource type="Script" path="res://scenes/menu_button.gd" id="1_j16y3"]
+[ext_resource type="Script" path="res://utilities/menu_scene/menu_button.gd" id="1_j16y3"]
 
 [node name="MenuOptionButton" type="Button"]
 offset_right = 8.0
 offset_bottom = 8.0
+action_mode = 0
 script = ExtResource("1_j16y3")

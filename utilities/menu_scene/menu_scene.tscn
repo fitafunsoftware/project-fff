@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://m1ira233pk6j"]
 
-[ext_resource type="Script" path="res://scenes/menu_scene.gd" id="1_2a5yg"]
+[ext_resource type="Script" path="res://utilities/menu_scene/menu_scene.gd" id="1_2a5yg"]
 
 [node name="MenuScene" type="Control"]
 layout_mode = 3
@@ -47,17 +47,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
 alignment = 1
-
-[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/MenuOptions"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-action_mode = 0
-text = "Test"
-
-[node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer/MenuOptions"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "Test 2"
 
 [node name="RightPadding" type="VSeparator" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2

@@ -31,7 +31,11 @@ func _populate_menu():
 		var first_option : Button = menu.get_child(0) as Button
 		var last_option : Button = menu.get_child(-1) as Button
 		first_option.focus_neighbor_top = last_option.get_path()
+		first_option.focus_previous = last_option.get_path()
 		last_option.focus_neighbor_bottom = first_option.get_path()
+		last_option.focus_next = first_option.get_path()
+		
+		first_option.grab_focus()
 
 
 func _create_button(option : String, scene : String) -> Button :

@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://chon7b2ynn5md"]
+[gd_scene load_steps=4 format=3 uid="uid://chon7b2ynn5md"]
 
+[ext_resource type="Script" path="res://utilities/main_game/main_game.gd" id="1_bljaj"]
 [ext_resource type="PackedScene" uid="uid://611jopnpjsx0" path="res://utilities/game_viewport/game_viewport.tscn" id="1_xkw8u"]
 [ext_resource type="PackedScene" uid="uid://bqbcsfkaiujt4" path="res://addons/debug_menu/debug_menu.tscn" id="2_ssqe5"]
 
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_bljaj")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -31,7 +33,6 @@ offset_left = -320.0
 offset_top = -180.0
 offset_right = 320.0
 offset_bottom = 180.0
-start_scene = "res://utilities/splash_screen/godot_splash.tscn"
 
 [node name="DebugMenu" parent="." instance=ExtResource("2_ssqe5")]
 layout_mode = 1
