@@ -12,6 +12,7 @@ config_version=5
 
 config/name="project-fff"
 run/main_scene="res://scenes/game.tscn"
+config/quit_on_go_back=false
 config/features=PackedStringArray("4.2")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
