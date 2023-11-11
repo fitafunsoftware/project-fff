@@ -4,6 +4,7 @@ var _menu_option_button : Resource = preload("res://utilities/menu_scene/menu_op
 
 @export var options : Array[String]
 @export var scenes : Array[String]
+@export var loading : Array[bool]
 
 @onready var menu = $VBoxContainer/HBoxContainer/MenuOptions
 
@@ -14,13 +15,14 @@ func _ready():
 
 func _populate_menu():
 	var option_size : int = mini(options.size(), scenes.size())
+	loading.resize(option_size)
 	var prev_button : Button = null
 	
 	for option in option_size:
 		if not ResourceLoader.exists(scenes[option]):
 			continue
 		
-		var button : Button = _create_button(options[option], scenes[option])
+		var button : Button = _create_button(options[option], scenes[option], loading[option])
 		menu.add_child(button)
 		if prev_button:
 			button.focus_neighbor_top = button.get_path_to(prev_button)
@@ -40,7 +42,7 @@ func _populate_menu():
 		first_option.grab_focus.call_deferred()
 
 
-func _create_button(option : String, scene : String) -> Button :
+func _create_button(option : String, scene : String, load_scene : bool) -> Button :
 	var new_button : Button = _menu_option_button.instantiate()
-	new_button.setup_button(option, scene)
+	new_button.setup_button(option, scene, load_scene)
 	return new_button

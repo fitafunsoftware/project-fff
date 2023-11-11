@@ -5,3 +5,4 @@
 [node name="MenuScene" instance=ExtResource("1_i1ml0")]
 options = Array[String](["Play", "Exit"])
 scenes = Array[String](["res://scenes/worlds/world.tscn", "res://scenes/exit_scene.tscn"])
+loading = Array[bool]([true, false])

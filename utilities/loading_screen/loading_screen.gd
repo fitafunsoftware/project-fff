@@ -4,4 +4,4 @@ extends Control
 
 
 func _ready():
-	get_viewport().change_scene(next_scene)
+	get_viewport().change_scene.call_deferred(next_scene)
