@@ -4,8 +4,12 @@ extends Control
 
 
 func _ready():
-	if OS.get_name() in ["Android", "iOS"]:
-		get_viewport().change_scene.call_deferred(starting_scene)
-	else:
-		get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
-		get_tree().quit()
+	match OS.get_name():
+		"iOS":
+			get_viewport().change_scene.call_deffered(starting_scene)
+		"Android":
+			get_tree().root.propagate_notification(NOTIFICATION_WM_GO_BACK_REQUEST)
+			get_tree().quit()
+		_:
+			get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
+			get_tree().quit()
