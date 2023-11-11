@@ -29,7 +29,7 @@ func _input(event):
 	if not event.is_pressed():
 		return
 	
-	if event.is_action("ui_accept") or event is InputEventScreenTouch:
+	if event.is_action("ui_skip") or event is InputEventScreenTouch:
 		_skip_splash()
 		return
 

@@ -3,5 +3,4 @@
 [ext_resource type="PackedScene" uid="uid://dulrx0vcr1lr0" path="res://utilities/splash_screen/fita_splash.tscn" id="1_f51g4"]
 
 [node name="FitaSplash" instance=ExtResource("1_f51g4")]
-next_scene = "res://scenes/worlds/world.tscn"
-to_loading_screen = true
+next_scene = "res://scenes/menus/main_menu.tscn"

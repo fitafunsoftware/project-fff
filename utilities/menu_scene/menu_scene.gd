@@ -1,5 +1,7 @@
 extends Control
 
+var _menu_option_button : Resource = preload("res://utilities/menu_scene/menu_option_button.tscn")
+
 @export var options : Array[String]
 @export var scenes : Array[String]
 
@@ -35,8 +37,10 @@ func _populate_menu():
 		last_option.focus_neighbor_bottom = first_option.get_path()
 		last_option.focus_next = first_option.get_path()
 		
-		first_option.grab_focus()
+		first_option.grab_focus.call_deferred()
 
 
 func _create_button(option : String, scene : String) -> Button :
-	return Button.new()
+	var new_button : Button = _menu_option_button.instantiate()
+	new_button.setup_button(option, scene)
+	return new_button
