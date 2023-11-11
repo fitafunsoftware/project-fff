@@ -5,7 +5,7 @@
 [node name="MenuOptionButton" type="Button"]
 offset_right = 8.0
 offset_bottom = 8.0
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 33
 action_mode = 0
 text = "Test"
 script = ExtResource("1_qbvvr")
