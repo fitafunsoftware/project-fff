@@ -21,21 +21,21 @@ func _populate_menu():
 			continue
 		
 		var button : Button = _create_button(options[option], scenes[option])
-		if prev_button:
-			button.focus_neighbor_top = prev_button.get_path()
-			button.focus_previous = prev_button.get_path()
-			prev_button.focus_neighbor_bottom = button.get_path()
-			prev_button.focus_next = button.get_path()
 		menu.add_child(button)
+		if prev_button:
+			button.focus_neighbor_top = button.get_path_to(prev_button)
+			button.focus_previous = button.get_path_to(prev_button)
+			prev_button.focus_neighbor_bottom = prev_button.get_path_to(button)
+			prev_button.focus_next = prev_button.get_path_to(button)
 		prev_button = button
 	
 	if menu.get_child_count() > 0:
 		var first_option : Button = menu.get_child(0) as Button
 		var last_option : Button = menu.get_child(-1) as Button
-		first_option.focus_neighbor_top = last_option.get_path()
-		first_option.focus_previous = last_option.get_path()
-		last_option.focus_neighbor_bottom = first_option.get_path()
-		last_option.focus_next = first_option.get_path()
+		first_option.focus_neighbor_top = first_option.get_path_to(last_option)
+		first_option.focus_previous = first_option.get_path_to(last_option)
+		last_option.focus_neighbor_bottom = last_option.get_path_to(first_option)
+		last_option.focus_next = last_option.get_path_to(first_option)
 		
 		first_option.grab_focus.call_deferred()
 

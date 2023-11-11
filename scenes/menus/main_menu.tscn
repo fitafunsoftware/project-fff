@@ -3,5 +3,5 @@
 [ext_resource type="PackedScene" uid="uid://m1ira233pk6j" path="res://utilities/menu_scene/menu_scene.tscn" id="1_i1ml0"]
 
 [node name="MenuScene" instance=ExtResource("1_i1ml0")]
-options = Array[String](["Play"])
-scenes = Array[String](["res://scenes/worlds/world.tscn"])
+options = Array[String](["Play", "Exit"])
+scenes = Array[String](["res://scenes/worlds/world.tscn", "res://scenes/exit_scene.tscn"])
