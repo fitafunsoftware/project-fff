@@ -1,6 +1,23 @@
 extends Node
 
+signal resource_loaded(path)
+
 var _pending : PackedStringArray = []
+
+
+func _process(_delta):
+	if _pending.is_empty():
+		return
+	
+	var to_clear : Array[int] = []
+	for index in _pending.size():
+		if ResourceLoader.has_cached(_pending[index]):
+			resource_loaded.emit(_pending[index])
+			to_clear.append(index)
+	
+	to_clear.reverse()
+	for index in to_clear:
+		_pending.remove_at(index)
 
 
 func queue_resource(path: String):
