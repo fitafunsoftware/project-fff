@@ -1,14 +1,24 @@
 @tool
 class_name CurvedEntityDetector
 extends Area3D
+## Detector for entities that follows the curved shader.
+##
+## Detect whether an entity appears behind this one.
+## @experimental
 
+## Signal when an entity has been detected. Only emitted for the first entity
+## detected.
 signal entity_detected
+## Signal when entity leaves and no more entities are detected.
 signal entity_lost
 
+# Global params. Set them in the proper json.
 static var ARC_HEIGHT : float = NAN
 static var ARC_LENGTH : float = NAN
+## The gradient of the floor for the curved world shader.
 static var floor_vector : Vector2 = Vector2.ZERO
 
+## The sprites to be used as basis for the area.
 @export var _sprites : Array[VerticalSprite3D] = [] :
 	set(value):
 		_sprites = value
@@ -25,6 +35,7 @@ func _ready():
 	connect("area_exited", _signal_entity_status)
 
 
+# Function to determine whether to emit signals.
 func _signal_entity_status(_body: Node3D):
 	if get_overlapping_areas().size() > 1:
 		return
@@ -35,6 +46,7 @@ func _signal_entity_status(_body: Node3D):
 		entity_lost.emit()
 
 
+# Create the areas based on the sprites in the array.
 func _generate_areas():
 	if floor_vector.is_equal_approx(Vector2.ZERO):
 		ARC_HEIGHT = GlobalParams.get_global_shader_param("ARC_HEIGHT")

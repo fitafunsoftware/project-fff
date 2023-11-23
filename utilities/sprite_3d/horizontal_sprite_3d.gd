@@ -2,9 +2,17 @@
 @icon("res://utilities/sprite_3d/Sprite3D.svg")
 class_name HorizontalSprite3D
 extends MeshInstance3D
+## Base class for horizontal 3D sprites.
+## 
+## Horizontal sprites should be meshes instead of just Sprite3Ds so that you can
+## create the required number of vertices to have like a smooth curve. Also, due
+## to how Godot deals with transparent meshes, try not to make horizontal sprites
+## transparent.
 
+# Set the properties in the appropriate json file.
 static var FLOOR_GRADIENT : float = NAN
 
+## Toggle to regenerate the sprite.
 @export var generate_sprite : bool = false:
 	set(value):
 		generate_sprite = false
@@ -13,22 +21,26 @@ static var FLOOR_GRADIENT : float = NAN
 			_apply_texture()
 
 @export_category("Sprite Properties")
+## Texture for the sprite.
 @export var texture : Texture2D:
 	set(value):
 		texture = value
 		_recalculate_size_and_subdivisions()
 		_apply_texture()
 
+## Pixel size for the texture. Does not have to follow the global pixel size.
 @export_range(0.001, 128, 0.001, "suffix:m") var pixel_size : float = 0.01:
 	set(value):
 		pixel_size = value
 		_recalculate_size_and_subdivisions()
 
+## Number of subdivisions in the x direction per Godot meter unit.
 @export var subdivisions_per_meter_width : int = 0:
 	set(value):
 		subdivisions_per_meter_width = value
 		_recalculate_subdivisions()
 
+## Number of subdivisions in the z direction per Godot meter unit.
 @export var subdivisions_per_meter_depth : int = 0:
 	set(value):
 		subdivisions_per_meter_depth = value
@@ -50,6 +62,8 @@ func _ready():
 		_apply_texture()
 
 
+# Recalculate the needed size and subdivisions based on the texture pixel size
+# and above settings.
 func _recalculate_size_and_subdivisions():
 	if not mesh:
 		return

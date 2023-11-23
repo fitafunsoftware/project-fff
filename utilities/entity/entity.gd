@@ -1,6 +1,10 @@
 extends CharacterBody3D
 class_name Entity
+## The base class for all entities in the game.
+##
+## Base class to implement basic functionality of entities in the game.
 
+## The max speed of the entity.
 @export_range(0.0, 100.0, 0.01, "hide_slider", "suffix:m/s")
 var max_speed : float = 10.0 :
 	get:
@@ -8,6 +12,7 @@ var max_speed : float = 10.0 :
 	set(value):
 		max_speed = value
 
+## The friction applied to the entity when decelerating.
 @export_range(0.0, 100.0, 0.01, "hide_slider", "suffix:m/s")
 var friction : float = 4.0 :
 	get:
@@ -15,6 +20,7 @@ var friction : float = 4.0 :
 	set(value):
 		friction = value
 
+## The acceleration of the entity to reach the target velocity.
 @export_range(0.0, 100.0, 0.01, "hide_slider", "suffix:m/s")
 var acceleration : float = 4.0 :
 	get:
@@ -22,14 +28,18 @@ var acceleration : float = 4.0 :
 	set(value):
 		acceleration = value
 
+## The gravity applied on the entity.
 @onready var gravity : float = ProjectSettings.get_setting("physics/3d/default_gravity", 9.8)
 
+## The x and z target velocity of the entity. Set this so acceleration and
+## friction are applied.
 var target_velocity_2d := Vector2.ZERO :
 	get:
 		return target_velocity_2d
 	set(value):
 		target_velocity_2d = value
 
+# Global parameters needed.
 static var PIXEL_SIZE : float = NAN
 static var FLOOR_GRADIENT : float = NAN
 
@@ -39,6 +49,7 @@ func  _init():
 	platform_on_leave = CharacterBody3D.PLATFORM_ON_LEAVE_ADD_UPWARD_VELOCITY
 
 
+# Retrieve the global parameters.
 func _ready():
 	if [PIXEL_SIZE, FLOOR_GRADIENT].has(NAN):
 		PIXEL_SIZE = GlobalParams.get_global_param("PIXEL_SIZE")
@@ -56,11 +67,13 @@ func _physics_process(delta):
 	position = _snap_position(position)
 
 
+# Calculate velocity after applying gravity.
 func _apply_gravity(_velocity: Vector3, delta: float) -> Vector3:
 	_velocity.y -= gravity * delta
 	return _velocity
 
 
+# Calculate velocity after applying acceleration to reach target velocity.
 func _apply_acceleration(_velocity: Vector3, _target_velocity_2d: Vector2, delta: float) -> Vector3:
 	var velocity_2d := Vector2(_velocity.x, _velocity.z)
 	var final_acceleration := 0.0
@@ -83,6 +96,7 @@ func _apply_acceleration(_velocity: Vector3, _target_velocity_2d: Vector2, delta
 	return final_velocity
 
 
+# Calculate the velocity clamped to the max speed of the entity.
 func _clamp_velocity(_velocity: Vector3) -> Vector3:
 	_velocity.x = clampf(_velocity.x, -max_speed, max_speed)
 	_velocity.y = clampf(_velocity.y, -max_speed, max_speed)
@@ -91,6 +105,7 @@ func _clamp_velocity(_velocity: Vector3) -> Vector3:
 	return _velocity
 
  
+# Zero out any values of the velocity that is close enough.
 func _zero_out_velocity(_velocity: Vector3) -> Vector3:
 	_velocity.x = 0.0 if is_zero_approx(_velocity.x) else _velocity.x
 	_velocity.y = 0.0 if is_zero_approx(_velocity.y) else _velocity.y
@@ -99,6 +114,7 @@ func _zero_out_velocity(_velocity: Vector3) -> Vector3:
 	return _velocity
 
 
+# Snap the position of the entity to proper pixel intervals.
 func _snap_position(_position: Vector3) -> Vector3:
 	var snapped_position := Vector3.ZERO
 	snapped_position.x = snappedf(_position.x, PIXEL_SIZE)
@@ -107,18 +123,22 @@ func _snap_position(_position: Vector3) -> Vector3:
 	return snapped_position
 
 
+## Return the y velocity of the entity.
 func get_y_velocity() -> float:
 	return velocity.y
 
 
+## Set the y velocity of the entity.
 func set_y_velocity(y_velocity: float):
 	velocity.y = y_velocity
 
 
+## Return the x and z velocity of the entity.
 func get_velocity_2d() -> Vector2:
 	return Vector2(velocity.x, velocity.z)
 
 
+## Set the x and z velocity of the entity.
 func set_velocity_2d(velocity_2d: Vector2):
 	velocity = Vector3(velocity_2d.x, velocity.y, velocity_2d.y)
 

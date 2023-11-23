@@ -1,10 +1,18 @@
 extends Node
+## An autoload to help handle the loading of resources.
+##
+## Queues up resources that need to be loaded. This autoload deals with the
+## ResourceLoader Singleton. Handles the queueing, getting progress, checking
+## if ready, and retrieval of resources.
 
+## Signal to notify when a resource has been loaded.
 signal resource_loaded(path)
 
+# The pending resources to be loaded.
 var _pending : PackedStringArray = []
 
 
+# Checks if pending resources have been loaded.
 func _process(_delta):
 	if _pending.is_empty():
 		return
@@ -20,6 +28,7 @@ func _process(_delta):
 		_pending.remove_at(index)
 
 
+## Adds a resource to the queue to be loaded.
 func queue_resource(path: String):
 	if ResourceLoader.has_cached(path):
 		return
@@ -31,6 +40,8 @@ func queue_resource(path: String):
 		_pending.append(path)
 
 
+## Returns the load progress of a resource. Returns -1.0 if the resource has 
+## not been queued.
 func get_progess(path: String) -> float:
 	var progress : float = -1.0
 	if ResourceLoader.has_cached(path):
@@ -44,6 +55,7 @@ func get_progess(path: String) -> float:
 	return progress
 
 
+## Checks if a resource is loaded.
 func is_ready(path: String) -> bool:
 	if ResourceLoader.has_cached(path):
 		return true
@@ -55,6 +67,8 @@ func is_ready(path: String) -> bool:
 	return false
 
 
+## Returns a resource that has been loaded. If the resource was not queued for 
+## loading, the resource is loaded on the spot which can cause a lag spike.
 func get_resource(path: String) -> Resource:
 	if ResourceLoader.has_cached(path):
 		return ResourceLoader.load(path)

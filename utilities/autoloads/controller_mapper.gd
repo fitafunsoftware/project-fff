@@ -13,9 +13,9 @@ const GAMECONTROLLERDB_PATH : String = "res://assets/gamecontrollerdb/gamecontro
 ## load to not freeze the game.
 const LINES_PER_FRAME : int = 64
 
-## The Dictionary that holds the mappings.
+# The Dictionary that holds the mappings.
 var _gamecontrollerdb : Dictionary = {}
-## A FileAccess for reading from the file.
+# A FileAccess for reading from the file.
 var _file : FileAccess
 
 # Open the file. Load the mappings into the Dictionary. 
@@ -26,9 +26,9 @@ func _ready():
 	Input.joy_connection_changed.connect(_joy_connection_changed)
 
 
-## Load the mappings into the Dictionary. Only read up to [constant LINES_PER_FRAME] 
-## number of lines every frame. When the file is fully read, close the file, and 
-## update the mappings of the currently connected joypads.
+# Load the mappings into the Dictionary. Only read up to [constant LINES_PER_FRAME] 
+# number of lines every frame. When the file is fully read, close the file, and 
+# update the mappings of the currently connected joypads.
 func _load():
 	for count in LINES_PER_FRAME:
 		var current_line : String = _file.get_line()
@@ -51,21 +51,21 @@ func _load():
 	_update_current_joypads()
 
 
-## Update the currently connected joypads.
+# Update the currently connected joypads.
 func _update_current_joypads():
 	for device_id in Input.get_connected_joypads():
 		_add_mapping_from_guid(Input.get_joy_guid(device_id))
 
 
-## Function called when [signal Input._joy_connection_changed] signal is fired.
+# Function called when [signal Input._joy_connection_changed] signal is fired.
 func _joy_connection_changed(device: int, connected: bool):
 	if not connected:
 		return
 	_add_mapping_from_guid(Input.get_joy_guid(device))
 
 
-## Remove old mapping then add new mapping based on the mappings in 
-## the SDL_GameControllerDB. If the mapping doesn't exist, just return.
+# Remove old mapping then add new mapping based on the mappings in 
+# the SDL_GameControllerDB. If the mapping doesn't exist, just return.
 func _add_mapping_from_guid(guid : String):
 	if not _gamecontrollerdb.has(guid):
 		return

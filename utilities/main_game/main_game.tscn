@@ -37,3 +37,6 @@ focus_mode = 0
 
 [node name="DebugMenu" parent="." instance=ExtResource("2_ssqe5")]
 layout_mode = 1
+anchors_preset = -1
+offset_left = -400.0
+offset_bottom = 400.0

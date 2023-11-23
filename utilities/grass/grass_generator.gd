@@ -1,10 +1,16 @@
 @tool
 class_name GrassGenerator
 extends Node3D
+## Node to generate grass.
+##
+## Takes a grass texture and creates a bunch of grass meshes based on a given
+## grass map. Toggle the generate grass boolean to regenerate the grass.
 
+# Global parameters. Set in the appropriate jsons.
 static var PIXEL_SIZE : float = NAN
 static var FLOOR_GRADIENT : float = NAN
 
+## Toggle to generate grass. Basically a button that remakes the grass.
 @export var generate_grass : bool = false:
 	set(value):
 		generate_grass = false
@@ -13,8 +19,12 @@ static var FLOOR_GRADIENT : float = NAN
 			_generate_grass()
 
 @export_category("Grass Properties")
+## Individual grass texture to be used. Is repeated.
 @export var grass_texture : Texture2D
+## Grass map to determine how much grass to be placed and where.
 @export var grass_map : Texture2D
+## Y Offset of grass to make grass closer together or further apart instead of
+## being exactly grass texture height apart.
 @export_range(-32, 32, 1, "suffix:pixels") var y_offset : int = 0
 
 var _mesh : Mesh
@@ -36,6 +46,7 @@ func _ready():
 		grass.occluder = occluder
 
 
+# Function to generate the grass.
 func _generate_grass():
 	_assign_globals()
 	_assign_variables()
@@ -43,6 +54,7 @@ func _generate_grass():
 	_create_grass_instances()
 
 
+# Function to clear all the grass previously generated.
 func _clear_grass():
 	for child in get_children():
 		child.queue_free()
@@ -50,12 +62,14 @@ func _clear_grass():
 	_mesh = null
 
 
+# Assign the global parameters actual values.
 func _assign_globals():
 	if [PIXEL_SIZE, FLOOR_GRADIENT].has(NAN):
 		PIXEL_SIZE = GlobalParams.get_global_param("PIXEL_SIZE")
 		FLOOR_GRADIENT = GlobalParams.get_global_shader_param("FLOOR_GRADIENT")
 
 
+# Assign values to helper variables.
 func _assign_variables():
 	if not grass_texture or not grass_map:
 		return
@@ -70,6 +84,7 @@ func _assign_variables():
 	position.y = _row_height / 2.0
 
 
+# Create the basic grass mesh used by every grass node generated.
 func _create_mesh():
 	if not grass_texture or not grass_map:
 		return
@@ -89,6 +104,7 @@ func _create_mesh():
 	_mesh = quad_mesh
 
 
+# Create a bunch of grass instances.
 func _create_grass_instances():
 	if not grass_texture or not grass_map:
 		return

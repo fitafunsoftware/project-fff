@@ -1,6 +1,9 @@
 @tool
 class_name Shadow3D
 extends Sprite3D
+## Node for Shadow Sprites.
+##
+## I am just lazy and made this to easily set these values when creating the node.
 
 
 func _init():

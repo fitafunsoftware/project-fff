@@ -1,10 +1,16 @@
 @tool
 class_name GrassInstance3D
 extends MeshInstance3D
+## Grass meshes.
+##
+## A specific mesh for grass cause we do not need the extra functionality
+## provided by [VerticalSprite3D]s.
 
+## The occluder that determines whether to show or hide the node.
 var occluder : Occluder
 
-@onready var current_camera : Camera3D = get_viewport().get_camera_3d()
+# The current camera.
+@onready var _current_camera : Camera3D = get_viewport().get_camera_3d()
 
 
 func _init():
@@ -16,11 +22,12 @@ func _process(_delta):
 		_occlude()
 
 
+# Handle occlusion.
 func _occlude():
-	if not current_camera.current:
-		current_camera = get_viewport().get_camera_3d()
+	if not _current_camera.current:
+		_current_camera = get_viewport().get_camera_3d()
 	
-	var camera_position = current_camera.global_position
+	var camera_position = _current_camera.global_position
 	if occluder.to_occlude(global_position.z, camera_position.z):
 		hide()
 	else:
