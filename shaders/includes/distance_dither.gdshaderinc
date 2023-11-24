@@ -15,33 +15,30 @@ global uniform float DITHER_FULL_RATIO;
 float get_dither_multiplier(float z, float camera_z, vec2 pixel_position) {
 	float distance_to_camera = distance(z, camera_z);
 	
-	if (distance_to_camera >= DISTANCE_FRONT_START && distance_to_camera <= DISTANCE_BACK_START)
+	if (distance_to_camera >= DISTANCE_FRONT_START
+			&& distance_to_camera <= DISTANCE_BACK_START)
 		return 1.0;
 	
-	if (distance_to_camera <= DISTANCE_FRONT_END || distance_to_camera >= DISTANCE_BACK_END)
+	if (distance_to_camera <= DISTANCE_FRONT_END
+			|| distance_to_camera >= DISTANCE_BACK_END)
 		return 0.0;
 	
-	float bayer_value = BAYER_MATRIX[int(pixel_position.x) % 4][int(pixel_position.y) % 4];
+	float bayer_value = 
+		BAYER_MATRIX[int(pixel_position.x/3.0) % 4][int(pixel_position.y/3.0) % 4];
 	float bayer_output = 1.0 + 2.0*bayer_value;
-	float bayer_multiplier = 1.0;
+	float bayer_multiplier = bayer_output < 1.0 ? DITHER_MULTIPLIER:1.0;
 	
-	if (bayer_output < 1.0)
-		bayer_multiplier = DITHER_MULTIPLIER;
-	
-	float ratio = 1.0;
-	
-	if (distance_to_camera <= DISTANCE_FRONT_START) {
-		float fade_length = DISTANCE_FRONT_START - DISTANCE_FRONT_END;
-		float full_dither_end = DISTANCE_FRONT_END + fade_length * DITHER_FULL_RATIO;
-		float dither_ratio_unnormalized = 
-				(distance_to_camera - full_dither_end) / (fade_length*DITHER_FULL_RATIO);
-		ratio = max(dither_ratio_unnormalized, 0.0);
-	} else {
-		float fade_length = DISTANCE_BACK_END - DISTANCE_BACK_START;
-		float dither_ratio_unnormalized = 
-				(distance_to_camera - DISTANCE_BACK_START) / (fade_length * DITHER_FULL_RATIO);
-		ratio = 1.0 - min(dither_ratio_unnormalized, 1.0);
-	}
+	bool fade_from_front = distance_to_camera <= DISTANCE_FRONT_START;
+	float front_fade_length = DISTANCE_FRONT_START - DISTANCE_FRONT_END;
+	float full_dither_end = DISTANCE_FRONT_END + front_fade_length*DITHER_FULL_RATIO;
+	float front_dither_ratio_unnormalized = 
+			(distance_to_camera - full_dither_end) / (front_fade_length*DITHER_FULL_RATIO);
+	float back_fade_length = DISTANCE_BACK_END - DISTANCE_BACK_START;
+	float back_dither_ratio_unnormalized = 
+			(distance_to_camera - DISTANCE_BACK_START) / (back_fade_length*DITHER_FULL_RATIO);
+	// Relying on the compiler to optimize this.
+	float ratio = fade_from_front ?
+			max(front_dither_ratio_unnormalized, 0.0) : 1.0 - min(back_dither_ratio_unnormalized, 1.0);
 	
 	return mix(bayer_multiplier, 1.0, ratio);
 }

@@ -23,9 +23,7 @@ void fragment() {
 	float fade_multiplier = get_fade_multiplier(NODE_POSITION_WORLD.z, CAMERA_POSITION_WORLD.z);
 	float dither_multiplier = get_dither_multiplier(NODE_POSITION_WORLD.z, CAMERA_POSITION_WORLD.z, pixel_position);
 	
-	if (fade_multiplier >= 1.0)
-		ALBEDO = color.rgb;
-	else
-		ALBEDO = mix(vec3(0.0), color.rgb, fade_multiplier * dither_multiplier);
+	ALBEDO = fade_multiplier >= 1.0 ?
+		color.rgb : mix(vec3(0.02), color.rgb, fade_multiplier * dither_multiplier);
 	ALPHA = min(fade_multiplier*dither_multiplier/DITHER_FULL_RATIO, 1.0)*opacity*color.a;
 }

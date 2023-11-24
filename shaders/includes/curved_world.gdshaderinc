@@ -20,18 +20,20 @@ float get_curved_y(float z, float camera_z) {
 	
 	float peak = camera_z - CAMERA_Z_OFFSET;
 	float distance_from_peak = distance(z, peak);
+	bool on_arc = distance_from_peak < ARC_LENGTH;
 	
-	if (distance_from_peak >= ARC_LENGTH) {
-		float offset = distance_from_peak - ARC_LENGTH;
-		float curve_offset = offset*FLOOR_GRADIENT;
-		y_offset += curve_offset;
-	}
+	// if on slope
+	float offset = distance_from_peak - ARC_LENGTH;
+	float curve_offset_on_slope = offset*FLOOR_GRADIENT;
+	// endif
 	
-	if (distance_from_peak < ARC_LENGTH) {
-		float circle_height = sqrt(pow(RADIUS, 2.0) - pow(distance_from_peak, 2.0));
-		float curve_offset = circle_height - ARC_HEIGHT;
-		y_offset += curve_offset;
-	}
+	// if on arc
+	float circle_height = sqrt(pow(RADIUS, 2.0) - pow(distance_from_peak, 2.0));
+	float curve_offset_on_arc = circle_height - ARC_HEIGHT;
+	// endif
+	
+	// Rely on compiler to optimize this.
+	y_offset += on_arc ? curve_offset_on_arc : curve_offset_on_slope;
 	
 	return y_offset;
 }
