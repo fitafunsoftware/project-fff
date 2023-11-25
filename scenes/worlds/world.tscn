@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cgkcggr4imqbd" path="res://assets/art/tree/tree.png" id="12_qaut7"]
 [ext_resource type="Script" path="res://utilities/shadow/shadow.gd" id="12_w2dy5"]
 [ext_resource type="Script" path="res://utilities/grass/grass_generator.gd" id="13_giqmr"]
-[ext_resource type="PackedScene" uid="uid://bg6n0slpar7eg" path="res://scenes/tree.tscn" id="13_ko2qx"]
+[ext_resource type="PackedScene" uid="uid://bg6n0slpar7eg" path="res://scenes/entities/tree.tscn" id="13_ko2qx"]
 [ext_resource type="Texture2D" uid="uid://c7jc4rpg3fy02" path="res://assets/art/grass/tall_grass.png" id="14_whl8h"]
 [ext_resource type="Texture2D" uid="uid://bibl3215drlsb" path="res://assets/art/grass/tall_bitmap.png" id="15_pto5b"]
 [ext_resource type="Shader" path="res://shaders/grass.gdshader" id="16_7ywox"]
