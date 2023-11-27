@@ -320,14 +320,6 @@ CAMERA_Z_OFFSET={
 "type": "float",
 "value": 0.0
 }
-CURVE_HEIGHT={
-"type": "float",
-"value": 0.0
-}
-CURVE_HEIGHT_RATIO={
-"type": "float",
-"value": 0.0
-}
 CAMERA_Y_OFFSET={
 "type": "float",
 "value": 0.0
@@ -355,4 +347,28 @@ DISTANCE_BACK_START={
 DITHER_MULTIPLIER={
 "type": "float",
 "value": 1.0
+}
+RADIUS={
+"type": "float",
+"value": 0.0
+}
+ARC_HEIGHT={
+"type": "float",
+"value": 0.0
+}
+ARC_LENGTH={
+"type": "float",
+"value": 0.0
+}
+FLOOR_GRADIENT={
+"type": "float",
+"value": 0.0
+}
+CURVE_HEIGHT={
+"type": "float",
+"value": 0.0
+}
+FLOOR_ANGLE_DEGREES={
+"type": "float",
+"value": 0.0
 }

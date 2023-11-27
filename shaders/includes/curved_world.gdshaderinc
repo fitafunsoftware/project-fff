@@ -1,22 +1,13 @@
 global uniform float CAMERA_Y_OFFSET;
 global uniform float CAMERA_Z_OFFSET;
-global uniform float CURVE_HEIGHT;
-global uniform float CURVE_HEIGHT_RATIO;
+global uniform float RADIUS;
+global uniform float ARC_HEIGHT;
+global uniform float ARC_LENGTH;
+global uniform float FLOOR_GRADIENT;
 
 float get_curved_y(float z, float camera_z) {
+	if (!(RADIUS > 0.0)) return 0.0;
 	float y_offset = CAMERA_Y_OFFSET;
-	
-	if (!(CURVE_HEIGHT_RATIO > 0.0 && CURVE_HEIGHT_RATIO <= 1.0))
-		return y_offset;
-	
-	if (CURVE_HEIGHT <= 0.0)
-		return y_offset;
-	
-	// Following equations used to eliminate trigonometric functions
-	float RADIUS = CURVE_HEIGHT/CURVE_HEIGHT_RATIO;
-	float ARC_HEIGHT = RADIUS - CURVE_HEIGHT;
-	float ARC_LENGTH = sqrt(pow(RADIUS, 2.0) - pow(ARC_HEIGHT, 2.0));
-	float FLOOR_GRADIENT = -ARC_LENGTH/ARC_HEIGHT;
 	
 	float peak = camera_z - CAMERA_Z_OFFSET;
 	float distance_from_peak = distance(z, peak);
@@ -24,7 +15,7 @@ float get_curved_y(float z, float camera_z) {
 	
 	// if on slope
 	float offset = distance_from_peak - ARC_LENGTH;
-	float curve_offset_on_slope = offset*FLOOR_GRADIENT;
+	float curve_offset_on_slope = offset*-FLOOR_GRADIENT;
 	// endif
 	
 	// if on arc
