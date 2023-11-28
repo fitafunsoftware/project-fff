@@ -13,8 +13,8 @@ signal entity_detected
 signal entity_lost
 
 # Global params. Set them in the proper json.
-static var ARC_HEIGHT : float = NAN
-static var ARC_LENGTH : float = NAN
+static var DISTANCE_TO_CHORD : float = NAN
+static var HALF_CHORD_LENGTH : float = NAN
 ## The gradient of the floor for the curved world shader.
 static var floor_vector : Vector2 = Vector2.ZERO
 
@@ -49,9 +49,9 @@ func _signal_entity_status(_body: Node3D):
 # Create the areas based on the sprites in the array.
 func _generate_areas():
 	if floor_vector.is_equal_approx(Vector2.ZERO):
-		ARC_HEIGHT = GlobalParams.get_global_shader_param("ARC_HEIGHT")
-		ARC_LENGTH = GlobalParams.get_global_shader_param("ARC_LENGTH")
-		floor_vector = Vector2(ARC_HEIGHT, -ARC_LENGTH).normalized()
+		DISTANCE_TO_CHORD = GlobalParams.get_global_shader_param("DISTANCE_TO_CHORD")
+		HALF_CHORD_LENGTH = GlobalParams.get_global_shader_param("HALF_CHORD_LENGTH")
+		floor_vector = Vector2(DISTANCE_TO_CHORD, -HALF_CHORD_LENGTH).normalized()
 	
 	for child in get_children():
 		child.queue_free()

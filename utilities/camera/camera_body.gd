@@ -54,8 +54,8 @@ var z_drag_margin : int = 0
 # Global constants that are defined in the relevant json.
 static var CAMERA_Y_OFFSET : float = NAN
 static var CAMERA_Z_OFFSET : float = NAN
-static var CURVE_HEIGHT : float = NAN
-static var ARC_LENGTH : float = NAN
+static var ARC_HEIGHT : float = NAN
+static var HALF_CHORD_LENGTH : float = NAN
 static var RADIUS : float = NAN
 
 @onready var _input_handler : CameraFollowInputHandler = $CameraFollowInputHandler
@@ -66,11 +66,11 @@ static var RADIUS : float = NAN
 func _ready():
 	super()
 	if [PIXEL_SIZE, FLOOR_GRADIENT, CAMERA_Y_OFFSET, CAMERA_Z_OFFSET,
-			CURVE_HEIGHT, ARC_LENGTH, FLOOR_GRADIENT, RADIUS].has(NAN):
+			ARC_HEIGHT, HALF_CHORD_LENGTH, FLOOR_GRADIENT, RADIUS].has(NAN):
 		CAMERA_Y_OFFSET = GlobalParams.get_global_shader_param("CAMERA_Y_OFFSET")
 		CAMERA_Z_OFFSET = GlobalParams.get_global_shader_param("CAMERA_Z_OFFSET")
-		CURVE_HEIGHT = GlobalParams.get_global_shader_param("CURVE_HEIGHT")
-		ARC_LENGTH = GlobalParams.get_global_shader_param("ARC_LENGTH")
+		ARC_HEIGHT = GlobalParams.get_global_shader_param("ARC_HEIGHT")
+		HALF_CHORD_LENGTH = GlobalParams.get_global_shader_param("HALF_CHORD_LENGTH")
 		RADIUS = GlobalParams.get_global_shader_param("RADIUS")
 	
 	_camera.current = current
@@ -103,26 +103,26 @@ func _physics_process(delta):
 # export variables.
 func _move_camera():
 	var offset_pixels_left : int = center_height_offset
-	var distance_from_origin : float = CAMERA_Z_OFFSET - ARC_LENGTH
+	var distance_from_origin : float = CAMERA_Z_OFFSET - HALF_CHORD_LENGTH
 	var height_from_origin : float = 0.0
 	
 	var camera_y_offset_pixels : int = roundi(CAMERA_Y_OFFSET / PIXEL_SIZE)
-	var curve_height_pixels : int = roundi(CURVE_HEIGHT / PIXEL_SIZE)
+	var ARC_HEIGHT_pixels : int = roundi(ARC_HEIGHT / PIXEL_SIZE)
 	
 	offset_pixels_left += camera_y_offset_pixels
 	
 	if offset_pixels_left > 0:
-		if offset_pixels_left > curve_height_pixels:
-			offset_pixels_left -= curve_height_pixels
-			distance_from_origin += ARC_LENGTH
+		if offset_pixels_left > ARC_HEIGHT_pixels:
+			offset_pixels_left -= ARC_HEIGHT_pixels
+			distance_from_origin += HALF_CHORD_LENGTH
 			
 			height_from_origin += offset_pixels_left * PIXEL_SIZE
 		else:
 			var target_height_on_curve = offset_pixels_left * PIXEL_SIZE
-			var target_arc_height = RADIUS - (CURVE_HEIGHT - target_height_on_curve)
+			var target_arc_height = RADIUS - (ARC_HEIGHT - target_height_on_curve)
 			var target_arc_legth = sqrt(pow(RADIUS, 2.0) - pow(target_arc_height, 2.0))
 			
-			distance_from_origin += (ARC_LENGTH - target_arc_legth) * PIXEL_SIZE
+			distance_from_origin += (HALF_CHORD_LENGTH - target_arc_legth) * PIXEL_SIZE
 	else:
 		distance_from_origin += offset_pixels_left * PIXEL_SIZE * FLOOR_GRADIENT
 	

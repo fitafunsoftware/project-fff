@@ -6,9 +6,9 @@ extends Resource
 
 # Global parameters. Set in the appropriate json file.
 static var CAMERA_Z_OFFSET : float = NAN
-static var CURVE_HEIGHT : float = NAN
+static var ARC_HEIGHT : float = NAN
 static var RADIUS : float = NAN
-static var ARC_LENGTH : float = NAN
+static var HALF_CHORD_LENGTH : float = NAN
 
 ## The cutoff distance for the occluder.
 var z_cutoff_distance : float = 0.0
@@ -26,11 +26,11 @@ func to_occlude(global_pos_z : float, camera_global_pos_z : float) -> bool:
 
 ## Set the height of the node and calculate the cutoff distance.
 func set_height(height : float):
-	if [CAMERA_Z_OFFSET, CURVE_HEIGHT, RADIUS, ARC_LENGTH].has(NAN):
+	if [CAMERA_Z_OFFSET, ARC_HEIGHT, RADIUS, HALF_CHORD_LENGTH].has(NAN):
 		CAMERA_Z_OFFSET = GlobalParams.get_global_shader_param("CAMERA_Z_OFFSET")
-		CURVE_HEIGHT = GlobalParams.get_global_shader_param("CURVE_HEIGHT")
+		ARC_HEIGHT = GlobalParams.get_global_shader_param("ARC_HEIGHT")
 		RADIUS = GlobalParams.get_global_shader_param("RADIUS")
-		ARC_LENGTH = GlobalParams.get_global_shader_param("ARC_LENGTH")
+		HALF_CHORD_LENGTH = GlobalParams.get_global_shader_param("HALF_CHORD_LENGTH")
 	
 	z_cutoff_distance = CAMERA_Z_OFFSET + _get_corresponding_z_distance(height)
 
@@ -39,12 +39,12 @@ func set_height(height : float):
 func _get_corresponding_z_distance(height: float) -> float:
 	var length : float = 0.0
 	
-	if height < CURVE_HEIGHT:
+	if height < ARC_HEIGHT:
 		var adjacent : float = RADIUS - height
 		length = sqrt(pow(RADIUS, 2) - pow(adjacent, 2))
 	else:
-		var excess : float = height - CURVE_HEIGHT
-		length = ARC_LENGTH + excess*(RADIUS - CURVE_HEIGHT)/ARC_LENGTH
+		var excess : float = height - ARC_HEIGHT
+		length = HALF_CHORD_LENGTH + excess*(RADIUS - ARC_HEIGHT)/HALF_CHORD_LENGTH
 	
 	return length
 

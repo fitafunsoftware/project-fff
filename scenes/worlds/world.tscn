@@ -29,7 +29,7 @@ shader_parameter/sprite_texture = ExtResource("2_fd3tu")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_1h247"]
 material = SubResource("ShaderMaterial_dluhh")
-size = Vector2(20.48, 56.2721)
+size = Vector2(20.48, 56.2683)
 subdivide_depth = 3601
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fn6na"]

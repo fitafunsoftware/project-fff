@@ -352,23 +352,23 @@ RADIUS={
 "type": "float",
 "value": 0.0
 }
-ARC_HEIGHT={
-"type": "float",
-"value": 0.0
-}
-ARC_LENGTH={
-"type": "float",
-"value": 0.0
-}
 FLOOR_GRADIENT={
 "type": "float",
 "value": 0.0
 }
-CURVE_HEIGHT={
+FLOOR_ANGLE_DEGREES={
 "type": "float",
 "value": 0.0
 }
-FLOOR_ANGLE_DEGREES={
+DISTANCE_TO_CHORD={
+"type": "float",
+"value": 0.0
+}
+HALF_CHORD_LENGTH={
+"type": "float",
+"value": 0.0
+}
+ARC_HEIGHT={
 "type": "float",
 "value": 0.0
 }

@@ -26,16 +26,16 @@ static func get_global_shader_param(param: String) -> Variant:
 ## Calculate [b]and add[/b] the curve constants to the passed in dictionary.
 ## Note that this function [b]directly manipulates[/b] the Dictionary.
 static func append_circle_params(global_shader_params: Dictionary):
-	var curve_height = global_shader_params["CURVE_HEIGHT"]
+	var arc_height = global_shader_params["ARC_HEIGHT"]
 	var floor_angle = deg_to_rad(global_shader_params["FLOOR_ANGLE_DEGREES"])
-	var radius : float = curve_height/(1.0 - cos(floor_angle))
-	var arc_height : float = radius - global_shader_params["CURVE_HEIGHT"]
-	var arc_length : float = sqrt(pow(radius, 2) - pow(arc_height, 2))
+	var radius : float = arc_height/(1.0 - cos(floor_angle))
+	var distance_to_chord : float = radius - arc_height
+	var half_chord_length : float = radius * sin(floor_angle)
 	var floor_gradient :float = tan(floor_angle)
 	
 	global_shader_params["RADIUS"] = radius
-	global_shader_params["ARC_HEIGHT"] = arc_height
-	global_shader_params["ARC_LENGTH"] = arc_length
+	global_shader_params["DISTANCE_TO_CHORD"] = distance_to_chord
+	global_shader_params["HALF_CHORD_LENGTH"] = half_chord_length
 	global_shader_params["FLOOR_GRADIENT"] = floor_gradient
 
 
