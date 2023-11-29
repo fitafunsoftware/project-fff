@@ -304,7 +304,6 @@ global_illumination/sdfgi/probe_ray_count=0
 global_illumination/sdfgi/frames_to_converge=0
 global_illumination/sdfgi/frames_to_update_lights=4
 environment/volumetric_fog/use_filter=0
-environment/defaults/default_clear_color=Color(0.364706, 0.611765, 0.933333, 1)
 mesh_lod/lod_change/threshold_pixels=0.0
 2d/snap/snap_2d_transforms_to_pixel=true
 2d/snap/snap_2d_vertices_to_pixel=true
