@@ -1,7 +1,0 @@
-[submodule "assets/gamecontrollerdb"]
-	path = assets/gamecontrollerdb
-	url = https://github.com/gabomdq/SDL_GameControllerDB.git
-	branch = master
-	ignore = dirty
-	
-
