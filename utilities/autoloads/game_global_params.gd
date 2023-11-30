@@ -20,7 +20,7 @@ var _global_shader_params : Dictionary
 # global shader parameters to the [RenderingServer].
 func _ready():
 	_initialize_params()
-	GlobalParams.append_circle_params(_global_shader_params)
+	GlobalParams.append_curve_params(_global_shader_params)
 	
 	for param in _global_shader_params.keys():
 		RenderingServer.global_shader_parameter_set(param, _global_shader_params[param])

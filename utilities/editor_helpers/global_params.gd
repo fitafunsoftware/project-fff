@@ -25,7 +25,7 @@ static func get_global_shader_param(param: String) -> Variant:
 
 ## Calculate [b]and add[/b] the curve constants to the passed in dictionary.
 ## Note that this function [b]directly manipulates[/b] the Dictionary.
-static func append_circle_params(global_shader_params: Dictionary):
+static func append_curve_params(global_shader_params: Dictionary):
 	var arc_height = global_shader_params["ARC_HEIGHT"]
 	var floor_angle = deg_to_rad(global_shader_params["FLOOR_ANGLE_DEGREES"])
 	var radius : float = arc_height/(1.0 - cos(floor_angle))
@@ -59,6 +59,6 @@ class EditorGlobalParams:
 	static func get_global_shader_param(param: String) -> Variant:
 		var global_shader_params = JSON.parse_string(
 				FileAccess.get_file_as_string("res://global_params/global_shader_params.json"))
-		GlobalParams.append_circle_params(global_shader_params)
+		GlobalParams.append_curve_params(global_shader_params)
 		
 		return global_shader_params[param]
