@@ -2,9 +2,11 @@ extends Node
 ## Autoload designed to add joy mappings when controllers are connected.
 ##
 ## Loads up the SDL_GameControllerDB and adds mappings when a controller 
-## is added.
+## is added. Add the autoload if the core controller mapping is outadated and
+## you just want to update all of them.
 ## 
 ## @tutorial(SDL_GameControllerDB Git Repository): https://github.com/gabomdq/SDL_GameControllerDB
+## @deprecated
 
 ## Path to the gamecontrollerdb.txt file. This is a submodule in the git repo.[br]
 const GAMECONTROLLERDB_PATH : String = "res://assets/gamecontrollerdb/gamecontrollerdb.txt"
