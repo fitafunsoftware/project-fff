@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://clqhyj6p24vuh"]
+[gd_scene load_steps=44 format=3 uid="uid://clqhyj6p24vuh"]
 
 [ext_resource type="Shader" path="res://shaders/transparent_mesh.gdshader" id="1"]
 [ext_resource type="PackedScene" uid="uid://ypwkw5b68kln" path="res://utilities/light/lights.tscn" id="1_04on7"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://bibl3215drlsb" path="res://assets/art/grass/tall_bitmap.png" id="15_pto5b"]
 [ext_resource type="Shader" path="res://shaders/grass.gdshader" id="16_7ywox"]
 [ext_resource type="Script" path="res://utilities/grass/grass_instance_3d.gd" id="17_qwvbc"]
+[ext_resource type="PackedScene" uid="uid://dc27hwodjir5a" path="res://scenes/entities/wolf_depth.tscn" id="19_8iwk6"]
 [ext_resource type="PackedScene" uid="uid://ddqvb0a4lifyo" path="res://utilities/camera/camera_follow_body.tscn" id="20_0bncb"]
 
 [sub_resource type="BoxShape3D" id="5"]
@@ -194,7 +195,7 @@ texture = ExtResource("2_fd3tu")
 subdivisions_per_meter_depth = 64
 
 [node name="Player" type="CharacterBody3D" parent="."]
-collision_mask = 256
+collision_mask = 257
 script = ExtResource("4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
@@ -1854,3 +1855,6 @@ shape = SubResource("BoxShape3D_sek2w")
 [node name="North" type="CollisionShape3D" parent="CameraBounds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23)
 shape = SubResource("BoxShape3D_sek2w")
+
+[node name="WolfDepth" parent="." instance=ExtResource("19_8iwk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1, 0, 6.2)

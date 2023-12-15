@@ -13,7 +13,7 @@ shader = ExtResource("1_rxhna")
 shader_parameter/opacity = 1.0
 shader_parameter/sprite_texture = ExtResource("2_vcnfd")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_25grl"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_e82wr"]
 points = PackedVector3Array(0, 0, 0, 1.58, 0, 0, 1.58, 2.4, 0, 0, 2.4, 0, 0, 0, -6.59439, 1.58, 0, -6.59439)
 
 [node name="Tree" type="Sprite3D"]
@@ -41,7 +41,7 @@ _sprites = [NodePath("..")]
 
 [node name="@CollisionShape3D@24656" type="CollisionShape3D" parent="CurvedEntityDetector"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.79, 0, 0)
-shape = SubResource("ConvexPolygonShape3D_25grl")
+shape = SubResource("ConvexPolygonShape3D_e82wr")
 
 [connection signal="entity_detected" from="CurvedEntityDetector" to="." method="_on_entity_detected"]
 [connection signal="entity_lost" from="CurvedEntityDetector" to="." method="_on_entity_lost"]
