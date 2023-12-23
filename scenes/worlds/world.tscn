@@ -1,11 +1,12 @@
-[gd_scene load_steps=44 format=3 uid="uid://clqhyj6p24vuh"]
+[gd_scene load_steps=45 format=3 uid="uid://clqhyj6p24vuh"]
 
-[ext_resource type="Shader" path="res://shaders/transparent_mesh.gdshader" id="1"]
+[ext_resource type="Shader" path="res://shaders/transparent_mesh_unshaded.gdshader" id="1"]
 [ext_resource type="PackedScene" uid="uid://ypwkw5b68kln" path="res://utilities/light/lights.tscn" id="1_04on7"]
 [ext_resource type="Shader" path="res://shaders/opaque_mesh.gdshader" id="2"]
 [ext_resource type="Texture2D" uid="uid://b3o0nd4un4axh" path="res://assets/art/grass/ground.png" id="2_fd3tu"]
 [ext_resource type="Script" path="res://utilities/sprite_3d/horizontal_sprite_3d.gd" id="3_xqkqx"]
 [ext_resource type="Script" path="res://scripts/camera_body.gd" id="4"]
+[ext_resource type="Shader" path="res://shaders/transparent_mesh_shaded.gdshader" id="6_vdshi"]
 [ext_resource type="Texture2D" uid="uid://cum3245fwrm1q" path="res://assets/art/player/base.png" id="7_mvygr"]
 [ext_resource type="Script" path="res://utilities/sprite_3d/vertical_sprite_3d.gd" id="10_enjwq"]
 [ext_resource type="Texture2D" uid="uid://c7yoyyn7h1gel" path="res://assets/art/shadow/small_shadow.png" id="11_v21hf"]
@@ -36,9 +37,9 @@ subdivide_depth = 3601
 [sub_resource type="BoxShape3D" id="BoxShape3D_fn6na"]
 size = Vector3(0.2, 0.8, 0.2)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lga2g"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qvby3"]
 render_priority = 0
-shader = ExtResource("1")
+shader = ExtResource("6_vdshi")
 shader_parameter/opacity = 1.0
 shader_parameter/sprite_texture = ExtResource("7_mvygr")
 
@@ -203,9 +204,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
 shape = SubResource("BoxShape3D_fn6na")
 
 [node name="Sprite" type="Sprite3D" parent="Player"]
-material_override = SubResource("ShaderMaterial_lga2g")
+material_override = SubResource("ShaderMaterial_qvby3")
 cast_shadow = 0
 offset = Vector2(0, 48)
+shaded = true
 texture = ExtResource("7_mvygr")
 hframes = 6
 vframes = 3

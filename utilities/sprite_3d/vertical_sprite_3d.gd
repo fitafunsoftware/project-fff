@@ -40,7 +40,10 @@ func set_shader_opacity(opacity: float):
 
 func _apply_material_override():
 	var shader_material = ShaderMaterial.new()
-	shader_material.shader = load("res://shaders/transparent_mesh.gdshader")
+	if shaded:
+		shader_material.shader = load("res://shaders/transparent_mesh_shaded.gdshader")
+	else:
+		shader_material.shader = load("res://shaders/transparent_mesh_unshaded.gdshader")
 	
 	material_override = shader_material
 

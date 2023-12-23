@@ -4,10 +4,9 @@
 
 [node name="GlobalShadowLight" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-light_energy = 0.8
+light_energy = 0.7
 light_indirect_energy = 0.0
 light_bake_mode = 0
-light_cull_mask = 4293918721
 shadow_enabled = true
 shadow_blur = 0.0
 directional_shadow_mode = 0
@@ -16,15 +15,10 @@ directional_shadow_max_distance = 8.0
 directional_shadow_pancake_size = 0.0
 sky_mode = 1
 
-[node name="GlobalFrontLight" type="DirectionalLight3D" parent="."]
-light_energy = 0.2
+[node name="ShadowlessLight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+visible = false
+light_energy = 0.7
 light_indirect_energy = 0.0
-light_bake_mode = 0
-light_cull_mask = 4293918721
-sky_mode = 1
-
-[node name="UnshadedFrontLight" type="DirectionalLight3D" parent="."]
-light_indirect_energy = 0.0
-light_bake_mode = 0
-light_cull_mask = 4293918722
+directional_shadow_mode = 0
 sky_mode = 1
