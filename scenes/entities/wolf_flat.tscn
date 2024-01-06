@@ -6,10 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://cb04st06nawde" path="res://assets/art/shadow/shadow.png" id="4_6psdm"]
 [ext_resource type="Script" path="res://utilities/shadow/shadow.gd" id="5_k18ki"]
 
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t5dr3"]
 render_priority = 0
 shader = ExtResource("1_vmjis")
+shader_parameter/opacity = 1.0
 shader_parameter/sprite_texture = ExtResource("2_ba56n")
 
 [node name="WolfFlat" type="Sprite3D"]
