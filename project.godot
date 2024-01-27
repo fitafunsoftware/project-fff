@@ -38,7 +38,7 @@ window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/aspect="ignore"
 window/dpi/allow_hidpi=false
-window/vsync/vsync_mode=2
+window/vsync/vsync_mode=0
 
 [editor_plugins]
 
@@ -276,9 +276,10 @@ common/enable_pause_aware_picking=true
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-renderer/rendering_method="mobile"
+renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true
-lights_and_shadows/directional_shadow/size=2048
+lights_and_shadows/directional_shadow/size=1024
+lights_and_shadows/directional_shadow/size.mobile=1024
 lights_and_shadows/directional_shadow/soft_shadow_filter_quality=0
 lights_and_shadows/positional_shadow/soft_shadow_filter_quality=0
 2d/shadow_atlas/size=1024
@@ -369,4 +370,8 @@ HALF_CHORD_LENGTH={
 ARC_HEIGHT={
 "type": "float",
 "value": 0.0
+}
+SHADOW_ATTENUATION={
+"type": "float",
+"value": 0.3
 }

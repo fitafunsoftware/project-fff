@@ -30,5 +30,5 @@ void fragment() {
 }
 
 void light() {
-	DIFFUSE_LIGHT = get_toon_diffuse(1.0, LIGHT_COLOR);
+	DIFFUSE_LIGHT += get_toon_diffuse(1.0, LIGHT_COLOR);
 }

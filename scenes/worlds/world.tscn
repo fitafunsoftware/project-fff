@@ -214,7 +214,7 @@ vframes = 3
 script = ExtResource("10_enjwq")
 
 [node name="Shadow3D" type="Sprite3D" parent="Player/Sprite"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03, 0.42, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03, 0.3, 0)
 cast_shadow = 3
 axis = 1
 double_sided = false
