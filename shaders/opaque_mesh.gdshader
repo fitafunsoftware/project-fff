@@ -1,7 +1,8 @@
 shader_type spatial;
-render_mode blend_mix,diffuse_toon,specular_disabled,world_vertex_coords;
+render_mode blend_mix,specular_disabled,world_vertex_coords;
 
 #include "includes/curved_world.gdshaderinc"
+#include "includes/toon_diffuse.gdshaderinc"
 
 uniform sampler2D sprite_texture : source_color, filter_nearest;
 
@@ -17,4 +18,8 @@ void fragment() {
 	}
 	vec4 color = texture(sprite_texture,UV);
 	ALBEDO = color.rgb;
+}
+
+void light() {
+	DIFFUSE_LIGHT = get_toon_diffuse(ATTENUATION, LIGHT_COLOR);
 }
