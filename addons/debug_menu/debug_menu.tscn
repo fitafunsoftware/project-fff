@@ -6,7 +6,6 @@
 bg_color = Color(0, 0, 0, 0.25098)
 
 [node name="DebugMenu" type="Control" node_paths=PackedStringArray("fps", "frame_time", "frame_number", "frame_history_total_avg", "frame_history_total_min", "frame_history_total_max", "frame_history_total_last", "frame_history_cpu_avg", "frame_history_cpu_min", "frame_history_cpu_max", "frame_history_cpu_last", "frame_history_gpu_avg", "frame_history_gpu_min", "frame_history_gpu_max", "frame_history_gpu_last", "fps_graph", "total_graph", "cpu_graph", "gpu_graph", "information", "settings")]
-custom_minimum_size = Vector2(400, 400)
 layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
@@ -17,7 +16,8 @@ offset_right = -16.0
 offset_bottom = 408.0
 grow_horizontal = 0
 size_flags_horizontal = 8
-size_flags_vertical = 4
+size_flags_vertical = 0
+mouse_filter = 2
 script = ExtResource("1_p440y")
 fps = NodePath("VBoxContainer/FPS")
 frame_time = NodePath("VBoxContainer/FrameTime")

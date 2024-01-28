@@ -226,6 +226,9 @@ func update_scale() -> void:
 			var new_font_size : int = snappedi(font_size*new_scale, default_font_size)
 			new_font_size = maxi(new_font_size, default_font_size)
 			current.add_theme_font_size_override("font_size", new_font_size)
+	
+	size = round(size * new_scale)
+	set_anchors_and_offsets_preset(Control.PRESET_TOP_RIGHT, Control.PRESET_MODE_KEEP_SIZE, 12)
 
 
 ## Update hardware/software information label (this never changes at runtime).
