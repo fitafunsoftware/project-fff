@@ -12,7 +12,6 @@ config_version=5
 
 config/name="project-fff"
 run/main_scene="res://scenes/game.tscn"
-config/quit_on_go_back=false
 config/features=PackedStringArray("4.2")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
@@ -39,6 +38,9 @@ window/size/window_height_override=720
 window/stretch/aspect="ignore"
 window/dpi/allow_hidpi=false
 window/vsync/vsync_mode=0
+window/size/initial_position_type.mobile=1
+window/size/borderless.mobile=true
+window/size/mode.mobile=4
 
 [editor_plugins]
 
@@ -258,11 +260,6 @@ ui_skip={
 ]
 }
 
-[layer_names]
-
-3d_render/layer_1="Shaded"
-3d_render/layer_2="Unshaded"
-
 [logging]
 
 file_logging/enable_file_logging.pc=false
@@ -278,11 +275,11 @@ common/enable_pause_aware_picking=true
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true
-lights_and_shadows/directional_shadow/size=1024
-lights_and_shadows/directional_shadow/size.mobile=1024
+lights_and_shadows/directional_shadow/size=2048
 lights_and_shadows/directional_shadow/soft_shadow_filter_quality=0
 lights_and_shadows/positional_shadow/soft_shadow_filter_quality=0
 2d/shadow_atlas/size=1024
+shader_compiler/shader_cache/strip_debug=true
 global_illumination/gi/use_half_resolution=true
 shading/overrides/force_vertex_shading.mobile=false
 shading/overrides/force_lambert_over_burley=true
