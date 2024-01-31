@@ -204,24 +204,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
 shape = SubResource("BoxShape3D_fn6na")
 
 [node name="Sprite" type="Sprite3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48, 0)
 material_override = SubResource("ShaderMaterial_qvby3")
 cast_shadow = 0
-offset = Vector2(0, 48)
 shaded = true
 texture = ExtResource("7_mvygr")
 hframes = 6
 vframes = 3
 script = ExtResource("10_enjwq")
-
-[node name="Shadow3D" type="Sprite3D" parent="Player/Sprite"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03, 0.3, 0)
-cast_shadow = 3
-axis = 1
-double_sided = false
-alpha_cut = 1
-texture_filter = 0
-texture = ExtResource("11_v21hf")
-script = ExtResource("12_w2dy5")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
 libraries = {
@@ -235,6 +225,16 @@ monitoring = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.025)
 shape = SubResource("BoxShape3D_5kcq1")
+
+[node name="Shadow3D" type="Sprite3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03, 0.2, 0)
+cast_shadow = 3
+axis = 1
+double_sided = false
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("11_v21hf")
+script = ExtResource("12_w2dy5")
 
 [node name="Trees" type="Node3D" parent="."]
 

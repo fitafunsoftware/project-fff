@@ -11,7 +11,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @onready var animation_player := $AnimationPlayer
 @onready var sprite := $Sprite
-@onready var shadow := $Sprite/Shadow3D
+@onready var shadow := $Shadow3D
 
 
 func _ready():

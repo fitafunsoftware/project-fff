@@ -13,6 +13,10 @@ void vertex() {
 	float y_offset = get_curved_y(VERTEX.z, CAMERA_POSITION_WORLD.z);
 	vec3 final_position = VERTEX + vec3(0.0, y_offset, 0.0);
 	POSITION = PROJECTION_MATRIX * VIEW_MATRIX * vec4(final_position, 1.0);
+	
+	// This is a hack. Please ignore.
+	if (NODE_POSITION_WORLD.y > VERTEX.y)
+		VERTEX.y = NODE_POSITION_WORLD.y;
 }
 
 void fragment() {
