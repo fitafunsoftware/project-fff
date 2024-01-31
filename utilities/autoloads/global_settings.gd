@@ -144,22 +144,12 @@ func _load_settings_from_file():
 	if FileAccess.file_exists(SETTINGS_JSON):
 		options = JSON.parse_string(FileAccess.get_file_as_string(SETTINGS_JSON))
 	
-	aspect_ratio = _get_from_options(options, "aspect_ratio", aspect_ratio)
-	fullscreen = _get_from_options(options, "fullscreen", fullscreen)
-	scaling = _get_from_options(options, "scaling", scaling)
-	borderless = _get_from_options(options, "borderless", borderless)
-	vsync = _get_from_options(options, "vsync", vsync)
-	fps_limit = _get_from_options(options, "fps_limit", fps_limit)
-
-
-# Helper function in case I need to change the behavior for setting all the 
-# vars from the Dictionary.
-func _get_from_options(options: Dictionary, key: String, default: Variant) -> Variant:
-	var value = options.get(key)
-	if typeof(value) == typeof(default):
-		return value
-	
-	return default
+	aspect_ratio = options.get("aspect_ratio", aspect_ratio)
+	fullscreen = options.get("fullscreen", fullscreen)
+	scaling = options.get("scaling", scaling)
+	borderless = options.get("borderless", borderless)
+	vsync = options.get("vsync", vsync)
+	fps_limit = options.get("fps_limit", fps_limit)
 
 
 func _apply_settings():
