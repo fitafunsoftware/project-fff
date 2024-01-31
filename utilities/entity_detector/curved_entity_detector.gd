@@ -3,8 +3,8 @@ class_name CurvedEntityDetector
 extends Area3D
 ## Detector for entities that follows the curved shader.
 ##
-## Detect whether an entity appears behind this one.
-## @experimental
+## Detect whether an entity appears behind this one. Uses the areas of the sprites
+## to generate the area to detect entities.
 
 ## Signal when an entity has been detected. Only emitted for the first entity
 ## detected.
@@ -13,17 +13,23 @@ signal entity_detected
 signal entity_lost
 
 # Global params. Set them in the proper json.
+# Used to calculate the floor_vector.
 static var DISTANCE_TO_CHORD : float = NAN
 static var HALF_CHORD_LENGTH : float = NAN
 ## The gradient of the floor for the curved world shader.
 static var floor_vector : Vector2 = Vector2.ZERO
+
+@export var refresh : bool = false :
+	set(value):
+		if Engine.is_editor_hint() and is_node_ready():
+			_generate_collision_shapes()
 
 ## The sprites to be used as basis for the area.
 @export var _sprites : Array[VerticalSprite3D] = [] :
 	set(value):
 		_sprites = value
 		if Engine.is_editor_hint() and is_node_ready():
-			_generate_areas()
+			_generate_collision_shapes()
 
 
 func _init():
@@ -46,39 +52,48 @@ func _signal_entity_status(_body: Node3D):
 		entity_lost.emit()
 
 
-# Create the areas based on the sprites in the array.
-func _generate_areas():
-	if floor_vector.is_equal_approx(Vector2.ZERO):
+# Create the collision shapes based on the sprites in the array.
+func _generate_collision_shapes():
+	if [DISTANCE_TO_CHORD, HALF_CHORD_LENGTH].has(NAN):
 		DISTANCE_TO_CHORD = GlobalParams.get_global_shader_param("DISTANCE_TO_CHORD")
 		HALF_CHORD_LENGTH = GlobalParams.get_global_shader_param("HALF_CHORD_LENGTH")
-		floor_vector = Vector2(DISTANCE_TO_CHORD, -HALF_CHORD_LENGTH).normalized()
+		floor_vector = Vector2(DISTANCE_TO_CHORD, HALF_CHORD_LENGTH).normalized()
 	
 	for child in get_children():
 		child.queue_free()
 	
 	for sprite in _sprites:
-		var sprite_size : Vector2 = sprite.texture.get_size() * sprite.pixel_size
-		var origin_offset : Vector2 = -sprite.offset * sprite.pixel_size
-		origin_offset += sprite_size/2.0 if sprite.centered else Vector2.ZERO
-		var shape_origin : Vector3 = sprite.global_position - Vector3(origin_offset.x, origin_offset.y, 0.0)
-		
-		var from_top = Vector2(0.0, sprite_size.y)
-		var line_intersect = Geometry2D.line_intersects_line(
-			Vector2.ZERO, Vector2.RIGHT,
-			from_top, floor_vector
-		)
-		if not line_intersect:
+		if not sprite:
 			continue
-		var z_intersect : float = -line_intersect.x
+		var sprite_area : Array = sprite.get_sprite_area()
+		var shape_origin : Vector3 = sprite.global_position
 		
-		var points = PackedVector3Array([
-			Vector3.ZERO,
-			Vector3(sprite_size.x, 0.0, 0.0),
-			Vector3(sprite_size.x, sprite_size.y, 0.0),
-			Vector3(0.0, sprite_size.y, 0.0),
-			Vector3(0.0, 0.0, z_intersect),
-			Vector3(sprite_size.x, 0.0, z_intersect)
-		])
+		var highest_y : float = sprite_area.reduce(
+				func cmp_y(accum, point): return accum if accum > point.y else point.y,
+				sprite_area[0].y
+				)
+		
+		var convex_polygons : Array = Geometry2D.decompose_polygon_in_convex(sprite_area)
+		for polygon in convex_polygons:
+			_generate_collision_shape(polygon, shape_origin, highest_y)
+
+
+# Generate the collision shape based on the values passed in.
+func _generate_collision_shape(polygon: Array, shape_origin: Vector3, highest_y: float):
+		var points : Array = Array()
+		
+		points += polygon.map(
+			func to_vector3(point):
+				if point.y < highest_y:
+					var line_intersect = Geometry2D.line_intersects_line(
+						Vector2(0, point.y), Vector2.RIGHT,
+						Vector2(0, highest_y), floor_vector
+					)
+					if line_intersect:
+						points.append(Vector3(point.x, point.y, line_intersect.x))
+				
+				return Vector3(point.x, point.y, 0.0)
+		)
 		
 		var collision_shape := CollisionShape3D.new()
 		var convex_polygon := ConvexPolygonShape3D.new()

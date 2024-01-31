@@ -31,6 +31,34 @@ func _process(_delta):
 		_occlude()
 
 
+## Get the area occupied by the sprite. Defaults to the texture rect if there is
+## no defined area.
+func get_sprite_area() -> PackedVector2Array:
+	var texture_size : Vector2 = texture.get_size()
+	var offset_transform : Transform2D = Transform2D(0, Vector2.ZERO)
+	offset_transform = offset_transform.translated(-offset)
+	offset_transform = offset_transform.translated(float(centered)*texture_size/2)
+	var array : Array = [
+		Vector2(0, 0),
+		Vector2(texture_size.x, 0),
+		texture_size,
+		Vector2(0, texture_size.y)
+	]
+	
+	if texture is ViewportTexture:
+		var viewport = find_child("SpriteViewport")
+		if viewport and viewport is SpriteViewport:
+			var sprite_array : Array = viewport.get_sprite_area()
+			if sprite_array.size() > 0:
+				array = sprite_array
+	
+	var offset_array : Array = array.map(func transform(vector): return vector*offset_transform)
+	var scaled_array : Array = offset_array.map(func scale(vector): return vector*pixel_size)
+	var packed_array : PackedVector2Array = PackedVector2Array(scaled_array)
+	
+	return packed_array
+
+
 ## Sets the opacity of the sprite directly through the shader itself. Don't call
 ## often as it is not performant to pipe data to the shaders.
 func set_shader_opacity(opacity: float):
@@ -44,6 +72,7 @@ func _apply_material_override():
 		shader_material.shader = load("res://shaders/transparent_mesh_shaded.gdshader")
 	else:
 		shader_material.shader = load("res://shaders/transparent_mesh_unshaded.gdshader")
+	shader_material.resource_local_to_scene = true
 	
 	material_override = shader_material
 
@@ -52,7 +81,12 @@ func _apply_texture():
 	var shader_material : ShaderMaterial = material_override
 	shader_material.set_shader_parameter("sprite_texture", texture)
 	
-	_occluder.set_height(texture.get_size().y * pixel_size)
+	if texture is ViewportTexture:
+		var viewport = find_child("SpriteViewport")
+		if viewport and viewport is SpriteViewport:
+			_occluder.set_height(viewport.size.y * pixel_size)
+	else:
+		_occluder.set_height(texture.get_size().y * pixel_size)
 
 
 func _occlude():
@@ -72,3 +106,4 @@ func _on_entity_detected():
 
 func _on_entity_lost():
 	set_shader_opacity(1.0)
+

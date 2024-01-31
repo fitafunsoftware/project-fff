@@ -1,5 +1,5 @@
 @tool
-@icon("res://utilities/sprite_3d/Sprite3D.svg")
+@icon("Sprite3D.svg")
 class_name HorizontalSprite3D
 extends MeshInstance3D
 ## Base class for horizontal 3D sprites.
