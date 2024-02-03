@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dulrx0vcr1lr0"]
 
 [ext_resource type="PackedScene" uid="uid://vmu53hs5q5m7" path="res://utilities/splash_screen/splash_screen.tscn" id="1_hjds4"]
-[ext_resource type="Texture2D" uid="uid://dgpsi2jkyjnac" path="res://utilities/splash_screen/logos/ffs_logo.png" id="2_jfsja"]
+[ext_resource type="Texture2D" uid="uid://dgpsi2jkyjnac" path="res://utilities/splash_screen/logos/fita_fun_software/ffs_logo.png" id="2_jfsja"]
 
 [node name="FitaSplash" instance=ExtResource("1_hjds4")]
 

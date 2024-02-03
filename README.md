@@ -1,6 +1,6 @@
 # Project FFF
 <p align="center">
-    <img src="assets/art/logos/project-fff-icon.png" alt="Project FFF Placeholder Logo"> 
+	<img src="assets/art/logos/project-fff-icon.png" alt="Project FFF Placeholder Logo"> 
 </p>
 
 ## 2.5D Action RPG
@@ -39,4 +39,4 @@ straight from their source as those would be the most up to date versions of the
 - [TODO_Manager](https://github.com/OrigamiDev-Pete/TODO_Manager) by [OrigamiDev-Pete](https://github.com/OrigamiDev-Pete)
 - [debug-menu](https://github.com/godot-extended-libraries/godot-debug-menu) by [Hugo Locurcio](https://twitter.com/hugolocurcio)
 - [LanaPixel font](https://opengameart.org/content/lanapixel-localization-friendly-pixel-font) by [eishiya](https://mastodon.art/@eishiya)
-- The other assets besides the Godot logos were made for this repository and fall under the same [license](LICENSE.md) as this repository.
+- The other assets besides the [logos](utilities/splash_screen/logos/) were made for this repository and fall under the same [license](LICENSE.md) as this repository.
