@@ -26,7 +26,6 @@ driver/driver=""
 
 ResourceQueue="*res://utilities/autoloads/resource_queue/resource_queue.gd"
 GameGlobalParams="*res://utilities/autoloads/global_paramaters/game_global_params.gd"
-DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
 GlobalSettings="*res://utilities/autoloads/global_settings/global_settings.gd"
 
 [display]
