@@ -205,12 +205,12 @@ func _set_fps_limit():
 
 # Check to see if you can save an override file for Project Settings.
 func _is_override_saveable() -> bool:
-	var file = FileAccess.open("res://override.cfg", FileAccess.WRITE)
-	if file:
-		file.close()
-		return true
-	 
-	return false
+	var tags = ["web", "mobile", "debug"]
+	for tag in tags:
+		if OS.has_feature(tag):
+			return false
+	
+	return true
 
 
 func _save_settings_to_json():
