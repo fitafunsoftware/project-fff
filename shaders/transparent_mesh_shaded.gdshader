@@ -4,7 +4,7 @@ render_mode blend_mix,specular_disabled,world_vertex_coords;
 #include "includes/curved_world.gdshaderinc"
 #include "includes/distance_fade.gdshaderinc"
 #include "includes/distance_dither.gdshaderinc"
-#include "includes/toon_diffuse.gdshaderinc"
+#include "includes/sprite_diffuse.gdshaderinc"
 
 uniform sampler2D sprite_texture : source_color, filter_nearest, repeat_disable;
 uniform float opacity : hint_range(0.0, 1.0) = 1.0;
@@ -34,5 +34,5 @@ void fragment() {
 }
 
 void light() {
-	DIFFUSE_LIGHT += get_toon_diffuse(ATTENUATION, LIGHT_COLOR);
+	DIFFUSE_LIGHT += get_sprite_diffuse(ATTENUATION, LIGHT_COLOR);
 }
