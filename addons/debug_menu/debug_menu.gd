@@ -146,7 +146,12 @@ func update_settings_label() -> void:
 		settings.text += "Project Version: %s\n" % ProjectSettings.get_setting("application/config/version")
 
 	var rendering_method_string := ""
-	match str(ProjectSettings.get_setting("rendering/renderer/rendering_method")):
+	var setting_to_get := "rendering/renderer/rendering_method"
+	if OS.has_feature("mobile"):
+		setting_to_get += ".mobile"
+	if OS.has_feature("web"):
+		setting_to_get += ".web"
+	match str(ProjectSettings.get_setting(setting_to_get)):
 		"forward_plus":
 			rendering_method_string = "Forward+"
 		"mobile":
@@ -262,15 +267,13 @@ func update_information_label() -> void:
 		release_string = "release"
 
 	var graphics_api_string := ""
-	if str(ProjectSettings.get_setting("rendering/renderer/rendering_method")) != "gl_compatibility":
+	var setting_to_get := "rendering/renderer/rendering_method"
+	if OS.has_feature("mobile"):
+		setting_to_get += ".mobile"
+	if OS.has_feature("web"):
+		setting_to_get += ".web"
+	if str(ProjectSettings.get_setting(setting_to_get)) != "gl_compatibility":
 		graphics_api_string = "Vulkan"
-	else:
-		if OS.has_feature("web"):
-			graphics_api_string = "WebGL"
-		elif OS.has_feature("mobile"):
-			graphics_api_string = "OpenGL ES"
-		else:
-			graphics_api_string = "OpenGL"
 
 	information.text = (
 			"%s, %d threads\n" % [OS.get_processor_name().replace("(R)", "").replace("(TM)", ""), OS.get_processor_count()]
