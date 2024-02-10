@@ -6,6 +6,7 @@ extends Control
 
 func _ready():
 	_set_enabled()
+	GlobalSettings.window_properties_changed.connect(_set_enabled)
 
 
 func _gui_input(event):

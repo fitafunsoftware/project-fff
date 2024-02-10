@@ -217,6 +217,9 @@ func update_settings_label() -> void:
 
 func update_scale() -> void:
 	var viewport_size : Vector2i = get_viewport().size
+	if viewport_size == Vector2i.ZERO:
+		return
+	
 	var possible_scale : Vector2 = Vector2(viewport_size) / size
 	var new_scale : float = minf(possible_scale.x, possible_scale.y)
 	var descendents : Array = get_children().duplicate()

@@ -119,11 +119,16 @@ func get_screen_size() -> Vector2i:
 func set_window_size(size: Vector2i):
 	if fullscreen:
 		return
-	if _window.size == size:
-		return
+	
+	var center_position = _window.position + _window.size/2
 	
 	_window.size = size
-	_window.move_to_center()
+	if size >= get_screen_size() and borderless:
+		_window.move_to_center()
+		# Hack to make sure the window does not go into fullscreen mode.
+		_window.position += Vector2i(0, -1)
+	else:
+		_window.position = center_position - size/2
 
 
 ## Save settings to a JSON and save override if possible.
@@ -169,15 +174,13 @@ func _set_window_properties():
 
 
 func _set_window_mode():
-	var new_mode
+	var new_mode = Window.MODE_WINDOWED
 	
 	if fullscreen:
 		if borderless:
 			new_mode = Window.MODE_EXCLUSIVE_FULLSCREEN
 		else:
 			new_mode = Window.MODE_FULLSCREEN
-	else:
-		new_mode = Window.MODE_WINDOWED
 	
 	_window.mode = new_mode
 
