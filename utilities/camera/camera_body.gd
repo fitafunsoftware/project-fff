@@ -65,8 +65,8 @@ static var RADIUS : float = NAN
 # Load globals and prepare the body.
 func _ready():
 	super()
-	if [PIXEL_SIZE, FLOOR_GRADIENT, CAMERA_Y_OFFSET, CAMERA_Z_OFFSET,
-			ARC_HEIGHT, HALF_CHORD_LENGTH, FLOOR_GRADIENT, RADIUS].has(NAN):
+	if [CAMERA_Y_OFFSET, CAMERA_Z_OFFSET, ARC_HEIGHT,
+			HALF_CHORD_LENGTH, RADIUS].has(NAN):
 		CAMERA_Y_OFFSET = GlobalParams.get_global_shader_param("CAMERA_Y_OFFSET")
 		CAMERA_Z_OFFSET = GlobalParams.get_global_shader_param("CAMERA_Z_OFFSET")
 		ARC_HEIGHT = GlobalParams.get_global_shader_param("ARC_HEIGHT")
