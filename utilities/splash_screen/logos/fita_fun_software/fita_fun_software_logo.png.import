@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgpsi2jkyjnac"
-path="res://.godot/imported/ffs_logo.png-99f289c0ebb683cb1a0f827f83d79fec.ctex"
+uid="uid://ib3tqwh3lhap"
+path="res://.godot/imported/fita_fun_software_logo.png-05f5f567332dd110f20ce8504919062c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://utilities/splash_screen/logos/fita_fun_software/ffs_logo.png"
-dest_files=["res://.godot/imported/ffs_logo.png-99f289c0ebb683cb1a0f827f83d79fec.ctex"]
+source_file="res://utilities/splash_screen/logos/fita_fun_software/fita_fun_software_logo.png"
+dest_files=["res://.godot/imported/fita_fun_software_logo.png-05f5f567332dd110f20ce8504919062c.ctex"]
 
 [params]
 
