@@ -6,6 +6,9 @@ extends Node3D
 ## Takes a grass texture and creates a bunch of grass meshes based on a given
 ## grass map. Toggle the generate grass boolean to regenerate the grass.
 
+## The shader used for grass meshes.
+const GRASS_SHADER : Shader = preload("res://shaders/grass.gdshader")
+
 # Global parameters. Set in the appropriate jsons.
 static var PIXEL_SIZE : float = NAN
 static var FLOOR_GRADIENT : float = NAN
@@ -90,7 +93,7 @@ func _create_mesh():
 		return
 	
 	var shader_material := ShaderMaterial.new()
-	shader_material.shader = load("res://shaders/grass.gdshader")
+	shader_material.shader = GRASS_SHADER
 	shader_material.set_shader_parameter("sprite_texture", grass_texture)
 	shader_material.set_shader_parameter("columns", float(_columns))
 	shader_material.set_shader_parameter("rows", float(_rows))
