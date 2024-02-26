@@ -11,7 +11,8 @@ var loading_scene : bool
 
 
 func _ready():
-	get_viewport().queue_scene(next_scene)
+	if not loading_scene:
+		get_viewport().queue_scene(next_scene)
 	pressed.connect(_change_scene)
 
 
