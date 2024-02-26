@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://blnfliijmyoe2"]
+
+[ext_resource type="Script" path="res://utilities/screens/menu_scene/menu_option_button.gd" id="1_qbvvr"]
+
+[node name="MenuOptionButton" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_font_sizes/font_size = 33
+action_mode = 0
+text = "Test"
+script = ExtResource("1_qbvvr")

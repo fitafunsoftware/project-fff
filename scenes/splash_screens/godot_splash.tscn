@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://8xofp66vhaeu"]
 
-[ext_resource type="PackedScene" uid="uid://y8xyerc2baaf" path="res://utilities/splash_screen/godot_splash.tscn" id="1_80hmq"]
+[ext_resource type="PackedScene" uid="uid://y8xyerc2baaf" path="res://utilities/screens/splash_screen/godot_splash.tscn" id="1_80hmq"]
 
 [node name="GodotSplash" instance=ExtResource("1_80hmq")]
 next_scene = "res://scenes/splash_screens/fita_fun_software_splash.tscn"

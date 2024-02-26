@@ -1,17 +1,17 @@
 [gd_scene load_steps=13 format=3 uid="uid://bg6n0slpar7eg"]
 
 [ext_resource type="Shader" path="res://shaders/transparent_mesh_unshaded.gdshader" id="1_rxhna"]
-[ext_resource type="Script" path="res://utilities/sprite_3d/sprite_viewport/sprite_viewport.gd" id="3_mud6f"]
-[ext_resource type="Script" path="res://utilities/sprite_3d/vertical_sprite_3d.gd" id="3_wcy8c"]
+[ext_resource type="Script" path="res://utilities/entity/sprite_3d/sprite_viewport/sprite_viewport.gd" id="3_mud6f"]
+[ext_resource type="Script" path="res://utilities/entity/sprite_3d/vertical_sprite_3d.gd" id="3_wcy8c"]
 [ext_resource type="Texture2D" uid="uid://cb04st06nawde" path="res://assets/art/shadow/shadow.png" id="4_2jx2n"]
 [ext_resource type="PackedScene" uid="uid://cs5vem3cobdyo" path="res://scenes/sprites/tree_sprite.tscn" id="4_4qkm2"]
-[ext_resource type="Script" path="res://utilities/shadow/shadow.gd" id="5_mldb1"]
-[ext_resource type="Script" path="res://utilities/entity_detector/curved_entity_detector.gd" id="6_6rk15"]
+[ext_resource type="Script" path="res://utilities/entity/shadow/shadow.gd" id="5_mldb1"]
+[ext_resource type="Script" path="res://utilities/entity/entity_detector/curved_entity_detector.gd" id="6_6rk15"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_562ok"]
 viewport_path = NodePath("VerticalSprite3D/SpriteViewport")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5v37i"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_porlx"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("1_rxhna")
@@ -30,7 +30,7 @@ points = PackedVector3Array(0.11, 0, -6.59395, 0.11, 0.8, -4.39596, -0.11, 0.8, 
 [node name="Tree" type="StaticBody3D"]
 
 [node name="VerticalSprite3D" type="Sprite3D" parent="."]
-material_override = SubResource("ShaderMaterial_5v37i")
+material_override = SubResource("ShaderMaterial_porlx")
 cast_shadow = 0
 offset = Vector2(0, 120)
 texture = SubResource("ViewportTexture_562ok")
@@ -41,7 +41,6 @@ transparent_bg = true
 canvas_item_default_texture_filter = 0
 size = Vector2i(140, 240)
 script = ExtResource("3_mud6f")
-calculate_size = null
 
 [node name="TreeSprite" parent="VerticalSprite3D/SpriteViewport" instance=ExtResource("4_4qkm2")]
 

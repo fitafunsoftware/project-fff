@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://hntfci47pp7m"]
 
-[ext_resource type="PackedScene" uid="uid://cn2xh132ksg" path="res://utilities/exit_scene/exit_scene.tscn" id="1_fo76u"]
+[ext_resource type="PackedScene" uid="uid://cn2xh132ksg" path="res://utilities/screens/exit_scene/exit_scene.tscn" id="1_fo76u"]
 
 [node name="exit_scene" instance=ExtResource("1_fo76u")]
 starting_scene = "res://scenes/splash_screens/godot_splash.tscn"

@@ -54,7 +54,7 @@ import/fbx/enabled=false
 
 [gui]
 
-theme/custom="res://utilities/themes/pixel_theme.tres"
+theme/custom="res://utilities/resources/themes/pixel_theme.tres"
 theme/default_font_antialiasing=0
 theme/default_font_hinting=0
 theme/default_font_subpixel_positioning=0
@@ -344,7 +344,7 @@ mesh_lod/lod_change/threshold_pixels=0.0
 2d/snap/snap_2d_vertices_to_pixel=true
 lights_and_shadows/positional_shadow/atlas_size=1024
 lights_and_shadows/positional_shadow/atlas_size.mobile=1024
-environment/defaults/default_environment="res://utilities/environments/default_environment.tres"
+environment/defaults/default_environment="res://utilities/resources/environments/default_environment.tres"
 2d/snapping/use_gpu_pixel_snap=true
 textures/vram_compression/import_s3tc=true
 textures/vram_compression/import_etc2=true

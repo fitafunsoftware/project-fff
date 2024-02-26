@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cvrdg255qwqur"]
 
-[ext_resource type="PackedScene" uid="uid://dulrx0vcr1lr0" path="res://utilities/splash_screen/fita_splash.tscn" id="1_f51g4"]
+[ext_resource type="PackedScene" uid="uid://dulrx0vcr1lr0" path="res://utilities/screens/splash_screen/fita_splash.tscn" id="1_f51g4"]
 
 [node name="FitaSplash" instance=ExtResource("1_f51g4")]
 next_scene = "res://scenes/menus/main_menu.tscn"
