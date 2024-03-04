@@ -26,9 +26,11 @@ func queue_scene(path: String) -> void:
 
 
 ## Change the current scene to the scene in path.
-func change_scene(path: String) -> void:
+func change_scene(path: String, touch_controls: bool = false) -> void:
 	if not _pending_path.is_empty():
 		return
+	
+	_next_scene_manager.touch_controls = touch_controls
 	
 	if not ResourceQueue.is_ready(path):
 		queue_scene(path)
@@ -47,9 +49,11 @@ func _ready_scene_node(path: String):
 
 
 # Instantiate the loading scene and change to it when ready.
-func change_to_loading_scene(path: String) -> void:
+func change_to_loading_scene(path: String, touch_controls: bool = false) -> void:
 	var loading_screen = _loading_scene.instantiate()
 	loading_screen.next_scene = path
+	loading_screen.touch_controls = touch_controls
+	_next_scene_manager.touch_controls = false
 	_next_scene_manager.ready_next_scene(loading_screen)
 
 

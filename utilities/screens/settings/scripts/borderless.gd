@@ -8,6 +8,8 @@ extends Control
 func _ready():
 	_set_enabled()
 	GlobalSettings.window_properties_changed.connect(_set_enabled)
+	if OS.has_feature("web") or OS.has_feature("mobile"):
+		hide()
 
 
 func _gui_input(event):
@@ -21,7 +23,7 @@ func _gui_input(event):
 func _set_enabled():
 	_enabled.button_pressed = GlobalSettings.borderless
 	# This setting can't be changed on these platforms.
-	_enabled.disabled = OS.get_name() in ["Android", "iOS", "Web"]
+	_enabled.disabled = OS.has_feature("mobile") or OS.has_feature("web")
 	_update_text()
 
 

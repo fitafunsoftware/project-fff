@@ -9,6 +9,7 @@ extends Node
 signal next_scene_ready(next_scene)
 
 var _next_scene : Node
+var touch_controls : bool = false
 
 
 ## Ready the next scene to be changed to.
@@ -23,3 +24,4 @@ func _on_next_scene_ready():
 	_next_scene.ready.disconnect(_on_next_scene_ready)
 	next_scene_ready.emit(_next_scene)
 	_next_scene = null
+	GlobalTouchScreen.set_visible(touch_controls)

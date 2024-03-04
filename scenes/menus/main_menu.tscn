@@ -6,3 +6,4 @@
 options = Array[String](["Play", "Settings", "Exit"])
 scenes = Array[String](["res://scenes/worlds/world.tscn", "res://scenes/menus/settings_menu.tscn", "res://scenes/exit_scene.tscn"])
 loading = Array[bool]([true, false, false])
+touch = Array[bool]([true, false, false])

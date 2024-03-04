@@ -8,6 +8,8 @@ extends Button
 var next_scene : String
 ## Use loading scene before loading the next scene.
 var loading_scene : bool
+## Enable touch controls in next scene.
+var touch_controls : bool = false
 
 
 func _ready():
@@ -17,15 +19,16 @@ func _ready():
 
 
 ## Set up the values of the button.
-func setup_button(option : String, scene : String, loading : bool):
+func setup_button(option : String, scene : String, loading : bool, touch : bool):
 	text = option
 	next_scene = scene
 	loading_scene = loading
+	touch_controls = touch
 
 
 # Change scene when the button is pressed.
 func _change_scene():
 	if loading_scene:
-		get_viewport().change_to_loading_scene(next_scene)
+		get_viewport().change_to_loading_scene(next_scene, touch_controls)
 	else:
-		get_viewport().change_scene(next_scene)
+		get_viewport().change_scene(next_scene, touch_controls)

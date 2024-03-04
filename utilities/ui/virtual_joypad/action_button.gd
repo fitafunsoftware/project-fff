@@ -85,6 +85,8 @@ func _draw_button():
 
 
 func _set_button_sizes():
+	if not is_inside_tree():
+		return
 	var viewport_size : Vector2 = Vector2(
 			ProjectSettings.get_setting("display/window/size/viewport_width"),
 			ProjectSettings.get_setting("display/window/size/viewport_height")) \

@@ -6,7 +6,7 @@ extends Node
 ## if ready, and retrieval of resources.
 
 ## Signal to notify when a resource has been loaded.
-signal resource_loaded(path)
+signal resource_loaded(path: String)
 
 # The pending resources to be loaded.
 var _pending : PackedStringArray = []

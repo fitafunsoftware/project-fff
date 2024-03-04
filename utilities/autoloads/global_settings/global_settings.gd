@@ -65,6 +65,12 @@ var fps_limit : int = 0 :
 		fps_limit = clampi(value, 0, 10_000)
 		_set_fps_limit()
 
+## Touch Controls. By default, only mobile has touch controls on.
+var touch_controls : bool = OS.has_feature("mobile") :
+	set(value):
+		touch_controls = value
+		_set_touch_controls()
+
 @onready var _window : Window = get_window()
 @onready var _override_saveable : bool = _is_override_saveable()
 
@@ -138,7 +144,6 @@ func save_settings():
 
 
 # Private helper functions
-
 func _get_max_scale() -> int:
 	var window_scale : Vector2i = get_screen_size()/MIN_SIZE[aspect_ratio]
 	return mini(window_scale.x, window_scale.y)
@@ -155,6 +160,7 @@ func _load_settings_from_file():
 	borderless = options.get("borderless", borderless)
 	vsync = options.get("vsync", vsync)
 	fps_limit = options.get("fps_limit", fps_limit)
+	touch_controls = options.get("touch_controls", touch_controls)
 
 
 func _apply_settings():
@@ -206,6 +212,10 @@ func _set_fps_limit():
 	Engine.max_fps = max_fps
 
 
+func _set_touch_controls():
+	GlobalTouchScreen.active = touch_controls
+
+
 # Check to see if you can save an override file for Project Settings.
 func _is_override_saveable() -> bool:
 	var tags = ["web", "mobile", "debug"]
@@ -225,6 +235,7 @@ func _save_settings_to_json():
 		"borderless" : borderless,
 		"vsync" : vsync,
 		"fps_limit" : fps_limit,
+		"touch_controls" : touch_controls,
 	}
 	
 	var settings_json : String = JSON.stringify(settings_dict, "\t")

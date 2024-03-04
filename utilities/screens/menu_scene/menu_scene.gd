@@ -13,6 +13,9 @@ var _menu_option_button : Resource = preload("menu_option_button.tscn")
 @export var scenes : Array[String]
 ## An array of bools that determine whether a loading screen is used.
 @export var loading : Array[bool]
+## An array of bools that determine whether touch controls are enabled for the
+## next scene.
+@export var touch : Array[bool]
 
 # Container for the menu option buttons.
 @onready var _menu = $VBoxContainer/HBoxContainer/MenuOptions
@@ -32,7 +35,8 @@ func _populate_menu():
 		if not ResourceLoader.exists(scenes[option]):
 			continue
 		
-		var button : Button = _create_button(options[option], scenes[option], loading[option])
+		var button : Button = _create_button(options[option], scenes[option],
+				loading[option], touch[option])
 		_menu.add_child(button)
 		if prev_button:
 			button.focus_neighbor_top = button.get_path_to(prev_button)
@@ -53,7 +57,8 @@ func _populate_menu():
 
 
 # Make a button and set it up.
-func _create_button(option : String, scene : String, load_scene : bool) -> Button :
+func _create_button(option : String, scene : String, load_scene : bool, 
+		touch_controls : bool) -> Button :
 	var new_button : Button = _menu_option_button.instantiate()
-	new_button.setup_button(option, scene, load_scene)
+	new_button.setup_button(option, scene, load_scene, touch_controls)
 	return new_button

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cebaljtmx1h0h"]
+[gd_scene load_steps=10 format=3 uid="uid://cebaljtmx1h0h"]
 
 [ext_resource type="Script" path="res://utilities/screens/settings/scripts/settings.gd" id="1_4jrm6"]
 [ext_resource type="Script" path="res://utilities/screens/settings/scripts/aspect_ratio.gd" id="2_hf73j"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://utilities/screens/settings/scripts/fullscreen.gd" id="4_i323y"]
 [ext_resource type="Script" path="res://utilities/screens/settings/scripts/borderless.gd" id="5_7gqhl"]
 [ext_resource type="Script" path="res://utilities/screens/settings/scripts/vsync.gd" id="6_7jlka"]
+[ext_resource type="Script" path="res://utilities/screens/settings/scripts/touch_controls.gd" id="7_iifp2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tyo75"]
 content_margin_left = 0.0
@@ -334,7 +335,7 @@ flat = true
 layout_mode = 2
 size_flags_vertical = 3
 focus_neighbor_top = NodePath("../Borderless")
-focus_neighbor_bottom = NodePath("../Back")
+focus_neighbor_bottom = NodePath("../TouchControls")
 focus_mode = 2
 script = ExtResource("6_7jlka")
 
@@ -373,10 +374,53 @@ size_flags_stretch_ratio = 1.5
 focus_mode = 0
 flat = true
 
-[node name="Back" type="Button" parent="VBoxContainer/HBoxContainer/SettingsOptions"]
+[node name="TouchControls" type="Control" parent="VBoxContainer/HBoxContainer/SettingsOptions"]
 layout_mode = 2
 size_flags_vertical = 3
 focus_neighbor_top = NodePath("../VSync")
+focus_neighbor_bottom = NodePath("../Back")
+focus_mode = 2
+script = ExtResource("7_iifp2")
+
+[node name="Background" type="Panel" parent="VBoxContainer/HBoxContainer/SettingsOptions/TouchControls"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_03182")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/SettingsOptions/TouchControls"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/SettingsOptions/TouchControls/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 22
+text = "Touch Controls :"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Enabled" type="CheckButton" parent="VBoxContainer/HBoxContainer/SettingsOptions/TouchControls/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_stretch_ratio = 1.5
+focus_mode = 0
+flat = true
+
+[node name="Back" type="Button" parent="VBoxContainer/HBoxContainer/SettingsOptions"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_neighbor_top = NodePath("../TouchControls")
 theme_override_font_sizes/font_size = 22
 text = "BACK"
 
@@ -404,4 +448,7 @@ layout_mode = 2
 [connection signal="focus_entered" from="VBoxContainer/HBoxContainer/SettingsOptions/VSync" to="VBoxContainer/HBoxContainer/SettingsOptions/VSync" method="_on_focus_entered"]
 [connection signal="focus_exited" from="VBoxContainer/HBoxContainer/SettingsOptions/VSync" to="VBoxContainer/HBoxContainer/SettingsOptions/VSync" method="_on_focus_exited"]
 [connection signal="toggled" from="VBoxContainer/HBoxContainer/SettingsOptions/VSync/HBoxContainer/Enabled" to="VBoxContainer/HBoxContainer/SettingsOptions/VSync" method="_on_enabled_toggled"]
+[connection signal="focus_entered" from="VBoxContainer/HBoxContainer/SettingsOptions/TouchControls" to="VBoxContainer/HBoxContainer/SettingsOptions/TouchControls" method="_on_focus_entered"]
+[connection signal="focus_exited" from="VBoxContainer/HBoxContainer/SettingsOptions/TouchControls" to="VBoxContainer/HBoxContainer/SettingsOptions/TouchControls" method="_on_focus_exited"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer/SettingsOptions/TouchControls/HBoxContainer/Enabled" to="VBoxContainer/HBoxContainer/SettingsOptions/TouchControls" method="_on_enabled_toggled"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/SettingsOptions/Back" to="." method="_on_back_pressed"]

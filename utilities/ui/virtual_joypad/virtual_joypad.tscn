@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5wk4kvqafrb0"]
+
+[ext_resource type="Script" path="res://utilities/ui/virtual_joypad/virtual_joypad.gd" id="1_4xuw6"]
+[ext_resource type="Script" path="res://utilities/ui/virtual_joypad/static_joystick.gd" id="1_mdig8"]
+[ext_resource type="Script" path="res://utilities/ui/virtual_joypad/action_button.gd" id="2_atgva"]
+
+[node name="VirtualJoypad" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_4xuw6")
+
+[node name="StaticJoystick" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -180.0
+offset_right = 256.0
+grow_vertical = 0
+script = ExtResource("1_mdig8")
+negative_x = &"leftxn"
+positive_x = &"leftxp"
+negative_y = &"leftyn"
+positive_y = &"leftyp"
+area = Vector2(0.4, 0.5)
+area_color = Color(1, 1, 1, 0)
+base_radius = 0.6
+stick_color = Color(0.960784, 0.960784, 0.862745, 0.392157)
+
+[node name="ActionButton" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -120.0
+offset_top = -110.0
+offset_right = -48.0
+offset_bottom = -38.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("2_atgva")
+action = &"a"

@@ -6,9 +6,6 @@ extends Control
 
 func _ready():
 	_set_enabled()
-	GlobalSettings.window_properties_changed.connect(_set_enabled)
-	if OS.has_feature("web") or OS.has_feature("mobile"):
-		hide()
 
 
 func _gui_input(event):
@@ -20,13 +17,11 @@ func _gui_input(event):
 
 
 func _set_enabled():
-	_enabled.button_pressed = GlobalSettings.fullscreen
-	# This setting can't be changed on these platforms.
-	_enabled.disabled = OS.has_feature("mobile") or OS.has_feature("web")
+	_enabled.button_pressed = GlobalSettings.touch_controls
 
 
-func _set_fullscreen(enabled: bool):
-	GlobalSettings.fullscreen = enabled
+func _set_touch_controls(enabled: bool):
+	GlobalSettings.touch_controls = enabled
 
 
 # Signals
@@ -39,5 +34,5 @@ func _on_focus_exited():
 
 
 func _on_enabled_toggled(toggled_on: bool):
-	_set_fullscreen(toggled_on)
+	_set_touch_controls(toggled_on)
 	grab_focus()
