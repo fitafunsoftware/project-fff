@@ -9,11 +9,15 @@ class_name FloatingJoystick
 ## position the center of the joystick. You then need to drag across the area to move
 ## the joystick in that direction.
 
+## Signal for when the center of the floating joystick changes.
+signal center_changed(center: Vector2)
+
 
 func _gui_input(event: InputEvent):
 	if event is InputEventScreenTouch:
 		if not _pressed and event.is_pressed():
 			_center = event.position
+			center_changed.emit(_center)
 	
 	super(event)
 

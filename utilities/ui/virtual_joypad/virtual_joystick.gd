@@ -66,6 +66,7 @@ signal input_vector_changed(input_vector: Vector2)
 
 # Helper values.
 @onready var _center : Vector2 = area/2.0
+var _input_vector := Vector2.ZERO
 var _pressed : bool = false
 var _index : int = -1
 var _position : Vector2
@@ -107,10 +108,28 @@ func _gui_input(event: InputEvent):
 			_redraw_and_update_input()
 
 
+## Returns the local center position of the joystick.
+func get_center() -> Vector2:
+	return _center
+
+
 ## Returns the Vector2 that describes the joystick's position.[br]
 ## Non-snapped joysticks return normalized vectors. Snapped joysticks return
 ## non-normalized vectors.
 func get_input_vector() -> Vector2:
+	return _input_vector
+
+
+# Helper functions.
+func _redraw_and_update_input():
+	accept_event()
+	queue_redraw()
+	_input_vector = _get_input_vector()
+	_parse_input_events()
+	input_vector_changed.emit(_input_vector)
+
+
+func _get_input_vector() -> Vector2:
 	var input_vector := Vector2.ZERO
 	var distance : float = _center.distance_to(_position)
 	
@@ -133,22 +152,13 @@ func get_input_vector() -> Vector2:
 	return input_vector
 
 
-# Helper functions.
-func _redraw_and_update_input():
-	accept_event()
-	queue_redraw()
-	_parse_input_events()
-	input_vector_changed.emit(get_input_vector())
-
-
 # To make sure the event is both recorded in Input and passed through _inputs, 
 # we need to use both the Input.action_* function and Input.parse_input_event function.
 func _parse_input_events():
-	var input_vector : Vector2 = get_input_vector()
-	var nx_strength : float = clampf(-1*input_vector.x, 0.0, 1.0)
-	var px_strength : float = clampf(input_vector.x, 0.0, 1.0)
-	var ny_strength : float = clampf(-1*input_vector.y, 0.0, 1.0)
-	var py_strength : float = clampf(input_vector.y, 0.0, 1.0)
+	var nx_strength : float = clampf(-1*_input_vector.x, 0.0, 1.0)
+	var px_strength : float = clampf(_input_vector.x, 0.0, 1.0)
+	var ny_strength : float = clampf(-1*_input_vector.y, 0.0, 1.0)
+	var py_strength : float = clampf(_input_vector.y, 0.0, 1.0)
 	var strengths : Array = [nx_strength, px_strength, ny_strength, py_strength]
 	var actions : Array = [negative_x, positive_x, negative_y, positive_y]
 	
@@ -194,7 +204,7 @@ func _draw_stick():
 	var stick_position : Vector2 = _center
 	
 	if _pressed:
-		var input_vector : Vector2 = get_input_vector()
+		var input_vector = _input_vector
 		if input_vector.length() > 1.0:
 			input_vector = input_vector.normalized()
 		
