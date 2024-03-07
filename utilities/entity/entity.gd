@@ -13,7 +13,7 @@ var max_speed : float = 10.0 :
 		max_speed = value
 
 ## The friction applied to the entity when decelerating.
-@export_range(0.0, 100.0, 0.01, "hide_slider", "suffix:m/s")
+@export_range(0.0, 100.0, 0.01, "hide_slider", "suffix:m/s²")
 var friction : float = 4.0 :
 	get:
 		return friction
@@ -21,7 +21,7 @@ var friction : float = 4.0 :
 		friction = value
 
 ## The acceleration of the entity to reach the target velocity.
-@export_range(0.0, 100.0, 0.01, "hide_slider", "suffix:m/s")
+@export_range(0.0, 100.0, 0.01, "hide_slider", "suffix:m/s²")
 var acceleration : float = 4.0 :
 	get:
 		return acceleration
@@ -67,9 +67,33 @@ func _physics_process(delta):
 	position = _snap_position(position)
 
 
+## Return the y velocity of the entity.
+func get_y_velocity() -> float:
+	return velocity.y
+
+
+## Set the y velocity of the entity.
+func set_y_velocity(y_velocity: float):
+	velocity.y = y_velocity
+
+
+## Return the x and z velocity of the entity.
+func get_velocity_2d() -> Vector2:
+	return Vector2(velocity.x, velocity.z)
+
+
+## Set the x and z velocity of the entity.
+func set_velocity_2d(velocity_2d: Vector2):
+	velocity = Vector3(velocity_2d.x, velocity.y, velocity_2d.y)
+
+
+# Helper functions.
 # Calculate velocity after applying gravity.
 func _apply_gravity(_velocity: Vector3, delta: float) -> Vector3:
-	_velocity.y -= gravity * delta
+	if is_on_floor():
+		_velocity.y = -0.01
+	else:
+		_velocity.y -= gravity * delta
 	return _velocity
 
 
@@ -121,24 +145,3 @@ func _snap_position(_position: Vector3) -> Vector3:
 	snapped_position.y = snappedf(_position.y, PIXEL_SIZE)
 	snapped_position.z = snappedf(_position.z, PIXEL_SIZE/FLOOR_GRADIENT)
 	return snapped_position
-
-
-## Return the y velocity of the entity.
-func get_y_velocity() -> float:
-	return velocity.y
-
-
-## Set the y velocity of the entity.
-func set_y_velocity(y_velocity: float):
-	velocity.y = y_velocity
-
-
-## Return the x and z velocity of the entity.
-func get_velocity_2d() -> Vector2:
-	return Vector2(velocity.x, velocity.z)
-
-
-## Set the x and z velocity of the entity.
-func set_velocity_2d(velocity_2d: Vector2):
-	velocity = Vector3(velocity_2d.x, velocity.y, velocity_2d.y)
-
