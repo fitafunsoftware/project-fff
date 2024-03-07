@@ -7,10 +7,8 @@ extends Sprite3D
 ## you can use transparent textures as these will be at a single depth level 
 ## instead of multiple depth levels.
 
-## The shader for shaded VerticalSprite3D meshes.
-static var SHADED_MESH : Shader = preload("res://shaders/transparent_mesh_shaded.gdshader")
-## The shader for unshaded VerticalSprite3D meshes.
-static var UNSHADED_MESH : Shader = preload("res://shaders/transparent_mesh_unshaded.gdshader")
+## The shader for VerticalSprite3D meshes.
+static var SHADER : Shader = preload("res://shaders/transparent_mesh.gdshader")
 # Set the properties in the appropriate json file.
 static var PIXEL_SIZE : float = NAN
 static var FLOOR_GRADIENT : float = NAN
@@ -34,7 +32,6 @@ func _init():
 func _set(property: StringName, value: Variant):
 	if property == "shaded":
 		shaded = value
-		_apply_material_override()
 		_apply_texture()
 		return true
 	
@@ -91,18 +88,15 @@ func set_shader_opacity(opacity: float):
 
 func _apply_material_override():
 	var shader_material = ShaderMaterial.new()
-	if shaded:
-		shader_material.shader = SHADED_MESH
-	else:
-		shader_material.shader = UNSHADED_MESH
+	shader_material.shader = SHADER
 	shader_material.resource_local_to_scene = true
-	
 	material_override = shader_material
 
 
 func _apply_texture():
 	var shader_material : ShaderMaterial = material_override
 	shader_material.set_shader_parameter("sprite_texture", texture)
+	shader_material.set_shader_parameter("shaded", shaded)
 	
 	if texture is ViewportTexture:
 		var viewport = find_child("SpriteViewport")

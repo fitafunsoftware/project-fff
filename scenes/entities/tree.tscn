@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://bg6n0slpar7eg"]
 
-[ext_resource type="Shader" path="res://shaders/transparent_mesh_unshaded.gdshader" id="1_rxhna"]
+[ext_resource type="Shader" path="res://shaders/transparent_mesh.gdshader" id="1_tp8x2"]
 [ext_resource type="Script" path="res://utilities/entity/sprite_3d/sprite_viewport/sprite_viewport.gd" id="3_mud6f"]
 [ext_resource type="Script" path="res://utilities/entity/sprite_3d/vertical_sprite_3d.gd" id="3_wcy8c"]
 [ext_resource type="Texture2D" uid="uid://cb04st06nawde" path="res://assets/art/shadow/shadow.png" id="4_2jx2n"]
@@ -11,11 +11,12 @@
 [sub_resource type="ViewportTexture" id="ViewportTexture_562ok"]
 viewport_path = NodePath("VerticalSprite3D/SpriteViewport")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_porlx"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ybiw3"]
 resource_local_to_scene = true
 render_priority = 0
-shader = ExtResource("1_rxhna")
+shader = ExtResource("1_tp8x2")
 shader_parameter/opacity = 1.0
+shader_parameter/shaded = false
 shader_parameter/sprite_texture = SubResource("ViewportTexture_562ok")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_p70d1"]
@@ -30,7 +31,7 @@ points = PackedVector3Array(0.11, 0, -6.59395, 0.11, 0.8, -4.39596, -0.11, 0.8, 
 [node name="Tree" type="StaticBody3D"]
 
 [node name="VerticalSprite3D" type="Sprite3D" parent="."]
-material_override = SubResource("ShaderMaterial_porlx")
+material_override = SubResource("ShaderMaterial_ybiw3")
 cast_shadow = 0
 offset = Vector2(0, 120)
 texture = SubResource("ViewportTexture_562ok")

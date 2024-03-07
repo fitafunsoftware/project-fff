@@ -8,6 +8,7 @@ render_mode blend_mix,specular_disabled,world_vertex_coords;
 
 uniform sampler2D sprite_texture : source_color, filter_nearest, repeat_disable;
 uniform float opacity : hint_range(0.0, 1.0) = 1.0;
+uniform bool shaded = true;
 
 void vertex() {
 	float y_offset = get_curved_y(VERTEX.z, CAMERA_POSITION_WORLD.z);
@@ -34,5 +35,6 @@ void fragment() {
 }
 
 void light() {
-	DIFFUSE_LIGHT += get_sprite_diffuse(ATTENUATION, LIGHT_COLOR);
+	float attenuation = shaded ? ATTENUATION : 1.0;
+	DIFFUSE_LIGHT += get_sprite_diffuse(attenuation, LIGHT_COLOR);
 }
