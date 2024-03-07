@@ -42,20 +42,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64, 0)
 shape = SubResource("BoxShape3D_8no2n")
 
 [node name="Front" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64, 0.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64, 0.192323)
 material_override = SubResource("ShaderMaterial_vgl4s")
 cast_shadow = 0
 shaded = true
 texture = ExtResource("4_p3aa3")
 script = ExtResource("3_7pnnf")
+z_pixel_offset = 7
 
 [node name="Back" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64, -0.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64, -0.192323)
 material_override = SubResource("ShaderMaterial_8qoiu")
 cast_shadow = 0
 shaded = true
 texture = ExtResource("5_3gm1a")
 script = ExtResource("3_7pnnf")
+z_pixel_offset = -7
 
 [node name="Shadow3D" type="Sprite3D" parent="."]
 transform = Transform3D(1.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
