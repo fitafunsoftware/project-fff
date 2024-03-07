@@ -4,7 +4,7 @@ extends Camera3D
 ## Script to add functionality to the Camera3D node. Automatically sets the
 ## camera size.
 
-@onready var _viewport : SubViewport = get_viewport()
+@onready var _viewport : Viewport = get_viewport()
 
 
 func _ready():
