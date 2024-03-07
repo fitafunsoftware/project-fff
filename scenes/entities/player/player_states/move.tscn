@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://bb8jb84y14rb3"]
+
+[ext_resource type="Script" path="res://utilities/state_machine/states/component_state.gd" id="1_kjoa7"]
+[ext_resource type="Script" path="res://utilities/state_machine/states/state_components/decorators/function_activation_state_component.gd" id="2_8cn0y"]
+[ext_resource type="Script" path="res://utilities/state_machine/states/state_components/node_state_components/update/transitions/less_than_transition_state_component.gd" id="3_yqqqg"]
+[ext_resource type="Script" path="res://utilities/state_machine/states/state_components/transitions/pressed_transition_state_component.gd" id="4_g6ofu"]
+[ext_resource type="Script" path="res://utilities/state_machine/states/state_components/node_state_components/update/transitions/equals_transition_state_component.gd" id="5_i46re"]
+[ext_resource type="Script" path="res://utilities/entity/entity_state_components/move_state_component.gd" id="6_skyw1"]
+[ext_resource type="Script" path="res://utilities/state_machine/states/state_components/node_state_components/enter/enter_call_function_state_component.gd" id="7_qqkcf"]
+
+[node name="Move" type="Node"]
+script = ExtResource("1_kjoa7")
+dependencies = {
+"animation": null,
+"body": null,
+"input": null,
+"speed": 3.0
+}
+state_name = &"move"
+push_down = true
+
+[node name="Move" type="Node" parent="."]
+script = ExtResource("6_skyw1")
+entity_key = &"body"
+input_key = &"input"
+speed_key = &"speed"
+
+[node name="Animation" type="Node" parent="."]
+script = ExtResource("7_qqkcf")
+function = &"play"
+args = ["walk"]
+node_key = &"animation"
+
+[node name="Transitions" type="Node" parent="."]
+
+[node name="InAir" type="Node" parent="Transitions"]
+script = ExtResource("2_8cn0y")
+node_key = &"body"
+function = &"is_on_floor"
+equals = [false]
+
+[node name="Falling" type="Node" parent="Transitions/InAir"]
+script = ExtResource("3_yqqqg")
+next_state = "fall"
+function = "get_y_velocity"
+less_than = [0.0]
+node_key = &"body"
+
+[node name="NotMoving" type="Node" parent="Transitions"]
+script = ExtResource("5_i46re")
+next_state = "previous"
+function = "get_velocity_2d"
+equals = [Vector2(0, 0)]
+node_key = &"body"
+
+[node name="JumpPressed" type="Node" parent="Transitions"]
+script = ExtResource("4_g6ofu")
+action = &"jump"
+next_state = &"jump"

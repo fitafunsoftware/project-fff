@@ -46,15 +46,17 @@ window/size/mode.mobile=4
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/debug_menu/plugin.cfg", "res://addons/state_machine/plugin.cfg")
+enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/debug_menu/plugin.cfg")
 
 [file_customization]
 
 folder_colors={
-"res://assets/": "blue",
+"res://assets/": "red",
+"res://global_params/": "yellow",
 "res://proprietary/": "purple",
 "res://scenes/": "red",
-"res://scripts/": "orange",
+"res://scripts/": "red",
+"res://shaders/": "teal",
 "res://utilities/": "green"
 }
 

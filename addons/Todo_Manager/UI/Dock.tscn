@@ -192,6 +192,7 @@ text = "Ignore Paths:"
 [node name="TextEdit" type="LineEdit" parent="VBoxContainer/TabContainer/Settings/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2/Scripts/IgnorePaths"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+text = "res://addons/debug_menu, res://addons/Todo_Manager"
 expand_to_text_length = true
 
 [node name="Label3" type="Label" parent="VBoxContainer/TabContainer/Settings/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2/Scripts/IgnorePaths"]

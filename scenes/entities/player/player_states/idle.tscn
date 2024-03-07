@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://dqjnr3itbnkoc"]
+
+[ext_resource type="Script" path="res://utilities/state_machine/states/component_state.gd" id="1_22uxk"]
+[ext_resource type="Script" path="res://utilities/state_machine/states/state_components/decorators/function_activation_state_component.gd" id="2_gg65o"]
+[ext_resource type="Script" path="res://utilities/state_machine/states/state_components/node_state_components/update/transitions/less_than_transition_state_component.gd" id="3_sdlsg"]
+[ext_resource type="Script" path="res://utilities/state_machine/states/state_components/node_state_components/resume/resume_call_function_state_component.gd" id="4_hkdwl"]
+[ext_resource type="Script" path="res://utilities/state_machine/states/state_components/node_state_components/update/transitions/not_equals_transition_state_component.gd" id="4_m3nfv"]
+[ext_resource type="Script" path="res://utilities/state_machine/states/state_components/transitions/pressed_transition_state_component.gd" id="5_idx1b"]
+[ext_resource type="Script" path="res://utilities/entity/entity_state_components/move_state_component.gd" id="6_53oco"]
+[ext_resource type="Script" path="res://utilities/state_machine/states/state_components/node_state_components/enter/enter_call_function_state_component.gd" id="7_ynbp3"]
+
+[node name="Idle" type="Node"]
+script = ExtResource("1_22uxk")
+dependencies = {
+"animation": null,
+"body": null,
+"input": null,
+"speed": 3.0
+}
+state_name = &"idle"
+
+[node name="Move" type="Node" parent="."]
+script = ExtResource("6_53oco")
+entity_key = &"body"
+input_key = &"input"
+speed_key = &"speed"
+
+[node name="Animation" type="Node" parent="."]
+script = ExtResource("7_ynbp3")
+function = &"play"
+args = ["idle"]
+node_key = &"animation"
+
+[node name="ResumeAnimation" type="Node" parent="."]
+script = ExtResource("4_hkdwl")
+function = &"play"
+args = ["idle"]
+node_key = &"animation"
+
+[node name="Transitions" type="Node" parent="."]
+
+[node name="InAir" type="Node" parent="Transitions"]
+script = ExtResource("2_gg65o")
+node_key = &"body"
+function = &"is_on_floor"
+equals = [false]
+
+[node name="Falling" type="Node" parent="Transitions/InAir"]
+script = ExtResource("3_sdlsg")
+next_state = "fall"
+function = "get_y_velocity"
+less_than = [0.0]
+node_key = &"body"
+
+[node name="Moving" type="Node" parent="Transitions"]
+script = ExtResource("4_m3nfv")
+next_state = "move"
+function = "get_velocity_2d"
+not_equals = [Vector2(0, 0)]
+node_key = &"body"
+
+[node name="JumpPressed" type="Node" parent="Transitions"]
+script = ExtResource("5_idx1b")
+action = &"jump"
+next_state = &"jump"
