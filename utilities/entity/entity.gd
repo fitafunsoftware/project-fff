@@ -53,7 +53,7 @@ func  _init():
 func _ready():
 	if [PIXEL_SIZE, FLOOR_GRADIENT].has(NAN):
 		PIXEL_SIZE = GlobalParams.get_global_param("PIXEL_SIZE")
-		FLOOR_GRADIENT = GlobalParams.get_global_shader_param("FLOOR_GRADIENT")
+		FLOOR_GRADIENT = GlobalParams.get_global_param("FLOOR_GRADIENT")
 
 
 func _physics_process(delta):

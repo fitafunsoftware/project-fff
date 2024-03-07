@@ -67,11 +67,11 @@ func _ready():
 	super()
 	if [CAMERA_Y_OFFSET, CAMERA_Z_OFFSET, ARC_HEIGHT,
 			HALF_CHORD_LENGTH, RADIUS].has(NAN):
-		CAMERA_Y_OFFSET = GlobalParams.get_global_shader_param("CAMERA_Y_OFFSET")
-		CAMERA_Z_OFFSET = GlobalParams.get_global_shader_param("CAMERA_Z_OFFSET")
-		ARC_HEIGHT = GlobalParams.get_global_shader_param("ARC_HEIGHT")
-		HALF_CHORD_LENGTH = GlobalParams.get_global_shader_param("HALF_CHORD_LENGTH")
-		RADIUS = GlobalParams.get_global_shader_param("RADIUS")
+		CAMERA_Y_OFFSET = GlobalParams.get_global_param("CAMERA_Y_OFFSET")
+		CAMERA_Z_OFFSET = GlobalParams.get_global_param("CAMERA_Z_OFFSET")
+		ARC_HEIGHT = GlobalParams.get_global_param("ARC_HEIGHT")
+		HALF_CHORD_LENGTH = GlobalParams.get_global_param("HALF_CHORD_LENGTH")
+		RADIUS = GlobalParams.get_global_param("RADIUS")
 	
 	_camera.current = current
 	_move_camera()

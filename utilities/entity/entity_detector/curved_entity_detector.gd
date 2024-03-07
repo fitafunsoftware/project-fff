@@ -55,8 +55,8 @@ func _signal_entity_status(_body: Node3D):
 # Create the collision shapes based on the sprites in the array.
 func _generate_collision_shapes():
 	if [DISTANCE_TO_CHORD, HALF_CHORD_LENGTH].has(NAN):
-		DISTANCE_TO_CHORD = GlobalParams.get_global_shader_param("DISTANCE_TO_CHORD")
-		HALF_CHORD_LENGTH = GlobalParams.get_global_shader_param("HALF_CHORD_LENGTH")
+		DISTANCE_TO_CHORD = GlobalParams.get_global_param("DISTANCE_TO_CHORD")
+		HALF_CHORD_LENGTH = GlobalParams.get_global_param("HALF_CHORD_LENGTH")
 		floor_vector = Vector2(DISTANCE_TO_CHORD, HALF_CHORD_LENGTH).normalized()
 	
 	for child in get_children():

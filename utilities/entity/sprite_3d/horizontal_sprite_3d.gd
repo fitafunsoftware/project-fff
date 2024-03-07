@@ -72,7 +72,7 @@ func _recalculate_size_and_subdivisions():
 		return
 	
 	if is_nan(FLOOR_GRADIENT):
-		FLOOR_GRADIENT = GlobalParams.get_global_shader_param("FLOOR_GRADIENT")
+		FLOOR_GRADIENT = GlobalParams.get_global_param("FLOOR_GRADIENT")
 	
 	if not texture:
 		mesh.size = Vector2(1, 1)

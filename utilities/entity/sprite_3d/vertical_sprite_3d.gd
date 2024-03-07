@@ -126,7 +126,7 @@ func _occlude():
 func _set_position_by_offset():
 	if [PIXEL_SIZE, FLOOR_GRADIENT].has(NAN):
 		PIXEL_SIZE = GlobalParams.get_global_param("PIXEL_SIZE")
-		FLOOR_GRADIENT = GlobalParams.get_global_shader_param("FLOOR_GRADIENT")
+		FLOOR_GRADIENT = GlobalParams.get_global_param("FLOOR_GRADIENT")
 	var z_offset : float = z_pixel_offset * PIXEL_SIZE / FLOOR_GRADIENT
 	position.z = z_offset
 
