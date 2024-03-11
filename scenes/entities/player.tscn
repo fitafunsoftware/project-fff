@@ -1,11 +1,17 @@
 [gd_scene load_steps=14 format=3 uid="uid://b5p4x0lyjysme"]
 
-[ext_resource type="Script" path="res://scripts/camera_body.gd" id="1_w60l5"]
-[ext_resource type="Shader" path="res://shaders/transparent_mesh.gdshader" id="2_diojy"]
-[ext_resource type="Texture2D" uid="uid://cum3245fwrm1q" path="res://assets/art/player/base.png" id="3_5v2au"]
-[ext_resource type="Script" path="res://utilities/entity/sprite_3d/vertical_sprite_3d.gd" id="4_6ttdh"]
-[ext_resource type="Texture2D" uid="uid://c7yoyyn7h1gel" path="res://assets/art/shadow/small_shadow.png" id="5_kes50"]
-[ext_resource type="Script" path="res://utilities/entity/shadow/shadow.gd" id="6_ano6m"]
+[ext_resource type="Script" path="res://utilities/entity/entity.gd" id="1_dixje"]
+[ext_resource type="Shader" path="res://shaders/transparent_mesh.gdshader" id="2_cr2h3"]
+[ext_resource type="Texture2D" uid="uid://cum3245fwrm1q" path="res://assets/art/player/base.png" id="3_50vm0"]
+[ext_resource type="Script" path="res://utilities/entity/sprite_3d/vertical_sprite_3d.gd" id="4_7c2wt"]
+[ext_resource type="Texture2D" uid="uid://c7yoyyn7h1gel" path="res://assets/art/shadow/small_shadow.png" id="5_6tokq"]
+[ext_resource type="Script" path="res://utilities/entity/shadow/shadow.gd" id="6_yi3mh"]
+[ext_resource type="Script" path="res://utilities/entity/state_machine/state_machine.gd" id="7_g40if"]
+[ext_resource type="Script" path="res://utilities/entity/input_handlers/player_input_handler.gd" id="7_pfar3"]
+[ext_resource type="PackedScene" uid="uid://dqjnr3itbnkoc" path="res://scenes/entities/player/player_states/idle.tscn" id="8_16vu8"]
+[ext_resource type="PackedScene" uid="uid://bb8jb84y14rb3" path="res://scenes/entities/player/player_states/move.tscn" id="9_l5ks8"]
+[ext_resource type="PackedScene" uid="uid://1ac5bgndark" path="res://scenes/entities/player/player_states/jump.tscn" id="10_aglp1"]
+[ext_resource type="PackedScene" uid="uid://drqkgak83abbt" path="res://scenes/entities/player/player_states/fall.tscn" id="11_tlhgv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fn6na"]
 size = Vector3(0.2, 0.8, 0.2)
