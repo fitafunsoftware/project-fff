@@ -90,7 +90,7 @@ func set_velocity_2d(velocity_2d: Vector2):
 # Helper functions.
 # Calculate velocity after applying gravity.
 func _apply_gravity(_velocity: Vector3, delta: float) -> Vector3:
-	if is_on_floor():
+	if is_on_floor() and _velocity.y < 0.0:
 		_velocity.y = -0.01
 	else:
 		_velocity.y -= gravity * delta
