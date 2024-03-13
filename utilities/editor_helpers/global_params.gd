@@ -15,6 +15,14 @@ static func get_global_param(param: String) -> Variant:
 		return GameGlobalParams.get_global_param(param)
 
 
+## Get the position snapped to pixel positions.
+static func get_snapped_position(global_position: Vector3) -> Vector3:
+	if Engine.is_editor_hint():
+		return EditorGlobalParams.get_snapped_position(global_position)
+	else:
+		return GameGlobalParams.get_snapped_position(global_position)
+
+
 ## Calculate [b]and add[/b] the curve constants to the passed in dictionary.
 ## Note that this function [b]directly manipulates[/b] the Dictionary.
 static func append_curve_params(global_params: Dictionary):
@@ -47,4 +55,18 @@ class EditorGlobalParams:
 		GlobalParams.append_curve_params(global_params)
 		
 		return global_params[param]
+
+
+## Get the position snapped to pixel positions.
+	static func get_snapped_position(global_position: Vector3) -> Vector3:
+		var global_params : Dictionary = JSON.parse_string(
+				FileAccess.get_file_as_string("res://global_params/global_params.json"))
+		var pixel_size : float = global_params["PIXEL_SIZE"]
+		var floor_gradient : float = tan(deg_to_rad(global_params["FLOOR_ANGLE_DEGREES"]))
+		
+		global_position.x = snappedf(global_position.x, pixel_size)
+		global_position.y = snappedf(global_position.y, pixel_size)
+		global_position.z = snappedf(global_position.z, pixel_size/floor_gradient)
+		
+		return global_position
 

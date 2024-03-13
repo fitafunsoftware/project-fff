@@ -39,32 +39,26 @@ var target_velocity_2d := Vector2.ZERO :
 	set(value):
 		target_velocity_2d = value
 
-# Global parameters needed.
-static var PIXEL_SIZE : float = NAN
-static var FLOOR_GRADIENT : float = NAN
-
 
 func  _init():
 	floor_constant_speed = true
 	platform_on_leave = CharacterBody3D.PLATFORM_ON_LEAVE_ADD_UPWARD_VELOCITY
+	platform_floor_layers = 0
 
 
-# Retrieve the global parameters.
 func _ready():
-	if [PIXEL_SIZE, FLOOR_GRADIENT].has(NAN):
-		PIXEL_SIZE = GlobalParams.get_global_param("PIXEL_SIZE")
-		FLOOR_GRADIENT = GlobalParams.get_global_param("FLOOR_GRADIENT")
+	global_position = GlobalParams.get_snapped_position(global_position)
 
 
 func _physics_process(delta):
 	velocity = _apply_gravity(velocity, delta)
 	velocity = _apply_acceleration(velocity, target_velocity_2d, delta)
 	velocity = _clamp_velocity(velocity)
+	velocity = _zero_out_velocity(velocity)
 	
 	var _collided = move_and_slide()
 	
-	velocity = _zero_out_velocity(velocity)
-	position = _snap_position(position)
+	global_position = GlobalParams.get_snapped_position(global_position)
 
 
 ## Return the y velocity of the entity.
@@ -137,11 +131,3 @@ func _zero_out_velocity(_velocity: Vector3) -> Vector3:
 	
 	return _velocity
 
-
-# Snap the position of the entity to proper pixel intervals.
-func _snap_position(_position: Vector3) -> Vector3:
-	var snapped_position := Vector3.ZERO
-	snapped_position.x = snappedf(_position.x, PIXEL_SIZE)
-	snapped_position.y = snappedf(_position.y, PIXEL_SIZE)
-	snapped_position.z = snappedf(_position.z, PIXEL_SIZE/FLOOR_GRADIENT)
-	return snapped_position

@@ -25,6 +25,20 @@ func get_global_param(param) -> Variant:
 	return _global_params[param]
 
 
+## Get the position snapped to pixel positions.
+func get_snapped_position(global_position: Vector3) -> Vector3:
+	if _global_params.is_empty():
+		_initialize_params()
+	var pixel_size : float = _global_params["PIXEL_SIZE"]
+	var floor_gradient : float = _global_params["FLOOR_GRADIENT"]
+	
+	global_position.x = snappedf(global_position.x, pixel_size)
+	global_position.y = snappedf(global_position.y, pixel_size)
+	global_position.z = snappedf(global_position.z, pixel_size/floor_gradient)
+	
+	return global_position
+
+
 # Initialize global parameters and global shader parameters from JSON files.
 func _initialize_params():
 	_global_params = JSON.parse_string(FileAccess.get_file_as_string(GLOBAL_PARAMS_JSON))

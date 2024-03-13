@@ -44,6 +44,8 @@ func _ready() -> void:
 	
 	_apply_texture()
 	texture_changed.connect(_apply_texture)
+	if not Engine.is_editor_hint():
+		global_position = GlobalParams.get_snapped_position(global_position)
 
 
 func _process(_delta):

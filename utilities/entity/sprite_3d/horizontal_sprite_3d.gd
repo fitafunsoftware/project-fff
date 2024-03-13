@@ -40,12 +40,17 @@ static var OPAQUE_MESH : Shader = preload("res://shaders/opaque_mesh.gdshader")
 ## Number of subdivisions in the x direction per Godot meter unit.
 @export var subdivisions_per_meter_width : int = 0:
 	set(value):
+		if value < 0:
+			return
 		subdivisions_per_meter_width = value
 		_recalculate_subdivisions()
 
 ## Number of subdivisions in the z direction per Godot meter unit.
-@export var subdivisions_per_meter_depth : int = 0:
+## [br]Set to -1 to automatically match pixels with subdivisions.
+@export var subdivisions_per_meter_depth : int = -1:
 	set(value):
+		if value < -1:
+			return
 		subdivisions_per_meter_depth = value
 		_recalculate_subdivisions()
 
@@ -63,6 +68,8 @@ func _ready():
 	if not mesh.material:
 		_apply_material()
 		_apply_texture()
+	
+	global_position = GlobalParams.get_snapped_position(global_position)
 
 
 # Recalculate the needed size and subdivisions based on the texture pixel size
@@ -88,7 +95,11 @@ func _recalculate_subdivisions():
 		return
 	
 	mesh.subdivide_width = roundi(mesh.size.x * subdivisions_per_meter_width)
-	mesh.subdivide_depth = roundi(mesh.size.y * subdivisions_per_meter_depth)
+	if subdivisions_per_meter_depth == -1:
+		mesh.subdivide_depth = (texture.get_height() - 1) if texture \
+				else roundi(mesh.size.y * FLOOR_GRADIENT / pixel_size)
+	else:
+		mesh.subdivide_depth = roundi(mesh.size.y * subdivisions_per_meter_depth)
 
 
 func _apply_material():

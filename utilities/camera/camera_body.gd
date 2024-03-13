@@ -52,6 +52,8 @@ var z_drag_margin : int = 0
 			_camera.current = current
 
 # Global constants that are defined in the relevant json.
+static var PIXEL_SIZE : float = NAN
+static var FLOOR_GRADIENT : float = NAN
 static var CAMERA_Y_OFFSET : float = NAN
 static var CAMERA_Z_OFFSET : float = NAN
 static var ARC_HEIGHT : float = NAN
@@ -65,8 +67,10 @@ static var RADIUS : float = NAN
 # Load globals and prepare the body.
 func _ready():
 	super()
-	if [CAMERA_Y_OFFSET, CAMERA_Z_OFFSET, ARC_HEIGHT,
-			HALF_CHORD_LENGTH, RADIUS].has(NAN):
+	if [PIXEL_SIZE, FLOOR_GRADIENT, CAMERA_Y_OFFSET, CAMERA_Z_OFFSET,
+			 ARC_HEIGHT, HALF_CHORD_LENGTH, RADIUS].has(NAN):
+		PIXEL_SIZE = GlobalParams.get_global_param("PIXEL_SIZE")
+		FLOOR_GRADIENT = GlobalParams.get_global_param("FLOOR_GRADIENT")
 		CAMERA_Y_OFFSET = GlobalParams.get_global_param("CAMERA_Y_OFFSET")
 		CAMERA_Z_OFFSET = GlobalParams.get_global_param("CAMERA_Z_OFFSET")
 		ARC_HEIGHT = GlobalParams.get_global_param("ARC_HEIGHT")
@@ -127,4 +131,5 @@ func _move_camera():
 		distance_from_origin += offset_pixels_left * PIXEL_SIZE * FLOOR_GRADIENT
 	
 	_camera.position = Vector3(0.0, height_from_origin, distance_from_origin)
+	_camera.global_position = GlobalParams.get_snapped_position(_camera.global_position)
 
