@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://utilities/entity/entity.gd" id="8_rs3fi"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8no2n"]
-size = Vector3(2, 1.28, 1.2)
+size = Vector3(2, 1.28, 1.209)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f5n2d"]
 resource_local_to_scene = true
@@ -37,8 +37,12 @@ shader_parameter/shaded = true
 shader_parameter/sprite_texture = ExtResource("2_oqjhw")
 
 [node name="Entity" type="CharacterBody3D"]
-collision_mask = 257
+collision_mask = 129
+platform_on_leave = 1
+platform_floor_layers = 128
 script = ExtResource("8_rs3fi")
+friction = 10.0
+acceleration = 10.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64, 0)

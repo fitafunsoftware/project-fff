@@ -9,13 +9,13 @@ size = Vector3(0.5, 0.5, 0.5)
 
 [node name="CameraFollowBody" type="CharacterBody3D"]
 collision_layer = 0
-collision_mask = 768
+collision_mask = 64
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 floor_constant_speed = true
 platform_on_leave = 1
-platform_floor_layers = 4294966783
+platform_floor_layers = 64
 platform_wall_layers = 512
 script = ExtResource("1_7mak0")
 center_height_offset = 25
@@ -35,10 +35,11 @@ shape = SubResource("BoxShape3D_qjuhv")
 script = ExtResource("2_76bii")
 body = NodePath("..")
 speed = 5.0
-negative_y_leash_distance = null
+leash_distance = Vector3(1.8, 0.5, 2.19798)
+negative_y_leash_distance = 0.2
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 375, 15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.7426)
 keep_aspect = 0
 projection = 1
 current = true

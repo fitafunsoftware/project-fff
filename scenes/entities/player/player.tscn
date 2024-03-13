@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://drqkgak83abbt" path="res://scenes/entities/player/player_states/fall.tscn" id="11_tlhgv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fn6na"]
-size = Vector3(0.2, 0.8, 0.2)
+size = Vector3(0.2, 0.8, 0.22)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_trapo"]
 resource_local_to_scene = true
@@ -85,7 +85,9 @@ _data = {
 size = Vector3(0.6, 1, 0.02)
 
 [node name="Player" type="CharacterBody3D"]
-collision_mask = 257
+collision_mask = 129
+platform_on_leave = 1
+platform_floor_layers = 128
 script = ExtResource("1_dixje")
 friction = 10.0
 acceleration = 10.0

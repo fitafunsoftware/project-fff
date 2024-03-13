@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://clqhyj6p24vuh"]
+[gd_scene load_steps=24 format=3 uid="uid://clqhyj6p24vuh"]
 
 [ext_resource type="PackedScene" uid="uid://ypwkw5b68kln" path="res://utilities/light/lights.tscn" id="1_04on7"]
 [ext_resource type="Shader" path="res://shaders/opaque_mesh.gdshader" id="2"]
@@ -26,6 +26,8 @@ size = Vector3(1, 4, 60)
 [sub_resource type="BoxShape3D" id="BoxShape3D_sek2w"]
 size = Vector3(24, 4, 1)
 
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_duwxy"]
+
 [sub_resource type="BoxShape3D" id="5"]
 size = Vector3(30, 2, 60)
 
@@ -37,7 +39,7 @@ shader_parameter/sprite_texture = ExtResource("2_fd3tu")
 [sub_resource type="PlaneMesh" id="PlaneMesh_mttbc"]
 material = SubResource("ShaderMaterial_vy5dv")
 size = Vector2(20.48, 56.2683)
-subdivide_depth = 3601
+subdivide_depth = 2047
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qhlwa"]
 render_priority = 0
@@ -58,7 +60,7 @@ size = Vector2(20.5, 0.18)
 
 [node name="WorldBounds" type="StaticBody3D" parent="Bounds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-collision_layer = 256
+collision_layer = 128
 collision_mask = 0
 
 [node name="West" type="CollisionShape3D" parent="Bounds/WorldBounds"]
@@ -79,7 +81,7 @@ shape = SubResource("BoxShape3D_xh3q2")
 
 [node name="CameraBounds" type="StaticBody3D" parent="Bounds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-collision_layer = 512
+collision_layer = 64
 collision_mask = 0
 
 [node name="West" type="CollisionShape3D" parent="Bounds/CameraBounds"]
@@ -98,12 +100,16 @@ shape = SubResource("BoxShape3D_sek2w")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23)
 shape = SubResource("BoxShape3D_sek2w")
 
+[node name="Floor" type="CollisionShape3D" parent="Bounds/CameraBounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+shape = SubResource("WorldBoundaryShape3D_duwxy")
+
 [node name="Lights" parent="." instance=ExtResource("1_04on7")]
 
 [node name="Foliage" type="Node3D" parent="."]
 
 [node name="Ground" type="StaticBody3D" parent="Foliage"]
-collision_layer = 256
+collision_layer = 128
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Foliage/Ground"]
@@ -115,7 +121,6 @@ cast_shadow = 0
 mesh = SubResource("PlaneMesh_mttbc")
 script = ExtResource("3_xqkqx")
 texture = ExtResource("2_fd3tu")
-subdivisions_per_meter_depth = 64
 
 [node name="Trees" type="Node3D" parent="Foliage"]
 
@@ -1689,6 +1694,7 @@ script = ExtResource("17_qwvbc")
 [node name="Player" parent="." instance=ExtResource("5_312wl")]
 
 [node name="CameraFollowBody" parent="." node_paths=PackedStringArray("target") instance=ExtResource("20_0bncb")]
+platform_floor_layers = 0
 target = NodePath("../Player")
 
 [node name="WolfDepth" parent="." instance=ExtResource("19_8iwk6")]
