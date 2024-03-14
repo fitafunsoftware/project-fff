@@ -33,6 +33,7 @@ points = PackedVector3Array(0.11, 0, -6.59395, 0.11, 0.8, -4.39596, -0.11, 0.8, 
 [node name="VerticalSprite3D" type="Sprite3D" parent="."]
 material_override = SubResource("ShaderMaterial_ybiw3")
 cast_shadow = 0
+custom_aabb = AABB(-0.7, -2.4, 0, 1.4, 5.55, 0)
 offset = Vector2(0, 120)
 texture = SubResource("ViewportTexture_562ok")
 script = ExtResource("3_wcy8c")

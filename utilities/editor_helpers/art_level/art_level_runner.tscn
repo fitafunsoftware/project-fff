@@ -10,14 +10,14 @@
 [ext_resource type="PackedScene" uid="uid://ypwkw5b68kln" path="res://utilities/light/lights.tscn" id="8_h0tod"]
 [ext_resource type="Script" path="res://utilities/editor_helpers/art_level/art_body.gd" id="9_5v2bp"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4k634"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ekn3t"]
 render_priority = 0
 shader = ExtResource("4_iv4g8")
 shader_parameter/sprite_texture = ExtResource("5_mp3v7")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_veu3k"]
-material = SubResource("ShaderMaterial_4k634")
-custom_aabb = AABB(-6.4, 0, -15, 12.8, 4, 30)
+[sub_resource type="PlaneMesh" id="PlaneMesh_wahhy"]
+material = SubResource("ShaderMaterial_ekn3t")
+custom_aabb = AABB(-6.4, -2.4, -15.0012, 12.8, 3.15, 30.0025)
 size = Vector2(12.8, 30.0025)
 subdivide_depth = 1920
 
@@ -97,12 +97,12 @@ script = ExtResource("3_7apk3")
 [node name="Auxillary" type="Node3D" parent="GameViewportContainer/GameViewport/ArtLevel"]
 
 [node name="Ground" type="StaticBody3D" parent="GameViewportContainer/GameViewport/ArtLevel/Auxillary"]
-collision_layer = 256
+collision_layer = 192
 collision_mask = 0
 
 [node name="HorizontalSprite3D" type="MeshInstance3D" parent="GameViewportContainer/GameViewport/ArtLevel/Auxillary/Ground"]
 cast_shadow = 0
-mesh = SubResource("PlaneMesh_veu3k")
+mesh = SubResource("PlaneMesh_wahhy")
 script = ExtResource("6_n6e51")
 texture = ExtResource("5_mp3v7")
 subdivisions_per_meter_depth = 64
@@ -121,7 +121,8 @@ z_drag_margin = 0
 
 [node name="Body" type="CharacterBody3D" parent="GameViewportContainer/GameViewport/ArtLevel/Auxillary"]
 collision_layer = 0
-collision_mask = 768
+collision_mask = 192
+platform_floor_layers = 192
 script = ExtResource("9_5v2bp")
 friction = 100.0
 acceleration = 100.0
@@ -131,7 +132,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 shape = SubResource("BoxShape3D_deuiv")
 
 [node name="Walls" type="StaticBody3D" parent="GameViewportContainer/GameViewport/ArtLevel/Auxillary"]
-collision_layer = 256
+collision_layer = 192
 collision_mask = 0
 
 [node name="Left" type="CollisionShape3D" parent="GameViewportContainer/GameViewport/ArtLevel/Auxillary/Walls"]

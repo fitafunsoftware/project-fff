@@ -100,6 +100,7 @@ shape = SubResource("BoxShape3D_fn6na")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48, 0)
 material_override = SubResource("ShaderMaterial_trapo")
 cast_shadow = 0
+custom_aabb = AABB(-0.64, -3.04, 0, 1.28, 4.43, 0)
 shaded = true
 texture = ExtResource("3_50vm0")
 hframes = 6

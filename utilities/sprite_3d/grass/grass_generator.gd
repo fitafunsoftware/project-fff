@@ -6,6 +6,9 @@ extends Node3D
 ## Takes a grass texture and creates a bunch of grass meshes based on a given
 ## grass map. Toggle the generate grass boolean to regenerate the grass.
 
+## Max half screen height for custom aabb.
+const MAX_SCREEN_HEIGHT : float = 2.4
+
 ## The shader used for grass meshes.
 const GRASS_SHADER : Shader = preload("res://shaders/grass.gdshader")
 
@@ -103,8 +106,18 @@ func _create_mesh():
 	quad_mesh.orientation = PlaneMesh.FACE_Z
 	quad_mesh.size = Vector2(_row_length, _row_height)
 	quad_mesh.material = shader_material
+	quad_mesh.custom_aabb = _get_custom_aabb(quad_mesh)
 	
 	_mesh = quad_mesh
+
+
+func _get_custom_aabb(mesh: PrimitiveMesh) -> AABB:
+	var aabb : AABB = mesh.get_aabb()
+	var y_height : float = GlobalParams.get_global_param("ARC_HEIGHT") \
+			+ MAX_SCREEN_HEIGHT
+	aabb.position.y -= MAX_SCREEN_HEIGHT
+	aabb.size.y += y_height
+	return aabb
 
 
 # Create a bunch of grass instances.

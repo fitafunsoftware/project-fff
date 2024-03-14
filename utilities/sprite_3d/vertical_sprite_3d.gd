@@ -7,6 +7,9 @@ extends Sprite3D
 ## you can use transparent textures as these will be at a single depth level 
 ## instead of multiple depth levels.
 
+## Max half screen height for custom aabb.
+const MAX_SCREEN_HEIGHT : float = 2.4
+
 ## The shader for VerticalSprite3D meshes.
 static var SHADER : Shader = preload("res://shaders/transparent_mesh.gdshader")
 # Set the properties in the appropriate json file.
@@ -34,6 +37,10 @@ func _set(property: StringName, value: Variant):
 		shaded = value
 		_apply_texture()
 		return true
+	if ["texture", "hframes", "vframes", 
+			"offset", "centered", "pixel_size"].has(property):
+		_set_custom_aabb.call_deferred()
+		return false
 	
 	return false
 
@@ -56,7 +63,8 @@ func _process(_delta):
 ## Get the area occupied by the sprite. Defaults to the texture rect if there is
 ## no defined area.
 func get_sprite_area() -> PackedVector2Array:
-	var texture_size : Vector2 = texture.get_size()
+	var texture_size : Vector2 = texture.get_size() / Vector2(hframes, vframes)
+	texture_size = texture_size.round()
 	var offset_transform : Transform2D = Transform2D(0, Vector2.ZERO)
 	offset_transform = offset_transform.translated(-offset)
 	offset_transform = offset_transform.translated(float(centered)*texture_size/2)
@@ -106,6 +114,20 @@ func _apply_texture():
 			_occluder.set_height(viewport.size.y * pixel_size)
 	else:
 		_occluder.set_height(texture.get_size().y * pixel_size)
+
+
+func _set_custom_aabb():
+	var texture_size : Vector2 = texture.get_size() / Vector2(hframes, vframes)
+	texture_size = texture_size.round()
+	var position_offset : Vector2 = (offset - (float(centered)*texture_size/2.0))
+	position_offset = position_offset * pixel_size
+	var aabb_position : Vector3 = Vector3(0.0, -MAX_SCREEN_HEIGHT, 0.0) \
+			+ Vector3(position_offset.x, position_offset.y, 0.0)
+	var aabb_size : Vector3 = Vector3(texture_size.x, texture_size.y, 0.0)*pixel_size
+	var y_height : float = GlobalParams.get_global_param("ARC_HEIGHT") \
+			+ MAX_SCREEN_HEIGHT
+	aabb_size.y = aabb_size.y + y_height
+	custom_aabb = AABB(aabb_position, aabb_size)
 
 
 func _occlude():

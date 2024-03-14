@@ -9,6 +9,9 @@ extends MeshInstance3D
 ## to how Godot deals with transparent meshes, try not to make horizontal sprites
 ## transparent.
 
+## Max half screen height for custom aabb.
+const MAX_SCREEN_HEIGHT : float = 2.4
+
 # Set the properties in the appropriate json file.
 static var FLOOR_GRADIENT : float = NAN
 
@@ -61,8 +64,6 @@ func _init():
 
 func _ready():
 	if not mesh:
-		mesh = PlaneMesh.new()
-		mesh.orientation = PlaneMesh.FACE_Y
 		_recalculate_size_and_subdivisions()
 	
 	if not mesh.material:
@@ -76,8 +77,15 @@ func _ready():
 # and above settings.
 func _recalculate_size_and_subdivisions():
 	if not mesh:
-		return
+		mesh = PlaneMesh.new()
+		mesh.orientation = PlaneMesh.FACE_Y
 	
+	_recalculate_size()
+	_recalculate_custom_aabb()
+	_recalculate_subdivisions()
+
+
+func _recalculate_size():
 	if is_nan(FLOOR_GRADIENT):
 		FLOOR_GRADIENT = GlobalParams.get_global_param("FLOOR_GRADIENT")
 	
@@ -86,8 +94,17 @@ func _recalculate_size_and_subdivisions():
 	else:
 		mesh.size = texture.get_size() * pixel_size
 		mesh.size.y /= FLOOR_GRADIENT
-	
-	_recalculate_subdivisions()
+
+
+func _recalculate_custom_aabb():
+	var half_mesh_size : Vector2 = mesh.size / 2.0
+	var aabb_position : Vector3 = mesh.center_offset \
+			- Vector3(half_mesh_size.x, MAX_SCREEN_HEIGHT, half_mesh_size.y)
+	var aabb_size : Vector3 = Vector3(mesh.size.x, 0.0, mesh.size.y)
+	var y_height : float = GlobalParams.get_global_param("ARC_HEIGHT") \
+			+ MAX_SCREEN_HEIGHT
+	aabb_size.y = aabb_size.y + y_height
+	mesh.custom_aabb = AABB(aabb_position, aabb_size)
 
 
 func _recalculate_subdivisions():

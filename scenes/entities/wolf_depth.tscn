@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://utilities/sprite_3d/vertical_sprite_3d.gd" id="3_7pnnf"]
 [ext_resource type="Texture2D" uid="uid://cb6574w001og1" path="res://assets/art/wolf/wolf_front.png" id="4_p3aa3"]
 [ext_resource type="Texture2D" uid="uid://br1alhn45lvdd" path="res://assets/art/wolf/wolf_back.png" id="5_3gm1a"]
-[ext_resource type="Texture2D" uid="uid://cb04st06nawde" path="res://assets/art/shadow/shadow.png" id="6_gvlvw"]
+[ext_resource type="Texture2D" uid="uid://bi3dixrmvv8uf" path="res://assets/art/shadow/wolf_shadow.png" id="6_vc81l"]
 [ext_resource type="Script" path="res://utilities/entity/shadow/shadow.gd" id="7_tr2xj"]
 [ext_resource type="Script" path="res://utilities/entity/entity.gd" id="8_rs3fi"]
 
@@ -52,6 +52,7 @@ shape = SubResource("BoxShape3D_8no2n")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64, 0.192323)
 material_override = SubResource("ShaderMaterial_f5n2d")
 cast_shadow = 0
+custom_aabb = AABB(-1.16, -3.04, 0, 2.32, 4.43, 0)
 shaded = true
 texture = ExtResource("4_p3aa3")
 script = ExtResource("3_7pnnf")
@@ -61,25 +62,27 @@ z_pixel_offset = 7
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64, -0.192323)
 material_override = SubResource("ShaderMaterial_drnd7")
 cast_shadow = 0
+custom_aabb = AABB(-1.16, -3.04, 0, 2.32, 4.43, 0)
 shaded = true
 texture = ExtResource("5_3gm1a")
 script = ExtResource("3_7pnnf")
 z_pixel_offset = -7
 
 [node name="Shadow3D" type="Sprite3D" parent="."]
-transform = Transform3D(1.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 cast_shadow = 3
 axis = 1
 double_sided = false
 alpha_cut = 1
 texture_filter = 0
-texture = ExtResource("6_gvlvw")
+texture = ExtResource("6_vc81l")
 script = ExtResource("7_tr2xj")
 
 [node name="WolfDepth" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64, 0)
 material_override = SubResource("ShaderMaterial_4ov1q")
 cast_shadow = 0
+custom_aabb = AABB(-1.16, -3.04, 0, 2.32, 4.43, 0)
 shaded = true
 texture = ExtResource("2_oqjhw")
 script = ExtResource("3_7pnnf")
