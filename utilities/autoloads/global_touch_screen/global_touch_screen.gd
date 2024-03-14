@@ -53,4 +53,6 @@ func get_visible() -> bool:
 
 ## Loads a joypad scene as your joypad.
 func load_joypad(joypad_scene: String):
+	if not _load_joypad_scene:
+		return
 	_load_joypad_scene.call(joypad_scene)
