@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cs5vem3cobdyo"]
 
 [ext_resource type="Texture2D" uid="uid://cgkcggr4imqbd" path="res://assets/art/tree/tree.png" id="1_6gc26"]
-[ext_resource type="Script" path="res://utilities/entity/sprite_3d/sprite_viewport/sprite_area_polygon.gd" id="2_xpbjr"]
+[ext_resource type="Script" path="res://utilities/sprite_3d/sprite_viewport/sprite_area_polygon.gd" id="2_xpbjr"]
 
 [node name="TreeSprite" type="Node2D"]
 

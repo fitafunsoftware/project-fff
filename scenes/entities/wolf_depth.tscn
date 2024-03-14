@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" path="res://shaders/transparent_mesh.gdshader" id="2_0odbi"]
 [ext_resource type="Texture2D" uid="uid://cahkygs8hx2dn" path="res://assets/art/wolf/wolf_middle.png" id="2_oqjhw"]
-[ext_resource type="Script" path="res://utilities/entity/sprite_3d/vertical_sprite_3d.gd" id="3_7pnnf"]
+[ext_resource type="Script" path="res://utilities/sprite_3d/vertical_sprite_3d.gd" id="3_7pnnf"]
 [ext_resource type="Texture2D" uid="uid://cb6574w001og1" path="res://assets/art/wolf/wolf_front.png" id="4_p3aa3"]
 [ext_resource type="Texture2D" uid="uid://br1alhn45lvdd" path="res://assets/art/wolf/wolf_back.png" id="5_3gm1a"]
 [ext_resource type="Texture2D" uid="uid://cb04st06nawde" path="res://assets/art/shadow/shadow.png" id="6_gvlvw"]
