@@ -156,3 +156,6 @@ func _on_entity_detected():
 func _on_entity_lost():
 	set_shader_opacity(1.0)
 
+
+func _on_look_direction_changed(look_direction: int):
+	flip_h = look_direction == LookDirection.Direction.LEFT

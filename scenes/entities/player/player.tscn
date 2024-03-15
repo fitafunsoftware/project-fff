@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b5p4x0lyjysme"]
+[gd_scene load_steps=21 format=3 uid="uid://b5p4x0lyjysme"]
 
 [ext_resource type="Script" path="res://utilities/entity/entity.gd" id="1_dixje"]
 [ext_resource type="Shader" path="res://shaders/transparent_mesh.gdshader" id="2_cr2h3"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bb8jb84y14rb3" path="res://scenes/entities/player/player_states/move.tscn" id="9_l5ks8"]
 [ext_resource type="PackedScene" uid="uid://1ac5bgndark" path="res://scenes/entities/player/player_states/jump.tscn" id="10_aglp1"]
 [ext_resource type="PackedScene" uid="uid://drqkgak83abbt" path="res://scenes/entities/player/player_states/fall.tscn" id="11_tlhgv"]
+[ext_resource type="Script" path="res://utilities/entity/look_direction/look_direction.gd" id="13_mhgbn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fn6na"]
 size = Vector3(0.2, 0.8, 0.22)
@@ -143,6 +144,7 @@ dependencies = {
 "animation": NodePath("../../AnimationPlayer"),
 "body": NodePath("../.."),
 "input": NodePath("../../PlayerInput"),
+"look": NodePath("../../LookDirection"),
 "speed": 3.0
 }
 
@@ -151,6 +153,7 @@ dependencies = {
 "animation": NodePath("../../AnimationPlayer"),
 "body": NodePath("../.."),
 "input": NodePath("../../PlayerInput"),
+"look": NodePath("../../LookDirection"),
 "speed": 3.0
 }
 
@@ -160,6 +163,7 @@ dependencies = {
 "body": NodePath("../.."),
 "input": NodePath("../../PlayerInput"),
 "jump_velocity": 5.0,
+"look": NodePath("../../LookDirection"),
 "speed": 3.0
 }
 
@@ -168,8 +172,13 @@ dependencies = {
 "animation": NodePath("../../AnimationPlayer"),
 "body": NodePath("../.."),
 "input": NodePath("../../PlayerInput"),
+"look": NodePath("../../LookDirection"),
 "speed": 3.0
 }
 
+[node name="LookDirection" type="Node" parent="."]
+script = ExtResource("13_mhgbn")
+
 [connection signal="animation_finished" from="AnimationPlayer" to="PlayerStateMachine" method="_on_animation_finished"]
 [connection signal="input_event" from="PlayerInput" to="PlayerStateMachine" method="handle_input"]
+[connection signal="look_direction_changed" from="LookDirection" to="Sprite" method="_on_look_direction_changed"]

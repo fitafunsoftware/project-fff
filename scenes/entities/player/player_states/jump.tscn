@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://1ac5bgndark"]
+[gd_scene load_steps=9 format=3 uid="uid://1ac5bgndark"]
 
 [ext_resource type="Script" path="res://utilities/state_machine/states/component_state.gd" id="1_1os74"]
 [ext_resource type="Script" path="res://utilities/entity/entity_state_components/move_state_component.gd" id="2_tw2ci"]
 [ext_resource type="Script" path="res://utilities/state_machine/states/state_components/decorators/function_activation_state_component.gd" id="3_rko54"]
 [ext_resource type="Script" path="res://utilities/state_machine/states/state_components/node_state_components/update/transitions/less_than_transition_state_component.gd" id="4_4kco0"]
+[ext_resource type="Script" path="res://utilities/entity/entity_state_components/look_direction/look_direction_state_component.gd" id="5_33cou"]
 [ext_resource type="Script" path="res://utilities/state_machine/states/state_components/node_state_components/update/transitions/equals_transition_state_component.gd" id="5_v6mg8"]
 [ext_resource type="Script" path="res://utilities/state_machine/states/state_components/node_state_components/enter/enter_call_function_variable_state_component.gd" id="6_5sdu4"]
 [ext_resource type="Script" path="res://utilities/state_machine/states/state_components/node_state_components/enter/enter_call_function_state_component.gd" id="7_ouqoe"]
@@ -15,6 +16,7 @@ dependencies = {
 "body": null,
 "input": null,
 "jump_velocity": 4.5,
+"look": null,
 "speed": 3.0
 }
 state_name = &"jump"
@@ -38,6 +40,11 @@ script = ExtResource("7_ouqoe")
 function = &"play"
 args = ["idle"]
 node_key = &"animation"
+
+[node name="Look" type="Node" parent="."]
+script = ExtResource("5_33cou")
+look_key = &"look"
+input_key = &"input"
 
 [node name="Transitions" type="Node" parent="."]
 
