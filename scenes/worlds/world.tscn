@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://clqhyj6p24vuh"]
+[gd_scene load_steps=26 format=3 uid="uid://clqhyj6p24vuh"]
 
 [ext_resource type="PackedScene" uid="uid://ypwkw5b68kln" path="res://utilities/light/lights.tscn" id="1_04on7"]
 [ext_resource type="Shader" path="res://shaders/opaque_mesh.gdshader" id="2"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b5p4x0lyjysme" path="res://scenes/entities/player/player.tscn" id="5_312wl"]
 [ext_resource type="Script" path="res://utilities/sprite_3d/grass/grass_generator.gd" id="13_giqmr"]
 [ext_resource type="PackedScene" uid="uid://bg6n0slpar7eg" path="res://scenes/entities/tree.tscn" id="13_ko2qx"]
+[ext_resource type="PackedScene" uid="uid://dq24l2rpkfmwd" path="res://scenes/sprites/parallax_background_3d.tscn" id="14_hlmey"]
 [ext_resource type="Texture2D" uid="uid://c7jc4rpg3fy02" path="res://assets/art/grass/tall_grass.png" id="14_whl8h"]
 [ext_resource type="Texture2D" uid="uid://bibl3215drlsb" path="res://assets/art/grass/tall_bitmap.png" id="15_pto5b"]
 [ext_resource type="Shader" path="res://shaders/grass.gdshader" id="16_7ywox"]
@@ -55,6 +56,9 @@ shader_parameter/bitmap_texture = ExtResource("15_pto5b")
 material = SubResource("ShaderMaterial_5jk3x")
 custom_aabb = AABB(-10.25, -2.49, 0, 20.5, 3.33, 0)
 size = Vector2(20.5, 0.18)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_wrfgr"]
+viewport_path = NodePath("SpriteViewport")
 
 [node name="World3D" type="Node3D"]
 
@@ -1701,3 +1705,6 @@ target = NodePath("../Player")
 
 [node name="WolfDepth" parent="." instance=ExtResource("19_8iwk6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1, 0, 6.869)
+
+[node name="ParallaxBackground3D" parent="." instance=ExtResource("14_hlmey")]
+texture = SubResource("ViewportTexture_wrfgr")

@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://dq24l2rpkfmwd"]
+
+[ext_resource type="Script" path="res://utilities/sprite_3d/parallax_sprite_3d.gd" id="1_qv7oa"]
+[ext_resource type="Script" path="res://utilities/sprite_3d/sprite_viewport/sprite_viewport.gd" id="2_gw3tw"]
+[ext_resource type="Texture2D" uid="uid://drnwe6bfeqaet" path="res://assets/art/sky/sun.png" id="3_6kld1"]
+[ext_resource type="Texture2D" uid="uid://cn4hysrmpwtlu" path="res://assets/art/sky/clouds.png" id="4_5ci6a"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_rqlfa"]
+viewport_path = NodePath("SpriteViewport")
+
+[node name="ParallaxBackground3D" type="Sprite3D"]
+render_priority = -8
+texture = SubResource("ViewportTexture_rqlfa")
+script = ExtResource("1_qv7oa")
+
+[node name="SpriteViewport" type="SubViewport" parent="."]
+disable_3d = true
+transparent_bg = true
+snap_2d_transforms_to_pixel = true
+snap_2d_vertices_to_pixel = true
+canvas_item_default_texture_filter = 0
+size = Vector2i(960, 720)
+script = ExtResource("2_gw3tw")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="SpriteViewport"]
+
+[node name="Sun" type="ParallaxLayer" parent="SpriteViewport/ParallaxBackground"]
+motion_scale = Vector2(0, 0)
+
+[node name="Sun" type="Sprite2D" parent="SpriteViewport/ParallaxBackground/Sun"]
+position = Vector2(640, 220)
+texture = ExtResource("3_6kld1")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="SpriteViewport/ParallaxBackground"]
+motion_scale = Vector2(-0.05, 0.01)
+motion_mirroring = Vector2(960, 540)
+
+[node name="Clouds" type="Sprite2D" parent="SpriteViewport/ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("4_5ci6a")
+centered = false
