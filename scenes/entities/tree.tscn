@@ -37,6 +37,7 @@ custom_aabb = AABB(-0.7, -2.4, 0, 1.4, 5.55, 0)
 offset = Vector2(0, 120)
 texture = SubResource("ViewportTexture_562ok")
 script = ExtResource("3_wcy8c")
+entity_detected_opacity = 0.7
 
 [node name="SpriteViewport" type="SubViewport" parent="VerticalSprite3D"]
 transparent_bg = true

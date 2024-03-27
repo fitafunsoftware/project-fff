@@ -1,12 +1,9 @@
-#ifndef DISTANCE_SHADER_GLOBALS
 global uniform float DISTANCE_FRONT_START;
 global uniform float DISTANCE_FRONT_END;
 global uniform float DISTANCE_BACK_START;
 global uniform float DISTANCE_BACK_END;
-#define DISTANCE_SHADER_GLOBALS
-#endif
 
-float get_fade_multiplier(float z, float camera_z) {
+float get_distance_multiplier(float z, float camera_z) {
 	float distance_to_camera = distance(z, camera_z);
 	
 	if (distance_to_camera >= DISTANCE_FRONT_START
@@ -25,5 +22,5 @@ float get_fade_multiplier(float z, float camera_z) {
 			(distance_to_camera - DISTANCE_FRONT_END) / front_fade_length
 			: (DISTANCE_BACK_END - distance_to_camera) / back_fade_length;
 	
-	return mix(0.0, 1.0, ratio);
+	return ratio;
 }

@@ -2,9 +2,12 @@ shader_type spatial;
 render_mode blend_mix,specular_disabled,world_vertex_coords;
 
 #include "includes/curved_world.gdshaderinc"
-#include "includes/distance_fade.gdshaderinc"
-#include "includes/distance_dither.gdshaderinc"
+#include "includes/distance_multiplier.gdshaderinc"
+#include "includes/dither_multiplier.gdshaderinc"
 #include "includes/sprite_diffuse.gdshaderinc"
+
+global uniform float DITHER_SCALE_EXPONENT;
+global uniform float MAX_DITHER_RATIO;
 
 uniform sampler2D sprite_texture : source_color, filter_nearest, repeat_disable;
 uniform float opacity : hint_range(0.0, 1.0) = 1.0;
@@ -26,12 +29,21 @@ void fragment() {
 	}
 	vec4 color = texture(sprite_texture, UV);
 	vec2 pixel_position = UV * vec2(textureSize(sprite_texture, 0));
-	float fade_multiplier = get_fade_multiplier(NODE_POSITION_WORLD.z, CAMERA_POSITION_WORLD.z);
-	float dither_multiplier = get_dither_multiplier(NODE_POSITION_WORLD.z, CAMERA_POSITION_WORLD.z, pixel_position);
+	float distance_multiplier = sqrt(get_distance_multiplier(NODE_POSITION_WORLD.z, CAMERA_POSITION_WORLD.z));
+	float dither_multiplier = get_dither_multiplier(pixel_position);
+	dither_multiplier = MAX_DITHER_RATIO * dither_multiplier;
+	float final_dither = mix(dither_multiplier, 1.0, distance_multiplier * opacity);
+	final_dither = pow(final_dither, DITHER_SCALE_EXPONENT);
 	
-	ALBEDO = fade_multiplier >= 1.0 ?
-		color.rgb : mix(vec3(0.02), color.rgb, fade_multiplier * dither_multiplier);
-	ALPHA = min(fade_multiplier*dither_multiplier/DITHER_FULL_RATIO, 1.0)*opacity*color.a;
+	ALBEDO = color.rgb;
+	ALPHA = color.a;
+	if (opacity < 1.0) {
+		ALBEDO *= (1.0 - final_dither);
+		ALPHA *= final_dither * opacity;
+	} else if (distance_multiplier < 1.0) {
+		ALBEDO *= final_dither;
+		ALPHA *= distance_multiplier;
+	}
 }
 
 void light() {
