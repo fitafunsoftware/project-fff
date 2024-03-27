@@ -11,6 +11,6 @@ centered = false
 
 [node name="SpriteAreaPolygon" type="Polygon2D" parent="."]
 color = Color(1, 1, 1, 0)
-polygon = PackedVector2Array(59, 240, 81, 240, 81, 160, 140, 160, 71, 0, 0, 160, 59, 160)
+polygon = PackedVector2Array(66, 240, 97, 240, 89, 180, 132, 179, 148, 155, 91, 24, 78, 14, 33, 132, 15, 159, 25, 177, 69, 181)
 script = ExtResource("2_xpbjr")
 height = 240

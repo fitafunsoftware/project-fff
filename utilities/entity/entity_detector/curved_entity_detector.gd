@@ -99,6 +99,6 @@ func _generate_collision_shape(polygon: Array, shape_origin: Vector3, highest_y:
 		var convex_polygon := ConvexPolygonShape3D.new()
 		convex_polygon.points = points
 		collision_shape.shape = convex_polygon
-		add_child(collision_shape)
+		add_child(collision_shape, true)
 		collision_shape.global_position = shape_origin
 		collision_shape.owner = owner
