@@ -18,4 +18,4 @@ func _unhandled_input(event):
 
 
 func get_input_direction() -> Vector2:
-	return Input.get_vector("leftxn", "leftxp", "leftyn", "leftyp")
+	return Input.get_vector("move_left", "move_right", "move_up", "move_down")
