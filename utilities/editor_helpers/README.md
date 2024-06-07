@@ -1,6 +1,10 @@
 # Editor Helpers
 A collection of helpers for use in the editor.
 
+## DebugCollisionMeshManager
+A node to help create MeshInstance3Ds for CollisionShape3Ds. They only get displayed as wireframes 
+and can be given custom colors.
+
 ## Editor Runner Scene
 A scene to help run single scenes in the Editor using the Run Current Scene button.<br>
 Due to the reliance of a lot of nodes and scenes to the GameSubViewport, this just a template you can copy to a new scene to help you set up a simple scene to just run. You could also add the scene you want to run to the Starting Scene variable and just Run the Editor Runner Scene.
