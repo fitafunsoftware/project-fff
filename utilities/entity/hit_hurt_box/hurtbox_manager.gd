@@ -1,5 +1,5 @@
 @icon("hurtbox_manager.png")
-extends Node
+extends Node3D
 class_name HurtboxManager
 ## Manager for hurtboxes.
 ##

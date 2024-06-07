@@ -1,5 +1,5 @@
 @icon("hitbox_manager.png")
-extends Node
+extends Node3D
 class_name HitboxManager
 ## Manager for hitboxes.
 ##
