@@ -11,6 +11,8 @@ signal touch_screen_hidden()
 
 ## The default joypad to use when the game is first run.
 const DEFAULT_JOYPAD := "res://utilities/ui/virtual_joypad/virtual_joypad.tscn"
+## Max number of event_index.
+const MAX_EVENT_INDICES = 32
 
 ## Is touch screen joypad active.
 var active : bool = false :
@@ -26,6 +28,10 @@ var _visible : bool = true
 # Callable to load the joypad scene. MainGame actually handles adding the joypad
 # scene to the tree.
 var _load_joypad_scene : Callable
+# Unused indices for event_index in InputEventAction.
+var _indices : Array
+# Dictionary of actions and their associated event_index.
+var _event_indices : Dictionary
 
 
 func _ready():
@@ -33,6 +39,12 @@ func _ready():
 		_load_joypad_scene.call(DEFAULT_JOYPAD)
 	else:
 		load_joypad.call_deferred(DEFAULT_JOYPAD)
+	
+	_indices = Array()
+	for index in MAX_EVENT_INDICES:
+		_indices.append(MAX_EVENT_INDICES - index - 1)
+	
+	_event_indices = Dictionary()
 
 
 ## Set the visibility of the touch screen joypad. If touch screen joypad is not 
@@ -56,3 +68,23 @@ func load_joypad(joypad_scene: String):
 	if not _load_joypad_scene:
 		return
 	_load_joypad_scene.call(joypad_scene)
+
+
+## Get the associated event_index for action. New event_index is assigned if it
+## hasn't been assigned. Returns -1 if all event_index values are used.
+func get_event_index(action: StringName) -> int:
+	if not _event_indices.has(action):
+		if _indices.is_empty():
+			return -1
+		_event_indices[action] = _indices.pop_back()
+	
+	return _event_indices[action]
+
+
+## Frees up the associated event_index for action.
+func remove_event_index(action: StringName):
+	if not _event_indices.has(action):
+		return
+	
+	_indices.push_front(_event_indices[action])
+	_event_indices.erase(action)

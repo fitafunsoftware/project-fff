@@ -169,6 +169,7 @@ func _parse_input_events():
 		input_event.device = device
 		input_event.action = action
 		input_event.strength = strength
+		input_event.event_index = GlobalTouchScreen.get_event_index(action)
 		if _pressed:
 			if not is_zero_approx(strength) \
 					and strength > InputMap.action_get_deadzone(action):

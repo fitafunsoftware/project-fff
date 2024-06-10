@@ -70,6 +70,7 @@ func _parse_input_event():
 	input.device = device
 	input.action = action
 	input.pressed = _pressed
+	input.event_index = GlobalTouchScreen.get_event_index(action)
 	if _pressed:
 		Input.action_press(action)
 		action_pressed.emit()
