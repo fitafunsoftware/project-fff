@@ -12,7 +12,7 @@ so long as the proper licenses are abided by.
 
 ## Target Platforms
 
-Project FFF is made in Godot v4.3 dev 6 and eventually stable.
+Project FFF is made in Godot v4.3 beta and eventually stable.
 - Targetted to work on the [Retroid Pocket 2S](https://www.goretroid.com/collections/frontpage/products/retroid-pocket-2s-handheld-retro-gaming-system) 
 (Android 11, Vulkan 1.1, 8 Core, ARM64, 3GB RAM, 640x480 resolution) as the lowest requirement 
 device for the Mobile Renderer at 30 FPS and 60 Physics FPS.
