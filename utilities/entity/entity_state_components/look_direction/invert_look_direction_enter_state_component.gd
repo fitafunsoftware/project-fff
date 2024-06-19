@@ -5,7 +5,7 @@ class_name InvertLookDirectionEnterStateComponent
 ## State component for inverting look direction on enter.
 
 ## Key for LookDirection node.
-@export var look_key : StringName = "look_key"
+@export var look_key : StringName = &"look_key"
 
 var look_direction : LookDirection :
 	get:

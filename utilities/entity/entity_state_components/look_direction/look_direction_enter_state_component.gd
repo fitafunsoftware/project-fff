@@ -5,9 +5,9 @@ class_name LookDirectionEnterStateComponent
 ## State component for setting look direction on enter.
 
 ## Key for LookDirection node.
-@export var look_key : StringName = "look_key"
+@export var look_key : StringName = &"look_key"
 ## Key for InputHandler node.
-@export var input_key : StringName = "input_key"
+@export var input_key : StringName = &"input_key"
 
 var look_direction : LookDirection :
 	get:

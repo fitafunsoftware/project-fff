@@ -8,7 +8,7 @@ class_name FunctionActivationStateComponent
 ## deactivates based on if the return value is equal.
 
 ## Key for th node dependency.
-@export var node_key : StringName = "node_key"
+@export var node_key : StringName = &"node_key"
 ## Function to call on the node.
 @export var function : StringName
 ## Arguments to pass through the function.

@@ -8,11 +8,11 @@ class_name MoveStateComponent
 ## target movement on an Entity.
 
 ## Key for the Entity node in dependencies.
-@export var entity_key : StringName = "entity_key"
+@export var entity_key : StringName = &"entity_key"
 ## Key for the InputHandler node in dependencies.
-@export var input_key : StringName = "input_key"
+@export var input_key : StringName = &"input_key"
 ## Key for the speed float in dependencies.
-@export var speed_key : StringName = "speed_key"
+@export var speed_key : StringName = &"speed_key"
 
 var entity : Entity :
 	get:

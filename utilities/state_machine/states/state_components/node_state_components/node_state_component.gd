@@ -5,7 +5,7 @@ class_name NodeStateComponent
 ## Base StateComponent for components that interact with a node.
 
 ## Key for the node dependency.
-@export var node_key : StringName = "node_key"
+@export var node_key : StringName = &"node_key"
 
 var node : Node :
 	get:

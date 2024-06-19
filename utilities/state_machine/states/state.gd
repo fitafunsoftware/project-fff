@@ -11,10 +11,10 @@ signal change_state(requestor: StringName, next_state: StringName)
 
 ## The name of this state.[br]Note: The StringName "previous" is not allowed as 
 ## state name.
-@export var state_name : StringName = "state_name":
+@export var state_name : StringName = &"state_name":
 	set(value):
-		if value == "previous":
-			state_name = "previous_not_allowed_as_name"
+		if value == &"previous":
+			state_name = &"previous_not_allowed_as_name"
 		else:
 			state_name = value
 ## Is the state a push down state.[br]A push down state adds itself to the top
