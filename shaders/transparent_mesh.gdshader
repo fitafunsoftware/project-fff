@@ -17,8 +17,12 @@ void vertex() {
 	float y_offset = get_curved_y(VERTEX.z, CAMERA_POSITION_WORLD.z);
 	vec3 final_position = VERTEX + vec3(0.0, y_offset, 0.0);
 	POSITION = PROJECTION_MATRIX * VIEW_MATRIX * vec4(final_position, 1.0);
-	
-	// This is a hack. Please ignore.
+
+	// This is a hack to avoid shadows being casted on self.
+	// Squishes the mesh up to the mesh's node position so shadow casters below
+	// the mesh's node position do not affect the bottom part of the mesh.
+	// This requires the node position of the mesh to be higher than any
+	// shadow casters owned by the main body.
 	if (NODE_POSITION_WORLD.y > VERTEX.y)
 		VERTEX.y = NODE_POSITION_WORLD.y;
 }
@@ -34,7 +38,7 @@ void fragment() {
 	dither_multiplier = MAX_DITHER_RATIO * dither_multiplier;
 	float final_dither = mix(dither_multiplier, 1.0, distance_multiplier * opacity);
 	final_dither = pow(final_dither, DITHER_SCALE_EXPONENT);
-	
+
 	ALBEDO = color.rgb;
 	ALPHA = color.a;
 	if (opacity < 1.0) {
