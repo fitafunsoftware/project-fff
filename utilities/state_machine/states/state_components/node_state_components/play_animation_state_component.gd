@@ -25,8 +25,7 @@ func resume():
 	animation_player.play(animation)
 
 
-func seek(milliseconds: int):
-	var seconds : float = milliseconds * 0.001
+func seek(seconds: float):
 	animation_player.advance(seconds)
 
 

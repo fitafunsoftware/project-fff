@@ -44,7 +44,7 @@ func exit():
 
 
 ## Hook for seeking to a specific time in this state.
-func seek(_milliseconds: int):
+func seek(_seconds: float):
 	pass
 
 

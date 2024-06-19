@@ -25,11 +25,10 @@ func exit():
 	_disconnect_timer()
 
 
-func seek(milliseconds: int):
-	if milliseconds <= 0:
+func seek(seconds: float):
+	if seconds <= 0.0:
 		return
 	
-	var seconds : float = milliseconds * 0.001
 	_disconnect_timer()
 	if seconds >= delay:
 		set_activated(activate)

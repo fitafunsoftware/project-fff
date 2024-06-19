@@ -39,7 +39,7 @@ func exit():
 
 
 ## Hook into the seek function of the ComponentState.
-func seek(_milliseconds: int):
+func seek(_seconds: float):
 	pass
 
 

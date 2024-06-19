@@ -8,8 +8,10 @@ class_name StateMachine
 
 ## Signal emitted when the state changes.
 signal state_changed(current_state: StringName)
+## Signal emitted when the time in state changes.
+signal time_in_state_changed(seconds: float)
 ## Signal emitted when the states stack changes.
-signal states_stack_changed(states_stack : Array[StringName])
+signal states_stack_changed(states_stack: Array[StringName])
 
 ## The StringName used to check if the previous state is requested to be the
 ## next state.
@@ -29,9 +31,10 @@ const PREVIOUS : StringName = &"previous"
 
 ## The current state of the StateMachine.
 var _current_state : State = null
-var _states_map : Dictionary = {}
-
+var _time_in_state : float = 0.0
 var _states_stack : Array[State] = []
+
+var _states_map : Dictionary = {}
 var _push_down_states : PackedStringArray = []
 var _overwrite_states : PackedStringArray = []
 
@@ -43,6 +46,8 @@ func _ready():
 
 func _physics_process(delta):
 	_current_state.update(delta)
+	_time_in_state += delta
+	time_in_state_changed.emit(_time_in_state)
 
 
 ## Function to pass InputEvents to the current state.[br]Note that this function
@@ -53,28 +58,35 @@ func handle_input(event: InputEvent):
 
 
 ## Configure the state machine with the given [param states_stack]. The last 
-## element will be the [param current_state]. The [param at_time_ms] parameter
+## element will be the [param current_state]. The [param seconds] parameter
 ## informs the new [param current_state] what time to seek to.
-func configure_state_machine(states_stack: Array[StringName], at_time_ms: int = 0):
+func configure_state_machine(states_stack: Array[StringName], seconds: float = 0.0):
 	if not active:
 		return
+	
+	if seconds < 0.0:
+		seconds = 0.0
 	
 	_states_stack.assign(
 		states_stack.map(func(state: StringName): return _states_map[state])
 	)
 	_current_state = _states_stack.back()
-	
-	state_changed.emit(get_current_state())
-	states_stack_changed.emit(get_states_stack())
-	
 	_current_state.enter()
-	_current_state.seek(at_time_ms)
+	_current_state.seek(seconds)
+	_time_in_state = seconds
+	
+	_emit_all_signals()
 
 
 ## Get the name of the current state. Returns an empty StringName if there is
 ## no current state.
 func get_current_state() -> StringName:
 	return _current_state.state_name if _current_state else StringName()
+
+
+## Get the time spent so far in the current state in seconds.
+func get_time_in_state() -> float:
+	return _time_in_state
 
 
 ## Returns an array with the names of the states in the states stack. Top of the
@@ -118,9 +130,10 @@ func change_state(requestor: StringName, next_state: StringName):
 		_states_stack.push_back(_states_map[next_state])
 	
 	_current_state = _states_stack.back()
-	state_changed.emit(get_current_state())
-	states_stack_changed.emit(get_states_stack())
 	_current_state.resume() if next_is_previous else _current_state.enter()
+	_time_in_state = 0.0
+	
+	_emit_all_signals()
 
 
 # Private helper functions.
@@ -146,12 +159,24 @@ func _initialize():
 		_states_stack.push_back(_states_map.values()[0])
 	_current_state = _states_stack.back()
 	_current_state.enter()
+	
+	_time_in_state = 0.0
+	_emit_all_signals()
 
 
 func _clean_up():
 	_current_state.exit()
 	_states_stack.clear()
 	_current_state = null
+	_time_in_state = 0.0
+	
+	_emit_all_signals()
+
+
+func _emit_all_signals():
+	state_changed.emit(get_current_state())
+	time_in_state_changed.emit(_time_in_state)
+	states_stack_changed.emit(get_states_stack())
 
 
 # Signal callbacks.

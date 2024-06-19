@@ -71,8 +71,8 @@ func exit():
 	_call_component_func("exit")
 
 
-func seek(milliseconds: int):
-	_call_component_func("seek", [milliseconds])
+func seek(seconds: float):
+	_call_component_func("seek", [seconds])
 
 
 func handle_input(event: InputEvent):
