@@ -1,0 +1,36 @@
+@tool
+@icon("play_animation.png")
+extends StateComponent
+class_name PlayAnimationStateComponent
+## StateComponent for playing animations on enter and resume.
+##
+## StateComponent will play the given animation on enter and on resume. Also
+## has seek integrated into it so animations can bet set to a specific time.
+
+## Key for AnimationPlayer.
+@export var animation_player_key : StringName = &"animation_player"
+## The name of the animation to be played.
+@export var animation : StringName = &"animation"
+
+var animation_player : AnimationPlayer :
+	get:
+		return dependencies.get(animation_player_key) 
+
+
+func enter():
+	animation_player.play(animation)
+
+
+func resume():
+	animation_player.play(animation)
+
+
+func seek(milliseconds: int):
+	var seconds : float = milliseconds * 0.001
+	animation_player.advance(seconds)
+
+
+func get_dependencies() -> Array[StringName]:
+	var array : Array[StringName] = super()
+	array.append(animation_player_key)
+	return array
