@@ -71,6 +71,10 @@ func exit():
 	_call_component_func("exit")
 
 
+func seek(milliseconds: int):
+	_call_component_func("seek", [milliseconds])
+
+
 func handle_input(event: InputEvent):
 	_call_component_func("handle_input", [event])
 
@@ -102,4 +106,3 @@ func _load_dependencies():
 	dependencies.clear()
 	for key in keys_to_add:
 		dependencies[key] = previous_dependencies.get(key, null)
-

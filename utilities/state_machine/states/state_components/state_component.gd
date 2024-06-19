@@ -38,6 +38,11 @@ func exit():
 	pass
 
 
+## Hook into the seek function of the ComponentState.
+func seek(_milliseconds: int):
+	pass
+
+
 ## Hook into the handle_input function of the ComponentState.[br]Different from
 ## the virtual input functions of nodes.
 func handle_input(_event: InputEvent):

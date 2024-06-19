@@ -4,12 +4,13 @@ A basic implementation of the State Machine pattern. Supports push down states a
 # State
 A basic implementation of the State in a State Machine. Extend this class to make your own custom States in code.
 <br>Has the following hooks:
-- ready
 - enter
 - resume
-- update
 - exit
-- animation_finished
+- seek
+- handle_input
+- update
+- on_animation_finished
 
 ## ComponentState
 An extension of the State class that lets you compose States in-editor as nodes using StateComponents.

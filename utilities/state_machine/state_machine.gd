@@ -8,8 +8,12 @@ class_name StateMachine
 
 ## Signal emitted when the state changes.
 signal state_changed(current_state: StringName)
-## Signal emitted when the states stack changes. Mainly for debugging.
-signal states_stack_changed(states_stack : Array)
+## Signal emitted when the states stack changes.
+signal states_stack_changed(states_stack : Array[StringName])
+
+## The StringName used to check if the previous state is requested to be the
+## next state.
+const PREVIOUS : StringName = &"previous"
 
 ## Is the StateMachine active?
 @export var active : bool = false :
@@ -19,11 +23,12 @@ signal states_stack_changed(states_stack : Array)
 		active = value
 		set_physics_process(active)
 		_initialize() if active else _clean_up()
-## State to start the StateMachine on. Defaults to the first state if not set.
+## State to start the StateMachine on. Defaults to the first state, which
+## might be random, if not set.
 @export var start_state : StringName
 
 ## The current state of the StateMachine.
-var current_state : State = null
+var _current_state : State = null
 var _states_map : Dictionary = {}
 
 var _states_stack : Array[State] = []
@@ -37,16 +42,88 @@ func _ready():
 
 
 func _physics_process(delta):
-	current_state.update(delta)
+	_current_state.update(delta)
 
 
 ## Function to pass InputEvents to the current state.[br]Note that this function
 ## is different from any of the virtual input functions, but it still takes the
 ## same arguments.
 func handle_input(event: InputEvent):
-	current_state.handle_input(event)
+	_current_state.handle_input(event)
 
 
+## Configure the state machine with the given [param states_stack]. The last 
+## element will be the [param current_state]. The [param at_time_ms] parameter
+## informs the new [param current_state] what time to seek to.
+func configure_state_machine(states_stack: Array[StringName], at_time_ms: int = 0):
+	if not active:
+		return
+	
+	_states_stack.assign(
+		states_stack.map(func(state: StringName): return _states_map[state])
+	)
+	_current_state = _states_stack.back()
+	
+	state_changed.emit(get_current_state())
+	states_stack_changed.emit(get_states_stack())
+	
+	_current_state.enter()
+	_current_state.seek(at_time_ms)
+
+
+## Get the name of the current state. Returns an empty StringName if there is
+## no current state.
+func get_current_state() -> StringName:
+	return _current_state.state_name if _current_state else StringName()
+
+
+## Returns an array with the names of the states in the states stack. Top of the
+## stack is the back or last element, and bottom is the front or first element.
+func get_states_stack() -> Array[StringName]:
+	var states_stack : Array[StringName]
+	states_stack.assign(
+		_states_stack.map(func(state: State): return state.state_name)
+	)
+	return states_stack
+
+
+## Functions to change the state of the StateMachine.[br]Ignores the request if
+## the requestor is not the same as the current state or if the next_state is not
+## in the StateMachine.[br]The StringName in PREVIOUS is used to call for the
+## previous states on the stack. Meant to be called by the States.
+func change_state(requestor: StringName, next_state: StringName):
+	if not active:
+		return
+	
+	if _current_state.state_name != requestor:
+		return
+	
+	var next_is_previous : bool = next_state == PREVIOUS
+	if not next_is_previous:
+		if not _states_map.has(next_state):
+			return
+	
+	if next_state in _overwrite_states:
+		if _states_stack.size() > 1:
+			_states_stack.pop_back()
+	
+	_current_state.exit()
+	
+	if next_state in _push_down_states:
+		_states_stack.push_back(_states_map[next_state])
+	elif next_is_previous:
+		_states_stack.pop_back()
+	else:
+		_states_stack.clear()
+		_states_stack.push_back(_states_map[next_state])
+	
+	_current_state = _states_stack.back()
+	state_changed.emit(get_current_state())
+	states_stack_changed.emit(get_states_stack())
+	_current_state.resume() if next_is_previous else _current_state.enter()
+
+
+# Private helper functions.
 func _populate_states_map():
 	for state in get_children():
 		if state is State:
@@ -64,54 +141,19 @@ func _initialize():
 		return
 	
 	if _states_map.has(start_state):
-		_states_stack.append(_states_map[start_state])
+		_states_stack.push_back(_states_map[start_state])
 	else:
-		_states_stack.append(_states_map.values()[0])
-	current_state = _states_stack.front()
-	current_state.enter()
+		_states_stack.push_back(_states_map.values()[0])
+	_current_state = _states_stack.back()
+	_current_state.enter()
 
 
 func _clean_up():
-	current_state.exit()
+	_current_state.exit()
 	_states_stack.clear()
-	current_state = null
+	_current_state = null
 
 
-## Functions to change the state of the StateMachine.[br]Ignores the request if
-## the requestor is not the same as the current state or if the next_state is not
-## in the StateMachine.[br]The StringName "previous" is used to call for the
-## previous states on the stack.
-func change_state(requestor: StringName, next_state: StringName):
-	if not active:
-		return
-	
-	if current_state.state_name != requestor:
-		return
-	
-	var next_is_previous : bool = next_state == "previous"
-	if not next_is_previous:
-		if not _states_map.has(next_state):
-			return
-	
-	if next_state in _overwrite_states:
-		if _states_stack.size() > 1:
-			_states_stack.pop_front()
-	
-	current_state.exit()
-	
-	if next_state in _push_down_states:
-		_states_stack.push_front(_states_map[next_state])
-	elif next_is_previous:
-		_states_stack.pop_front()
-	else:
-		_states_stack.clear()
-		_states_stack.append(_states_map[next_state])
-	
-	current_state = _states_stack.front()
-	state_changed.emit(current_state.state_name)
-	states_stack_changed.emit(_states_stack)
-	current_state.resume() if next_is_previous else current_state.enter()
-
-
+# Signal callbacks.
 func _on_animation_finished(animation: StringName):
-	current_state.on_animation_finished(animation)
+	_current_state.on_animation_finished(animation)

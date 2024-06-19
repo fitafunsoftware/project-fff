@@ -43,6 +43,11 @@ func exit():
 	pass
 
 
+## Hook for seeking to a specific time in this state.
+func seek(_milliseconds: int):
+	pass
+
+
 ## Hook for inputs received by the StateMachine.[br]Note that this is different
 ## from the virtual input functions nodes have.
 func handle_input(_event: InputEvent):
