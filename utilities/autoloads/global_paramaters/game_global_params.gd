@@ -32,12 +32,12 @@ func get_frame_time() -> int:
 ## Function to sync up frame times between systems.[br]The given [param ticks_msec]
 ## will be compared with this system's ticks msec and compensation frames will be
 ## added onto the given [param starting_frame] to account for time passed 
-## between the method call.[br]The [param time_compensation] paramater can be 
-## added to offset any inherent differences in ticks msec between the two systems.
+## between the method call.[br]The [param compensation] paramater can be added
+## to offset any inherent differences in ticks msec between the two systems.
 func sync_frame_time(starting_frame: int, ticks_msec: int, 
-		time_compensation: int = 0):
+		compensation: int = 0):
 	var current_time : int = Time.get_ticks_msec()
-	var delta_time : int = current_time - ticks_msec + time_compensation
+	var delta_time : int = current_time - (ticks_msec + compensation)
 	@warning_ignore("integer_division")
 	var compensation_frames : int = \
 			delta_time / (Engine.physics_ticks_per_second * 1000)
