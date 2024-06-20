@@ -11,11 +11,38 @@ const GLOBAL_PARAMS_JSON : String = "res://global_params/global_params.json"
 
 # Dictionary to store global paramaters.
 var _global_params : Dictionary
+var _frame_time : int
 
 # Initialize the parameters. Calculate other global parameters. Assign the 
 # global shader parameters to the [RenderingServer].
 func _ready():
 	_initialize_params()
+	sync_frame_time(0, Time.get_ticks_msec())
+
+
+func _physics_process(_delta: float) -> void:
+	_frame_time += 1
+
+
+## Get the current frame time. Units is in physics frames.
+func get_frame_time() -> int:
+	return _frame_time
+
+
+## Function to sync up frame times between systems.[br]The given [param ticks_msec]
+## will be compared with this system's ticks msec and compensation frames will be
+## added onto the given [param starting_frame] to account for time passed 
+## between the method call.[br]The [param time_compensation] paramater can be 
+## added to offset any inherent differences in ticks msec between the two systems.
+func sync_frame_time(starting_frame: int, ticks_msec: int, 
+		time_compensation: int = 0):
+	var current_time : int = Time.get_ticks_msec()
+	var delta_time : int = current_time - ticks_msec + time_compensation
+	@warning_ignore("integer_division")
+	var compensation_frames : int = \
+			delta_time / (Engine.physics_ticks_per_second * 1000)
+	
+	_frame_time = starting_frame + compensation_frames
 
 
 ## Get the global parameter with the key [param param].
@@ -47,4 +74,3 @@ func _initialize_params():
 	for param in _global_params.keys():
 		if ProjectSettings.has_setting("shader_globals/" + param):
 			RenderingServer.global_shader_parameter_set(param, _global_params[param])
-

@@ -7,6 +7,12 @@ class_name GlobalParams
 ## that require these parameters have access to them if needed.
 
 
+static func get_frame_time() -> int:
+	if Engine.is_editor_hint():
+		return EditorGlobalParams.get_frame_time()
+	else:
+		return GameGlobalParams.get_frame_time()
+
 ## Returns the global parameter with the name param.
 static func get_global_param(param: String) -> Variant:
 	if Engine.is_editor_hint():
@@ -48,6 +54,11 @@ class EditorGlobalParams:
 ## with this class through [GlobalParams] instead of directly with this class.
 
 
+## Get the current frame time. In editor, this class specifically, this returns -1.
+	static func get_frame_time() -> int:
+		return -1
+
+
 ## Get the global parameter with the name param.
 	static func get_global_param(param: String) -> Variant:
 		var global_params = JSON.parse_string(
@@ -69,4 +80,3 @@ class EditorGlobalParams:
 		global_position.z = snappedf(global_position.z, pixel_size/floor_gradient)
 		
 		return global_position
-
