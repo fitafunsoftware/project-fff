@@ -7,11 +7,22 @@ class_name GlobalParams
 ## that require these parameters have access to them if needed.
 
 
+## Returns the current frame time. Units is in physics frames.
 static func get_frame_time() -> int:
 	if Engine.is_editor_hint():
 		return EditorGlobalParams.get_frame_time()
 	else:
 		return GameGlobalParams.get_frame_time()
+
+
+## Function to sync up frame times between systems.[br]More information in
+## [GameGlobalParams] on arguments.[br]Does nothing when called in editor.
+static func sync_frame_time(starting_frame: int, ticks_msec: int, 
+		time_compensation: int = 0):
+	if Engine.is_editor_hint():
+		return
+	GameGlobalParams.sync_frame_time(starting_frame, ticks_msec, time_compensation)
+
 
 ## Returns the global parameter with the name param.
 static func get_global_param(param: String) -> Variant:
