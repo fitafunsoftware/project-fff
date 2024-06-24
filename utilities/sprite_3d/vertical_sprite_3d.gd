@@ -37,8 +37,8 @@ func _set(property: StringName, value: Variant):
 		shaded = value
 		_apply_texture()
 		return true
-	if ["texture", "hframes", "vframes", 
-			"offset", "centered", "pixel_size"].has(property):
+	if property in ["texture", "hframes", "vframes", 
+			"offset", "centered", "pixel_size"]:
 		_set_custom_aabb.call_deferred()
 		return false
 	
@@ -142,7 +142,7 @@ func _occlude():
 
 
 func _set_position_by_offset():
-	if [PIXEL_SIZE, FLOOR_GRADIENT].has(NAN):
+	if NAN in [PIXEL_SIZE, FLOOR_GRADIENT]:
 		PIXEL_SIZE = GlobalParams.get_global_param("PIXEL_SIZE")
 		FLOOR_GRADIENT = GlobalParams.get_global_param("FLOOR_GRADIENT")
 	var z_offset : float = z_pixel_offset * PIXEL_SIZE / FLOOR_GRADIENT

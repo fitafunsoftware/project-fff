@@ -130,4 +130,3 @@ func _zero_out_velocity(_velocity: Vector3) -> Vector3:
 	_velocity.z = 0.0 if is_zero_approx(_velocity.z) else _velocity.z
 	
 	return _velocity
-

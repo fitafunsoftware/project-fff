@@ -38,7 +38,7 @@ func _ready():
 
 
 # Skip splash screen based on event.
-func _input(event):
+func _input(event : InputEvent):
 	if not event.is_pressed():
 		return
 	

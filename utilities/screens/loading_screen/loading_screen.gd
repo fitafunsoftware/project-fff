@@ -9,6 +9,5 @@ extends Control
 @export var touch_controls : bool = false
 
 
-
 func _ready():
 	get_viewport().change_scene.call_deferred(next_scene, touch_controls)

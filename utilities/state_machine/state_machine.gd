@@ -8,8 +8,6 @@ class_name StateMachine
 
 ## Signal emitted when the state changes.
 signal state_changed(current_state: StringName)
-## Signal emitted when the time in state changes.
-signal time_in_state_changed(seconds: float)
 ## Signal emitted when the states stack changes.
 signal states_stack_changed(states_stack: Array[StringName])
 
@@ -24,14 +22,16 @@ const PREVIOUS : StringName = &"previous"
 			return
 		active = value
 		set_physics_process(active)
-		_initialize() if active else _clean_up()
+		if active:
+			_initialize()
+		else:
+			_clean_up()
 ## State to start the StateMachine on. Defaults to the first state, which
 ## might be random, if not set.
 @export var start_state : StringName
 
 ## The current state of the StateMachine.
 var _current_state : State = null
-var _time_in_state : float = 0.0
 var _states_stack : Array[State] = []
 
 var _states_map : Dictionary = {}
@@ -46,8 +46,6 @@ func _ready():
 
 func _physics_process(delta):
 	_current_state.update(delta)
-	_time_in_state += delta
-	time_in_state_changed.emit(_time_in_state)
 
 
 ## Function to pass InputEvents to the current state.[br]Note that this function
@@ -73,7 +71,6 @@ func configure_state_machine(states_stack: Array[StringName], seconds: float = 0
 	_current_state = _states_stack.back()
 	_current_state.enter()
 	_current_state.seek(seconds)
-	_time_in_state = seconds
 	
 	_emit_all_signals()
 
@@ -82,11 +79,6 @@ func configure_state_machine(states_stack: Array[StringName], seconds: float = 0
 ## no current state.
 func get_current_state() -> StringName:
 	return _current_state.state_name if _current_state else StringName()
-
-
-## Get the time spent so far in the current state in seconds.
-func get_time_in_state() -> float:
-	return _time_in_state
 
 
 ## Returns an array with the names of the states in the states stack. Top of the
@@ -130,8 +122,10 @@ func change_state(requestor: StringName, next_state: StringName):
 		_states_stack.push_back(_states_map[next_state])
 	
 	_current_state = _states_stack.back()
-	_current_state.resume() if next_is_previous else _current_state.enter()
-	_time_in_state = 0.0
+	if next_is_previous:
+		_current_state.resume() 
+	else:
+		_current_state.enter()
 	
 	_emit_all_signals()
 
@@ -160,7 +154,6 @@ func _initialize():
 	_current_state = _states_stack.back()
 	_current_state.enter()
 	
-	_time_in_state = 0.0
 	_emit_all_signals()
 
 
@@ -168,14 +161,12 @@ func _clean_up():
 	_current_state.exit()
 	_states_stack.clear()
 	_current_state = null
-	_time_in_state = 0.0
 	
 	_emit_all_signals()
 
 
 func _emit_all_signals():
 	state_changed.emit(get_current_state())
-	time_in_state_changed.emit(_time_in_state)
 	states_stack_changed.emit(get_states_stack())
 
 

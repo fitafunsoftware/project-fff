@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://b5wk4kvqafrb0"]
 
 [ext_resource type="Script" path="res://utilities/ui/virtual_joypad/virtual_joypad.gd" id="1_4xuw6"]
-[ext_resource type="Script" path="res://utilities/ui/virtual_joypad/static_joystick.gd" id="1_mdig8"]
-[ext_resource type="Script" path="res://utilities/ui/virtual_joypad/action_button.gd" id="2_atgva"]
+[ext_resource type="Script" path="res://utilities/ui/virtual_joypad/virtual_joystick/static_joystick.gd" id="1_mdig8"]
+[ext_resource type="Script" path="res://utilities/ui/virtual_joypad/action_button/action_button.gd" id="2_atgva"]
 
 [node name="VirtualJoypad" type="Control"]
 layout_mode = 3

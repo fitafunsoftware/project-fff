@@ -62,7 +62,7 @@ func on_animation_finished(_animation: StringName):
 
 ## Retrieve the dependencies of this component.
 func get_dependencies() -> Array[StringName]:
-	var array : Array[StringName] = []
+	var array : Array[StringName]
 	array.assign(Array())
 	return array
 

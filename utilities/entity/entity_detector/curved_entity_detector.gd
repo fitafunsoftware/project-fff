@@ -62,7 +62,7 @@ func _generate_collision_shapes():
 	for child in get_children():
 		child.queue_free()
 	
-	for sprite in _sprites:
+	for sprite : VerticalSprite3D in _sprites:
 		if not sprite:
 			continue
 		var sprite_area : Array = sprite.get_sprite_area()
@@ -74,7 +74,7 @@ func _generate_collision_shapes():
 				)
 		
 		var convex_polygons : Array = Geometry2D.decompose_polygon_in_convex(sprite_area)
-		for polygon in convex_polygons:
+		for polygon : Array in convex_polygons:
 			_generate_collision_shape(polygon, shape_origin, highest_y)
 
 

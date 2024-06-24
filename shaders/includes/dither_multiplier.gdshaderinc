@@ -7,6 +7,6 @@ float get_dither_multiplier(vec2 pixel_position) {
 	float bayer_value =
 		BAYER_MATRIX[int(pixel_position.x/3.0) % 4][int(pixel_position.y/3.0) % 4];
 	float bayer_output = 1.0 + (2.0 * bayer_value);
-	float bayer_multiplier = bayer_output < 1.0 ? bayer_output : 1.0;
+	float bayer_multiplier = min(bayer_output, 1.0);
 	return bayer_multiplier;
 }

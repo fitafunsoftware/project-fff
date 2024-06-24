@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ditc5sklxiv3y"
-path="res://.godot/imported/floating_joystick.png-81480a1bd181704b3993ec579c5d8ba4.ctex"
+uid="uid://kunmpwve00a5"
+path="res://.godot/imported/action_button.png-ba35d9118f39c4dd64d922ad0347e1bf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://utilities/ui/virtual_joypad/floating_joystick.png"
-dest_files=["res://.godot/imported/floating_joystick.png-81480a1bd181704b3993ec579c5d8ba4.ctex"]
+source_file="res://utilities/ui/virtual_joypad/action_button/action_button.png"
+dest_files=["res://.godot/imported/action_button.png-ba35d9118f39c4dd64d922ad0347e1bf.ctex"]
 
 [params]
 

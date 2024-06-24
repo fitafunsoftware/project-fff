@@ -50,11 +50,11 @@ func _get_state_components(node: Node) -> Array:
 
 func _connect_components():
 	if not Engine.is_editor_hint():
-		for key in dependencies.keys():
+		for key : StringName in dependencies.keys():
 			if dependencies[key] is NodePath:
 				dependencies[key] = get_node(dependencies[key])
 	
-	for component in _components:
+	for component : StateComponent in _components:
 		component.finished = finished
 		component.dependencies = dependencies
 
@@ -91,18 +91,18 @@ func _call_component_func(function_name: String, arguments: Array = []):
 	if Engine.is_editor_hint():
 		return
 	
-	for component in _components:
+	for component : StateComponent in _components:
 		if component.active:
 			component.callv(function_name, arguments)
 
 
 func _load_dependencies():
-	var keys_to_add : Array[StringName] = []
+	var keys_to_add : Array[StringName]
 	keys_to_add.assign(Array())
-	for component in _components:
+	for component : StateComponent in _components:
 		keys_to_add.append_array(component.get_dependencies())
 	
 	var previous_dependencies : Dictionary = dependencies.duplicate()
 	dependencies.clear()
-	for key in keys_to_add:
+	for key : StringName in keys_to_add:
 		dependencies[key] = previous_dependencies.get(key, null)

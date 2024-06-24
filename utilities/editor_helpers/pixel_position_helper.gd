@@ -20,5 +20,5 @@ func _get_position_offset() -> float:
 	if [PIXEL_SIZE, FLOOR_GRADIENT].has(NAN):
 		PIXEL_SIZE = GlobalParams.get_global_param("PIXEL_SIZE")
 		FLOOR_GRADIENT = GlobalParams.get_global_param("FLOOR_GRADIENT")
-	var z_offset : float = z_pixel_offset * PIXEL_SIZE / FLOOR_GRADIENT
-	return z_offset
+	
+	return z_pixel_offset * PIXEL_SIZE / FLOOR_GRADIENT

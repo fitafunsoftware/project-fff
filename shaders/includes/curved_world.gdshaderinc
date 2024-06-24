@@ -23,7 +23,6 @@ float get_curved_y(float z, float camera_z) {
 	float curve_offset_on_arc = circle_height - DISTANCE_TO_CHORD;
 	// endif
 
-	// Rely on compiler to optimize this.
 	y_offset += on_arc ? curve_offset_on_arc : curve_offset_on_slope;
 
 	return y_offset;

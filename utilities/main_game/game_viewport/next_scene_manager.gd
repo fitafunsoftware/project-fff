@@ -7,9 +7,10 @@ extends Node
 
 ## Signal for when the next scene is ready.
 signal next_scene_ready(next_scene)
+## Show virtual joypad?
+var touch_controls : bool = false
 
 var _next_scene : Node
-var touch_controls : bool = false
 
 
 ## Ready the next scene to be changed to.

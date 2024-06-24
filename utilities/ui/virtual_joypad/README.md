@@ -14,4 +14,3 @@ A floating joystick is a joystick without a fixed position in its area. Touching
 
 ## ActionButton
 A virtual button utility to make InputEventActions out of touch inputs. Input strengths are either 0.0 for released or 1.0 for pressed.
-

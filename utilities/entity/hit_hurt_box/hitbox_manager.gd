@@ -10,7 +10,7 @@ class_name HitboxManager
 
 
 ## Get damage packet to be sent by Hitbox.
-func get_damage(type: String) -> Dictionary:
+func get_damage(_type: String) -> Dictionary:
 	var damage_packet : Dictionary = {}
 	damage_packet["body"] = _body
 	

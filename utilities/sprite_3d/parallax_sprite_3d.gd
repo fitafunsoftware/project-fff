@@ -71,4 +71,3 @@ func _on_texture_changed():
 	if parallax_backgrounds.is_empty():
 		return
 	_parallax_background = parallax_backgrounds[0]
-

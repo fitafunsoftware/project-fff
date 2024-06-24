@@ -70,7 +70,7 @@ func _clear_grass():
 
 # Assign the global parameters actual values.
 func _assign_globals():
-	if [PIXEL_SIZE, FLOOR_GRADIENT].has(NAN):
+	if NAN in [PIXEL_SIZE, FLOOR_GRADIENT]:
 		PIXEL_SIZE = GlobalParams.get_global_param("PIXEL_SIZE")
 		FLOOR_GRADIENT = GlobalParams.get_global_param("FLOOR_GRADIENT")
 

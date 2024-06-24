@@ -10,7 +10,7 @@ class_name HurtboxManager
 
 
 ## Apply damage received by Hurtboxes.
-func apply_damage(section: String, damage_packet: Dictionary):
+func apply_damage(_section: String, damage_packet: Dictionary):
 	var other_body : Entity = damage_packet["body"]
 	if other_body == _body:
 		return

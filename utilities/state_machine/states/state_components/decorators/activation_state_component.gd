@@ -21,7 +21,7 @@ func ready():
 
 func _populate_is_active():
 	_is_active.assign(Array())
-	for component in _components:
+	for component : StateComponent in _components:
 		_is_active.append(component.active)
 
 

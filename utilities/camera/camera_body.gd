@@ -132,4 +132,3 @@ func _move_camera():
 	
 	_camera.position = Vector3(0.0, height_from_origin, distance_from_origin)
 	_camera.global_position = GlobalParams.get_snapped_position(_camera.global_position)
-

@@ -26,7 +26,7 @@ func to_occlude(global_pos_z : float, camera_global_pos_z : float) -> bool:
 
 ## Set the height of the node and calculate the cutoff distance.
 func set_height(height : float):
-	if [CAMERA_Z_OFFSET, ARC_HEIGHT, RADIUS, HALF_CHORD_LENGTH].has(NAN):
+	if NAN in [CAMERA_Z_OFFSET, ARC_HEIGHT, RADIUS, HALF_CHORD_LENGTH]:
 		CAMERA_Z_OFFSET = GlobalParams.get_global_param("CAMERA_Z_OFFSET")
 		ARC_HEIGHT = GlobalParams.get_global_param("ARC_HEIGHT")
 		RADIUS = GlobalParams.get_global_param("RADIUS")
@@ -47,4 +47,3 @@ func _get_corresponding_z_distance(height: float) -> float:
 		length = HALF_CHORD_LENGTH + excess*(RADIUS - ARC_HEIGHT)/HALF_CHORD_LENGTH
 	
 	return length
-

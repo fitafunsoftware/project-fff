@@ -39,7 +39,7 @@ func _create_meshes():
 	shader_material.shader = shader
 	shader_material.set_shader_parameter("color", color)
 	
-	for collision_shape in collision_shapes:
+	for collision_shape : CollisionShape3D in collision_shapes:
 		if not collision_shape:
 			continue
 		

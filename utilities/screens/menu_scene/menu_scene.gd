@@ -31,7 +31,7 @@ func _populate_menu():
 	loading.resize(option_size)
 	var prev_button : Button = null
 	
-	for option in option_size:
+	for option : int in option_size:
 		if not ResourceLoader.exists(scenes[option]):
 			continue
 		

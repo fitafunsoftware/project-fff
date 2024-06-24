@@ -17,7 +17,7 @@ func _init():
 	cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 
 
-func _process(_delta):
+func _process(_delta: float):
 	if not Engine.is_editor_hint():
 		_occlude()
 
@@ -32,4 +32,3 @@ func _occlude():
 		hide()
 	else:
 		show()
-

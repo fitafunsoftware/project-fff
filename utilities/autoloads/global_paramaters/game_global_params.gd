@@ -40,13 +40,13 @@ func sync_frame_time(starting_frame: int, ticks_msec: int,
 	var delta_time : int = current_time - (ticks_msec + compensation)
 	@warning_ignore("integer_division")
 	var compensation_frames : int = \
-			delta_time / (Engine.physics_ticks_per_second * 1000)
+			(delta_time * Engine.physics_ticks_per_second) / 1000
 	
 	_frame_time = starting_frame + compensation_frames
 
 
 ## Get the global parameter with the key [param param].
-func get_global_param(param) -> Variant:
+func get_global_param(param: StringName) -> Variant:
 	if _global_params.is_empty():
 		_initialize_params()
 	return _global_params[param]
@@ -71,6 +71,6 @@ func _initialize_params():
 	_global_params = JSON.parse_string(FileAccess.get_file_as_string(GLOBAL_PARAMS_JSON))
 	GlobalParams.append_curve_params(_global_params)
 	
-	for param in _global_params.keys():
+	for param : StringName in _global_params.keys():
 		if ProjectSettings.has_setting("shader_globals/" + param):
 			RenderingServer.global_shader_parameter_set(param, _global_params[param])

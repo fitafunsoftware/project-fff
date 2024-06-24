@@ -52,5 +52,5 @@ func _disconnect_timer():
 	if not _timer:
 		return
 	
-	for connection in _timer.timeout.get_connections():
+	for connection : Dictionary in _timer.timeout.get_connections():
 		connection["signal"].disconnect(connection["callable"])

@@ -80,7 +80,7 @@ func _ready():
 
 
 # Save settings on quit.
-func _notification(what):
+func _notification(what: int):
 	if what in [NOTIFICATION_WM_CLOSE_REQUEST, NOTIFICATION_WM_GO_BACK_REQUEST]:
 		save_settings()
 

@@ -16,7 +16,7 @@ class_name CallFunctionVariableStateComponent
 ## Call the function.
 func call_function():
 	var args : Array = Array()
-	for variable in variables:
+	for variable : StringName in variables:
 		args.append(dependencies[variable])
 	
 	if deferred:
