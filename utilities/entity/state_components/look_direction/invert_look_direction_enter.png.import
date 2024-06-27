@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgc51y0nau6kc"
-path="res://.godot/imported/look_direction_exit.png-cf397321047b481bb481a274a2c410af.ctex"
+uid="uid://bgy4nl74qxndm"
+path="res://.godot/imported/invert_look_direction_enter.png-91132ea9c34fb125588dc45864fb946b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://utilities/entity/entity_state_components/look_direction/look_direction_exit.png"
-dest_files=["res://.godot/imported/look_direction_exit.png-cf397321047b481bb481a274a2c410af.ctex"]
+source_file="res://utilities/entity/state_components/look_direction/invert_look_direction_enter.png"
+dest_files=["res://.godot/imported/invert_look_direction_enter.png-91132ea9c34fb125588dc45864fb946b.ctex"]
 
 [params]
 

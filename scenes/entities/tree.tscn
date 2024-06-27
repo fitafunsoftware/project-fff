@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cb04st06nawde" path="res://assets/art/shadow/shadow.png" id="4_2jx2n"]
 [ext_resource type="PackedScene" uid="uid://cs5vem3cobdyo" path="res://scenes/sprites/tree_sprite.tscn" id="4_4qkm2"]
 [ext_resource type="Script" path="res://utilities/entity/shadow/shadow.gd" id="5_mldb1"]
-[ext_resource type="Script" path="res://utilities/entity/entity_detector/curved_entity_detector.gd" id="6_6rk15"]
+[ext_resource type="Script" path="res://utilities/entity/detector/curved_entity_detector.gd" id="6_6rk15"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_562ok"]
 viewport_path = NodePath("VerticalSprite3D/SpriteViewport")

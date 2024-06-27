@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cx55wakhwkkw2"
-path="res://.godot/imported/look_direction_enter.png-add2344a1f3ac21d166e628b66c70508.ctex"
+uid="uid://toiecfus81qi"
+path="res://.godot/imported/move_state_component.png-c3f45f38fc2cad4b22fdec4a2356a8bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://utilities/entity/entity_state_components/look_direction/look_direction_enter.png"
-dest_files=["res://.godot/imported/look_direction_enter.png-add2344a1f3ac21d166e628b66c70508.ctex"]
+source_file="res://utilities/entity/state_components/move_state_component.png"
+dest_files=["res://.godot/imported/move_state_component.png-c3f45f38fc2cad4b22fdec4a2356a8bb.ctex"]
 
 [params]
 

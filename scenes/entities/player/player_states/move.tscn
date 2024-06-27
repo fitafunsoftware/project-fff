@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://utilities/state_machine/states/component_state.gd" id="1_kjoa7"]
 [ext_resource type="Script" path="res://utilities/state_machine/states/state_components/decorators/function_activation_state_component.gd" id="2_8cn0y"]
 [ext_resource type="Script" path="res://utilities/state_machine/states/state_components/node_state_components/update/transitions/less_than_transition_state_component.gd" id="3_yqqqg"]
-[ext_resource type="Script" path="res://utilities/entity/entity_state_components/look_direction/look_direction_state_component.gd" id="4_ed22v"]
+[ext_resource type="Script" path="res://utilities/entity/state_components/look_direction/look_direction_state_component.gd" id="4_ed22v"]
 [ext_resource type="Script" path="res://utilities/state_machine/states/state_components/transitions/pressed_transition_state_component.gd" id="4_g6ofu"]
 [ext_resource type="Script" path="res://utilities/state_machine/states/state_components/node_state_components/update/transitions/equals_transition_state_component.gd" id="5_i46re"]
-[ext_resource type="Script" path="res://utilities/entity/entity_state_components/move_state_component.gd" id="6_skyw1"]
+[ext_resource type="Script" path="res://utilities/entity/state_components/move_state_component.gd" id="6_skyw1"]
 [ext_resource type="Script" path="res://utilities/state_machine/states/state_components/node_state_components/enter/enter_call_function_state_component.gd" id="7_qqkcf"]
 
 [node name="Move" type="Node"]

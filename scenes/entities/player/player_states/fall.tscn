@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://utilities/state_machine/states/component_state.gd" id="1_ckch7"]
 [ext_resource type="Script" path="res://utilities/state_machine/states/state_components/node_state_components/enter/enter_call_function_state_component.gd" id="2_i7t6p"]
-[ext_resource type="Script" path="res://utilities/entity/entity_state_components/move_state_component.gd" id="2_jxrbq"]
+[ext_resource type="Script" path="res://utilities/entity/state_components/move_state_component.gd" id="2_jxrbq"]
 [ext_resource type="Script" path="res://utilities/state_machine/states/state_components/node_state_components/update/transitions/equals_transition_state_component.gd" id="2_jxrfg"]
-[ext_resource type="Script" path="res://utilities/entity/entity_state_components/look_direction/look_direction_state_component.gd" id="3_xgov5"]
+[ext_resource type="Script" path="res://utilities/entity/state_components/look_direction/look_direction_state_component.gd" id="3_xgov5"]
 
 [node name="Fall" type="Node"]
 script = ExtResource("1_ckch7")

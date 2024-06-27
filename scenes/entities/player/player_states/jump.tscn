@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://1ac5bgndark"]
 
 [ext_resource type="Script" path="res://utilities/state_machine/states/component_state.gd" id="1_1os74"]
-[ext_resource type="Script" path="res://utilities/entity/entity_state_components/move_state_component.gd" id="2_tw2ci"]
+[ext_resource type="Script" path="res://utilities/entity/state_components/move_state_component.gd" id="2_tw2ci"]
 [ext_resource type="Script" path="res://utilities/state_machine/states/state_components/decorators/function_activation_state_component.gd" id="3_rko54"]
 [ext_resource type="Script" path="res://utilities/state_machine/states/state_components/node_state_components/update/transitions/less_than_transition_state_component.gd" id="4_4kco0"]
-[ext_resource type="Script" path="res://utilities/entity/entity_state_components/look_direction/look_direction_state_component.gd" id="5_33cou"]
+[ext_resource type="Script" path="res://utilities/entity/state_components/look_direction/look_direction_state_component.gd" id="5_33cou"]
 [ext_resource type="Script" path="res://utilities/state_machine/states/state_components/node_state_components/update/transitions/equals_transition_state_component.gd" id="5_v6mg8"]
 [ext_resource type="Script" path="res://utilities/state_machine/states/state_components/node_state_components/enter/enter_call_function_variable_state_component.gd" id="6_5sdu4"]
 [ext_resource type="Script" path="res://utilities/state_machine/states/state_components/node_state_components/enter/enter_call_function_state_component.gd" id="7_ouqoe"]

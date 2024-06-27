@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://toiecfus81qi"
-path="res://.godot/imported/move_state_component.png-0ad162929881018ecb9ef9a78a0798b6.ctex"
+uid="uid://b3a287nk5h184"
+path="res://.godot/imported/entity_state_component.png-41753874f497dcad5f95a86eeb74a9a6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://utilities/entity/entity_state_components/move_state_component.png"
-dest_files=["res://.godot/imported/move_state_component.png-0ad162929881018ecb9ef9a78a0798b6.ctex"]
+source_file="res://utilities/entity/state_components/entity_state_component.png"
+dest_files=["res://.godot/imported/entity_state_component.png-41753874f497dcad5f95a86eeb74a9a6.ctex"]
 
 [params]
 

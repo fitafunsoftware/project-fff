@@ -6,9 +6,9 @@
 [ext_resource type="Script" path="res://utilities/state_machine/states/state_components/node_state_components/resume/resume_call_function_state_component.gd" id="4_hkdwl"]
 [ext_resource type="Script" path="res://utilities/state_machine/states/state_components/node_state_components/update/transitions/not_equals_transition_state_component.gd" id="4_m3nfv"]
 [ext_resource type="Script" path="res://utilities/state_machine/states/state_components/transitions/pressed_transition_state_component.gd" id="5_idx1b"]
-[ext_resource type="Script" path="res://utilities/entity/entity_state_components/move_state_component.gd" id="6_53oco"]
+[ext_resource type="Script" path="res://utilities/entity/state_components/move_state_component.gd" id="6_53oco"]
 [ext_resource type="Script" path="res://utilities/state_machine/states/state_components/node_state_components/enter/enter_call_function_state_component.gd" id="7_ynbp3"]
-[ext_resource type="Script" path="res://utilities/entity/entity_state_components/look_direction/look_direction_state_component.gd" id="9_r85xr"]
+[ext_resource type="Script" path="res://utilities/entity/state_components/look_direction/look_direction_state_component.gd" id="9_r85xr"]
 
 [node name="Idle" type="Node"]
 script = ExtResource("1_22uxk")
