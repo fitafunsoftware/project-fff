@@ -1,0 +1,2 @@
+extends LocalServer
+class_name LocalServerDiscoverer
