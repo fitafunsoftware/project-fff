@@ -1,6 +1,8 @@
 extends LocalServer
 class_name LocalServerDiscoverer
 
+signal server_info_received(server_info: Dictionary)
+
 var udp := PacketPeerUDP.new()
 var discovery_packet : PackedByteArray
 
@@ -57,5 +59,14 @@ func _decode_packet(packet: PackedByteArray):
 		extras.append(packet.decode_var(offset))
 		offset += packet.decode_var_size(offset)
 	
-	print("%s:%d. (%d/%d)" % [address, port, connections, max_connections])
-	print(extras)
+	var server_info : Dictionary = {
+		ADDRESS: address,
+		SERVER_PORT: port,
+		CONNECTIONS: connections,
+		MAX_CONNECTIONS: max_connections,
+	}
+	
+	if extras.size() > 0:
+		server_info[EXTRAS] = extras
+	
+	server_info_received.emit(server_info)

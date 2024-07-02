@@ -26,7 +26,6 @@ func _process(delta: float):
 		var packet = peer.get_packet()
 		
 		if _is_discovery_packet(packet):
-			print("Accepted peer: %s:%s" % [peer.get_packet_ip(), peer.get_packet_port()])
 			peer.put_packet(_broadcast_packet)
 			peers.append(peer)
 			lifetimes[peer] = 0.0
