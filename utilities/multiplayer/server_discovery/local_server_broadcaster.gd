@@ -1,8 +1,11 @@
 extends LocalServer
 class_name LocalServerBroadcaster
 
+const TIMEOUT : float = 30.0
+
 var server := UDPServer.new()
-var peers := []
+var peers : Array[PacketPeerUDP] = []
+var lifetimes := {}
 
 var _broadcast_packet : PackedByteArray
 
@@ -16,7 +19,7 @@ func _ready() -> void:
 	server.listen(PORT)
 
 
-func _process(_delta: float):
+func _process(delta: float):
 	server.poll()
 	if server.is_connection_available():
 		var peer : PacketPeerUDP = server.take_connection()
@@ -26,11 +29,13 @@ func _process(_delta: float):
 			print("Accepted peer: %s:%s" % [peer.get_packet_ip(), peer.get_packet_port()])
 			peer.put_packet(_broadcast_packet)
 			peers.append(peer)
+			lifetimes[peer] = 0.0
 		else:
 			peer.close()
 	
 	_check_for_packets()
 	_prune_connections()
+	_update_lifetimes(delta)
 
 
 func set_broadcast_info(broadcast_info: Dictionary):
@@ -71,12 +76,20 @@ func _check_for_packets():
 			var packet = peer.get_packet()
 			if _is_discovery_packet(packet):
 				peer.put_packet(_broadcast_packet)
+				lifetimes[peer] = 0.0
 
 
 func _prune_connections():
 	var to_erase : Array = []
 	for peer : PacketPeerUDP in peers:
-		if not peer.is_socket_connected():
+		if lifetimes[peer] > TIMEOUT:
 			to_erase.append(peer)
-	for peer in to_erase:
+	for peer : PacketPeerUDP in to_erase:
 		peers.erase(peer)
+		lifetimes.erase(peer)
+		peer.close()
+
+
+func _update_lifetimes(delta: float):
+	for peer : PacketPeerUDP in peers:
+		lifetimes[peer] += delta
