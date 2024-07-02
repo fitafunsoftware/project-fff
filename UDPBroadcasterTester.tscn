@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcwtg7g5cuxh6"]
+
+[ext_resource type="Script" path="res://udp_broadcaster_tester.gd" id="1_m1ovc"]
+
+[node name="UDPBroadcasterTester" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m1ovc")
+previous_scene = "res://scenes/menus/main_menu.tscn"
