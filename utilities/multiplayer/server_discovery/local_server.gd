@@ -16,3 +16,6 @@ const SERVER_PORT : StringName = "port"
 const CONNECTIONS : StringName = "connections"
 const MAX_CONNECTIONS : StringName = "max_connections"
 const EXTRAS : StringName = "extras"
+
+const U8_SIZE : int = 1
+const U16_SIZE : int = 2

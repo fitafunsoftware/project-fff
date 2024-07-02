@@ -3,32 +3,32 @@ class_name LocalServerBroadcaster
 
 const TIMEOUT : float = 30.0
 
-var server := UDPServer.new()
-var peers : Array[PacketPeerUDP] = []
-var lifetimes := {}
+var _server := UDPServer.new()
+var _peers : Array[PacketPeerUDP] = []
+var _lifetimes : Dictionary = {}
 
 var _broadcast_packet : PackedByteArray
 
 
-func _notification(what: int) -> void:
+func _notification(what: int):
 	if what == NOTIFICATION_PREDELETE:
-		server.stop()
+		_server.stop()
 
 
-func _ready() -> void:
-	server.listen(PORT)
+func _ready():
+	_server.listen(PORT)
 
 
 func _process(delta: float):
-	server.poll()
-	if server.is_connection_available():
-		var peer : PacketPeerUDP = server.take_connection()
-		var packet = peer.get_packet()
+	_server.poll()
+	if _server.is_connection_available():
+		var peer : PacketPeerUDP = _server.take_connection()
+		var packet : PackedByteArray = peer.get_packet()
 		
 		if _is_discovery_packet(packet):
 			peer.put_packet(_broadcast_packet)
-			peers.append(peer)
-			lifetimes[peer] = 0.0
+			_peers.append(peer)
+			_lifetimes[peer] = 0.0
 		else:
 			peer.close()
 	
@@ -48,10 +48,10 @@ func set_broadcast_info(broadcast_info: Dictionary):
 	packet.append_array(BROADCAST.to_utf8_buffer())
 	packet.append_array(var_to_bytes(broadcast_info[ADDRESS]))
 	var offset : int = packet.size()
-	packet.resize(offset + 4)
+	packet.resize(offset + U16_SIZE + U8_SIZE + U8_SIZE)
 	packet.encode_u16(offset, broadcast_info[SERVER_PORT])
-	packet.encode_u8(offset + 2, broadcast_info[CONNECTIONS])
-	packet.encode_u8(offset + 3, broadcast_info[MAX_CONNECTIONS])
+	packet.encode_u8(offset + U16_SIZE, broadcast_info[CONNECTIONS])
+	packet.encode_u8(offset + U16_SIZE + U8_SIZE, broadcast_info[MAX_CONNECTIONS])
 	
 	if broadcast_info.has(EXTRAS):
 		for extra in broadcast_info[EXTRAS]:
@@ -70,25 +70,25 @@ func _is_discovery_packet(packet: PackedByteArray) -> bool:
 
 
 func _check_for_packets():
-	for peer : PacketPeerUDP in peers:
+	for peer : PacketPeerUDP in _peers:
 		for count in peer.get_available_packet_count():
 			var packet = peer.get_packet()
 			if _is_discovery_packet(packet):
 				peer.put_packet(_broadcast_packet)
-				lifetimes[peer] = 0.0
+				_lifetimes[peer] = 0.0
 
 
 func _prune_connections():
 	var to_erase : Array = []
-	for peer : PacketPeerUDP in peers:
-		if lifetimes[peer] > TIMEOUT:
+	for peer : PacketPeerUDP in _peers:
+		if _lifetimes[peer] > TIMEOUT:
 			to_erase.append(peer)
 	for peer : PacketPeerUDP in to_erase:
-		peers.erase(peer)
-		lifetimes.erase(peer)
+		_peers.erase(peer)
+		_lifetimes.erase(peer)
 		peer.close()
 
 
 func _update_lifetimes(delta: float):
-	for peer : PacketPeerUDP in peers:
-		lifetimes[peer] += delta
+	for peer : PacketPeerUDP in _peers:
+		_lifetimes[peer] += delta
