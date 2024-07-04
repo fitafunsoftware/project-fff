@@ -1,6 +1,6 @@
 @tool
-extends Polygon2D
 class_name SpriteAreaPolygon
+extends Polygon2D
 ## Helper node to draw area polygons.
 ##
 ## A helper node to draw the area of a polygon that encompasses the sprite. This

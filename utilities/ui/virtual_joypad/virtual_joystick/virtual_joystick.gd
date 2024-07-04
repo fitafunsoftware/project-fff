@@ -1,6 +1,6 @@
 @tool
-extends Control
 class_name VirtualJoystick
+extends Control
 ## Base class for touch screen joysticks.
 ##
 ## Base class for touch screen joysticks. As such, don't use this node. Instead,

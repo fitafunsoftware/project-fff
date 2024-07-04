@@ -1,5 +1,5 @@
-extends CharacterBody3D
 class_name Entity
+extends CharacterBody3D
 ## The base class for all entities in the game.
 ##
 ## Base class to implement basic functionality of entities in the game.

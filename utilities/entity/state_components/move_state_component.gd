@@ -1,7 +1,7 @@
 @tool
 @icon("move_state_component.png")
-extends EntityStateComponent
 class_name MoveStateComponent
+extends EntityStateComponent
 ## State component for entitiy movement.
 ##
 ## A basic state component that just turns input from an InputHandler into 

@@ -1,7 +1,7 @@
 @tool
 @icon("invert_look_direction_enter.png")
-extends EntityStateComponent
 class_name InvertLookDirectionEnterStateComponent
+extends EntityStateComponent
 ## State component for inverting look direction on enter.
 
 ## Key for LookDirection node.

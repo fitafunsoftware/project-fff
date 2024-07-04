@@ -1,7 +1,7 @@
 @tool
 @icon("animation_finished.png")
-extends StateComponent
 class_name AnimationFinishedStateComponent
+extends StateComponent
 ## StateComponent that calls for a state change when an animation is finished.
 
 @export var animation : StringName

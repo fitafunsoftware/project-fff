@@ -1,7 +1,7 @@
 @tool
 @icon("pressed_transition_state_component.png")
-extends StateComponent
 class_name PressedTransitionStateComponent
+extends StateComponent
 ## StateComponent that calls for a state change when an action is pressed.
 
 @export var action : StringName

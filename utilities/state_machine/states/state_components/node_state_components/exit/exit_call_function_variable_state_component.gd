@@ -1,7 +1,7 @@
 @tool
 @icon("funv_exit.png")
-extends CallFunctionVariableStateComponent
 class_name ExitCallFunctionVariableStateComponent
+extends CallFunctionVariableStateComponent
 ## State component to call the function in exit.
 
 

@@ -1,7 +1,7 @@
 @tool
 @icon("fun.png")
-extends NodeStateComponent
 class_name CallFunctionStateComponent
+extends NodeStateComponent
 ## NodeStateComponent that calls the function on the node with the args as 
 ## arguments to the function.
 

@@ -1,6 +1,6 @@
 @tool
-extends Node3D
 class_name DebugCollisionMeshManager
+extends Node3D
 
 const shader = preload("res://shaders/wireframe_mesh.gdshader")
 

@@ -1,6 +1,6 @@
 @icon("state_machine.png")
-extends Node
 class_name StateMachine
+extends Node
 ## Basic State Machine node.
 ##
 ## A State Machine component that can honestly be used by anything. Features

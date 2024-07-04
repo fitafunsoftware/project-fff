@@ -1,7 +1,7 @@
 @tool
 @icon("static_joystick.png")
-extends VirtualJoystick
 class_name StaticJoystick
+extends VirtualJoystick
 ## Static Joystick for touch inputs.
 ##
 ## Node for adding a static joystick to the scene. A static joystick is a joystick

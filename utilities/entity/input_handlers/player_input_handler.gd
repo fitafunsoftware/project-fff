@@ -1,5 +1,5 @@
-extends InputHandler
 class_name PlayerInputHandler
+extends InputHandler
 ## The player's InputHandler.
 ##
 ## Basic InputHandler for player entities.

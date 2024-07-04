@@ -1,7 +1,7 @@
 @tool
 @icon("fun_resume.png")
-extends CallFunctionStateComponent
 class_name ResumeCallFunctionStateComponent
+extends CallFunctionStateComponent
 ## State component to call the function in resume.
 
 

@@ -1,7 +1,7 @@
 @tool
 @icon("play_animation.png")
-extends StateComponent
 class_name PlayAnimationStateComponent
+extends StateComponent
 ## StateComponent for playing animations on enter and resume.
 ##
 ## StateComponent will play the given animation on enter and on resume. Also

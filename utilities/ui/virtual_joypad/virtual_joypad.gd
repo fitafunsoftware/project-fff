@@ -1,5 +1,5 @@
-extends Control
 class_name VirtualJoypad
+extends Control
 
 
 func _ready():

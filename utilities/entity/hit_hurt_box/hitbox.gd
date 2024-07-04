@@ -1,7 +1,7 @@
 @tool
 @icon("hitbox.png")
-extends Area3D
 class_name Hitbox
+extends Area3D
 ## Hitbox for dealing damage to entities.
 ##
 ## An Area3D Hitbox for dealing damage to Hurtboxes.

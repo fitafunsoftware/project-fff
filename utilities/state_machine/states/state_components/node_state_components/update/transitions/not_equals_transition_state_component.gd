@@ -1,7 +1,7 @@
 @tool
 @icon("not_equals_transition.png")
-extends NodeStateComponent
 class_name NotEqualsTransitionStateComponent
+extends NodeStateComponent
 ## Calls a state change if return value is not equal the value.
 
 ## Next state to change to.

@@ -1,7 +1,7 @@
 @tool
 @icon("funv_enter.png")
-extends CallFunctionVariableStateComponent
 class_name EnterCallFunctionVariableStateComponent
+extends CallFunctionVariableStateComponent
 ## State component to call the function in enter.
 
 

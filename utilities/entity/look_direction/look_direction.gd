@@ -1,6 +1,6 @@
 @icon("look_direction.png")
-extends Node
 class_name LookDirection
+extends Node
 ## Entity component to handle look direction of entity.
 
 ## Possible look directions.

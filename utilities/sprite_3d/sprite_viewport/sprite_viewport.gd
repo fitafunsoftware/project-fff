@@ -1,7 +1,7 @@
 @tool
 @icon("sprite_viewport.png")
-extends SubViewport
 class_name SpriteViewport
+extends SubViewport
 ## SubViewport for use with ViewportTexture to make sprites.
 ##
 ## The CanvasItems have a lot of useful features that would be nice to use for

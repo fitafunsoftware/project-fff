@@ -1,5 +1,5 @@
-extends Node
 class_name MultiplayerFrameSynchronizer
+extends Node
 ## Multiplayer node to help with frame synchronization.
 
 ## Signal for when the first packet has been received and used to sync frames.

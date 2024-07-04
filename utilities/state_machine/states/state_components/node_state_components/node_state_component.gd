@@ -1,7 +1,7 @@
 @tool
 @icon("node_state_component.png")
-extends StateComponent
 class_name NodeStateComponent
+extends StateComponent
 ## Base StateComponent for components that interact with a node.
 
 ## Key for the node dependency.

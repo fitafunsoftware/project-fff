@@ -1,5 +1,5 @@
-extends Node
 class_name FrameManager
+extends Node
 ## Base class for FrameManagers to help synchronize clients and servers.
 
 ## The position of frame data in the frame packet.

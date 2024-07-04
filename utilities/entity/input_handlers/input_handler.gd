@@ -1,6 +1,6 @@
 @icon("input_handler.png")
-extends Node
 class_name InputHandler
+extends Node
 ## Base class for InputHandlers.
 ##
 ## Meant to act as an interface.

@@ -1,7 +1,7 @@
 @tool
 @icon("transition_component.png")
-extends StateComponent
 class_name TransitionStateComponent
+extends StateComponent
 ## StateComponent that calls for a state change in update.
 
 @export var next_state : StringName

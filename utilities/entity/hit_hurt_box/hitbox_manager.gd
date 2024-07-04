@@ -1,6 +1,6 @@
 @icon("hitbox_manager.png")
-extends Node3D
 class_name HitboxManager
+extends Node3D
 ## Manager for hitboxes.
 ##
 ## Manager to help calculate and create damage packets for Hitboxes.

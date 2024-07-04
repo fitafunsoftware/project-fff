@@ -1,5 +1,5 @@
-extends FrameManager
 class_name EntityFrameManager
+extends FrameManager
 ## Node to manage frames for Entity synchronization between client and server.
 
 ## Acceptable error for each position value.

@@ -1,6 +1,6 @@
 @icon("hurtbox_manager.png")
-extends Node3D
 class_name HurtboxManager
+extends Node3D
 ## Manager for hurtboxes.
 ##
 ## Manager to help calculate and create damage packets for Hurtboxes.

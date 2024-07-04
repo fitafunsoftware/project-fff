@@ -1,7 +1,7 @@
 @tool
 @icon("component_state.png")
-extends State
 class_name ComponentState
+extends State
 ## A state built using components.
 ##
 ## A state that you can build in-editor using StateComponents by attaching them

@@ -1,7 +1,7 @@
 @tool
 @icon("state_component.png")
-extends Node
 class_name StateComponent
+extends Node
 ## Base class for a StateComponent
 ##
 ## The components that ComponentState is built up from. Extend this class to make

@@ -1,6 +1,6 @@
 @icon("state.png")
-extends Node
 class_name State
+extends Node
 ## Base class for StateMachine states.
 ##
 ## An interface meant to be extended for use of making states for the StateMachine.

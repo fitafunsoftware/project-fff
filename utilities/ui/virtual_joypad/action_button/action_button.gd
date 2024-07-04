@@ -1,7 +1,7 @@
 @tool
 @icon("action_button.png")
-extends Control
 class_name ActionButton
+extends Control
 ## Touch screen button for virtual action events.
 ##
 ## Generic button that is meant to be pressed with touch screen inputs. Fires an
