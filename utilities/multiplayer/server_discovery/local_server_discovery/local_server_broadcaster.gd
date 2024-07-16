@@ -1,3 +1,4 @@
+@icon("local_server_broadcaster.png")
 class_name LocalServerBroadcaster
 extends Node
 ## Node to help with broadcasting server info on the local network.

@@ -1,3 +1,4 @@
+@icon("frame_manager.png")
 class_name FrameManager
 extends Node
 ## Base class for FrameManagers to help synchronize clients and servers.

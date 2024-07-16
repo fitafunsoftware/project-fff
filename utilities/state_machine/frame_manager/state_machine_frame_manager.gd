@@ -1,5 +1,6 @@
-extends FrameManager
+@icon("state_machine_frame_manager.png")
 class_name StateMachineFrameManager
+extends FrameManager
 ## Node to manage frames for StateMachine synchronization between client and server.
 
 ## Frame array size.

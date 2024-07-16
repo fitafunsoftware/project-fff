@@ -1,3 +1,4 @@
+@icon("multiplayer.png")
 class_name Multiplayer
 extends Node
 
