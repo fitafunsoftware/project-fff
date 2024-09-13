@@ -1,4 +1,4 @@
-extends Control
+extends PanelContainer
 
 const ASPECT_RATIO : PackedStringArray = [
 	"Auto",

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cebaljtmx1h0h"]
+[gd_scene load_steps=13 format=3 uid="uid://cebaljtmx1h0h"]
 
 [ext_resource type="Script" path="res://utilities/screens/settings/scripts/settings.gd" id="1_4jrm6"]
 [ext_resource type="Script" path="res://utilities/screens/settings/scripts/aspect_ratio.gd" id="2_hf73j"]
@@ -8,11 +8,9 @@
 [ext_resource type="Script" path="res://utilities/screens/settings/scripts/vsync.gd" id="6_7jlka"]
 [ext_resource type="Script" path="res://utilities/screens/settings/scripts/touch_controls.gd" id="7_iifp2"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a084d"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tyo75"]
-content_margin_left = 0.0
-content_margin_top = 0.0
-content_margin_right = 0.0
-content_margin_bottom = 0.0
 bg_color = Color(0.45098, 0.45098, 0.45098, 0.337255)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
@@ -20,17 +18,17 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 anti_aliasing = false
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nmhhd"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_03182"]
-content_margin_left = 0.0
-content_margin_top = 0.0
-content_margin_right = 0.0
-content_margin_bottom = 0.0
 bg_color = Color(0.45098, 0.45098, 0.45098, 0.337255)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kuoyp"]
 
 [node name="Settings" type="Control"]
 layout_mode = 3
@@ -51,6 +49,7 @@ grow_vertical = 2
 
 [node name="TopPadding" type="HSeparator" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 11
 
 [node name="Title" type="Label" parent="VBoxContainer"]
 layout_mode = 2
@@ -80,30 +79,21 @@ size_flags_stretch_ratio = 6.0
 theme_override_constants/separation = 4
 alignment = 1
 
-[node name="AspectRatio" type="Control" parent="VBoxContainer/HBoxContainer/SettingsOptions"]
+[node name="AspectRatio" type="PanelContainer" parent="VBoxContainer/HBoxContainer/SettingsOptions"]
 layout_mode = 2
 size_flags_vertical = 3
 focus_neighbor_bottom = NodePath("../Scaling")
 focus_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_a084d")
 script = ExtResource("2_hf73j")
 
 [node name="Background" type="Panel" parent="VBoxContainer/HBoxContainer/SettingsOptions/AspectRatio"]
 visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_tyo75")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/SettingsOptions/AspectRatio"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/SettingsOptions/AspectRatio/HBoxContainer"]
@@ -162,31 +152,22 @@ focus_mode = 0
 theme_override_font_sizes/font_size = 33
 text = ">"
 
-[node name="Scaling" type="Control" parent="VBoxContainer/HBoxContainer/SettingsOptions"]
+[node name="Scaling" type="PanelContainer" parent="VBoxContainer/HBoxContainer/SettingsOptions"]
 layout_mode = 2
 size_flags_vertical = 3
 focus_neighbor_top = NodePath("../AspectRatio")
 focus_neighbor_bottom = NodePath("../Fullscreen")
 focus_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_nmhhd")
 script = ExtResource("3_p75hu")
 
 [node name="Background" type="Panel" parent="VBoxContainer/HBoxContainer/SettingsOptions/Scaling"]
 visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_03182")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/SettingsOptions/Scaling"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/SettingsOptions/Scaling/HBoxContainer"]
@@ -245,31 +226,22 @@ focus_mode = 0
 theme_override_font_sizes/font_size = 33
 text = ">"
 
-[node name="Fullscreen" type="Control" parent="VBoxContainer/HBoxContainer/SettingsOptions"]
+[node name="Fullscreen" type="PanelContainer" parent="VBoxContainer/HBoxContainer/SettingsOptions"]
 layout_mode = 2
 size_flags_vertical = 3
 focus_neighbor_top = NodePath("../Scaling")
 focus_neighbor_bottom = NodePath("../Borderless")
 focus_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_kuoyp")
 script = ExtResource("4_i323y")
 
 [node name="Background" type="Panel" parent="VBoxContainer/HBoxContainer/SettingsOptions/Fullscreen"]
 visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_03182")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/SettingsOptions/Fullscreen"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/SettingsOptions/Fullscreen/HBoxContainer"]
@@ -288,31 +260,22 @@ size_flags_stretch_ratio = 1.5
 focus_mode = 0
 flat = true
 
-[node name="Borderless" type="Control" parent="VBoxContainer/HBoxContainer/SettingsOptions"]
+[node name="Borderless" type="PanelContainer" parent="VBoxContainer/HBoxContainer/SettingsOptions"]
 layout_mode = 2
 size_flags_vertical = 3
 focus_neighbor_top = NodePath("../Fullscreen")
 focus_neighbor_bottom = NodePath("../VSync")
 focus_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_kuoyp")
 script = ExtResource("5_7gqhl")
 
 [node name="Background" type="Panel" parent="VBoxContainer/HBoxContainer/SettingsOptions/Borderless"]
 visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_03182")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/SettingsOptions/Borderless"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/SettingsOptions/Borderless/HBoxContainer"]
@@ -331,31 +294,22 @@ size_flags_stretch_ratio = 1.5
 focus_mode = 0
 flat = true
 
-[node name="VSync" type="Control" parent="VBoxContainer/HBoxContainer/SettingsOptions"]
+[node name="VSync" type="PanelContainer" parent="VBoxContainer/HBoxContainer/SettingsOptions"]
 layout_mode = 2
 size_flags_vertical = 3
 focus_neighbor_top = NodePath("../Borderless")
 focus_neighbor_bottom = NodePath("../TouchControls")
 focus_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_kuoyp")
 script = ExtResource("6_7jlka")
 
 [node name="Background" type="Panel" parent="VBoxContainer/HBoxContainer/SettingsOptions/VSync"]
 visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_03182")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/SettingsOptions/VSync"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/SettingsOptions/VSync/HBoxContainer"]
@@ -374,31 +328,22 @@ size_flags_stretch_ratio = 1.5
 focus_mode = 0
 flat = true
 
-[node name="TouchControls" type="Control" parent="VBoxContainer/HBoxContainer/SettingsOptions"]
+[node name="TouchControls" type="PanelContainer" parent="VBoxContainer/HBoxContainer/SettingsOptions"]
 layout_mode = 2
 size_flags_vertical = 3
 focus_neighbor_top = NodePath("../VSync")
 focus_neighbor_bottom = NodePath("../Back")
 focus_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_kuoyp")
 script = ExtResource("7_iifp2")
 
 [node name="Background" type="Panel" parent="VBoxContainer/HBoxContainer/SettingsOptions/TouchControls"]
 visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_03182")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/SettingsOptions/TouchControls"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/SettingsOptions/TouchControls/HBoxContainer"]
@@ -430,6 +375,7 @@ size_flags_horizontal = 3
 
 [node name="BottomPadding" type="HSeparator" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 11
 
 [connection signal="focus_entered" from="VBoxContainer/HBoxContainer/SettingsOptions/AspectRatio" to="VBoxContainer/HBoxContainer/SettingsOptions/AspectRatio" method="_on_focus_entered"]
 [connection signal="focus_exited" from="VBoxContainer/HBoxContainer/SettingsOptions/AspectRatio" to="VBoxContainer/HBoxContainer/SettingsOptions/AspectRatio" method="_on_focus_exited"]

@@ -3,6 +3,10 @@
 [ext_resource type="FontFile" uid="uid://cn2i1ndx8rioa" path="res://utilities/resources/themes/LanaPixel/LanaPixel.ttf" id="1_yv7pq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dhpr6"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
 bg_color = Color(0.1, 0.1, 0.1, 0.3)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
@@ -11,6 +15,10 @@ corner_radius_bottom_left = 10
 anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gpot8"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
 bg_color = Color(1, 1, 1, 0.75)
 draw_center = false
 border_width_left = 2
@@ -28,6 +36,10 @@ expand_margin_bottom = 2.0
 anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nues2"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
 bg_color = Color(0.225, 0.225, 0.225, 0.6)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
@@ -36,6 +48,10 @@ corner_radius_bottom_left = 10
 anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jqsv3"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
 bg_color = Color(0.1, 0.1, 0.1, 0.6)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
@@ -44,6 +60,10 @@ corner_radius_bottom_left = 10
 anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k5ysw"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
 bg_color = Color(0, 0, 0, 0.6)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
@@ -54,6 +74,10 @@ anti_aliasing = false
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w1cs3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fj1vk"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
 bg_color = Color(0.1, 0.1, 0.1, 0.6)
 corner_radius_top_left = 10
 corner_radius_top_right = 10

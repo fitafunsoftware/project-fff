@@ -1,4 +1,4 @@
-extends Control
+extends PanelContainer
 
 @onready var _background = $Background
 @onready var _label = $HBoxContainer/Label
@@ -34,9 +34,9 @@ func _set_borderless(enabled: bool):
 # Signals
 func _update_text():
 	if GlobalSettings.fullscreen:
-		_label.text = "Exclusive Fullscreen"
+		_label.text = "Exclusive Fullscreen :"
 	else:
-		_label.text = "Borderless"
+		_label.text = "Borderless :"
 
 
 func _on_focus_entered():

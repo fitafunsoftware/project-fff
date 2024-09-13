@@ -1,4 +1,4 @@
-extends Control
+extends PanelContainer
 
 const PREVIOUS : int = -1
 const NEXT : int = 1

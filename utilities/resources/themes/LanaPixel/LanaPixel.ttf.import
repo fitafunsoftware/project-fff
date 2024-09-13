@@ -15,6 +15,7 @@ dest_files=["res://.godot/imported/LanaPixel.ttf-3c8bac878fbb043055a28d1eac0b66b
 Rendering=null
 antialiasing=0
 generate_mipmaps=false
+disable_embedded_bitmaps=false
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48

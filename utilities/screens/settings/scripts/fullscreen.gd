@@ -1,4 +1,4 @@
-extends Control
+extends PanelContainer
 
 @onready var _background = $Background
 @onready var _enabled = $HBoxContainer/Enabled
