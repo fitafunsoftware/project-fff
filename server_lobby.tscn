@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dhnt08dre3fei"]
+[gd_scene load_steps=3 format=3 uid="uid://dhnt08dre3fei"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_og1ai"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ofo2c"]
 
 [node name="ServerLobby" type="Control"]
 layout_mode = 3
@@ -44,14 +46,21 @@ text = " O "
 [node name="RoomList" type="Panel" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ofo2c")
 
-[node name="Rooms" type="VBoxContainer" parent="VBoxContainer/RoomList"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/RoomList"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="Rooms" type="VBoxContainer" parent="VBoxContainer/RoomList/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Buttons" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
