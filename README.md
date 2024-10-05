@@ -12,7 +12,7 @@ so long as the proper licenses are abided by.
 
 ## Target Platforms
 
-Project FFF is made in Godot v4.3 beta and eventually stable.
+Project FFF is made in Godot v4.4 beta and eventually stable.
 - Targetted to work on the [Retroid Pocket 2S](https://www.goretroid.com/collections/frontpage/products/retroid-pocket-2s-handheld-retro-gaming-system) 
 (Android 11, Vulkan 1.1, 8 Core, ARM64, 3GB RAM, 640x480 resolution) as the lowest requirement 
 device for the Mobile Renderer at 30 FPS and 60 Physics FPS.
@@ -27,7 +27,7 @@ the addons are the reusable aspects of this project. The files and folders in as
 scripts are meant as a demo project to demonstrate the use of the utilities.
 
 The project should be able to be run in any rendering mode, as such, it should be able to be exported
-to any platform. However, Godot v4.3 has some quirks related to Compatibility Rendering mode and 
+to any platform. However, Godot v4.4 has some quirks related to Compatibility Rendering mode and 
 3D lights and shadow, so please look those up before deciding to add more lights.
 
 Lastly, other assets with licenses of their own are used within this repo. The proper licenses are 
