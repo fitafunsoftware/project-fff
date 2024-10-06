@@ -18,13 +18,9 @@ static var FLOOR_GRADIENT : float = NAN
 ## The shader used for HorizontalSprite3D.
 static var OPAQUE_MESH : Shader = preload("res://shaders/opaque_mesh.gdshader")
 
-## Toggle to regenerate the sprite.
-@export var generate_sprite : bool = false:
-	set(value):
-		generate_sprite = false
-		if value:
-			_recalculate_size_and_subdivisions()
-			_apply_texture()
+## Button to regenerate the sprite.
+@export_tool_button("Regenerate Mesh", "Sprite3D")
+var generate_mesh : Callable = _regenerate_mesh
 
 @export_category("Sprite Properties")
 ## Texture for the sprite.
@@ -71,6 +67,12 @@ func _ready():
 		_apply_texture()
 	
 	global_position = GlobalParams.get_snapped_position(global_position)
+
+
+func _regenerate_mesh():
+	_recalculate_size_and_subdivisions()
+	_apply_material()
+	_apply_texture()
 
 
 # Recalculate the needed size and subdivisions based on the texture pixel size

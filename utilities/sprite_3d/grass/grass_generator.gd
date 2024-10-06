@@ -16,13 +16,9 @@ const GRASS_SHADER : Shader = preload("res://shaders/grass.gdshader")
 static var PIXEL_SIZE : float = NAN
 static var FLOOR_GRADIENT : float = NAN
 
-## Toggle to generate grass. Basically a button that remakes the grass.
-@export var generate_grass : bool = false:
-	set(value):
-		generate_grass = false
-		if value:
-			_clear_grass()
-			_generate_grass()
+## Button to regenerate the grass.
+@export_tool_button("Regenerate Grass", "Sprite3D")
+var regenerate_grass : Callable = _regenerate_grass
 
 @export_category("Grass Properties")
 ## Individual grass texture to be used. Is repeated.
@@ -53,9 +49,8 @@ func _ready():
 
 
 # Function to generate the grass.
-func _generate_grass():
-	_assign_globals()
-	_assign_variables()
+func _regenerate_grass():
+	_clear_grass()
 	_create_mesh()
 	_create_grass_instances()
 

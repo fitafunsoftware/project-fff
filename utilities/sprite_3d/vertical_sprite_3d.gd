@@ -22,10 +22,10 @@ static var FLOOR_GRADIENT : float = NAN
 ## Opacity of the Sprite when an entity is detected behind it.
 @export_range(0.0, 1.0, 0.1) var entity_detected_opacity : float = 0.5
 ## Helper to move sprite by a pixel offset relative to parent.
-@export_range(-100000, 100000, 1, "suffix:px", "hide_slider") var z_pixel_offset : int = 0 :
-	set(value):
-		z_pixel_offset = value
-		_set_position_by_offset()
+@export_range(-100000, 100000, 1, "suffix:px", "hide_slider") var z_pixel_offset : int = 0
+## Button to add the z_pixel_offset to the current position.
+@export_tool_button("Add Z Pixel Offset", "Callable")
+var add_offset : Callable = _add_offset_to_position
 
 
 func _init():
@@ -141,12 +141,12 @@ func _occlude():
 		show()
 
 
-func _set_position_by_offset():
+func _add_offset_to_position():
 	if NAN in [PIXEL_SIZE, FLOOR_GRADIENT]:
 		PIXEL_SIZE = GlobalParams.get_global_param("PIXEL_SIZE")
 		FLOOR_GRADIENT = GlobalParams.get_global_param("FLOOR_GRADIENT")
 	var z_offset : float = z_pixel_offset * PIXEL_SIZE / FLOOR_GRADIENT
-	position.z = z_offset
+	position.z += z_offset
 
 
 func _on_entity_detected():

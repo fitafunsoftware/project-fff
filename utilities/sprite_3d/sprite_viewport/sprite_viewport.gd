@@ -8,12 +8,9 @@ extends SubViewport
 ## 3D sprites. This SubViewport helps you to use CanvasItems that can then be
 ## used as a ViewportTexture in a Sprite3D.
 
-
 ## Button to just calculate SubViewport size.
-@export var calculate_size : bool = false :
-	set(value):
-		_set_size()
-		calculate_size = false
+@export_tool_button("Calculate Size", "Sprite2D")
+var calculate_size : Callable = _set_size
 
 
 # Initial settings that help with using this as a SubViewport for sprites.

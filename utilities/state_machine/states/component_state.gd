@@ -8,12 +8,8 @@ extends State
 ## them to this node as a descendent.
 
 ## Button to reload dependencies.
-@export var reload_dependencies : bool = false :
-	set(value):
-		reload_dependencies = false
-		_populate_components()
-		_load_dependencies()
-		notify_property_list_changed()
+@export_tool_button("Reload Dependencies", "Callable")
+var reload_dependencies : Callable = _reload_dependencies
 ## Dependendencies needed by the StateComponents of this state.[br]You have to
 ## assign the proper values yourself, while reloading dependencies populates the
 ## dictionary with the dependencies required. NodePaths refer to the proper Nodes
@@ -31,6 +27,12 @@ func _ready():
 		_load_dependencies()
 	
 	_call_component_func("ready")
+
+
+func _reload_dependencies():
+	_populate_components()
+	_load_dependencies()
+	notify_property_list_changed()
 
 
 func _populate_components():

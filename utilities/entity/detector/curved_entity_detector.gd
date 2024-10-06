@@ -19,10 +19,8 @@ static var HALF_CHORD_LENGTH : float = NAN
 ## The gradient of the floor for the curved world shader.
 static var floor_vector : Vector2 = Vector2.ZERO
 
-@export var refresh : bool = false :
-	set(value):
-		if Engine.is_editor_hint() and is_node_ready():
-			_generate_collision_shapes()
+@export_tool_button("Generate", "CollisionShape3D")
+var refresh : Callable = _generate_collision_shapes
 
 ## The sprites to be used as basis for the area.
 @export var _sprites : Array[VerticalSprite3D] = [] :

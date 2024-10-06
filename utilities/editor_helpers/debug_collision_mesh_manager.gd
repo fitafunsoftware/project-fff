@@ -13,11 +13,8 @@ const shader = preload("res://shaders/wireframe_mesh.gdshader")
 	set(value):
 		color = value
 		_reassign_color()
-@export var refresh_meshes : bool = false :
-	set(_value):
-		if _value:
-			_refresh_meshes()
-			refresh_meshes = false
+@export_tool_button("Refresh Meshes", "MeshInstance3D")
+var refresh_meshes : Callable = _refresh_meshes
 
 
 func _refresh_meshes():
