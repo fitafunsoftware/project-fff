@@ -36,7 +36,6 @@ straight from their source as those would be the most up to date versions of the
 
 ## Assets Credits
 
-- [TODO_Manager](https://github.com/OrigamiDev-Pete/TODO_Manager) by [OrigamiDev-Pete](https://github.com/OrigamiDev-Pete)
 - [debug-menu](https://github.com/godot-extended-libraries/godot-debug-menu) by [Hugo Locurcio](https://twitter.com/hugolocurcio)
 - [LanaPixel font](https://opengameart.org/content/lanapixel-localization-friendly-pixel-font) by [eishiya](https://mastodon.art/@eishiya)
 - The other assets besides the [logos](utilities/splash_screen/logos/) were made for this repository and fall under the same [license](LICENSE.md) as this repository with art in the assets folder falling under the accompanying [license](assets/art/LICENSE.md) in the folder.
