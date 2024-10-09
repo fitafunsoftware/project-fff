@@ -6,6 +6,9 @@ extends Area3D
 ##
 ## An Area3D Hitbox for dealing damage to Hurtboxes.
 
+## Signal for when the Hitbox is toggled on or off.
+signal hitbox_toggled(active: bool)
+
 ## The HitboxManager responsible for calculating damage packet.
 @export var _manager: HitboxManager
 ## Identifier for the Hitbox.
@@ -25,6 +28,7 @@ func _set(property: StringName, value: Variant) -> bool:
 	if property == "monitoring":
 		if monitoring and not value:
 			_previous_hurtboxes.clear()
+		hitbox_toggled.emit(value)
 	return false
 
 
