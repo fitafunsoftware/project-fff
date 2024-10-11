@@ -28,6 +28,7 @@ ResourceQueue="*res://utilities/autoloads/resource_queue/resource_queue.gd"
 GameGlobalParams="*res://utilities/autoloads/global_paramaters/game_global_params.gd"
 GlobalSettings="*res://utilities/autoloads/global_settings/global_settings.gd"
 GlobalTouchScreen="*res://utilities/autoloads/global_touch_screen/global_touch_screen.gd"
+GlobalEntitySpawner="*res://utilities/autoloads/global_entity_spawner/global_entity_spawner.gd"
 
 [display]
 

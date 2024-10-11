@@ -1,0 +1,62 @@
+[gd_scene load_steps=11 format=3 uid="uid://c1tph2qgbx88w"]
+
+[ext_resource type="Script" uid="uid://dmdpvp3jkknnj" path="res://scenes/entities/canon/canon_ball.gd" id="1_a85iw"]
+[ext_resource type="Script" uid="uid://ccr2f1e3rpx1m" path="res://utilities/entity/entity.gd" id="2_qxf0c"]
+[ext_resource type="Shader" uid="uid://dw80s0ocqcwb7" path="res://shaders/transparent_mesh.gdshader" id="3_2xblw"]
+[ext_resource type="Texture2D" uid="uid://bco72ih8lalnr" path="res://assets/art/canon/ball.png" id="4_dac07"]
+[ext_resource type="Script" uid="uid://dbckv6wts1v5o" path="res://utilities/sprite_3d/vertical_sprite_3d.gd" id="5_0c7x6"]
+[ext_resource type="Texture2D" uid="uid://cjif0bfssgv3s" path="res://assets/art/canon/ball_shadow.png" id="6_0c7x6"]
+[ext_resource type="Script" path="res://utilities/entity/shadow/shadow.gd" id="7_wpwum"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qxf0c"]
+radius = 0.1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_dgwo2"]
+radius = 0.1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wpwum"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("3_2xblw")
+shader_parameter/sprite_texture = ExtResource("4_dac07")
+shader_parameter/opacity = 1.0
+shader_parameter/shaded = false
+
+[node name="CanonBall" type="CharacterBody3D"]
+collision_layer = 8
+collision_mask = 0
+platform_on_leave = 2
+platform_floor_layers = 0
+script = ExtResource("1_a85iw")
+metadata/_custom_type_script = ExtResource("2_qxf0c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_qxf0c")
+
+[node name="Detector" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 129
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Detector"]
+shape = SubResource("SphereShape3D_dgwo2")
+
+[node name="VerticalSprite3D" type="Sprite3D" parent="."]
+material_override = SubResource("ShaderMaterial_wpwum")
+cast_shadow = 0
+custom_aabb = AABB(-0.1, -2.5, 0, 0.2, 3.35, 0)
+texture = ExtResource("4_dac07")
+script = ExtResource("5_0c7x6")
+metadata/_custom_type_script = ExtResource("5_0c7x6")
+
+[node name="Shadow3D" type="Sprite3D" parent="."]
+cast_shadow = 3
+axis = 1
+double_sided = false
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("6_0c7x6")
+script = ExtResource("7_wpwum")
+metadata/_custom_type_script = ExtResource("7_wpwum")
+
+[connection signal="body_entered" from="Detector" to="." method="_on_body_entered"]
