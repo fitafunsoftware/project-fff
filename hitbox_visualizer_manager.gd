@@ -9,9 +9,18 @@ var regenerate_visualizers : Callable = _regenerate_visualizers
 
 @export var distance_between_subdivisions : float = 0.1
 
+@export var hitboxes : Array[Hitbox]
+
 
 func _regenerate_visualizers():
-	pass
+	for hitbox : Hitbox in hitboxes:
+		var owner_ids : PackedInt32Array = hitbox.get_shape_owners()
+		for owner_id : int in owner_ids:
+			for shape_id : int in hitbox.shape_owner_get_shape_count(owner_id):
+				var shape : Shape3D = hitbox.shape_owner_get_shape(owner_id, shape_id)
+				var silhouette : PackedVector2Array = _get_silhouette(shape)
+				silhouette = _get_subdivided_silhouette(silhouette)
+				var mesh : ArrayMesh = _get_mesh(silhouette)
 
 
 func _get_silhouette(shape : Shape3D) -> PackedVector2Array:
@@ -51,9 +60,9 @@ func _get_subdivided_silhouette(silhouette : PackedVector2Array) -> PackedVector
 	return silhouette
 
 
-func _get_max_min_values(silhouette : PackedVector2Array) -> Array:
+func _get_max_min_values(silhouette : PackedVector2Array) -> PackedFloat32Array:
 	var first_point : Vector2 = silhouette.get(0)
-	var values : Array = [first_point.x, first_point.x, first_point.y, first_point.y]
+	var values : PackedFloat32Array = [first_point.x, first_point.x, first_point.y, first_point.y]
 	
 	for point : Vector2 in silhouette:
 		values[MAX_X] = maxf(point.x, values[MAX_X])
@@ -62,3 +71,21 @@ func _get_max_min_values(silhouette : PackedVector2Array) -> Array:
 		values[MIN_Y] = minf(point.y, values[MIN_Y])
 	
 	return values
+
+
+func _get_mesh(silhouette : PackedVector2Array) -> ArrayMesh:
+	var surface_tool : SurfaceTool = SurfaceTool.new()
+	surface_tool.set_normal(Vector3(0, 1, 0))
+	
+	var extents : Array = _get_max_min_values(silhouette)
+	for point : Vector2 in silhouette:
+		var uv : Vector2 = Vector2()
+		uv.x = remap(point.x, extents[MIN_X], extents[MAX_X], 0.0, 1.0)
+		uv.y = remap(point.y, extents[MIN_Y], extents[MAX_Y], 0.0, 1.0)
+		uv.x = clampf(uv.x, 0.0, 1.0)
+		uv.y = clampf(uv.y, 0.0, 1.0)
+		surface_tool.set_uv(uv)
+		surface_tool.add_vertex(Vector3(point.x, 0.0, point.y))	
+	
+	surface_tool.generate_tangents()
+	return surface_tool.commit()
