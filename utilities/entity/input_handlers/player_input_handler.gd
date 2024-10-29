@@ -5,10 +5,10 @@ extends InputHandler
 ## Basic InputHandler for player entities.
 
 ## Signal for events emitted by the InputHandler.
-signal input_event(event : InputEvent)
+signal input_event(event: InputEvent)
 
 
-func _unhandled_input(event):
+func _unhandled_input(event: InputEvent):
 	if event.is_action_pressed("a"):
 		var jump := InputEventAction.new()
 		jump.action = "jump"
@@ -18,9 +18,9 @@ func _unhandled_input(event):
 
 
 func get_input_direction() -> Vector2:
-	var input_direction : Vector2 = \
+	var input_direction: Vector2 = \
 			Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	var angle : float = rad_to_deg(input_direction.angle())
+	var angle: float = rad_to_deg(input_direction.angle())
 	input_direction.x = int(absf(angle) < 67.5) - int(absf(angle) > 112.5) \
 			if not is_zero_approx(input_direction.length_squared()) else 0
 	input_direction.y = int(signf(angle)) \

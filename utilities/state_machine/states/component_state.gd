@@ -9,14 +9,14 @@ extends State
 
 ## Button to reload dependencies.
 @export_tool_button("Reload Dependencies", "Callable")
-var reload_dependencies : Callable = _reload_dependencies
+var reload_dependencies: Callable = _reload_dependencies
 ## Dependendencies needed by the StateComponents of this state.[br]You have to
 ## assign the proper values yourself, while reloading dependencies populates the
 ## dictionary with the dependencies required. NodePaths refer to the proper Nodes
 ## when the game is running.
-@export var dependencies : Dictionary
+@export var dependencies: Dictionary
 
-var _components : Array[StateComponent]
+var _components: Array[StateComponent]
 
 
 func _ready():
@@ -41,7 +41,7 @@ func _populate_components():
 
 
 func _get_state_components(node: Node) -> Array:
-	var array : Array = Array()
+	var array: Array = Array()
 	for child in node.get_children():
 		if child is StateComponent:
 			array.append(child)
@@ -52,11 +52,11 @@ func _get_state_components(node: Node) -> Array:
 
 func _connect_components():
 	if not Engine.is_editor_hint():
-		for key : StringName in dependencies.keys():
+		for key: StringName in dependencies.keys():
 			if dependencies[key] is NodePath:
 				dependencies[key] = get_node(dependencies[key])
 	
-	for component : StateComponent in _components:
+	for component: StateComponent in _components:
 		component.finished = finished
 		component.dependencies = dependencies
 
@@ -93,18 +93,18 @@ func _call_component_func(function_name: String, arguments: Array = []):
 	if Engine.is_editor_hint():
 		return
 	
-	for component : StateComponent in _components:
+	for component: StateComponent in _components:
 		if component.active:
 			component.callv(function_name, arguments)
 
 
 func _load_dependencies():
-	var keys_to_add : Array[StringName]
+	var keys_to_add: Array[StringName]
 	keys_to_add.assign(Array())
-	for component : StateComponent in _components:
+	for component: StateComponent in _components:
 		keys_to_add.append_array(component.get_dependencies())
 	
-	var previous_dependencies : Dictionary = dependencies.duplicate()
+	var previous_dependencies: Dictionary = dependencies.duplicate()
 	dependencies.clear()
-	for key : StringName in keys_to_add:
+	for key: StringName in keys_to_add:
 		dependencies[key] = previous_dependencies.get(key, null)

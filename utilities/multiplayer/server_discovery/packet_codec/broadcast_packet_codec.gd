@@ -8,8 +8,8 @@ extends LocalServerCodec
 
 ## Is the packet encoded by a [DiscoveryPacketCodec].
 func is_valid_packet(packet: PackedByteArray) -> bool:
-	var header : PackedByteArray = packet.slice(0, TOTAL_HEADER_SIZE)
-	var header_string : String = header.get_string_from_utf8()
+	var header: PackedByteArray = packet.slice(0, TOTAL_HEADER_SIZE)
+	var header_string: String = header.get_string_from_utf8()
 	if header_string == HEADER + DISCOVER:
 		return true
 	
@@ -19,16 +19,16 @@ func is_valid_packet(packet: PackedByteArray) -> bool:
 ## Encodes a packet as a broadcast packet.[br]See data dictionary keys defined
 ## in [LocalServerCodec].
 func get_encoded_packet(data: Dictionary) -> PackedByteArray:
-	var packet : PackedByteArray = PackedByteArray()
-	var keys := data.keys()
-	for key in [ADDRESS, SERVER_PORT, CONNECTIONS, MAX_CONNECTIONS]:
+	var packet: PackedByteArray = PackedByteArray()
+	var keys: Array = data.keys()
+	for key: StringName in [ADDRESS, SERVER_PORT, CONNECTIONS, MAX_CONNECTIONS]:
 		if not keys.has(key):
 			return packet
 	
 	packet.append_array(HEADER.to_utf8_buffer())
 	packet.append_array(BROADCAST.to_utf8_buffer())
 	packet.append_array(var_to_bytes(data[ADDRESS]))
-	var offset : int = packet.size()
+	var offset: int = packet.size()
 	packet.resize(offset + U16_SIZE + U8_SIZE + U8_SIZE)
 	packet.encode_u16(offset, data[SERVER_PORT])
 	packet.encode_u8(offset + U16_SIZE, data[CONNECTIONS])
@@ -44,8 +44,8 @@ func get_encoded_packet(data: Dictionary) -> PackedByteArray:
 ## Decodes a packet that was encoded by a [DiscoveryPacketCodec].[br]Only data
 ## retrieved in the Dictionary is the [constant LocalServerCodec.EXTRAS] array.
 func get_decoded_packet(packet: PackedByteArray) -> Dictionary:
-	var offset : int = TOTAL_HEADER_SIZE
-	var extras : Array = []
+	var offset: int = TOTAL_HEADER_SIZE
+	var extras: Array = []
 	while offset < packet.size():
 		var value = packet.decode_var(offset)
 		if value == null:

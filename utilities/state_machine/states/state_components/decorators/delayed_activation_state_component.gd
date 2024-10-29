@@ -5,7 +5,7 @@ class_name DelayedActivationStateComponent
 ## StateComponents that activates or deactivates descendents after a delay.
 
 ## Delay before activating or deactivating descendants.
-@export var delay: float = 0.0 :
+@export var delay: float = 0.0:
 	set(value):
 		if value >= 0.0:
 			delay = value
@@ -52,5 +52,5 @@ func _disconnect_timer():
 	if not _timer:
 		return
 	
-	for connection : Dictionary in _timer.timeout.get_connections():
+	for connection: Dictionary in _timer.timeout.get_connections():
 		connection["signal"].disconnect(connection["callable"])

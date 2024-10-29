@@ -8,11 +8,11 @@ extends StateComponent
 ## has seek integrated into it so animations can bet set to a specific time.
 
 ## Key for AnimationPlayer.
-@export var animation_player_key : StringName = &"animation_player"
+@export var animation_player_key: StringName = &"animation_player"
 ## The name of the animation to be played.
-@export var animation : StringName = &"animation"
+@export var animation: StringName = &"animation"
 
-var animation_player : AnimationPlayer :
+var animation_player: AnimationPlayer:
 	get:
 		return dependencies.get(animation_player_key) 
 
@@ -30,6 +30,6 @@ func seek(seconds: float):
 
 
 func get_dependencies() -> Array[StringName]:
-	var array : Array[StringName] = super()
+	var array: Array[StringName] = super()
 	array.append(animation_player_key)
 	return array

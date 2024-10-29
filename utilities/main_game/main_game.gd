@@ -4,9 +4,9 @@ extends Control
 ## Just meant to hold the game nodes. Starts the starting_scene when ready.
 
 ## Scene to start at the begining.
-@export_file("*.tscn") var starting_scene
+@export_file("*.tscn") var starting_scene: String
 
-var _joypad_scene : String = ""
+var _joypad_scene: String = ""
 
 
 func _ready():
@@ -29,9 +29,9 @@ func load_joypad_scene(joypad_scene: String):
 
 # Helper functions
 func _add_joypad_scene(joypad_scene: String):
-	var scene : Resource = ResourceQueue.get_resource(joypad_scene)
-	var virtual_joypad : Control = scene.instantiate()
-	var previous_joypad : Control = find_child("VirtualJoypad", false, false)
+	var scene: Resource = ResourceQueue.get_resource(joypad_scene)
+	var virtual_joypad: Control = scene.instantiate()
+	var previous_joypad: Control = find_child("VirtualJoypad", false, false)
 	if previous_joypad:
 		remove_child(previous_joypad)
 		previous_joypad.queue_free()

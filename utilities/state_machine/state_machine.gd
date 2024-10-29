@@ -13,10 +13,10 @@ signal states_stack_changed(states_stack: Array[StringName])
 
 ## The StringName used to check if the previous state is requested to be the
 ## next state.
-const PREVIOUS : StringName = &"previous"
+const PREVIOUS: StringName = &"previous"
 
 ## Is the StateMachine active?
-@export var active : bool = false :
+@export var active: bool = false:
 	set(value):
 		if active == value:
 			return
@@ -28,15 +28,15 @@ const PREVIOUS : StringName = &"previous"
 			_clean_up()
 ## State to start the StateMachine on. Defaults to the first state, which
 ## might be random, if not set.
-@export var start_state : StringName
+@export var start_state: StringName
 
 ## The current state of the StateMachine.
-var _current_state : State = null
-var _states_stack : Array[State] = []
+var _current_state: State = null
+var _states_stack: Array[State] = []
 
-var _states_map : Dictionary = {}
-var _push_down_states : PackedStringArray = []
-var _overwrite_states : PackedStringArray = []
+var _states_map: Dictionary = {}
+var _push_down_states: PackedStringArray = []
+var _overwrite_states: PackedStringArray = []
 
 
 func _ready():
@@ -84,7 +84,7 @@ func get_current_state() -> StringName:
 ## Returns an array with the names of the states in the states stack. Top of the
 ## stack is the back or last element, and bottom is the front or first element.
 func get_states_stack() -> Array[StringName]:
-	var states_stack : Array[StringName]
+	var states_stack: Array[StringName]
 	states_stack.assign(
 		_states_stack.map(func(state: State): return state.state_name)
 	)
@@ -102,7 +102,7 @@ func change_state(requestor: StringName, next_state: StringName):
 	if _current_state.state_name != requestor:
 		return
 	
-	var next_is_previous : bool = next_state == PREVIOUS
+	var next_is_previous: bool = next_state == PREVIOUS
 	if not next_is_previous:
 		if not _states_map.has(next_state):
 			return
@@ -132,7 +132,7 @@ func change_state(requestor: StringName, next_state: StringName):
 
 # Private helper functions.
 func _populate_states_map():
-	for state in get_children():
+	for state: Node in get_children():
 		if state is State:
 			var state_name : StringName = state.state_name
 			_states_map[state_name] = state

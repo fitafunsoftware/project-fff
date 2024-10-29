@@ -4,21 +4,21 @@ extends Node
 ## Base class for FrameManagers to help synchronize clients and servers.
 
 ## The position of frame data in the frame packet.
-const FRAME : int = 0
+const FRAME: int = 0
 
 ## Maximum number of frames saved at a time.
-@export var frames_saved : int = 60
+@export var frames_saved: int = 60
 
 ## Array to hold all the frames within the maximum number of saved frames.
-var frames : Array[Array]
+var frames: Array[Array]
 
 
-func _ready() -> void:
+func _ready():
 	frames.assign([])
 
 
-func _physics_process(_delta: float) -> void:
-	var current_frame : Array = get_current_frame()
+func _physics_process(_delta: float):
+	var current_frame: Array = get_current_frame()
 	frames.push_back(current_frame)
 	
 	if frames.size() > frames_saved:
@@ -34,8 +34,8 @@ func process_frame(frame: Array):
 	if frames.is_empty():
 		return
 	
-	var current_frame : Array = frames.front() as Array
-	var frame_index : int = frame[FRAME] - current_frame[FRAME]
+	var current_frame: Array = frames.front() as Array
+	var frame_index: int = frame[FRAME] - current_frame[FRAME]
 	if frame_index >= frames.size() or frame_index < 0:
 		return
 	
@@ -49,7 +49,7 @@ func process_frame(frame: Array):
 
 ## Creates a frame using current values.
 func get_current_frame() -> Array:
-	var frame : Array = Array()
+	var frame: Array = Array()
 	frame.resize(1)
 	frame[FRAME] = GlobalParams.get_frame_time()
 	return frame

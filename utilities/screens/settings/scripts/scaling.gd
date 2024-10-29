@@ -1,7 +1,7 @@
 extends PanelContainer
 
-const PREVIOUS : int = -1
-const NEXT : int = 1
+const PREVIOUS: int = -1
+const NEXT: int = 1
 
 @onready var _background = $Background
 @onready var _value = $HBoxContainer/Control/Control/Value
@@ -12,13 +12,13 @@ const NEXT : int = 1
 func _ready():
 	get_viewport().size_changed.connect(_on_viewport_resized)
 	GlobalSettings.scaling_changed.connect(_on_scaling_changed)
-	var scaling = GlobalSettings.scaling
+	var scaling: int = GlobalSettings.scaling
 	_update_buttons(scaling)
 	_update_text()
 
 
 func _gui_input(event: InputEvent):
-	var offset : int = 0
+	var offset: int = 0
 	offset -= int(event.is_action_pressed("ui_left"))
 	offset += int(event.is_action_pressed("ui_right"))
 	
@@ -37,12 +37,12 @@ func set_scaling(offset: int):
 
 func _update_text():
 	# Get the size of the viewport container instead of the viewport itself.
-	var viewport_size : Vector2i = get_viewport().get_parent().size
+	var viewport_size: Vector2i = get_viewport().get_parent().size
 	_value.text = "%d x %d" % [viewport_size.x, viewport_size.y]
 
 
 func _update_buttons(scaling: int):
-	var allowed_scalings : Array = GlobalSettings.get_allowed_scalings()
+	var allowed_scalings: Array = GlobalSettings.get_allowed_scalings()
 	if scaling > allowed_scalings.back():
 		GlobalSettings.scaling = scaling
 		return
@@ -60,7 +60,7 @@ func _on_scaling_changed(scaling: int):
 
 
 func _on_viewport_resized():
-	var scaling : int = GlobalSettings.scaling
+	var scaling: int = GlobalSettings.scaling
 	_update_buttons(scaling)
 	_update_text()
 

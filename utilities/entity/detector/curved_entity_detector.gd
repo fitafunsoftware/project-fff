@@ -14,16 +14,16 @@ signal entity_lost
 
 # Global params. Set them in the proper json.
 # Used to calculate the floor_vector.
-static var DISTANCE_TO_CHORD : float = NAN
-static var HALF_CHORD_LENGTH : float = NAN
+static var DISTANCE_TO_CHORD: float = NAN
+static var HALF_CHORD_LENGTH: float = NAN
 ## The gradient of the floor for the curved world shader.
-static var floor_vector : Vector2 = Vector2.ZERO
+static var floor_vector: Vector2 = Vector2.ZERO
 
 @export_tool_button("Generate", "CollisionShape3D")
-var refresh : Callable = _generate_collision_shapes
+var refresh: Callable = _generate_collision_shapes
 
 ## The sprites to be used as basis for the area.
-@export var _sprites : Array[VerticalSprite3D] = [] :
+@export var _sprites: Array[VerticalSprite3D] = []:
 	set(value):
 		_sprites = value
 		if Engine.is_editor_hint() and is_node_ready():
@@ -57,46 +57,46 @@ func _generate_collision_shapes():
 		HALF_CHORD_LENGTH = GlobalParams.get_global_param("HALF_CHORD_LENGTH")
 		floor_vector = Vector2(DISTANCE_TO_CHORD, HALF_CHORD_LENGTH).normalized()
 	
-	for child in get_children():
+	for child: Node in get_children():
 		child.queue_free()
 	
-	for sprite : VerticalSprite3D in _sprites:
+	for sprite: VerticalSprite3D in _sprites:
 		if not sprite:
 			continue
-		var sprite_area : Array = sprite.get_sprite_area()
-		var shape_origin : Vector3 = sprite.global_position
+		var sprite_area: Array = sprite.get_sprite_area()
+		var shape_origin: Vector3 = sprite.global_position
 		
-		var highest_y : float = sprite_area.reduce(
+		var highest_y: float = sprite_area.reduce(
 				func cmp_y(accum, point): return accum if accum > point.y else point.y,
 				sprite_area[0].y
 				)
 		
-		var convex_polygons : Array = Geometry2D.decompose_polygon_in_convex(sprite_area)
-		for polygon : Array in convex_polygons:
+		var convex_polygons: Array = Geometry2D.decompose_polygon_in_convex(sprite_area)
+		for polygon: Array in convex_polygons:
 			_generate_collision_shape(polygon, shape_origin, highest_y)
 
 
 # Generate the collision shape based on the values passed in.
 func _generate_collision_shape(polygon: Array, shape_origin: Vector3, highest_y: float):
-		var points : Array = Array()
+	var points := Array()
 		
-		points += polygon.map(
+	points += polygon.map(
 			func to_vector3(point):
-				if point.y < highest_y:
-					var line_intersect = Geometry2D.line_intersects_line(
-						Vector2(0, point.y), Vector2.RIGHT,
-						Vector2(0, highest_y), floor_vector
-					)
-					if line_intersect:
-						points.append(Vector3(point.x, point.y, line_intersect.x))
-				
-				return Vector3(point.x, point.y, 0.0)
-		)
+			if point.y < highest_y:
+				var line_intersect = Geometry2D.line_intersects_line(
+					Vector2(0, point.y), Vector2.RIGHT,
+					Vector2(0, highest_y), floor_vector
+				)
+				if line_intersect:
+					points.append(Vector3(point.x, point.y, line_intersect.x))
+			
+			return Vector3(point.x, point.y, 0.0)
+			)
 		
-		var collision_shape := CollisionShape3D.new()
-		var convex_polygon := ConvexPolygonShape3D.new()
-		convex_polygon.points = points
-		collision_shape.shape = convex_polygon
-		add_child(collision_shape, true)
-		collision_shape.global_position = shape_origin
-		collision_shape.owner = owner
+	var collision_shape := CollisionShape3D.new()
+	var convex_polygon := ConvexPolygonShape3D.new()
+	convex_polygon.points = points
+	collision_shape.shape = convex_polygon
+	add_child(collision_shape, true)
+	collision_shape.global_position = shape_origin
+	collision_shape.owner = owner

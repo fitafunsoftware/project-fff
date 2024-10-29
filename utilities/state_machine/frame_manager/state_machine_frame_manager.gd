@@ -4,30 +4,30 @@ extends FrameManager
 ## Node to manage frames for StateMachine synchronization between client and server.
 
 ## Frame array size.
-const FRAME_SIZE : int = 3
+const FRAME_SIZE: int = 3
 # Index of each value in a frame array. FRAME is in the 0th index.
 enum {STATES_STACK = 1, TIME_IN_STATE}
 
 ## StateMachine to manage frames for.
-@export var state_machine : StateMachine
+@export var state_machine: StateMachine
 
 # Time spent in the current state.
-var _time_in_current_state : int = 0
+var _time_in_current_state: int = 0
 
 
-func _ready() -> void:
+func _ready():
 	super()
 	state_machine.state_changed.connect(_reset_time_in_current_state)
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(delta: float):
 	_time_in_current_state += 1
 	super(delta)
 
 
 ## Creates a StateMachine frame using the current states stack and time in state.
 func get_current_frame() -> Array:
-	var frame : Array = Array()
+	var frame: Array = Array()
 	frame.resize(FRAME_SIZE)
 	frame[FRAME] = GlobalParams.get_frame_time()
 	frame[STATES_STACK] = state_machine.get_states_stack()
@@ -50,12 +50,12 @@ func frames_are_equal(frame: Array, to_compare: Array) -> bool:
 ## Any future changes in state are assumed to happen at the same frame still.
 func fix_frames(frame: Array, index: int):
 	frames[index] = frame
-	var previous_state : StringName = frame[STATES_STACK].back() as StringName
-	var previous_time_in_state : int = frame[TIME_IN_STATE] as int
+	var previous_state: StringName = frame[STATES_STACK].back() as StringName
+	var previous_time_in_state: int = frame[TIME_IN_STATE] as int
 	index += 1
 	while index < frames.size():
-		var current_frame : Array = frames[index] as Array
-		var current_state : StringName = current_frame[STATES_STACK].back() as StringName
+		var current_frame: Array = frames[index] as Array
+		var current_state: StringName = current_frame[STATES_STACK].back() as StringName
 		if not current_state == previous_state:
 			current_frame[TIME_IN_STATE] = 1
 		else:
@@ -67,9 +67,9 @@ func fix_frames(frame: Array, index: int):
 
 ## Update the states statck and the time in current state to the new latest frame.
 func reconcile_differences():
-	var latest_frame : Array = frames.back() as Array
-	var states_stack : Array[StringName] = latest_frame[STATES_STACK]
-	var time_in_state : float = latest_frame[TIME_IN_STATE] * \
+	var latest_frame: Array = frames.back() as Array
+	var states_stack: Array[StringName] = latest_frame[STATES_STACK]
+	var time_in_state: float = latest_frame[TIME_IN_STATE] * \
 			get_physics_process_delta_time()
 	state_machine.configure_state_machine(states_stack, time_in_state)
 

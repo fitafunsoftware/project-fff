@@ -7,10 +7,10 @@ extends MeshInstance3D
 ## provided by [VerticalSprite3D]s.
 
 ## The occluder that determines whether to show or hide the node.
-var occluder : Occluder
+var occluder: Occluder
 
 # The current camera.
-@onready var _current_camera : Camera3D = get_viewport().get_camera_3d()
+@onready var _current_camera: Camera3D = get_viewport().get_camera_3d()
 
 
 func _init():
@@ -27,7 +27,7 @@ func _occlude():
 	if not _current_camera.current:
 		_current_camera = get_viewport().get_camera_3d()
 	
-	var camera_position = _current_camera.global_position
+	var camera_position: Vector3 = _current_camera.global_position
 	if occluder.to_occlude(global_position.z, camera_position.z):
 		hide()
 	else:

@@ -3,7 +3,7 @@ extends StateComponent
 class_name NestingStateComponent
 ## A StateComponent that holds other StateComponents.
 
-var _components : Array[StateComponent]
+var _components: Array[StateComponent]
 
 
 func _ready():
@@ -16,8 +16,8 @@ func _populate_components():
 
 
 func _get_state_components(node: Node) -> Array:
-	var array : Array = Array()
-	for child in node.get_children():
+	var array: Array = Array()
+	for child: Node in node.get_children():
 		if child is StateComponent:
 			array.append(child)
 		if child.get_child_count() > 0:

@@ -7,11 +7,11 @@ extends Node
 ## [GlobalParams] class.
 
 ## File path for the global params JSON.[br]
-const GLOBAL_PARAMS_JSON : String = "res://global_params/global_params.json"
+const GLOBAL_PARAMS_JSON: String = "res://global_params/global_params.json"
 
 # Dictionary to store global paramaters.
-var _global_params : Dictionary
-var _frame_time : int
+var _global_params: Dictionary
+var _frame_time: int
 
 # Initialize the parameters. Calculate other global parameters. Assign the 
 # global shader parameters to the [RenderingServer].
@@ -20,7 +20,7 @@ func _ready():
 	sync_frame_time(0, Time.get_ticks_msec())
 
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(_delta: float):
 	_frame_time += 1
 
 
@@ -36,10 +36,10 @@ func get_frame_time() -> int:
 ## to offset any inherent differences in ticks msec between the two systems.
 func sync_frame_time(starting_frame: int, ticks_msec: int, 
 		compensation: int = 0):
-	var current_time : int = Time.get_ticks_msec()
-	var delta_time : int = current_time - (ticks_msec + compensation)
+	var current_time: int = Time.get_ticks_msec()
+	var delta_time: int = current_time - (ticks_msec + compensation)
 	@warning_ignore("integer_division")
-	var compensation_frames : int = \
+	var compensation_frames: int = \
 			(delta_time * Engine.physics_ticks_per_second) / 1000
 	
 	_frame_time = starting_frame + compensation_frames
@@ -56,8 +56,8 @@ func get_global_param(param: StringName) -> Variant:
 func get_snapped_position(global_position: Vector3) -> Vector3:
 	if _global_params.is_empty():
 		_initialize_params()
-	var pixel_size : float = _global_params["PIXEL_SIZE"]
-	var floor_gradient : float = _global_params["FLOOR_GRADIENT"]
+	var pixel_size: float = _global_params["PIXEL_SIZE"]
+	var floor_gradient: float = _global_params["FLOOR_GRADIENT"]
 	
 	global_position.x = snappedf(global_position.x, pixel_size)
 	global_position.y = snappedf(global_position.y, pixel_size)
@@ -71,6 +71,6 @@ func _initialize_params():
 	_global_params = JSON.parse_string(FileAccess.get_file_as_string(GLOBAL_PARAMS_JSON))
 	GlobalParams.append_curve_params(_global_params)
 	
-	for param : StringName in _global_params.keys():
+	for param: StringName in _global_params.keys():
 		if ProjectSettings.has_setting("shader_globals/" + param):
 			RenderingServer.global_shader_parameter_set(param, _global_params[param])

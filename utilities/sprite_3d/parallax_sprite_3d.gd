@@ -9,11 +9,11 @@ extends Sprite3D
 ## set the offset of the ParallaxBackground node based on the 3D X and Z 
 ## camera positions.
 
-static var PIXEL_SIZE : float = NAN
+static var PIXEL_SIZE: float = NAN
 
-var _parallax_background : ParallaxBackground
-var _current_camera_3D : Camera3D
-@onready var _global_y_position : float = global_position.y
+var _parallax_background: ParallaxBackground
+var _current_camera_3D: Camera3D
+@onready var _global_y_position: float = global_position.y
 
 
 func _init():
@@ -66,7 +66,7 @@ func _on_texture_changed():
 	if not texture is ViewportTexture:
 		return
 	
-	var parallax_backgrounds : Array = \
+	var parallax_backgrounds: Array = \
 			find_children("*", "ParallaxBackground", true, false)
 	if parallax_backgrounds.is_empty():
 		return

@@ -9,19 +9,19 @@ extends Node
 ## @deprecated
 
 ## Path to the gamecontrollerdb.txt file. This is a submodule in the git repo.[br]
-const GAMECONTROLLERDB_PATH : String = "res://assets/gamecontrollerdb/gamecontrollerdb.txt"
+const GAMECONTROLLERDB_PATH: String = "res://assets/gamecontrollerdb/gamecontrollerdb.txt"
 
 ## Fallback for the gamecontrollerdb.txt file. In case submodule was not initialized.[br]
-const GAMECONTROLLERDB_FALLBACK_PATH : String = "res://utilities/autoloads/gamecontrollerdb.txt"
+const GAMECONTROLLERDB_FALLBACK_PATH: String = "res://utilities/autoloads/gamecontrollerdb.txt"
 
 ## Number of lines to read from the file per frame. Distributes the 
 ## load to not freeze the game.
-const LINES_PER_FRAME : int = 64
+const LINES_PER_FRAME: int = 64
 
 # The Dictionary that holds the mappings.
-var _gamecontrollerdb : Dictionary = {}
+var _gamecontrollerdb: Dictionary = {}
 # A FileAccess for reading from the file.
-var _file : FileAccess
+var _file: FileAccess
 
 # Open the file. Load the mappings into the Dictionary. 
 # Connect to the [signal Input.joy_connection_changed] signal.
@@ -39,13 +39,13 @@ func _ready():
 # update the mappings of the currently connected joypads.
 func _load():
 	for count in LINES_PER_FRAME:
-		var current_line : String = _file.get_line()
+		var current_line: String = _file.get_line()
 		if current_line.begins_with('#'):
 			continue
 		if current_line.is_empty():
 			continue
 		
-		var guid : String = current_line.get_slice(',', 0)
+		var guid: String = current_line.get_slice(',', 0)
 		_gamecontrollerdb[guid] = current_line
 		
 		if _file.get_position() >= _file.get_length():
@@ -61,7 +61,7 @@ func _load():
 
 # Update the currently connected joypads.
 func _update_current_joypads():
-	for device_id in Input.get_connected_joypads():
+	for device_id: int in Input.get_connected_joypads():
 		_add_mapping_from_guid(Input.get_joy_guid(device_id))
 
 
@@ -74,9 +74,9 @@ func _joy_connection_changed(device: int, connected: bool):
 
 # Remove old mapping then add new mapping based on the mappings in 
 # the SDL_GameControllerDB. If the mapping doesn't exist, just return.
-func _add_mapping_from_guid(guid : String):
+func _add_mapping_from_guid(guid: String):
 	if not _gamecontrollerdb.has(guid):
 		return
 	
-	var mapping : String = _gamecontrollerdb[guid]
+	var mapping: String = _gamecontrollerdb[guid]
 	Input.add_joy_mapping(mapping, true)

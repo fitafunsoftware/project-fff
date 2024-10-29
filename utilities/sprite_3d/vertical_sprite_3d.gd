@@ -8,24 +8,24 @@ extends Sprite3D
 ## instead of multiple depth levels.
 
 ## Max half screen height for custom aabb.
-const MAX_SCREEN_HEIGHT : float = 2.4
+const MAX_SCREEN_HEIGHT: float = 2.4
 
 ## The shader for VerticalSprite3D meshes.
-static var SHADER : Shader = preload("res://shaders/transparent_mesh.gdshader")
+static var SHADER: Shader = preload("res://shaders/transparent_mesh.gdshader")
 # Set the properties in the appropriate json file.
-static var PIXEL_SIZE : float = NAN
-static var FLOOR_GRADIENT : float = NAN
+static var PIXEL_SIZE: float = NAN
+static var FLOOR_GRADIENT: float = NAN
 
-@onready var _occluder : Occluder = Occluder.new()
-@onready var _current_camera : Camera3D = get_viewport().get_camera_3d()
+@onready var _occluder: Occluder = Occluder.new()
+@onready var _current_camera: Camera3D = get_viewport().get_camera_3d()
 
 ## Opacity of the Sprite when an entity is detected behind it.
-@export_range(0.0, 1.0, 0.1) var entity_detected_opacity : float = 0.5
+@export_range(0.0, 1.0, 0.1) var entity_detected_opacity: float = 0.5
 ## Helper to move sprite by a pixel offset relative to parent.
-@export_range(-100000, 100000, 1, "suffix:px", "hide_slider") var z_pixel_offset : int = 0
+@export_range(-100000, 100000, 1, "suffix:px", "hide_slider") var z_pixel_offset: int = 0
 ## Button to add the z_pixel_offset to the current position.
 @export_tool_button("Add Z Pixel Offset", "Callable")
-var add_offset : Callable = _add_offset_to_position
+var add_offset: Callable = _add_offset_to_position
 
 
 func _init():
@@ -45,7 +45,7 @@ func _set(property: StringName, value: Variant):
 	return false
 
 
-func _ready() -> void:
+func _ready():
 	if not material_override:
 		_apply_material_override()
 	
@@ -63,12 +63,12 @@ func _process(_delta):
 ## Get the area occupied by the sprite. Defaults to the texture rect if there is
 ## no defined area.
 func get_sprite_area() -> PackedVector2Array:
-	var texture_size : Vector2 = texture.get_size() / Vector2(hframes, vframes)
+	var texture_size: Vector2 = texture.get_size() / Vector2(hframes, vframes)
 	texture_size = texture_size.round()
-	var offset_transform : Transform2D = Transform2D(0, Vector2.ZERO)
+	var offset_transform: Transform2D = Transform2D(0, Vector2.ZERO)
 	offset_transform = offset_transform.translated(-offset)
 	offset_transform = offset_transform.translated(float(centered)*texture_size/2)
-	var array : Array = [
+	var array: Array = [
 		Vector2(0, 0),
 		Vector2(texture_size.x, 0),
 		texture_size,
@@ -82,9 +82,9 @@ func get_sprite_area() -> PackedVector2Array:
 			if sprite_array.size() > 0:
 				array = sprite_array
 	
-	var offset_array : Array = array.map(func transform(vector): return vector*offset_transform)
-	var scaled_array : Array = offset_array.map(func scale(vector): return vector*pixel_size)
-	var packed_array : PackedVector2Array = PackedVector2Array(scaled_array)
+	var offset_array: Array = array.map(func transform(vector): return vector*offset_transform)
+	var scaled_array: Array = offset_array.map(func scale(vector): return vector*pixel_size)
+	var packed_array: PackedVector2Array = PackedVector2Array(scaled_array)
 	
 	return packed_array
 
@@ -92,19 +92,19 @@ func get_sprite_area() -> PackedVector2Array:
 ## Sets the opacity of the sprite directly through the shader itself. Don't call
 ## often as it is not performant to pipe data to the shaders.
 func set_shader_opacity(opacity: float):
-	var shader_material : ShaderMaterial = material_override
+	var shader_material: ShaderMaterial = material_override
 	shader_material.set_shader_parameter("opacity", opacity)
 
 
 func _apply_material_override():
-	var shader_material = ShaderMaterial.new()
+	var shader_material := ShaderMaterial.new()
 	shader_material.shader = SHADER
 	shader_material.resource_local_to_scene = true
 	material_override = shader_material
 
 
 func _apply_texture():
-	var shader_material : ShaderMaterial = material_override
+	var shader_material: ShaderMaterial = material_override
 	shader_material.set_shader_parameter("sprite_texture", texture)
 	shader_material.set_shader_parameter("shaded", shaded)
 	
@@ -117,14 +117,14 @@ func _apply_texture():
 
 
 func _set_custom_aabb():
-	var texture_size : Vector2 = texture.get_size() / Vector2(hframes, vframes)
+	var texture_size: Vector2 = texture.get_size() / Vector2(hframes, vframes)
 	texture_size = texture_size.round()
-	var position_offset : Vector2 = (offset - (float(centered)*texture_size/2.0))
+	var position_offset: Vector2 = (offset - (float(centered)*texture_size/2.0))
 	position_offset = position_offset * pixel_size
-	var aabb_position : Vector3 = Vector3(0.0, -MAX_SCREEN_HEIGHT, 0.0) \
+	var aabb_position: Vector3 = Vector3(0.0, -MAX_SCREEN_HEIGHT, 0.0) \
 			+ Vector3(position_offset.x, position_offset.y, 0.0)
-	var aabb_size : Vector3 = Vector3(texture_size.x, texture_size.y, 0.0)*pixel_size
-	var y_height : float = GlobalParams.get_global_param("ARC_HEIGHT") \
+	var aabb_size: Vector3 = Vector3(texture_size.x, texture_size.y, 0.0)*pixel_size
+	var y_height: float = GlobalParams.get_global_param("ARC_HEIGHT") \
 			+ MAX_SCREEN_HEIGHT
 	aabb_size.y = aabb_size.y + y_height
 	custom_aabb = AABB(aabb_position, aabb_size)
@@ -134,7 +134,7 @@ func _occlude():
 	if not _current_camera.current:
 		_current_camera = get_viewport().get_camera_3d()
 	
-	var camera_position = _current_camera.global_position
+	var camera_position: Vector3 = _current_camera.global_position
 	if _occluder.to_occlude(global_position.z, camera_position.z):
 		hide()
 	else:
@@ -145,7 +145,7 @@ func _add_offset_to_position():
 	if NAN in [PIXEL_SIZE, FLOOR_GRADIENT]:
 		PIXEL_SIZE = GlobalParams.get_global_param("PIXEL_SIZE")
 		FLOOR_GRADIENT = GlobalParams.get_global_param("FLOOR_GRADIENT")
-	var z_offset : float = z_pixel_offset * PIXEL_SIZE / FLOOR_GRADIENT
+	var z_offset: float = z_pixel_offset * PIXEL_SIZE / FLOOR_GRADIENT
 	position.z += z_offset
 
 

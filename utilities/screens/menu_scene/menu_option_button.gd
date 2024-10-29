@@ -5,11 +5,11 @@ extends Button
 ## told to.
 
 ## The next scene to load when pressed.
-var next_scene : String
+var next_scene: String
 ## Use loading scene before loading the next scene.
-var loading_scene : bool
+var loading_scene: bool
 ## Enable touch controls in next scene.
-var touch_controls : bool = false
+var touch_controls: bool = false
 
 
 func _ready():
@@ -19,7 +19,7 @@ func _ready():
 
 
 ## Set up the values of the button.
-func setup_button(option : String, scene : String, loading : bool, touch : bool):
+func setup_button(option: String, scene: String, loading: bool, touch: bool):
 	text = option
 	next_scene = scene
 	loading_scene = loading

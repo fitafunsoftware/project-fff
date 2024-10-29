@@ -4,7 +4,7 @@ class_name TransitionStateComponent
 extends StateComponent
 ## StateComponent that calls for a state change in update.
 
-@export var next_state : StringName
+@export var next_state: StringName
 
 
 func update(_delta: float):

@@ -5,7 +5,7 @@ extends Control
 ## game should load this scene instead. Code for handling exit notifications
 ## will be here.
 
-@export_file("*.tscn") var starting_scene : String
+@export_file("*.tscn") var starting_scene: String
 
 
 # Propagate exit notifications.

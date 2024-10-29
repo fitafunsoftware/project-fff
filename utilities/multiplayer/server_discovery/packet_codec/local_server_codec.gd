@@ -7,29 +7,29 @@ extends PacketCodec
 ## instead of this resourse.
 
 ## Header for packets.
-const HEADER : String = "PFFFv0.1"
+const HEADER: String = "PFFFv0.1"
 ## Postfix header for broadcast packets.
-const BROADCAST : String = "B"
+const BROADCAST: String = "B"
 ## Postfix header for discovery packets.
-const DISCOVER : String = "D"
+const DISCOVER: String = "D"
 ## Total size of the header with the postfix attached.
-static var TOTAL_HEADER_SIZE : int = HEADER.length() + BROADCAST.length()
+static var TOTAL_HEADER_SIZE: int = HEADER.length() + BROADCAST.length()
 
 
 ## Server address key for the data dictionary.
-const ADDRESS : StringName = "address"
+const ADDRESS: StringName = &"address"
 ## Server port key for the data dictionary.
-const SERVER_PORT : StringName = "port"
+const SERVER_PORT: StringName = &"port"
 ## Number of connections key for the data dictionary.
-const CONNECTIONS : StringName = "connections"
+const CONNECTIONS: StringName = &"connections"
 ## Max number of connections key for the data dictionary.
-const MAX_CONNECTIONS : StringName = "max_connections"
+const MAX_CONNECTIONS: StringName = &"max_connections"
 ## Extras key for the data dictionary.[br]Extras should be an array full of
 ## [Variants] but no [Objects].
-const EXTRAS : StringName = "extras"
+const EXTRAS: StringName = &"extras"
 
 # Giving names to magic numbers.
 ## Number of bytes used by an Unsigned 8-bit integer.
-const U8_SIZE : int = 1
+const U8_SIZE: int = 1
 ## Number of bytes used by an Unsigned 16-bit integer.
-const U16_SIZE : int = 2
+const U16_SIZE: int = 2

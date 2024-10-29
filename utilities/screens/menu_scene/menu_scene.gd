@@ -5,17 +5,17 @@ extends Control
 ## scenes.
 
 # The basic menu option option.
-var _menu_option_button : Resource = preload("menu_option_button.tscn")
+var _menu_option_button: Resource = preload("menu_option_button.tscn")
 
 ## An array of strings that will be name for the buttons.
-@export var options : Array[String]
+@export var options: Array[String]
 ## An array of strings that are the paths for the scenes to be loaded.
-@export var scenes : Array[String]
+@export var scenes: Array[String]
 ## An array of bools that determine whether a loading screen is used.
-@export var loading : Array[bool]
+@export var loading: Array[bool]
 ## An array of bools that determine whether touch controls are enabled for the
 ## next scene.
-@export var touch : Array[bool]
+@export var touch: Array[bool]
 
 # Container for the menu option buttons.
 @onready var _menu = $VBoxContainer/HBoxContainer/MenuOptions
@@ -27,15 +27,15 @@ func _ready():
 
 # Fill the menu with buttons and set up their UI neighbors.
 func _populate_menu():
-	var option_size : int = mini(options.size(), scenes.size())
+	var option_size: int = mini(options.size(), scenes.size())
 	loading.resize(option_size)
-	var prev_button : Button = null
+	var prev_button: Button = null
 	
-	for option : int in option_size:
+	for option: int in option_size:
 		if not ResourceLoader.exists(scenes[option]):
 			continue
 		
-		var button : Button = _create_button(options[option], scenes[option],
+		var button: Button = _create_button(options[option], scenes[option],
 				loading[option], touch[option])
 		_menu.add_child(button)
 		if prev_button:
@@ -46,8 +46,8 @@ func _populate_menu():
 		prev_button = button
 	
 	if _menu.get_child_count() > 0:
-		var first_option : Button = _menu.get_child(0) as Button
-		var last_option : Button = _menu.get_child(-1) as Button
+		var first_option: Button = _menu.get_child(0) as Button
+		var last_option: Button = _menu.get_child(-1) as Button
 		first_option.focus_neighbor_top = first_option.get_path_to(last_option)
 		first_option.focus_previous = first_option.get_path_to(last_option)
 		last_option.focus_neighbor_bottom = last_option.get_path_to(first_option)
@@ -57,8 +57,8 @@ func _populate_menu():
 
 
 # Make a button and set it up.
-func _create_button(option : String, scene : String, load_scene : bool, 
-		touch_controls : bool) -> Button :
-	var new_button : Button = _menu_option_button.instantiate()
+func _create_button(option: String, scene: String, load_scene: bool, 
+		touch_controls: bool) -> Button :
+	var new_button: Button = _menu_option_button.instantiate()
 	new_button.setup_button(option, scene, load_scene, touch_controls)
 	return new_button

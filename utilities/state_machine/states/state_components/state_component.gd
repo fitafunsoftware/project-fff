@@ -8,12 +8,12 @@ extends Node
 ## a StateComponent of your own.
 
 ## Is this component active?
-@export var active := true : set = _set_active
+@export var active := true: set = _set_active
 
 ## The finished Callable this component should call to request a state change.
-var finished : Callable
+var finished: Callable
 ## The dependencies shared by all components in this state.
-var dependencies : Dictionary
+var dependencies: Dictionary
 
 
 ## A ready function for StateComponents.[br]Different from the virtual ready function
@@ -62,7 +62,7 @@ func on_animation_finished(_animation: StringName):
 
 ## Retrieve the dependencies of this component.
 func get_dependencies() -> Array[StringName]:
-	var array : Array[StringName]
+	var array: Array[StringName]
 	array.assign(Array())
 	return array
 

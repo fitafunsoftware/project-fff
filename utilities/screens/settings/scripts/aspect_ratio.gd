@@ -1,6 +1,6 @@
 extends PanelContainer
 
-const ASPECT_RATIO : PackedStringArray = [
+const ASPECT_RATIO: PackedStringArray = [
 	"Auto",
 	"16 : 9",
 	"16 : 10",
@@ -8,8 +8,8 @@ const ASPECT_RATIO : PackedStringArray = [
 	"4 : 3",
 ]
 
-const PREVIOUS : int = -1
-const NEXT : int = 1
+const PREVIOUS: int = -1
+const NEXT: int = 1
 
 @onready var _background = $Background
 @onready var _value = $HBoxContainer/Control/Control/Value
@@ -25,7 +25,7 @@ func _ready():
 
 
 func _gui_input(event: InputEvent):
-	var offset : int = 0
+	var offset: int = 0
 	offset -= int(event.is_action_pressed("ui_left"))
 	offset += int(event.is_action_pressed("ui_right"))
 	
@@ -38,8 +38,8 @@ func _gui_input(event: InputEvent):
 
 
 func set_aspect_ratio(offset: int):
-	var allowed_aspect_ratios : Array = GlobalSettings.get_allowed_aspect_ratios()
-	var index : int = allowed_aspect_ratios.find(GlobalSettings.aspect_ratio)
+	var allowed_aspect_ratios: Array = GlobalSettings.get_allowed_aspect_ratios()
+	var index: int = allowed_aspect_ratios.find(GlobalSettings.aspect_ratio)
 	GlobalSettings.aspect_ratio = allowed_aspect_ratios[index + offset]
 
 
@@ -50,7 +50,7 @@ func _on_window_size_changed():
 
 func _on_aspect_ratio_changed(aspect_ratio: int):
 	_value.text = ASPECT_RATIO[aspect_ratio]
-	var allowed_aspect_ratios : Array = GlobalSettings.get_allowed_aspect_ratios()
+	var allowed_aspect_ratios: Array = GlobalSettings.get_allowed_aspect_ratios()
 	_previous.disabled = aspect_ratio == allowed_aspect_ratios.front()
 	_next.disabled = aspect_ratio == allowed_aspect_ratios.back()
 

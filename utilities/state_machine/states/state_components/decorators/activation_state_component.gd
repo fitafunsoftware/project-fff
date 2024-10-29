@@ -7,10 +7,10 @@ const FORCE = true
 
 ## If true, activates when active, deactivate when deactivated.[br]
 ## If false, activates when deactivated, deactivates when activated.
-@export var activate : bool = true
+@export var activate: bool = true
 
-var _is_active : Array[bool]
-var _activated : bool
+var _is_active: Array[bool]
+var _activated: bool
 
 
 func ready():
@@ -21,7 +21,7 @@ func ready():
 
 func _populate_is_active():
 	_is_active.assign(Array())
-	for component : StateComponent in _components:
+	for component: StateComponent in _components:
 		_is_active.append(component.active)
 
 
@@ -39,7 +39,7 @@ func set_activated(value: bool, force: bool = false):
 
 
 func _activate_components(value: bool):
-	for index in _components.size():
+	for index: int in _components.size():
 		_components[index].active = _is_active[index] if value else false
 
 

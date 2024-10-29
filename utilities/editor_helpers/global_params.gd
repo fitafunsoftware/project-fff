@@ -43,8 +43,8 @@ static func get_snapped_position(global_position: Vector3) -> Vector3:
 ## Calculate [b]and add[/b] the curve constants to the passed in dictionary.
 ## Note that this function [b]directly manipulates[/b] the Dictionary.
 static func append_curve_params(global_params: Dictionary):
-	var arc_height = global_params["ARC_HEIGHT"]
-	var floor_angle = deg_to_rad(global_params["FLOOR_ANGLE_DEGREES"])
+	var arc_height: float = global_params["ARC_HEIGHT"]
+	var floor_angle: float = deg_to_rad(global_params["FLOOR_ANGLE_DEGREES"])
 	var radius : float = arc_height/(1.0 - cos(floor_angle))
 	var distance_to_chord : float = radius - arc_height
 	var half_chord_length : float = radius * sin(floor_angle)
@@ -72,7 +72,7 @@ class EditorGlobalParams:
 
 ## Get the global parameter with the name param.
 	static func get_global_param(param: String) -> Variant:
-		var global_params = JSON.parse_string(
+		var global_params: Dictionary = JSON.parse_string(
 				FileAccess.get_file_as_string("res://global_params/global_params.json"))
 		GlobalParams.append_curve_params(global_params)
 		
@@ -81,10 +81,10 @@ class EditorGlobalParams:
 
 ## Get the position snapped to pixel positions.
 	static func get_snapped_position(global_position: Vector3) -> Vector3:
-		var global_params : Dictionary = JSON.parse_string(
+		var global_params: Dictionary = JSON.parse_string(
 				FileAccess.get_file_as_string("res://global_params/global_params.json"))
-		var pixel_size : float = global_params["PIXEL_SIZE"]
-		var floor_gradient : float = tan(deg_to_rad(global_params["FLOOR_ANGLE_DEGREES"]))
+		var pixel_size: float = global_params["PIXEL_SIZE"]
+		var floor_gradient: float = tan(deg_to_rad(global_params["FLOOR_ANGLE_DEGREES"]))
 		
 		global_position.x = snappedf(global_position.x, pixel_size)
 		global_position.y = snappedf(global_position.y, pixel_size)

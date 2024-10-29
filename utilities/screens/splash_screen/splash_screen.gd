@@ -13,7 +13,7 @@ extends Control
 @export var fade_out_duration := 0.5
 @export_group("NextScene")
 ## Next scene to be loaded.
-@export_file("*.tscn") var next_scene : String
+@export_file("*.tscn") var next_scene: String
 ## Use a loading screen before transitioning to the next scene.
 @export var to_loading_screen := false
 
@@ -21,7 +21,7 @@ extends Control
 @onready var _logo := $Logo
 
 # A tween to use.
-var _tween : Tween
+var _tween: Tween
 
 
 func _ready():
@@ -38,7 +38,7 @@ func _ready():
 
 
 # Skip splash screen based on event.
-func _input(event : InputEvent):
+func _input(event: InputEvent):
 	if not event.is_pressed():
 		return
 	
@@ -49,11 +49,11 @@ func _input(event : InputEvent):
 
 # Move through the tween to skip the splash.
 func _skip_splash():
-	var elapsed_time : float = _tween.get_total_elapsed_time()
-	var first_tweener_duration : float = start_delay + fade_in_duration
+	var elapsed_time: float = _tween.get_total_elapsed_time()
+	var first_tweener_duration: float = start_delay + fade_in_duration
 	
 	if elapsed_time < first_tweener_duration:
-		var time_to_skip : float = first_tweener_duration - elapsed_time
+		var time_to_skip: float = first_tweener_duration - elapsed_time
 		_tween.custom_step(time_to_skip)
 	
 	if elapsed_time > first_tweener_duration:

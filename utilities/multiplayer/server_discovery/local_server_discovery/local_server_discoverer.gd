@@ -15,20 +15,20 @@ signal broadcast_info_received(broadcast_info: Dictionary)
 
 ## The address that packets are broadcast to. Set its value in the
 ## GlobalParams JSON.
-static var BROADCAST_ADDRESS : String = ""
+static var BROADCAST_ADDRESS: String = ""
 ## The port that packets are broadcast to. Set its value in the GlobalParams
 ## JSON.
-static var SERVER_DISCOVERY_PORT : int = -1
+static var SERVER_DISCOVERY_PORT: int = -1
 
 ## The codec used to encode and decode packets.
-@export var codec : PacketCodec
+@export var codec: PacketCodec
 ## The time between each search broadcast.
-@export var search_delay : float = 2.5
+@export var search_delay: float = 2.5
 
 # The PacketPeerUDP used for network communication.
 var _udp := PacketPeerUDP.new()
 # The packet to be broadcast to search for servers.
-var _discovery_packet : PackedByteArray
+var _discovery_packet: PackedByteArray
 
 
 func _notification(what: int):
@@ -48,7 +48,7 @@ func _ready():
 	_local_server_discovery()
 
 
-func _process(_delta: float) -> void:
+func _process(_delta: float):
 	_check_for_packets()
 
 
@@ -65,8 +65,8 @@ func search_for_local_servers():
 
 
 func _check_for_packets():
-	for count in _udp.get_available_packet_count():
-		var packet : PackedByteArray = _udp.get_packet()
+	for count: int in _udp.get_available_packet_count():
+		var packet: PackedByteArray = _udp.get_packet()
 		if codec.is_valid_packet(packet):
 			_decode_packet(packet)
 
@@ -82,5 +82,5 @@ func _local_server_discovery():
 # Decodes received packets and emits the data through the
 # [signal broadcast_info_received] signal.
 func _decode_packet(packet: PackedByteArray):
-	var broadcast_info = codec.get_decoded_packet(packet)
+	var broadcast_info: Dictionary = codec.get_decoded_packet(packet)
 	broadcast_info_received.emit(broadcast_info)

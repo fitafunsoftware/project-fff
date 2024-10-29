@@ -5,14 +5,14 @@ extends SubViewport
 ## This viewport manages scene switching and queuing scene resources.
 
 # Generic loading scene in case any one scene takes too long to load.
-var _loading_scene : Resource = preload("res://utilities/screens/loading_screen/loading_screen.tscn")
+var _loading_scene: Resource = preload("res://utilities/screens/loading_screen/loading_screen.tscn")
 
 # A node that helps with the loading of the next scene. Notifies the viewport
 # when the next scene is loaded.
-@onready var _next_scene_manager = $NextSceneManager
+@onready var _next_scene_manager: Node = $NextSceneManager
 
 # The path of the next scene that is currently loading.
-var _pending_path : String = ""
+var _pending_path: String = ""
 
 
 func _ready():
@@ -21,12 +21,12 @@ func _ready():
 
 
 ## Queue a scene to be loaded by the ResourceQueue. Does not change the scene.
-func queue_scene(path: String) -> void:
+func queue_scene(path: String):
 	ResourceQueue.queue_resource(path)
 
 
 ## Change the current scene to the scene in path.
-func change_scene(path: String, touch_controls: bool = false) -> void:
+func change_scene(path: String, touch_controls: bool = false):
 	if not _pending_path.is_empty():
 		return
 	
@@ -49,8 +49,8 @@ func _ready_scene_node(path: String):
 
 
 # Instantiate the loading scene and change to it when ready.
-func change_to_loading_scene(path: String, touch_controls: bool = false) -> void:
-	var loading_screen = _loading_scene.instantiate()
+func change_to_loading_scene(path: String, touch_controls: bool = false):
+	var loading_screen: Node = _loading_scene.instantiate()
 	loading_screen.next_scene = path
 	loading_screen.touch_controls = touch_controls
 	_next_scene_manager.touch_controls = false

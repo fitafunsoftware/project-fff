@@ -13,26 +13,26 @@ signal action_pressed
 signal action_released
 
 ## Action to be pressed or released.
-@export var action : StringName
+@export var action: StringName
 ## Device to emulate.
-@export_range(-1, 7, 1) var device : int = -1
+@export_range(-1, 7, 1) var device: int = -1
 
 @export_category("Visuals")
 ## Size of button relative to Viewport.
-@export_range(0.0, 1.0, 0.01, "hide_slider") var radius : float = 0.1:
+@export_range(0.0, 1.0, 0.01, "hide_slider") var radius: float = 0.1:
 	set(value):
 		radius = value
 		_set_button_sizes()
 ## Released color. Make transparent to hide.
-@export var released_color : Color = Color("f0ffff70")
+@export var released_color: Color = Color("f0ffff70")
 ## Pressed color. Make transparent to hide.
-@export var pressed_color : Color = Color("b2222270")
+@export var pressed_color: Color = Color("b2222270")
 
 # Private variables needed for keeping track of events to send.
-var _pressed : bool = false
-var _index : int = -1
-var _radius : float
-var _center : Vector2
+var _pressed: bool = false
+var _index: int = -1
+var _radius: float
+var _center: Vector2
 
 
 func _ready():
@@ -66,7 +66,7 @@ func _redraw_and_update_input():
 
 
 func _parse_input_event():
-	var input : InputEventAction = InputEventAction.new()
+	var input: InputEventAction = InputEventAction.new()
 	input.device = device
 	input.action = action
 	input.pressed = _pressed
@@ -81,14 +81,14 @@ func _parse_input_event():
 
 
 func _draw_button():
-	var button_color : Color = pressed_color if _pressed else released_color
+	var button_color: Color = pressed_color if _pressed else released_color
 	draw_circle(_center, _radius, button_color)
 
 
 func _set_button_sizes():
 	if not is_inside_tree():
 		return
-	var viewport_size : Vector2 = Vector2(
+	var viewport_size: Vector2 = Vector2(
 			ProjectSettings.get_setting("display/window/size/viewport_width"),
 			ProjectSettings.get_setting("display/window/size/viewport_height")) \
 			if Engine.is_editor_hint() else get_viewport_rect().size
@@ -97,10 +97,10 @@ func _set_button_sizes():
 
 
 func _set_control_size():
-	var new_size : Vector2 = Vector2(_radius, _radius) * 2.0
-	var ratio : Vector2 = new_size/size
-	var new_begin : Vector2 = get_begin() * ratio
-	var new_end : Vector2 = get_end() * ratio
+	var new_size: Vector2 = Vector2(_radius, _radius) * 2.0
+	var ratio: Vector2 = new_size/size
+	var new_begin: Vector2 = get_begin() * ratio
+	var new_end: Vector2 = get_end() * ratio
 	size = new_size
 	set_begin(new_begin)
 	set_end(new_end)

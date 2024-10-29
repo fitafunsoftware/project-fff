@@ -11,8 +11,8 @@ func _ready():
 
 
 func _process(_delta):
-	var input := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	var y := Input.get_axis("ui_cancel", "ui_accept")
+	var input: Vector2 = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var y: float = Input.get_axis("ui_cancel", "ui_accept")
 	set_y_velocity(y)
 	set_velocity_2d(input * speed)
 	target_velocity_2d = input * speed

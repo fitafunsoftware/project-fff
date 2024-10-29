@@ -9,30 +9,30 @@ signal initial_frames_synced()
 signal final_frames_synced()
 
 ## Number of requests to send and receive before doing final frame sync.
-const NUMBER_OF_REQUESTS := 7
+const NUMBER_OF_REQUESTS: int = 7
 ## Time between requests in seconds.
 const DELAY_BETWEEN_REQUESTS := 2.5
 
 ## Size of a packet that gets sent and received.
-const _PACKET_SIZE := 2
+const _PACKET_SIZE: int = 2
 ## Number of additional values in extended packets.
-const _EXTENSIONS := 2
+const _EXTENSIONS: int = 2
 ## Size of a packet that has been received and done calculations on.
-const _EXTENDED_PACKET_SIZE := _PACKET_SIZE + _EXTENSIONS
+const _EXTENDED_PACKET_SIZE: int = _PACKET_SIZE + _EXTENSIONS
 ## Indices for values in packets.
 enum {REQUEST, SERVER}
 ## Received and Latency only exist in extended packets.
 enum {RECEIVED = _PACKET_SIZE, LATENCY}
 
 # ID of the server.
-var _server_id : int = 0
+var _server_id: int = 0
 # Compensation in msec to add onto server time.
-var _compensation : int = 0
+var _compensation: int = 0
 # Array of packets received from time synchronization.
-var _packets : Array[PackedInt64Array]
+var _packets: Array[PackedInt64Array]
 
 
-func _ready() -> void:
+func _ready():
 	_packets.assign(Array())
 
 
@@ -51,7 +51,7 @@ func start_time_sync():
 ## Function for the [b]clients[/b] to start a time request.
 ## [br]Will only be called locally, so it does not need rpc tags.
 func request_time():
-	var packet : PackedInt64Array = PackedInt64Array()
+	var packet: PackedInt64Array = PackedInt64Array()
 	packet.resize(_PACKET_SIZE)
 	packet[REQUEST] = Time.get_ticks_msec()
 	
@@ -96,9 +96,9 @@ func request_frame_sync():
 	if not multiplayer.is_server():
 		return
 	
-	var sender_id = multiplayer.get_remote_sender_id()
-	var current_frame = GlobalParams.get_frame_time()
-	var server_time = Time.get_ticks_msec()
+	var sender_id: int = multiplayer.get_remote_sender_id()
+	var current_frame: int = GlobalParams.get_frame_time()
+	var server_time: int = Time.get_ticks_msec()
 	sync_frames.rpc_id(sender_id, current_frame, server_time)
 
 
@@ -114,7 +114,7 @@ func sync_frames(current_frame: int, server_time: int):
 
 # Sync functions.
 func _initial_sync():
-	var single_packet_array : Array = [_packets.front()]
+	var single_packet_array: Array = [_packets.front()]
 	_compensation = _calculate_compensation(single_packet_array)
 	request_frame_sync.rpc_id(_server_id)
 
@@ -125,7 +125,7 @@ func _final_sync():
 				return packet[LATENCY] < to_compare[LATENCY]
 	)
 	
-	var filtered_packets : Array = _filter_packets()
+	var filtered_packets: Array = _filter_packets()
 	_compensation = _calculate_compensation(filtered_packets)
 	
 	request_frame_sync.rpc_id(_server_id)
@@ -141,10 +141,10 @@ func _calculate_latency(packet: PackedInt64Array) -> int:
 # from the median.
 func _filter_packets() -> Array:
 	@warning_ignore("integer_division")
-	var median_packet : PackedInt64Array = _packets[_packets.size()/2] as PackedInt64Array
-	var median_latency : int = median_packet[LATENCY]
-	var sum : float = 0.0
-	for packet : PackedInt64Array in _packets:
+	var median_packet: PackedInt64Array = _packets[_packets.size()/2] as PackedInt64Array
+	var median_latency: int = median_packet[LATENCY]
+	var sum: float = 0.0
+	for packet: PackedInt64Array in _packets:
 		sum += pow(packet[LATENCY] - median_latency, 2.0)
 	var standard_deviation = sqrt(sum / (_packets.size() - 1))
 	
@@ -156,9 +156,9 @@ func _filter_packets() -> Array:
 
 # Calculate the final compensation to be used.
 func _calculate_compensation(packets: Array) -> int:
-	var mean_latency : float = 0.0
-	var mean_tick_difference : float = 0.0
-	for packet : PackedInt64Array in packets:
+	var mean_latency: float = 0.0
+	var mean_tick_difference: float = 0.0
+	for packet: PackedInt64Array in packets:
 		mean_latency += packet[LATENCY]
 		mean_tick_difference += packet[RECEIVED] - packet[SERVER]
 	mean_latency /= packets.size()

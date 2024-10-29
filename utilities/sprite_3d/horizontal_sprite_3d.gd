@@ -10,34 +10,34 @@ extends MeshInstance3D
 ## transparent.
 
 ## Max half screen height for custom aabb.
-const MAX_SCREEN_HEIGHT : float = 2.4
+const MAX_SCREEN_HEIGHT: float = 2.4
 
 # Set the properties in the appropriate json file.
-static var FLOOR_GRADIENT : float = NAN
+static var FLOOR_GRADIENT: float = NAN
 
 ## The shader used for HorizontalSprite3D.
-static var OPAQUE_MESH : Shader = preload("res://shaders/opaque_mesh.gdshader")
+static var OPAQUE_MESH: Shader = preload("res://shaders/opaque_mesh.gdshader")
 
 ## Button to regenerate the sprite.
 @export_tool_button("Regenerate Mesh", "Sprite3D")
-var generate_mesh : Callable = _regenerate_mesh
+var generate_mesh: Callable = _regenerate_mesh
 
 @export_category("Sprite Properties")
 ## Texture for the sprite.
-@export var texture : Texture2D:
+@export var texture: Texture2D:
 	set(value):
 		texture = value
 		_recalculate_size_and_subdivisions()
 		_apply_texture()
 
 ## Pixel size for the texture. Does not have to follow the global pixel size.
-@export_range(0.001, 128, 0.001, "suffix:m") var pixel_size : float = 0.01:
+@export_range(0.001, 128, 0.001, "suffix:m") var pixel_size: float = 0.01:
 	set(value):
 		pixel_size = value
 		_recalculate_size_and_subdivisions()
 
 ## Number of subdivisions in the x direction per Godot meter unit.
-@export var subdivisions_per_meter_width : int = 0:
+@export var subdivisions_per_meter_width: int = 0:
 	set(value):
 		if value < 0:
 			return
@@ -46,7 +46,7 @@ var generate_mesh : Callable = _regenerate_mesh
 
 ## Number of subdivisions in the z direction per Godot meter unit.
 ## [br]Set to -1 to automatically match pixels with subdivisions.
-@export var subdivisions_per_meter_depth : int = -1:
+@export var subdivisions_per_meter_depth: int = -1:
 	set(value):
 		if value < -1:
 			return
@@ -99,11 +99,11 @@ func _recalculate_size():
 
 
 func _recalculate_custom_aabb():
-	var half_mesh_size : Vector2 = mesh.size / 2.0
-	var aabb_position : Vector3 = mesh.center_offset \
+	var half_mesh_size: Vector2 = mesh.size / 2.0
+	var aabb_position: Vector3 = mesh.center_offset \
 			- Vector3(half_mesh_size.x, MAX_SCREEN_HEIGHT, half_mesh_size.y)
-	var aabb_size : Vector3 = Vector3(mesh.size.x, 0.0, mesh.size.y)
-	var y_height : float = GlobalParams.get_global_param("ARC_HEIGHT") \
+	var aabb_size: Vector3 = Vector3(mesh.size.x, 0.0, mesh.size.y)
+	var y_height: float = GlobalParams.get_global_param("ARC_HEIGHT") \
 			+ MAX_SCREEN_HEIGHT
 	aabb_size.y = aabb_size.y + y_height
 	mesh.custom_aabb = AABB(aabb_position, aabb_size)
@@ -134,5 +134,5 @@ func _apply_texture():
 	if not mesh.material:
 		return
 	
-	var shader_material : ShaderMaterial = mesh.material
+	var shader_material: ShaderMaterial = mesh.material
 	shader_material.set_shader_parameter("sprite_texture", texture)

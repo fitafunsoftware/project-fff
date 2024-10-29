@@ -11,7 +11,7 @@ enum Direction {LEFT = -1, RIGHT = 1}
 signal look_direction_changed(look_direction: int)
 
 ## Look direction variable itself.
-var look_direction : int = Direction.RIGHT :
+var look_direction: int = Direction.RIGHT:
 	set(value):
 		if Direction.values().has(value):
 			if value == look_direction:

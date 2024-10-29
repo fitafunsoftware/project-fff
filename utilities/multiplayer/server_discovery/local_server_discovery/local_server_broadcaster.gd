@@ -15,22 +15,22 @@ signal discovery_info_received(discovery_info: Dictionary)
 
 ## The port that the server listens to. Set its value in the GlobalParams
 ## JSON.
-static var SERVER_DISCOVERY_PORT : int = -1
+static var SERVER_DISCOVERY_PORT: int = -1
 
 ## The codec used to encode and decode packets.
-@export var codec : PacketCodec
+@export var codec: PacketCodec
 ## Time it takes to receive no new packets from a peer before pruning the peer.
-@export var timeout : float = 30.0
+@export var timeout := 30.0
 
 # UDPServer for braodcasting and peer discovery.
 var _server := UDPServer.new()
 # Array of peers this server has connected to.
-var _peers : Array[PacketPeerUDP] = []
+var _peers: Array[PacketPeerUDP] = []
 # The lifetime of each peer. Used for pruning peers that haven't been active
 # within the timeout duration.
-var _lifetimes : Dictionary = {}
+var _lifetimes: Dictionary = {}
 # The packet to be broadcasted to peers.
-var _broadcast_packet : PackedByteArray
+var _broadcast_packet: PackedByteArray
 
 
 func _notification(what: int):
@@ -60,7 +60,7 @@ func _process(delta: float):
 ## connected peers.
 func set_broadcast_packet(broadcast_info: Dictionary):
 	_broadcast_packet = codec.get_encoded_packet(broadcast_info)
-	for peer : PacketPeerUDP in _peers:
+	for peer: PacketPeerUDP in _peers:
 		peer.put_packet(_broadcast_packet)
 
 
@@ -69,8 +69,8 @@ func set_broadcast_packet(broadcast_info: Dictionary):
 # list of peers and the broadcast packet is sent over.[br]If the [member codec]
 # does not validate the packet, the new peer is closed.
 func _handle_new_connection():
-	var peer : PacketPeerUDP = _server.take_connection()
-	var packet : PackedByteArray = peer.get_packet()
+	var peer: PacketPeerUDP = _server.take_connection()
+	var packet: PackedByteArray = peer.get_packet()
 	
 	if codec.is_valid_packet(packet):
 		_decode_packet(packet)
@@ -82,9 +82,9 @@ func _handle_new_connection():
 
 
 func _check_for_packets():
-	for peer : PacketPeerUDP in _peers:
-		for count in peer.get_available_packet_count():
-			var packet = peer.get_packet()
+	for peer: PacketPeerUDP in _peers:
+		for count: int in peer.get_available_packet_count():
+			var packet: PackedByteArray = peer.get_packet()
 			if codec.is_valid_packet(packet):
 				_decode_packet(packet)
 				peer.put_packet(_broadcast_packet)
@@ -93,15 +93,15 @@ func _check_for_packets():
 
 # Decode any discovery packets received.
 func _decode_packet(packet: PackedByteArray):
-	var discovery_info : Dictionary = codec.get_decoded_packet(packet)
+	var discovery_info: Dictionary = codec.get_decoded_packet(packet)
 	discovery_info_received.emit(discovery_info)
 
 
 # Prune any connections that haven't been active within the [member timeout]
 # time.
 func _prune_connections():
-	var to_erase : Array = _peers.filter(
-			func(peer): return _lifetimes[peer] > timeout
+	var to_erase: Array = _peers.filter(
+			func(peer: PacketPeerUDP): return _lifetimes[peer] > timeout
 			)
 	for peer : PacketPeerUDP in to_erase:
 		_peers.erase(peer)
@@ -110,5 +110,5 @@ func _prune_connections():
 
 
 func _update_lifetimes(delta: float):
-	for peer : PacketPeerUDP in _peers:
+	for peer: PacketPeerUDP in _peers:
 		_lifetimes[peer] += delta

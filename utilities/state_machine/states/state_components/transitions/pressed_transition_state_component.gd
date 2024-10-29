@@ -4,8 +4,8 @@ class_name PressedTransitionStateComponent
 extends StateComponent
 ## StateComponent that calls for a state change when an action is pressed.
 
-@export var action : StringName
-@export var next_state : StringName
+@export var action: StringName
+@export var next_state: StringName
 
 
 func handle_input(event: InputEvent):

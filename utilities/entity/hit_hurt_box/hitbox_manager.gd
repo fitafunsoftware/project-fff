@@ -6,12 +6,12 @@ extends Node3D
 ## Manager to help calculate and create damage packets for Hitboxes.
 
 ## Body these Hitboxes are connected to.
-@export var _body : Entity
+@export var _body: Entity
 
 
 ## Get damage packet to be sent by Hitbox.
 func get_damage(_type: String) -> Dictionary:
-	var damage_packet : Dictionary = {}
+	var damage_packet: Dictionary = {}
 	damage_packet["body"] = _body
 	
 	return damage_packet

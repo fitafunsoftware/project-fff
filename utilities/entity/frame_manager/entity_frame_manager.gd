@@ -4,22 +4,22 @@ extends FrameManager
 ## Node to manage frames for Entity synchronization between client and server.
 
 ## Acceptable error for each position value.
-const ACCEPTABLE_POSITION_ERROR : float = 0.01
+const ACCEPTABLE_POSITION_ERROR: float = 0.01
 ## Acceptable error for each velocity value.
-const ACCEPTABLE_VELOCITY_ERROR : float = 0.5
+const ACCEPTABLE_VELOCITY_ERROR: float = 0.5
 
 ## Frame array size.
-const FRAME_SIZE : int = 3
+const FRAME_SIZE: int = 3
 # Index of each value in a frame array. FRAME is in the 0th index.
 enum {POSITION = 1, VELOCITY}
 
 ## Entity to manage frames for.
-@export var entity : Entity
+@export var entity: Entity
 
 
 ## Creates an entity frame using previous position and current velocity values.
 func get_current_frame() -> Array:
-	var entity_frame : Array = Array()
+	var entity_frame: Array = Array()
 	entity_frame.resize(FRAME_SIZE)
 	entity_frame[FRAME] = GlobalParams.get_frame_time()
 	entity_frame[POSITION] = GlobalParams.get_snapped_position(
@@ -46,11 +46,11 @@ func frames_are_equal(frame: Array, to_compare: Array) -> bool:
 ## Updates positions using basic interpolation and the stored frame velocity.
 func fix_frames(frame: Array, index: int):
 	frames[index] = frame
-	var next_position : Vector3 = frame[POSITION] + \
+	var next_position: Vector3 = frame[POSITION] + \
 			frame[VELOCITY] * get_physics_process_delta_time()
 	index += 1
 	while index < frames.size():
-		var current_frame : Array = frames[index] as Array
+		var current_frame: Array = frames[index] as Array
 		current_frame[POSITION] = GlobalParams.get_snapped_position(next_position)
 		next_position = current_frame[POSITION] + current_frame[VELOCITY] \
 				* get_physics_process_delta_time()
@@ -60,8 +60,8 @@ func fix_frames(frame: Array, index: int):
 ## Fix the position of the entity by directly changing its global position if
 ## required.
 func reconcile_differences():
-	var latest_frame : Array = frames.back() as Array
-	var new_global_position : Vector3 = latest_frame[POSITION] + \
+	var latest_frame: Array = frames.back() as Array
+	var new_global_position: Vector3 = latest_frame[POSITION] + \
 			latest_frame[VELOCITY] * get_physics_process_delta_time()
 	new_global_position = GlobalParams.get_snapped_position(new_global_position)
 	if not _is_within_acceptable_range(entity.global_position,

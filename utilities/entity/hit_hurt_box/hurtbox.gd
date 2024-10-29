@@ -7,12 +7,12 @@ extends Area3D
 ## Area3D Hurtbox for receiving damage from Hitboxes.
 
 ## HurtboxManager responsible for applying damage.
-@export var _manager : HurtboxManager
+@export var _manager: HurtboxManager
 ## Identifier for the Hurtbox.
-@export var _section : StringName
+@export var _section: StringName
 
 
-func _init() -> void:
+func _init():
 	monitorable = true
 	monitoring = false
 	input_ray_pickable = false

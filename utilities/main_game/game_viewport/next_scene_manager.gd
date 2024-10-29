@@ -6,11 +6,11 @@ extends Node
 ## When the next scene is ready, the [GameViewport] is signalled to change scenes.
 
 ## Signal for when the next scene is ready.
-signal next_scene_ready(next_scene)
+signal next_scene_ready(next_scene: Node)
 ## Show virtual joypad?
-var touch_controls : bool = false
+var touch_controls: bool = false
 
-var _next_scene : Node
+var _next_scene: Node
 
 
 ## Ready the next scene to be changed to.

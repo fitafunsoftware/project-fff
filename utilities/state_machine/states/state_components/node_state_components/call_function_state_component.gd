@@ -6,11 +6,11 @@ extends NodeStateComponent
 ## arguments to the function.
 
 ## Function to call.
-@export var function : StringName
+@export var function: StringName
 ## Arguments to pass to the function. Set the values yourself.
-@export var args : Array
+@export var args: Array
 ## Is the function call deferred?
-@export var deferred : bool = false
+@export var deferred: bool = false
 
 
 ## Call the function.

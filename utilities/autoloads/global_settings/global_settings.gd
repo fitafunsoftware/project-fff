@@ -10,13 +10,13 @@ signal scaling_changed(scaling)
 signal window_properties_changed()
 
 ## Save file for the settings.
-const SETTINGS_JSON : String = "user://settings.json"
+const SETTINGS_JSON: String = "user://settings.json"
 
 ## The aspect ratios accommodated for.
 enum AspectRatio {AUTO, HD, LAPTOP, GBA, SD}
 
 ## Minimum size for each aspect ratio.
-const MIN_SIZE = [
+const MIN_SIZE: Array[Vector2i] = [
 	Vector2i(640, 360), ## Auto 16:9
 	Vector2i(640, 360), ## HD 16:9
 	Vector2i(640, 400), ## Laptop 16:10
@@ -25,54 +25,54 @@ const MIN_SIZE = [
 ]
 
 ## Minimum FPS Limit value if not uncapped.
-const MIN_FPS_LIMIT = 30
+const MIN_FPS_LIMIT: int = 30
 
 ## Aspect ratio to abide by.
-var aspect_ratio : AspectRatio = AspectRatio.AUTO :
+var aspect_ratio: AspectRatio = AspectRatio.AUTO:
 	set(value):
 		aspect_ratio = value
 		aspect_ratio_changed.emit(aspect_ratio)
 
 ## Scaling for the resolution. [br]Only integer scaling is allowed. Clamps to the
 ## maximum size allowed by the display.
-var scaling : int = 10 :
+var scaling: int = 10:
 	set(value):
-		var max_scale : int = _get_max_scale()
+		var max_scale: int = _get_max_scale()
 		scaling = clampi(value, 1, max_scale)
 		scaling_changed.emit(scaling)
 
 ## Window Fullsceen.
-var fullscreen : bool = true:
+var fullscreen: bool = true:
 	set(value):
 		fullscreen = value
 		_set_window_properties()
 
 ## Borderless. Determines Exclusive Fullscreen when in fullscreen mode.
-var borderless : bool = true :
+var borderless: bool = true:
 	set(value):
 		borderless = value
 		_set_window_properties()
 
 ## V-Sync.
-var vsync : bool = true :
+var vsync: bool = true:
 	set(value):
 		vsync = value
 		_set_vsync()
 
 ## FPS Limit. Lower limit is MIN_FPS_LIMIT fps, with 0 being uncapped.
-var fps_limit : int = 0 :
+var fps_limit: int = 0:
 	set(value):
 		fps_limit = clampi(value, 0, 10_000)
 		_set_fps_limit()
 
 ## Touch Controls. By default, only mobile has touch controls on.
-var touch_controls : bool = OS.has_feature("mobile") :
+var touch_controls: bool = OS.has_feature("mobile"):
 	set(value):
 		touch_controls = value
 		_set_touch_controls()
 
-@onready var _window : Window = get_window()
-@onready var _override_saveable : bool = _is_override_saveable()
+@onready var _window: Window = get_window()
+@onready var _override_saveable: bool = _is_override_saveable()
 
 
 func _ready():
@@ -87,12 +87,12 @@ func _notification(what: int):
 
 ## Returns an array of allowable aspect ratios at the given scale.
 func get_allowed_aspect_ratios(at_scale: int = 1) -> Array:
-	var allowed_aspect_ratios = Array()
-	var screen_size : Vector2i = get_screen_size()
+	var allowed_aspect_ratios := Array()
+	var screen_size: Vector2i = get_screen_size()
 	
-	for index in AspectRatio.size():
-		var screen_scale : Vector2i = screen_size/MIN_SIZE[index]
-		var max_size : int = mini(screen_scale.x, screen_scale.y)
+	for index: int in AspectRatio.size():
+		var screen_scale: Vector2i = screen_size/MIN_SIZE[index]
+		var max_size: int = mini(screen_scale.x, screen_scale.y)
 		
 		if max_size >= at_scale:
 			allowed_aspect_ratios.append(index)
@@ -102,16 +102,16 @@ func get_allowed_aspect_ratios(at_scale: int = 1) -> Array:
 
 ## Returns an array of allowable scaling factors.
 func get_allowed_scalings() -> Array:
-	var max_scale : int = _get_max_scale()
-	var allowed_scalings : Array = range(1, max_scale + 1)
+	var max_scale: int = _get_max_scale()
+	var allowed_scalings: Array = range(1, max_scale + 1)
 	return allowed_scalings
 
 
 ## Return the screen size available to be used. Influenced by fullscreen and 
 ## borderless settings.
 func get_screen_size() -> Vector2i:
-	var screen : int = _window.current_screen
-	var screen_size : Vector2i
+	var screen: int = _window.current_screen
+	var screen_size: Vector2i
 	
 	if fullscreen or borderless:
 		screen_size = DisplayServer.screen_get_size(screen)
@@ -145,12 +145,12 @@ func save_settings():
 
 # Private helper functions
 func _get_max_scale() -> int:
-	var window_scale : Vector2i = get_screen_size()/MIN_SIZE[aspect_ratio]
+	var window_scale: Vector2i = get_screen_size()/MIN_SIZE[aspect_ratio]
 	return mini(window_scale.x, window_scale.y)
 
 
 func _load_settings_from_file():
-	var options : Dictionary = Dictionary()
+	var options := Dictionary()
 	if FileAccess.file_exists(SETTINGS_JSON):
 		options = JSON.parse_string(FileAccess.get_file_as_string(SETTINGS_JSON))
 	
@@ -202,7 +202,7 @@ func _set_vsync():
 
 
 func _set_fps_limit():
-	var max_fps : int = fps_limit
+	var max_fps: int = fps_limit
 	
 	if fps_limit <= 0:
 		max_fps = 0
@@ -219,7 +219,7 @@ func _set_touch_controls():
 # Check to see if you can save an override file for Project Settings.
 func _is_override_saveable() -> bool:
 	var tags = ["web", "mobile", "debug"]
-	for tag in tags:
+	for tag: String in tags:
 		if OS.has_feature(tag):
 			return false
 	
@@ -227,7 +227,7 @@ func _is_override_saveable() -> bool:
 
 
 func _save_settings_to_json():
-	var settings_dict : Dictionary = {
+	var settings_dict: Dictionary = {
 		"aspect_ratio_list" : "0: Auto, 1: 16:9, 2: 16:10, 3: 3:2, 4: 4:3",
 		"aspect_ratio" : aspect_ratio,
 		"fullscreen" : fullscreen,
@@ -238,8 +238,8 @@ func _save_settings_to_json():
 		"touch_controls" : touch_controls,
 	}
 	
-	var settings_json : String = JSON.stringify(settings_dict, "\t")
-	var file : FileAccess = FileAccess.open(SETTINGS_JSON, FileAccess.WRITE)
+	var settings_json: String = JSON.stringify(settings_dict, "\t")
+	var file := FileAccess.open(SETTINGS_JSON, FileAccess.WRITE)
 	file.store_string(settings_json)
 	file.close()
 

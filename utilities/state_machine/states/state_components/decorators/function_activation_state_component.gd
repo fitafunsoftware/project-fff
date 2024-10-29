@@ -8,15 +8,15 @@ class_name FunctionActivationStateComponent
 ## deactivates based on if the return value is equal.
 
 ## Key for th node dependency.
-@export var node_key : StringName = &"node_key"
+@export var node_key: StringName = &"node_key"
 ## Function to call on the node.
-@export var function : StringName
+@export var function: StringName
 ## Arguments to pass through the function.
 @export var args: Array
 ## Values to compare the return value with. Can be multiple values to compare with.
 @export var equals: Array
 
-var node : Node :
+var node: Node:
 	get:
 		return dependencies.get(node_key)
 
@@ -34,7 +34,7 @@ func update(_delta: float):
 
 
 func get_dependencies() -> Array[StringName]:
-	var array : Array[StringName] = super()
+	var array: Array[StringName] = super()
 	array.append(node_key)
 	return array
 

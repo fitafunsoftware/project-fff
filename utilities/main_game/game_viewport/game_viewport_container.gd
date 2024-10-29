@@ -10,7 +10,7 @@ extends SubViewportContainer
 ## windowed mode, but fills up the screen up to 4:3 in fullscreen mode.
 
 ## Minimum size for corresponding aspect ratios.
-const MIN_SIZE = [
+const MIN_SIZE: Array[Vector2i] = [
 	Vector2i(640, 360), ## Auto, emulates 16:9
 	Vector2i(640, 360), ## 16:9
 	Vector2i(640, 400), ## 16:10
@@ -19,7 +19,7 @@ const MIN_SIZE = [
 ]
 
 ## Maximum size for corresponding aspect ratios.
-const MAX_SIZE = [
+const MAX_SIZE: Array[Vector2i] = [
 	Vector2i(666, 480), ## Auto, emulates 4:3
 	Vector2i(656, 369), ## 16:9
 	Vector2i(656, 410), ## 16:10
@@ -57,18 +57,18 @@ func _on_scaling_changed(scaling: int):
 # Resize logic to resize the viewport and calculate the proper scaling
 # factor. Window resizing gets passed off to the GlobalSettings autoload.
 func _resize_viewport_and_window(aspect_ratio: int, scaling: int):
-	var min_size : Vector2i = MIN_SIZE[aspect_ratio]
-	var screen_size : Vector2i = GlobalSettings.get_screen_size()
-	var screen_scale : Vector2i = screen_size/min_size
+	var min_size: Vector2i = MIN_SIZE[aspect_ratio]
+	var screen_size: Vector2i = GlobalSettings.get_screen_size()
+	var screen_scale: Vector2i = screen_size/min_size
 	
-	var new_scale : int = maxi(mini(screen_scale.x, screen_scale.y), 1)
+	var new_scale: int = maxi(mini(screen_scale.x, screen_scale.y), 1)
 	new_scale = mini(new_scale, scaling)
 	
-	var new_unscaled_size : Vector2i = screen_size/new_scale
-	var max_size : Vector2i = \
+	var new_unscaled_size: Vector2i = screen_size/new_scale
+	var max_size: Vector2i = \
 			MAX_SIZE[aspect_ratio] if GlobalSettings.fullscreen \
 			else min_size
-	var new_base_size : Vector2i = Vector2i(
+	var new_base_size: Vector2i = Vector2i(
 			maxi(mini(max_size.x, new_unscaled_size.x), min_size.x),
 			maxi(mini(max_size.y, new_unscaled_size.y), min_size.y))
 	

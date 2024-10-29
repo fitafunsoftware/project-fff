@@ -4,9 +4,9 @@ extends Control
 ## Just a generic loading scene to show while waiting for the next scene to load.
 
 ## The next scene to load.
-@export_file("*.tscn") var next_scene : String
+@export_file("*.tscn") var next_scene: String
 ## Does the next scene need touch controls.
-@export var touch_controls : bool = false
+@export var touch_controls: bool = false
 
 
 func _ready():

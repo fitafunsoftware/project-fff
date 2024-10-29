@@ -6,7 +6,7 @@ extends CharacterBody3D
 
 ## The max speed of the entity.
 @export_range(0.0, 100.0, 0.01, "hide_slider", "suffix:m/s")
-var max_speed : float = 10.0 :
+var max_speed: float = 10.0:
 	get:
 		return max_speed
 	set(value):
@@ -14,7 +14,7 @@ var max_speed : float = 10.0 :
 
 ## The friction applied to the entity when decelerating.
 @export_range(0.0, 100.0, 0.01, "hide_slider", "suffix:m/s²")
-var friction : float = 4.0 :
+var friction: float = 4.0:
 	get:
 		return friction
 	set(value):
@@ -22,18 +22,18 @@ var friction : float = 4.0 :
 
 ## The acceleration of the entity to reach the target velocity.
 @export_range(0.0, 100.0, 0.01, "hide_slider", "suffix:m/s²")
-var acceleration : float = 4.0 :
+var acceleration: float = 4.0:
 	get:
 		return acceleration
 	set(value):
 		acceleration = value
 
 ## The gravity applied on the entity.
-@onready var gravity : float = ProjectSettings.get_setting("physics/3d/default_gravity", 9.8)
+@onready var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity", 9.8)
 
 ## The x and z target velocity of the entity. Set this so acceleration and
 ## friction are applied.
-var target_velocity_2d := Vector2.ZERO :
+var target_velocity_2d := Vector2.ZERO:
 	get:
 		return target_velocity_2d
 	set(value):
@@ -56,7 +56,7 @@ func _physics_process(delta):
 	velocity = _clamp_velocity(velocity)
 	velocity = _zero_out_velocity(velocity)
 	
-	var _collided = move_and_slide()
+	var _collided: bool = move_and_slide()
 	
 	global_position = GlobalParams.get_snapped_position(global_position)
 
@@ -107,10 +107,10 @@ func _apply_acceleration(_velocity: Vector3, _target_velocity_2d: Vector2, delta
 		else:
 			final_acceleration = acceleration
 	
-	var final_velocity_2d = velocity_2d.move_toward(target_velocity_2d, final_acceleration * delta)
-	var final_y_velocity = _velocity.y
+	var final_velocity_2d: Vector2 = velocity_2d.move_toward(target_velocity_2d, final_acceleration * delta)
+	var final_y_velocity: float = _velocity.y
 	
-	var final_velocity = Vector3(final_velocity_2d.x, final_y_velocity, final_velocity_2d.y)
+	var final_velocity := Vector3(final_velocity_2d.x, final_y_velocity, final_velocity_2d.y)
 	return final_velocity
 
 

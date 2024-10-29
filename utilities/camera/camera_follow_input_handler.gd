@@ -7,23 +7,23 @@ extends Node
 ## with no complex functionality.
 
 ## The body to control.
-@export var body : Entity
+@export var body: Entity
 ## The target to follow.
-@export var target : Node3D
+@export var target: Node3D
 ## The speed at which the body should move at.
-@export var speed : float = 3.0
+@export var speed: float = 3.0
 ## The max distance, in meters, the body can be from the target before moving
 ## the body.
-@export var leash_distance : Vector3 = Vector3.ZERO
+@export var leash_distance: Vector3 = Vector3.ZERO
 ## The max negative y distance, in meters, the body can be from the target
 ## before moving the body.
-@export var negative_y_leash_distance : float = 0.0
+@export var negative_y_leash_distance: float = 0.0
 
 
-func _physics_process(delta):
-	var target_velocity : Vector3 = _get_target_velocity(delta)
+func _physics_process(delta: float):
+	var target_velocity: Vector3 = _get_target_velocity(delta)
 	
-	var velocity_2d = Vector2(target_velocity.x, target_velocity.z)
+	var velocity_2d := Vector2(target_velocity.x, target_velocity.z)
 	
 	body.target_velocity_2d = velocity_2d
 	
@@ -40,8 +40,8 @@ func _physics_process(delta):
 # Gets the displacement between the body and the target, then leashes that
 # displacement based on the leash distance.
 func _get_target_velocity(delta: float) -> Vector3:
-	var displacement = target.position - body.position
-	var leashed_distance = displacement.abs() - leash_distance
+	var displacement: Vector3 = target.position - body.position
+	var leashed_distance: Vector3 = displacement.abs() - leash_distance
 	
 	if displacement.y <= 0:
 		leashed_distance.y = absf(displacement.y) - negative_y_leash_distance
@@ -50,6 +50,6 @@ func _get_target_velocity(delta: float) -> Vector3:
 	leashed_distance.y = clampf(leashed_distance.y, 0.0, body.speed * delta)
 	leashed_distance.z = clampf(leashed_distance.z, 0.0, body.speed * delta)
 	
-	var leashed_displacement = displacement.sign() * leashed_distance
-	var target_velocity = leashed_displacement / delta
+	var leashed_displacement: Vector3 = displacement.sign() * leashed_distance
+	var target_velocity: Vector3 = leashed_displacement / delta
 	return target_velocity

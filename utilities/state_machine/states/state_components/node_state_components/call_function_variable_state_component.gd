@@ -6,17 +6,17 @@ extends NodeStateComponent
 ## the arguments to the function.
 
 ## Function to call.
-@export var function : StringName
+@export var function: StringName
 ## Keys for the dependencies to pass as arguments.
-@export var variables : Array[StringName]
+@export var variables: Array[StringName]
 ## Defer the function call?
-@export var deferred : bool = false
+@export var deferred: bool = false
 
 
 ## Call the function.
 func call_function():
-	var args : Array = Array()
-	for variable : StringName in variables:
+	var args: Array = Array()
+	for variable: StringName in variables:
 		args.append(dependencies[variable])
 	
 	if deferred:
@@ -26,6 +26,6 @@ func call_function():
 
 
 func get_dependencies() -> Array[StringName]:
-	var array : Array[StringName] = super()
+	var array: Array[StringName] = super()
 	array.append_array(variables)
 	return array

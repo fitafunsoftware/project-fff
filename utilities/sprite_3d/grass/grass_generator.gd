@@ -7,34 +7,34 @@ extends Node3D
 ## grass map. Toggle the generate grass boolean to regenerate the grass.
 
 ## Max half screen height for custom aabb.
-const MAX_SCREEN_HEIGHT : float = 2.4
+const MAX_SCREEN_HEIGHT: float = 2.4
 
 ## The shader used for grass meshes.
-const GRASS_SHADER : Shader = preload("res://shaders/grass.gdshader")
+const GRASS_SHADER: Shader = preload("res://shaders/grass.gdshader")
 
 # Global parameters. Set in the appropriate jsons.
-static var PIXEL_SIZE : float = NAN
-static var FLOOR_GRADIENT : float = NAN
+static var PIXEL_SIZE: float = NAN
+static var FLOOR_GRADIENT: float = NAN
 
 ## Button to regenerate the grass.
 @export_tool_button("Regenerate Grass", "Sprite3D")
-var regenerate_grass : Callable = _regenerate_grass
+var regenerate_grass: Callable = _regenerate_grass
 
 @export_category("Grass Properties")
 ## Individual grass texture to be used. Is repeated.
-@export var grass_texture : Texture2D
+@export var grass_texture: Texture2D
 ## Grass map to determine how much grass to be placed and where.
-@export var grass_map : Texture2D
+@export var grass_map: Texture2D
 ## Y Offset of grass to make grass closer together or further apart instead of
 ## being exactly grass texture height apart.
-@export_range(-32, 32, 1, "suffix:pixels") var y_offset : int = 0
+@export_range(-32, 32, 1, "suffix:pixels") var y_offset: int = 0
 
-var _mesh : Mesh
-var _columns : int
-var _rows : int
-var _row_length : float
-var _row_height : float
-var _distance_between_rows : float
+var _mesh: Mesh
+var _columns: int
+var _rows: int
+var _row_length: float
+var _row_height: float
+var _distance_between_rows: float
 
 
 func _ready():
@@ -44,8 +44,9 @@ func _ready():
 	var occluder := Occluder.new()
 	occluder.set_height(_row_height)
 	
-	for grass in get_children():
-		grass.occluder = occluder
+	for child: Node in get_children():
+		if child is GrassInstance3D:
+			child.occluder = occluder
 
 
 # Function to generate the grass.
@@ -57,7 +58,7 @@ func _regenerate_grass():
 
 # Function to clear all the grass previously generated.
 func _clear_grass():
-	for child in get_children():
+	for child: Node in get_children():
 		child.queue_free()
 	
 	_mesh = null
@@ -107,8 +108,8 @@ func _create_mesh():
 
 
 func _get_custom_aabb(mesh: PrimitiveMesh) -> AABB:
-	var aabb : AABB = mesh.get_aabb()
-	var y_height : float = GlobalParams.get_global_param("ARC_HEIGHT") \
+	var aabb: AABB = mesh.get_aabb()
+	var y_height: float = GlobalParams.get_global_param("ARC_HEIGHT") \
 			+ MAX_SCREEN_HEIGHT
 	aabb.position.y -= MAX_SCREEN_HEIGHT
 	aabb.size.y += y_height
@@ -120,18 +121,18 @@ func _create_grass_instances():
 	if not grass_texture or not grass_map:
 		return
 	
-	var start_z_position : float = -_rows/2.0 * _distance_between_rows
-	var start_x_position : float = -_row_length/2.0
+	var start_z_position: float = -_rows/2.0 * _distance_between_rows
+	var start_x_position: float = -_row_length/2.0
 	
 	var grass_position := Vector3(0.0, 0.0, 0.0)
 	grass_position.z = start_z_position
 	grass_position.x = snappedf(global_position.x, 0.01) + fmod(start_x_position, PIXEL_SIZE)
 	
-	var top_most := to_global(grass_position)
+	var top_most: Vector3 = to_global(grass_position)
 	top_most = Vector3(_distance_between_rows * _rows, 0.0, top_most.z)
 	_mesh.material.set_shader_parameter("top_most", top_most)
 	
-	for row in _rows:
+	for row: int in _rows:
 		var grass_instance := GrassInstance3D.new()
 		grass_instance.name = "GrassInstance"
 		grass_instance.mesh = _mesh
