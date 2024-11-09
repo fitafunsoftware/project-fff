@@ -59,10 +59,8 @@ func _regenerate_visualizers():
 				add_child(hitbox_visualizer, Engine.is_editor_hint())
 				hitbox_visualizer.global_position = shape_global_position + Vector3(offset.x, 0.0, offset.y)
 				hitbox_visualizer.owner = owner
+				hitbox_visualizer.hitbox = hitbox
 				hitbox_visualizer.generate_meshes.call_deferred()
-				
-				hitbox_visualizer.set_hitbox_active(hitbox.monitoring)
-				hitbox.hitbox_toggled.connect(hitbox_visualizer.set_hitbox_active)
 
 
 # Helper function to set ground collision mask on child Hitbox Visualizers.

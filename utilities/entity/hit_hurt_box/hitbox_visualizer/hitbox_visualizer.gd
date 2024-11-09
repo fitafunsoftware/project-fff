@@ -17,6 +17,8 @@ const BUFFER_SPACE: float = 0.01
 ## Shader used by the ShaderMaterial of the generated meshes.
 static var SHADER: Shader = preload("res://shaders/color_mesh.gdshader")
 
+## Associated Hitbox.
+@export var hitbox: Hitbox
 ## Physics layers for the ground.
 @export var ground_collision_mask: int = 0
 ## Color of the meshes.
@@ -33,6 +35,16 @@ static var SHADER: Shader = preload("res://shaders/color_mesh.gdshader")
 var _hitbox_active: bool = false
 
 
+func _ready():
+	_connect_to_hitbox.call_deferred()
+
+
+# Connect Hitbox signal to this node.
+func _connect_to_hitbox():
+	set_hitbox_active(hitbox.monitoring)
+	hitbox.hitbox_toggled.connect(set_hitbox_active)
+
+
 func _physics_process(_delta: float):
 	_update_visibility()
 
@@ -45,7 +57,7 @@ func _update_visibility():
 		if visible:
 			hide()
 		return
-
+	
 	var space_state := get_world_3d().direct_space_state
 	
 	var origin: Vector3 = global_position + Vector3.UP*QUERY_BUFFER
@@ -66,7 +78,7 @@ func generate_meshes():
 	var shader_material := ShaderMaterial.new()
 	shader_material.shader = SHADER
 	shader_material.set_shader_parameter("color", color)
-
+	
 	for polyline: PackedVector2Array in polylines:
 		var mesh_instance := MeshInstance3D.new()
 		mesh_instance.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
@@ -103,7 +115,7 @@ func _get_mesh(polyline: PackedVector2Array) -> ArrayMesh:
 	
 	var min_x: float = polyline[0].x
 	var max_x: float = polyline[polyline.size() - 1].x
-
+	
 	for vertex: Vector3 in mesh_vertices:
 		var uv_x: float = remap(vertex.x, min_x, max_x, 0.0, 1.0)
 		var uv_y: float = remap(vertex.y, 0.0, height_of_polyline_meshes, 0.0, 1.0)
