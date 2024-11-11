@@ -31,7 +31,7 @@ func _process(_delta: float):
 ## Adds a resource to the queue to be loaded.
 func queue_resource(path: String):
 	if ResourceLoader.has_cached(path):
-		return
+		resource_loaded.emit(path)
 	elif path in _pending:
 		return
 	
