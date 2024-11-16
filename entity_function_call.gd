@@ -1,5 +1,4 @@
 class_name EntityFunctionCall
-extends Resource
 
 var function: StringName
 var arguments: Array
