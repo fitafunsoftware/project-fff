@@ -1,5 +1,4 @@
 class_name EntitySpawnRequest
-extends Resource
 
 var entity_path: String
 var pre_add_functions: Array[EntityFunctionCall]
