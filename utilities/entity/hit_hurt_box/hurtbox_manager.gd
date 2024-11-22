@@ -10,7 +10,7 @@ extends Node3D
 
 
 ## Apply damage received by Hurtboxes.
-func apply_damage(_section: String, damage_packet: Dictionary):
+func apply_damage(_section: String, damage_packet: Dictionary[StringName, Variant]):
 	var other_body: Entity = damage_packet["body"]
 	if other_body == _body:
 		return

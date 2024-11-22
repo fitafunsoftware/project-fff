@@ -18,7 +18,7 @@ func is_valid_packet(packet: PackedByteArray) -> bool:
 
 ## Encodes a packet as a broadcast packet.[br]The only data encoded is the
 ## array stored in the [constant LocalServerCodec.EXTRAS] key.
-func get_encoded_packet(data: Dictionary) -> PackedByteArray:
+func get_encoded_packet(data: Dictionary[StringName, Variant]) -> PackedByteArray:
 	var packet: PackedByteArray = PackedByteArray()
 	packet.append_array(HEADER.to_utf8_buffer())
 	packet.append_array(DISCOVER.to_utf8_buffer())
@@ -30,16 +30,17 @@ func get_encoded_packet(data: Dictionary) -> PackedByteArray:
 
 ## Decodes a packet that was encoded by a [BroadcastPacketCodec].[br]See data 
 ## dictionary keys defined in [LocalServerCodec].
-func get_decoded_packet(packet: PackedByteArray) -> Dictionary:
+func get_decoded_packet(packet: PackedByteArray) -> Dictionary[StringName, Variant]:
 	var offset: int = TOTAL_HEADER_SIZE
+	var empty_typed_dictionary: Dictionary[StringName, Variant]
 	
 	if offset >= packet.size():
-		return Dictionary()
+		return empty_typed_dictionary
 	var address: String = packet.decode_var(offset) as String
 	offset += packet.decode_var_size(offset)
 	
 	if offset + U16_SIZE + U8_SIZE + U8_SIZE > packet.size():
-		return Dictionary()
+		return empty_typed_dictionary
 	var port: int = packet.decode_u16(offset)
 	var connections: int = packet.decode_u8(offset + U16_SIZE)
 	var max_connections: int = packet.decode_u8(offset + U16_SIZE + U8_SIZE)
@@ -50,7 +51,7 @@ func get_decoded_packet(packet: PackedByteArray) -> Dictionary:
 		extras.append(packet.decode_var(offset))
 		offset += packet.decode_var_size(offset)
 	
-	var server_info: Dictionary = {
+	var server_info: Dictionary[StringName, Variant] = {
 		ADDRESS: address,
 		SERVER_PORT: port,
 		CONNECTIONS: connections,

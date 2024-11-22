@@ -29,9 +29,9 @@ var _visible: bool = true
 # scene to the tree.
 var _load_joypad_scene: Callable
 # Unused indices for event_index in InputEventAction.
-var _indices: Array
+var _indices: Array[int]
 # Dictionary of actions and their associated event_index.
-var _event_indices: Dictionary
+var _event_indices: Dictionary[StringName, int]
 
 
 func _ready():
@@ -40,11 +40,11 @@ func _ready():
 	else:
 		load_joypad.call_deferred(DEFAULT_JOYPAD)
 	
-	_indices = Array()
+	_indices.assign(Array())
 	for index: int in MAX_EVENT_INDICES:
 		_indices.append(MAX_EVENT_INDICES - index - 1)
 	
-	_event_indices = Dictionary()
+	_event_indices.assign(Dictionary())
 
 
 ## Set the visibility of the touch screen joypad. If touch screen joypad is not 

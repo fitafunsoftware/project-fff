@@ -19,7 +19,7 @@ const GAMECONTROLLERDB_FALLBACK_PATH: String = "res://utilities/autoloads/gameco
 const LINES_PER_FRAME: int = 64
 
 # The Dictionary that holds the mappings.
-var _gamecontrollerdb: Dictionary = {}
+var _gamecontrollerdb: Dictionary[StringName, String]
 # A FileAccess for reading from the file.
 var _file: FileAccess
 
@@ -45,7 +45,7 @@ func _load():
 		if current_line.is_empty():
 			continue
 		
-		var guid: String = current_line.get_slice(',', 0)
+		var guid: StringName = current_line.get_slice(',', 0)
 		_gamecontrollerdb[guid] = current_line
 		
 		if _file.get_position() >= _file.get_length():
@@ -74,7 +74,7 @@ func _joy_connection_changed(device: int, connected: bool):
 
 # Remove old mapping then add new mapping based on the mappings in 
 # the SDL_GameControllerDB. If the mapping doesn't exist, just return.
-func _add_mapping_from_guid(guid: String):
+func _add_mapping_from_guid(guid: StringName):
 	if not _gamecontrollerdb.has(guid):
 		return
 	

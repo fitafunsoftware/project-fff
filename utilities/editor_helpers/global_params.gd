@@ -25,7 +25,7 @@ static func sync_frame_time(starting_frame: int, ticks_msec: int,
 
 
 ## Returns the global parameter with the name param.
-static func get_global_param(param: String) -> Variant:
+static func get_global_param(param: StringName) -> Variant:
 	if Engine.is_editor_hint():
 		return EditorGlobalParams.get_global_param(param)
 	else:
@@ -42,7 +42,7 @@ static func get_snapped_position(global_position: Vector3) -> Vector3:
 
 ## Calculate [b]and add[/b] the curve constants to the passed in dictionary.
 ## Note that this function [b]directly manipulates[/b] the Dictionary.
-static func append_curve_params(global_params: Dictionary):
+static func append_curve_params(global_params: Dictionary[StringName, Variant]):
 	var arc_height: float = global_params["ARC_HEIGHT"]
 	var floor_angle: float = deg_to_rad(global_params["FLOOR_ANGLE_DEGREES"])
 	var radius : float = arc_height/(1.0 - cos(floor_angle))
@@ -71,9 +71,10 @@ class EditorGlobalParams:
 
 
 ## Get the global parameter with the name param.
-	static func get_global_param(param: String) -> Variant:
-		var global_params: Dictionary = JSON.parse_string(
-				FileAccess.get_file_as_string("res://global_params/global_params.json"))
+	static func get_global_param(param: StringName) -> Variant:
+		var global_params: Dictionary[StringName, Variant]
+		global_params.assign(JSON.parse_string(
+				FileAccess.get_file_as_string("res://global_params/global_params.json")))
 		GlobalParams.append_curve_params(global_params)
 		
 		return global_params[param]

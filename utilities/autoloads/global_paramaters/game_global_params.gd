@@ -10,7 +10,7 @@ extends Node
 const GLOBAL_PARAMS_JSON: String = "res://global_params/global_params.json"
 
 # Dictionary to store global paramaters.
-var _global_params: Dictionary
+var _global_params: Dictionary[StringName, Variant]
 var _frame_time: int
 
 # Initialize the parameters. Calculate other global parameters. Assign the 
@@ -68,7 +68,7 @@ func get_snapped_position(global_position: Vector3) -> Vector3:
 
 # Initialize global parameters and global shader parameters from JSON files.
 func _initialize_params():
-	_global_params = JSON.parse_string(FileAccess.get_file_as_string(GLOBAL_PARAMS_JSON))
+	_global_params.assign(JSON.parse_string(FileAccess.get_file_as_string(GLOBAL_PARAMS_JSON)))
 	GlobalParams.append_curve_params(_global_params)
 	
 	for param: StringName in _global_params.keys():

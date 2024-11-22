@@ -10,8 +10,9 @@ extends Node3D
 
 
 ## Get damage packet to be sent by Hitbox.
-func get_damage(_type: String) -> Dictionary:
-	var damage_packet: Dictionary = {}
+func get_damage(_type: String) -> Dictionary[StringName, Variant]:
+	var damage_packet: Dictionary[StringName, Variant]
+	damage_packet.assign(Dictionary())
 	damage_packet["body"] = _body
 	
 	return damage_packet

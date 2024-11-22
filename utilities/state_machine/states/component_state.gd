@@ -14,7 +14,7 @@ var reload_dependencies: Callable = _reload_dependencies
 ## assign the proper values yourself, while reloading dependencies populates the
 ## dictionary with the dependencies required. NodePaths refer to the proper Nodes
 ## when the game is running.
-@export var dependencies: Dictionary
+@export var dependencies: Dictionary[StringName, Variant]
 
 var _components: Array[StateComponent]
 
@@ -104,7 +104,8 @@ func _load_dependencies():
 	for component: StateComponent in _components:
 		keys_to_add.append_array(component.get_dependencies())
 	
-	var previous_dependencies: Dictionary = dependencies.duplicate()
+	var previous_dependencies: Dictionary[StringName, Variant]
+	previous_dependencies.assign(dependencies.duplicate())
 	dependencies.clear()
 	for key: StringName in keys_to_add:
 		dependencies[key] = previous_dependencies.get(key, null)

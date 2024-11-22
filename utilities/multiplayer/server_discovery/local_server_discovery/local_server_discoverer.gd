@@ -11,7 +11,7 @@ extends Node
 ## [member SERVER_DISCOVERY_PORT] to any port.
 
 ## Signal to relay any broadcast info found.
-signal broadcast_info_received(broadcast_info: Dictionary)
+signal broadcast_info_received(broadcast_info: Dictionary[StringName, Variant])
 
 ## The address that packets are broadcast to. Set its value in the
 ## GlobalParams JSON.
@@ -54,7 +54,7 @@ func _process(_delta: float):
 
 ## Set the info for the discovery packet. How the packet is encoded
 ## is determined by the [member codec].
-func set_discovery_packet(discovery_info: Dictionary):
+func set_discovery_packet(discovery_info: Dictionary[StringName, Variant]):
 	_discovery_packet = codec.get_encoded_packet(discovery_info)
 
 
@@ -82,5 +82,5 @@ func _local_server_discovery():
 # Decodes received packets and emits the data through the
 # [signal broadcast_info_received] signal.
 func _decode_packet(packet: PackedByteArray):
-	var broadcast_info: Dictionary = codec.get_decoded_packet(packet)
+	var broadcast_info: Dictionary[StringName, Variant] = codec.get_decoded_packet(packet)
 	broadcast_info_received.emit(broadcast_info)

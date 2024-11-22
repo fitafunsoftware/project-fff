@@ -16,11 +16,12 @@ func is_valid_packet(_packet: PackedByteArray) -> bool:
 
 ## Turns [param _data] into an encoded [PackedByteArray] packet based on this
 ## codec's encoding method.
-func get_encoded_packet(_data: Dictionary) -> PackedByteArray:
+func get_encoded_packet(_data: Dictionary[StringName, Variant]) -> PackedByteArray:
 	return PackedByteArray()
 
 
 ## Decodes [param _packet] into a [Dictionary] based on this codec's decoding
 ## method.
-func get_decoded_packet(_packet: PackedByteArray) -> Dictionary:
-	return Dictionary()
+func get_decoded_packet(_packet: PackedByteArray) -> Dictionary[StringName, Variant]:
+	var empty_typed_dictionary: Dictionary[StringName, Variant]
+	return empty_typed_dictionary

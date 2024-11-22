@@ -11,7 +11,7 @@ extends Node
 ## on local networks, you can set the [member SERVER_DISCOVERY_PORT] to any port.
 
 ## Signal to relay any discovery info found.
-signal discovery_info_received(discovery_info: Dictionary)
+signal discovery_info_received(discovery_info: Dictionary[StringName, Variant])
 
 ## The port that the server listens to. Set its value in the GlobalParams
 ## JSON.
@@ -25,10 +25,10 @@ static var SERVER_DISCOVERY_PORT: int = -1
 # UDPServer for braodcasting and peer discovery.
 var _server := UDPServer.new()
 # Array of peers this server has connected to.
-var _peers: Array[PacketPeerUDP] = []
+var _peers: Array[PacketPeerUDP] = Array()
 # The lifetime of each peer. Used for pruning peers that haven't been active
 # within the timeout duration.
-var _lifetimes: Dictionary = {}
+var _lifetimes: Dictionary[PacketPeerUDP, float]
 # The packet to be broadcasted to peers.
 var _broadcast_packet: PackedByteArray
 
@@ -42,7 +42,8 @@ func _ready():
 	if SERVER_DISCOVERY_PORT == -1:
 		SERVER_DISCOVERY_PORT = GlobalParams.get_global_param("SERVER_DISCOVERY_PORT")
 	_server.listen(SERVER_DISCOVERY_PORT)
-	set_broadcast_packet({})
+	var initial_broadcast_packet: Dictionary[StringName, Variant]
+	set_broadcast_packet(initial_broadcast_packet)
 
 
 func _process(delta: float):
@@ -58,7 +59,7 @@ func _process(delta: float):
 ## Set the info for the broadcast packet. How the packet is encoded
 ## is determined by the [member codec]. Broadcasts the new packet to all
 ## connected peers.
-func set_broadcast_packet(broadcast_info: Dictionary):
+func set_broadcast_packet(broadcast_info: Dictionary[StringName, Variant]):
 	_broadcast_packet = codec.get_encoded_packet(broadcast_info)
 	for peer: PacketPeerUDP in _peers:
 		peer.put_packet(_broadcast_packet)
@@ -93,7 +94,7 @@ func _check_for_packets():
 
 # Decode any discovery packets received.
 func _decode_packet(packet: PackedByteArray):
-	var discovery_info: Dictionary = codec.get_decoded_packet(packet)
+	var discovery_info: Dictionary[StringName, Variant] = codec.get_decoded_packet(packet)
 	discovery_info_received.emit(discovery_info)
 
 

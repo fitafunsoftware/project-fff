@@ -18,11 +18,10 @@ func is_valid_packet(packet: PackedByteArray) -> bool:
 
 ## Encodes a packet as a broadcast packet.[br]See data dictionary keys defined
 ## in [LocalServerCodec].
-func get_encoded_packet(data: Dictionary) -> PackedByteArray:
+func get_encoded_packet(data: Dictionary[StringName, Variant]) -> PackedByteArray:
 	var packet: PackedByteArray = PackedByteArray()
-	var keys: Array = data.keys()
 	for key: StringName in [ADDRESS, SERVER_PORT, CONNECTIONS, MAX_CONNECTIONS]:
-		if not keys.has(key):
+		if not data.has(key):
 			return packet
 	
 	packet.append_array(HEADER.to_utf8_buffer())
@@ -43,9 +42,9 @@ func get_encoded_packet(data: Dictionary) -> PackedByteArray:
 
 ## Decodes a packet that was encoded by a [DiscoveryPacketCodec].[br]Only data
 ## retrieved in the Dictionary is the [constant LocalServerCodec.EXTRAS] array.
-func get_decoded_packet(packet: PackedByteArray) -> Dictionary:
+func get_decoded_packet(packet: PackedByteArray) -> Dictionary[StringName, Variant]:
 	var offset: int = TOTAL_HEADER_SIZE
-	var extras: Array = []
+	var extras: Array = Array()
 	while offset < packet.size():
 		var value = packet.decode_var(offset)
 		if value == null:
@@ -53,4 +52,5 @@ func get_decoded_packet(packet: PackedByteArray) -> Dictionary:
 		extras.append(value)
 		offset += packet.decode_var_size(offset)
 	
-	return {EXTRAS:extras} if extras.size() > 0 else Dictionary()
+	var empty_typed_dictionary: Dictionary[StringName, Variant]
+	return {EXTRAS:extras} if extras.size() > 0 else empty_typed_dictionary

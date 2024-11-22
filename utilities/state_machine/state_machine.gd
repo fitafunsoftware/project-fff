@@ -32,9 +32,9 @@ const PREVIOUS: StringName = &"previous"
 
 ## The current state of the StateMachine.
 var _current_state: State = null
-var _states_stack: Array[State] = []
+var _states_stack: Array[State]
 
-var _states_map: Dictionary = {}
+var _states_map: Dictionary[StringName, State]
 var _push_down_states: PackedStringArray = []
 var _overwrite_states: PackedStringArray = []
 
@@ -134,7 +134,7 @@ func change_state(requestor: StringName, next_state: StringName):
 func _populate_states_map():
 	for state: Node in get_children():
 		if state is State:
-			var state_name : StringName = state.state_name
+			var state_name: StringName = state.state_name
 			_states_map[state_name] = state
 			state.change_state.connect(change_state)
 			if state.push_down:

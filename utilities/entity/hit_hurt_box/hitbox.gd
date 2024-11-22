@@ -42,7 +42,7 @@ func _apply_damage(area: Area3D):
 		if area in _previous_hurtboxes:
 			return
 		
-		var damage_packet: Dictionary = _manager.get_damage(_type)
+		var damage_packet: Dictionary[StringName, Variant] = _manager.get_damage(_type)
 		area.apply_damage(damage_packet)
 		
 		_previous_hurtboxes.append(area)

@@ -13,7 +13,7 @@ extends Node
 ## The finished Callable this component should call to request a state change.
 var finished: Callable
 ## The dependencies shared by all components in this state.
-var dependencies: Dictionary
+var dependencies: Dictionary[StringName, Variant]
 
 
 ## A ready function for StateComponents.[br]Different from the virtual ready function
@@ -62,9 +62,8 @@ func on_animation_finished(_animation: StringName):
 
 ## Retrieve the dependencies of this component.
 func get_dependencies() -> Array[StringName]:
-	var array: Array[StringName]
-	array.assign(Array())
-	return array
+	var empty_array: Array[StringName]
+	return empty_array
 
 
 func _set_active(value: bool):
