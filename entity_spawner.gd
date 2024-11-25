@@ -1,11 +1,13 @@
 class_name EntitySpawner
 extends Node3D
 
-@onready var requests: Dictionary = Dictionary()
-@onready var entity_list: Dictionary = Dictionary()
+var requests: Dictionary[String, EntitySpawnRequest]
+var entity_list: Dictionary[int, Entity]
 
 
 func _ready():
+	requests.assign(Dictionary())
+	entity_list.assign(Dictionary())
 	ResourceQueue.resource_loaded.connect(_spawn_entity)
 
 
