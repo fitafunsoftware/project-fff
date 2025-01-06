@@ -33,11 +33,7 @@ var acceleration: float = 4.0:
 
 ## The x and z target velocity of the entity. Set this so acceleration and
 ## friction are applied.
-var target_velocity_2d := Vector2.ZERO:
-	get:
-		return target_velocity_2d
-	set(value):
-		target_velocity_2d = value
+var target_velocity_2d := Vector2.ZERO: get = get_target_velocity_2d, set = set_target_velocity_2d
 
 
 func  _init():
@@ -79,6 +75,16 @@ func get_velocity_2d() -> Vector2:
 ## Set the x and z velocity of the entity.
 func set_velocity_2d(velocity_2d: Vector2):
 	velocity = Vector3(velocity_2d.x, velocity.y, velocity_2d.y)
+
+
+## Return the target x and z velocity of the entity.
+func get_target_velocity_2d() -> Vector2:
+	return target_velocity_2d
+
+
+## Set the target x and z velocity of the entity.
+func set_target_velocity_2d(value: Vector2):
+	target_velocity_2d = value
 
 
 # Helper functions.
