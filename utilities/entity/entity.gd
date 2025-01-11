@@ -28,6 +28,9 @@ var acceleration: float = 4.0:
 	set(value):
 		acceleration = value
 
+## ID of this entity.
+var entity_id: int = -1
+
 ## The gravity applied on the entity.
 @onready var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity", 9.8)
 
