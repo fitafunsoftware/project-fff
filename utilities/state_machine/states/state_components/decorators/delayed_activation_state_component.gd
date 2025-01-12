@@ -1,5 +1,5 @@
 @tool
-@icon("delayed.png")
+@icon("uid://dbvkotl2ekdxh")
 extends ActivationStateComponent
 class_name DelayedActivationStateComponent
 ## StateComponents that activates or deactivates descendents after a delay.

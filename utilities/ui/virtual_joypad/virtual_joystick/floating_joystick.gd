@@ -1,5 +1,5 @@
 @tool
-@icon("floating_joystick.png")
+@icon("uid://ditc5sklxiv3y")
 class_name FloatingJoystick
 extends VirtualJoystick
 ## Floating Joystick for touch inputs.

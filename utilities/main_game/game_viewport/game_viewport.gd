@@ -5,7 +5,7 @@ extends SubViewport
 ## This viewport manages scene switching and queuing scene resources.
 
 # Generic loading scene in case any one scene takes too long to load.
-var _loading_scene: Resource = preload("res://utilities/screens/loading_screen/loading_screen.tscn")
+var _loading_scene: Resource = preload("uid://dk370qr54bmxk")
 
 # A node that helps with the loading of the next scene. Notifies the viewport
 # when the next scene is loaded.

@@ -1,5 +1,5 @@
 @tool
-@icon("fun.png")
+@icon("uid://bldsefv2ipwp4")
 class_name CallFunctionStateComponent
 extends NodeStateComponent
 ## NodeStateComponent that calls the function on the node with the args as 

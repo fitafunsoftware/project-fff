@@ -5,7 +5,7 @@ extends Control
 ## scenes.
 
 # The basic menu option option.
-var _menu_option_button: Resource = preload("menu_option_button.tscn")
+var _menu_option_button: Resource = preload("uid://blnfliijmyoe2")
 
 ## An array of strings that will be name for the buttons.
 @export var options: Array[String]

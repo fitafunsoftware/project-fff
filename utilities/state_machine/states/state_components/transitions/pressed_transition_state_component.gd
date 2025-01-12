@@ -1,5 +1,5 @@
 @tool
-@icon("pressed_transition_state_component.png")
+@icon("uid://fuxf53syijii")
 class_name PressedTransitionStateComponent
 extends StateComponent
 ## StateComponent that calls for a state change when an action is pressed.

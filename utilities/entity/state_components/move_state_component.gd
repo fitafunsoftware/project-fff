@@ -1,5 +1,5 @@
 @tool
-@icon("move_state_component.png")
+@icon("uid://toiecfus81qi")
 class_name MoveStateComponent
 extends EntityStateComponent
 ## State component for entitiy movement.

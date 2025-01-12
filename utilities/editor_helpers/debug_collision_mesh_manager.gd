@@ -2,7 +2,7 @@
 class_name DebugCollisionMeshManager
 extends Node3D
 
-const SHADER: Shader = preload("res://shaders/wireframe_mesh.gdshader")
+const SHADER: Shader = preload("uid://def25teug8j")
 
 @export var collision_shapes: Array[CollisionShape3D]:
 	set(value):

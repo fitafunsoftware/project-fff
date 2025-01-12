@@ -1,5 +1,5 @@
 @tool
-@icon("animation_finished.png")
+@icon("uid://cqn16onc2oj15")
 class_name AnimationFinishedStateComponent
 extends StateComponent
 ## StateComponent that calls for a state change when an animation is finished.

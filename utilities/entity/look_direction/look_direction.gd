@@ -1,4 +1,4 @@
-@icon("look_direction.png")
+@icon("uid://cjacmexstsri8")
 class_name LookDirection
 extends Node
 ## Entity component to handle look direction of entity.

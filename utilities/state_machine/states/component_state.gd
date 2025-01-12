@@ -1,5 +1,5 @@
 @tool
-@icon("component_state.png")
+@icon("uid://cq18ibuhn8vbj")
 class_name ComponentState
 extends State
 ## A state built using components.

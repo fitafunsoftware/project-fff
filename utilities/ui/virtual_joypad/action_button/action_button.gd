@@ -1,5 +1,5 @@
 @tool
-@icon("action_button.png")
+@icon("uid://kunmpwve00a5")
 class_name ActionButton
 extends Control
 ## Touch screen button for virtual action events.

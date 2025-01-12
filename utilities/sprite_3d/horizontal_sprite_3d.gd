@@ -16,7 +16,7 @@ const MAX_SCREEN_HEIGHT: float = 2.4
 static var FLOOR_GRADIENT: float = NAN
 
 ## The shader used for HorizontalSprite3D.
-static var OPAQUE_MESH: Shader = preload("res://shaders/opaque_mesh.gdshader")
+static var OPAQUE_MESH: Shader = preload("uid://d1k1is2iascea")
 
 ## Button to regenerate the sprite.
 @export_tool_button("Regenerate Mesh", "Sprite3D")

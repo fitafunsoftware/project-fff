@@ -1,5 +1,5 @@
 @tool
-@icon("less_than_transition.png")
+@icon("uid://5014s1nljlfy")
 class_name LessThanTransitionStateComponent
 extends NodeStateComponent
 ## Calls a state change if return value is less than value.

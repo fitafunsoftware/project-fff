@@ -1,5 +1,5 @@
 @tool
-@icon("play_animation.png")
+@icon("uid://c7xbutsv8mo24")
 class_name PlayAnimationStateComponent
 extends StateComponent
 ## StateComponent for playing animations on enter and resume.

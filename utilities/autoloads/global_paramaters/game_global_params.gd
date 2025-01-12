@@ -7,7 +7,7 @@ extends Node
 ## [GlobalParams] class.
 
 ## File path for the global params JSON.[br]
-const GLOBAL_PARAMS_JSON: String = "res://global_params/global_params.json"
+const GLOBAL_PARAMS_JSON: String = "uid://dm1x50lqxmifh"
 
 # Dictionary to store global paramaters.
 var _global_params: Dictionary[StringName, Variant]

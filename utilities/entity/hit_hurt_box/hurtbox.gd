@@ -1,5 +1,5 @@
 @tool
-@icon("hurtbox.png")
+@icon("uid://b4vvhnykac6r4")
 class_name Hurtbox
 extends Area3D
 ## Hurtbox for receiving damage.

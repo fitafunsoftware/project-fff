@@ -10,7 +10,7 @@ signal touch_screen_visible()
 signal touch_screen_hidden()
 
 ## The default joypad to use when the game is first run.
-const DEFAULT_JOYPAD := "res://utilities/ui/virtual_joypad/virtual_joypad.tscn"
+const DEFAULT_JOYPAD := "uid://b5wk4kvqafrb0"
 ## Max number of event_index.
 const MAX_EVENT_INDICES: int = 32
 

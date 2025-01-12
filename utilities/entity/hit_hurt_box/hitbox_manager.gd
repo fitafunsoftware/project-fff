@@ -1,4 +1,4 @@
-@icon("hitbox_manager.png")
+@icon("uid://bsb4p254s43um")
 class_name HitboxManager
 extends Node3D
 ## Manager for hitboxes.

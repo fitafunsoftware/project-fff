@@ -1,5 +1,5 @@
 @tool
-@icon("hitbox.png")
+@icon("uid://dj5qfkuq0q2a7")
 class_name Hitbox
 extends Area3D
 ## Hitbox for dealing damage to entities.

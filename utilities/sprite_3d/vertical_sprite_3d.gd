@@ -11,7 +11,7 @@ extends Sprite3D
 const MAX_SCREEN_HEIGHT: float = 2.4
 
 ## The shader for VerticalSprite3D meshes.
-static var SHADER: Shader = preload("res://shaders/transparent_mesh.gdshader")
+static var SHADER: Shader = preload("uid://dw80s0ocqcwb7")
 # Set the properties in the appropriate json file.
 static var PIXEL_SIZE: float = NAN
 static var FLOOR_GRADIENT: float = NAN

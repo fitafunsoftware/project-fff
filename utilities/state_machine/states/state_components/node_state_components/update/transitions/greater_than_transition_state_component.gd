@@ -1,5 +1,5 @@
 @tool
-@icon("greater_than_transition.png")
+@icon("uid://dd5bcwsjlw30j")
 class_name GreaterThanTransitionStateComponent
 extends NodeStateComponent
 ## Calls a state change if return value is greater than value.

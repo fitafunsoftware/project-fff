@@ -1,4 +1,4 @@
-@icon("local_server_discoverer.png")
+@icon("uid://cdmy2uhuocanr")
 class_name LocalServerDiscoverer
 extends Node
 ## Node to help with server discovery on the local network.

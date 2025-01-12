@@ -1,5 +1,5 @@
 @tool
-@icon("state_component.png")
+@icon("uid://s0np8whnlvb2")
 class_name StateComponent
 extends Node
 ## Base class for a StateComponent

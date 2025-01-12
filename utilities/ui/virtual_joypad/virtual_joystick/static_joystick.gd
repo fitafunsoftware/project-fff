@@ -1,5 +1,5 @@
 @tool
-@icon("static_joystick.png")
+@icon("uid://dsskt5w70j6d2")
 class_name StaticJoystick
 extends VirtualJoystick
 ## Static Joystick for touch inputs.

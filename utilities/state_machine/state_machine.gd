@@ -1,4 +1,4 @@
-@icon("state_machine.png")
+@icon("uid://uls2dcuv5ns6")
 class_name StateMachine
 extends Node
 ## Basic State Machine node.

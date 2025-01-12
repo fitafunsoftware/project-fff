@@ -10,7 +10,7 @@ extends Node3D
 const MAX_SCREEN_HEIGHT: float = 2.4
 
 ## The shader used for grass meshes.
-const GRASS_SHADER: Shader = preload("res://shaders/grass.gdshader")
+const GRASS_SHADER: Shader = preload("uid://b24wm6l72qnrk")
 
 # Global parameters. Set in the appropriate jsons.
 static var PIXEL_SIZE: float = NAN

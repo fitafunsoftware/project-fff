@@ -1,5 +1,5 @@
 @tool
-@icon("funv.png")
+@icon("uid://dmsg2efeowwm7")
 class_name CallFunctionVariableStateComponent
 extends NodeStateComponent
 ## NodeStateComponent that calls the function on the node with dependencies as 

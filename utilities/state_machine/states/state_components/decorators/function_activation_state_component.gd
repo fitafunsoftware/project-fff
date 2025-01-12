@@ -1,5 +1,5 @@
 @tool
-@icon("if.png")
+@icon("uid://cn6q1pqby1xqf")
 extends ActivationStateComponent
 class_name FunctionActivationStateComponent
 ## StateComponent that activates or deactivates descendents based on a function.

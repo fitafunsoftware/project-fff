@@ -1,5 +1,5 @@
 @tool
-@icon("equals_transition.png")
+@icon("uid://bco5hpfodn8n6")
 class_name EqualsTransitionStateComponent
 extends NodeStateComponent
 ## Call a state change if return value equals a value.

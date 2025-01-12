@@ -1,4 +1,4 @@
-@icon("entity_frame_manager.png")
+@icon("uid://ghq56txoux84")
 class_name EntityFrameManager
 extends FrameManager
 ## Node to manage frames for Entity synchronization between client and server.

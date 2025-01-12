@@ -1,5 +1,5 @@
 @tool
-@icon("node_state_component.png")
+@icon("uid://c7ygp8h6xjx46")
 class_name NodeStateComponent
 extends StateComponent
 ## Base StateComponent for components that interact with a node.

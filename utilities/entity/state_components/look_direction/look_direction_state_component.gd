@@ -1,5 +1,5 @@
 @tool
-@icon("look_direction.png")
+@icon("uid://dw7g7qpytge7")
 class_name LookDirectionStateComponent
 extends EntityStateComponent
 ## State component for setting look direction on update.

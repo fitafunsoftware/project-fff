@@ -1,4 +1,4 @@
-@icon("state.png")
+@icon("uid://dfdf1wmt63krr")
 class_name State
 extends Node
 ## Base class for StateMachine states.

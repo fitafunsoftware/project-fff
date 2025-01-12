@@ -1,5 +1,5 @@
 @tool
-@icon("released_transition_state_component.png")
+@icon("uid://dytw0pikb7tdv")
 class_name ReleasedTransitionStateComponent
 extends StateComponent
 ## StateComponent that calls for a state change when an action is released.

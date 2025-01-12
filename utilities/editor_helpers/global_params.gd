@@ -74,7 +74,7 @@ class EditorGlobalParams:
 	static func get_global_param(param: StringName) -> Variant:
 		var global_params: Dictionary[StringName, Variant]
 		global_params.assign(JSON.parse_string(
-				FileAccess.get_file_as_string("res://global_params/global_params.json")))
+				FileAccess.get_file_as_string("uid://dm1x50lqxmifh")))
 		GlobalParams.append_curve_params(global_params)
 		
 		return global_params[param]
@@ -83,7 +83,7 @@ class EditorGlobalParams:
 ## Get the position snapped to pixel positions.
 	static func get_snapped_position(global_position: Vector3) -> Vector3:
 		var global_params: Dictionary = JSON.parse_string(
-				FileAccess.get_file_as_string("res://global_params/global_params.json"))
+				FileAccess.get_file_as_string("uid://dm1x50lqxmifh"))
 		var pixel_size: float = global_params["PIXEL_SIZE"]
 		var floor_gradient: float = tan(deg_to_rad(global_params["FLOOR_ANGLE_DEGREES"]))
 		

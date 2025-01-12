@@ -1,5 +1,5 @@
 @tool
-@icon("Camera3D.svg")
+@icon("uid://cjm5mytjlio3t")
 class_name CameraFollowBody
 extends Entity
 ## 3D node that acts as a camera that follows a body.

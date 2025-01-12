@@ -1,4 +1,4 @@
-@icon("multiplayer_frame_synchronizer.png")
+@icon("uid://cpvn4kfs006vt")
 class_name MultiplayerFrameSynchronizer
 extends Node
 ## Multiplayer node to help with frame synchronization.

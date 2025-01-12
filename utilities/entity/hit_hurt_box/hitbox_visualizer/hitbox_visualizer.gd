@@ -15,7 +15,7 @@ const QUERY_BUFFER: float = 1.0
 const BUFFER_SPACE: float = 0.01
 
 ## Shader used by the ShaderMaterial of the generated meshes.
-static var SHADER: Shader = preload("res://shaders/color_mesh.gdshader")
+static var SHADER: Shader = preload("uid://phh8122blxpu")
 
 ## Associated Hitbox.
 @export var hitbox: Hitbox

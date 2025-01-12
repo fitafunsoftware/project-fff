@@ -1,5 +1,5 @@
 @tool
-@icon("transition_component.png")
+@icon("uid://dakhbwly57kyv")
 class_name TransitionStateComponent
 extends StateComponent
 ## StateComponent that calls for a state change in update.

@@ -1,4 +1,4 @@
-@icon("hurtbox_manager.png")
+@icon("uid://7hj3a0pwkrp6")
 class_name HurtboxManager
 extends Node3D
 ## Manager for hurtboxes.
