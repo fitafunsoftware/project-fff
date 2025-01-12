@@ -31,7 +31,15 @@ var acceleration: float = 4.0:
 ## ID of this entity.
 var entity_id: int = -1
 
-## The gravity applied on the entity.
+# Set these values in global_params file.
+## Multiplier to apply to gravity to get max gravity value.
+static var APPLIED_GRAVITY_MULTIPLIER: float = NAN
+## Y velocity value at which half of max gravity is applied.
+static var HALFWAY_VELOCITY_POINT: float = NAN
+# Growth rate constant for logistic gravity function.
+static var _growth_rate: float = 0.0
+
+## The base gravity applied on the entity.
 @onready var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity", 9.8)
 
 ## The x and z target velocity of the entity. Set this so acceleration and
@@ -46,6 +54,7 @@ func  _init():
 
 
 func _ready():
+	_assign_global_params()
 	global_position = GlobalParams.get_snapped_position(global_position)
 
 
@@ -91,13 +100,33 @@ func set_target_velocity_2d(value: Vector2):
 
 
 # Helper functions.
+func _assign_global_params():
+	if [APPLIED_GRAVITY_MULTIPLIER, HALFWAY_VELOCITY_POINT].has(NAN):
+		APPLIED_GRAVITY_MULTIPLIER = GlobalParams.get_global_param("APPLIED_GRAVITY_MULTIPLIER")
+		HALFWAY_VELOCITY_POINT = GlobalParams.get_global_param("HALFWAY_VELOCITY_POINT")
+		if APPLIED_GRAVITY_MULTIPLIER <= 2.0:
+			_growth_rate = 0.0
+		else:
+			_growth_rate = 2.0*log(APPLIED_GRAVITY_MULTIPLIER - 1.0)/HALFWAY_VELOCITY_POINT
+
+
 # Calculate velocity after applying gravity.
 func _apply_gravity(_velocity: Vector3, delta: float) -> Vector3:
 	if is_on_floor() and _velocity.y < 0.0:
 		_velocity.y = -0.01
 	else:
-		_velocity.y -= gravity * delta
+		_velocity.y -= _get_applied_gravity(_velocity.y)*delta
 	return _velocity
+
+
+# Returns gravity applied to entity.
+func _get_applied_gravity(y_velocity: float) -> float:
+	if y_velocity >= 0.0:
+		return gravity
+	else:
+		# Logistic function to scale gravity.
+		return APPLIED_GRAVITY_MULTIPLIER*gravity/\
+				(1.0 + exp(-_growth_rate*(abs(y_velocity) - HALFWAY_VELOCITY_POINT/2.0)))
 
 
 # Calculate velocity after applying acceleration to reach target velocity.
