@@ -1,7 +1,7 @@
 extends PanelContainer
 
-const PREVIOUS: int = -1
-const NEXT: int = 1
+const PREVIOUS: int = 1
+const NEXT: int = -1
 
 @onready var _background = $Background
 @onready var _value = $HBoxContainer/Control/Control/Value
@@ -19,8 +19,8 @@ func _ready():
 
 func _gui_input(event: InputEvent):
 	var offset: int = 0
-	offset -= int(event.is_action_pressed("ui_left"))
-	offset += int(event.is_action_pressed("ui_right"))
+	offset += int(event.is_action_pressed("ui_left"))
+	offset -= int(event.is_action_pressed("ui_right"))
 	
 	if offset != 0:
 		accept_event()
@@ -49,8 +49,8 @@ func _update_buttons(scaling: int):
 	
 	# Due to going from biggest to smallest, previous is disabled for the
 	# biggest scale and next is disabled for the smallest scale.
-	_previous.disabled = scaling == allowed_scalings.back()
-	_next.disabled = scaling == allowed_scalings.front()
+	_previous.disabled = scaling == allowed_scalings.front()
+	_next.disabled = scaling == allowed_scalings.back()
 
 
 # Signals
