@@ -1,5 +1,8 @@
-# Hitbox and Hurtbox
-Collection of nodes to help implement hitbox and hurtbox functionality.
+# Damage
+Collection of nodes to help implement damage functionality.
+
+## Damage Packet
+Resource designed to hold damage data.
 
 ## Hitbox
 ### Hitbox Node

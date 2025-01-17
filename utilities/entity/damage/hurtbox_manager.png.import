@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsb4p254s43um"
-path="res://.godot/imported/hitbox_manager.png-6c5aa2f05284b8acd5a19ba7ce90232d.ctex"
+uid="uid://7hj3a0pwkrp6"
+path="res://.godot/imported/hurtbox_manager.png-9d2e1f8194fd47d55e1d8a0b20bd707a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://utilities/entity/hit_hurt_box/hitbox_manager.png"
-dest_files=["res://.godot/imported/hitbox_manager.png-6c5aa2f05284b8acd5a19ba7ce90232d.ctex"]
+source_file="res://utilities/entity/damage/hurtbox_manager.png"
+dest_files=["res://.godot/imported/hurtbox_manager.png-9d2e1f8194fd47d55e1d8a0b20bd707a.ctex"]
 
 [params]
 

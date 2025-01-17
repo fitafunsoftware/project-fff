@@ -19,5 +19,5 @@ func _init():
 
 
 ## Applies damage to Entity based on the damage packet passed in.
-func apply_damage(damage_packet: Dictionary[StringName, Variant]):
-	_manager.apply_damage(_section, damage_packet)
+func apply_damage(damage_packets: Array[DamagePacket]):
+	_manager.apply_damage(_section, damage_packets)
