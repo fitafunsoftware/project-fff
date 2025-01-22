@@ -2,17 +2,10 @@ extends Node
 ## Autoload designed to add joy mappings when controllers are connected.
 ##
 ## Loads up the SDL_GameControllerDB and adds mappings when a controller 
-## is added. Add the autoload if the core controller mapping is outadated and
-## you just want to update all of them.
-## 
-## @tutorial(SDL_GameControllerDB Git Repository): https://github.com/gabomdq/SDL_GameControllerDB
-## @deprecated
+## is added. Add the autoload if you want to load your own mappings.
 
-## Path to the gamecontrollerdb.txt file. This is a submodule in the git repo.[br]
-const GAMECONTROLLERDB_PATH: String = "res://assets/gamecontrollerdb/gamecontrollerdb.txt"
-
-## Fallback for the gamecontrollerdb.txt file. In case submodule was not initialized.[br]
-const GAMECONTROLLERDB_FALLBACK_PATH: String = "res://utilities/autoloads/gamecontrollerdb.txt"
+## Path for the gamecontrollerdb.txt file.
+const GAMECONTROLLERDB_PATH: String = "res://utilities/autoloads/controller_mapper/gamecontrollerdb.txt"
 
 ## Number of lines to read from the file per frame. Distributes the 
 ## load to not freeze the game.
@@ -26,10 +19,7 @@ var _file: FileAccess
 # Open the file. Load the mappings into the Dictionary. 
 # Connect to the [signal Input.joy_connection_changed] signal.
 func _ready():
-	if ResourceLoader.exists(GAMECONTROLLERDB_PATH):
-		_file = FileAccess.open(GAMECONTROLLERDB_PATH, FileAccess.READ)
-	else: 
-		_file = FileAccess.open(GAMECONTROLLERDB_FALLBACK_PATH, FileAccess.READ)
+	_file = FileAccess.open(GAMECONTROLLERDB_PATH, FileAccess.READ)
 	_load()
 	Input.joy_connection_changed.connect(_joy_connection_changed)
 
