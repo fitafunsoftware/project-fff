@@ -3,6 +3,7 @@ render_mode blend_mix,specular_disabled,world_vertex_coords;
 
 #include "includes/curved_world.gdshaderinc"
 #include "includes/sprite_diffuse.gdshaderinc"
+#include "includes/shadow_light.gdshaderinc"
 
 uniform sampler2D sprite_texture : source_color, filter_nearest;
 
@@ -21,5 +22,11 @@ void fragment() {
 }
 
 void light() {
-	DIFFUSE_LIGHT += get_sprite_diffuse(ATTENUATION, LIGHT_COLOR);
+	if (is_shadow_light(LIGHT_COLOR)) {
+		if (is_in_shadow(ATTENUATION)){
+			DIFFUSE_LIGHT *= get_tint_diffuse();
+		}
+	} else {
+		DIFFUSE_LIGHT += get_sprite_diffuse(ATTENUATION, LIGHT_COLOR);
+	}
 }

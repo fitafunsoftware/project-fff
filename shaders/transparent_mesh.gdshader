@@ -5,6 +5,7 @@ render_mode blend_mix,specular_disabled,world_vertex_coords;
 #include "includes/distance_multiplier.gdshaderinc"
 #include "includes/dither_multiplier.gdshaderinc"
 #include "includes/sprite_diffuse.gdshaderinc"
+#include "includes/shadow_light.gdshaderinc"
 
 global uniform float DITHER_SCALE_EXPONENT;
 global uniform float MAX_DITHER_RATIO;
@@ -52,5 +53,11 @@ void fragment() {
 
 void light() {
 	float attenuation = shaded ? ATTENUATION : 1.0;
-	DIFFUSE_LIGHT += get_sprite_diffuse(attenuation, LIGHT_COLOR);
+	if (is_shadow_light(LIGHT_COLOR)) {
+		if (is_in_shadow(attenuation)){
+			DIFFUSE_LIGHT *= get_tint_diffuse();
+		}
+	} else {
+		DIFFUSE_LIGHT += get_sprite_diffuse(ATTENUATION, LIGHT_COLOR);
+	}
 }

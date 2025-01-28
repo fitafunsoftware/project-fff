@@ -3,9 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://ypwkw5b68kln" path="res://utilities/light/lights.tscn" id="1_04on7"]
 [ext_resource type="Shader" uid="uid://d1k1is2iascea" path="res://shaders/opaque_mesh.gdshader" id="2"]
 [ext_resource type="Texture2D" uid="uid://b3o0nd4un4axh" path="res://assets/art/grass/ground.png" id="2_fd3tu"]
-[ext_resource type="Script" path="res://utilities/sprite_3d/horizontal_sprite_3d.gd" id="3_xqkqx"]
+[ext_resource type="Script" uid="uid://drah1qedcimhg" path="res://utilities/sprite_3d/horizontal_sprite_3d.gd" id="3_xqkqx"]
 [ext_resource type="PackedScene" uid="uid://b5p4x0lyjysme" path="res://scenes/entities/player/player.tscn" id="5_312wl"]
-[ext_resource type="Script" path="res://utilities/sprite_3d/grass/grass_generator.gd" id="13_giqmr"]
+[ext_resource type="Script" uid="uid://c5gklqefgdsqg" path="res://utilities/sprite_3d/grass/grass_generator.gd" id="13_giqmr"]
 [ext_resource type="PackedScene" uid="uid://bg6n0slpar7eg" path="res://scenes/entities/tree.tscn" id="13_ko2qx"]
 [ext_resource type="PackedScene" uid="uid://dq24l2rpkfmwd" path="res://scenes/sprites/parallax_background_3d.tscn" id="14_hlmey"]
 [ext_resource type="Texture2D" uid="uid://c7jc4rpg3fy02" path="res://assets/art/grass/tall_grass.png" id="14_whl8h"]
@@ -14,7 +14,7 @@
 [ext_resource type="Shader" uid="uid://b24wm6l72qnrk" path="res://shaders/grass.gdshader" id="16_7ywox"]
 [ext_resource type="Script" uid="uid://ddpulv8l1joy0" path="res://scenes/entities/canon/canon.gd" id="16_rjcos"]
 [ext_resource type="Shader" uid="uid://dw80s0ocqcwb7" path="res://shaders/transparent_mesh.gdshader" id="17_1i314"]
-[ext_resource type="Script" path="res://utilities/sprite_3d/grass/grass_instance_3d.gd" id="17_qwvbc"]
+[ext_resource type="Script" uid="uid://dxw3hwrf0coja" path="res://utilities/sprite_3d/grass/grass_instance_3d.gd" id="17_qwvbc"]
 [ext_resource type="Texture2D" uid="uid://dyfrlesl3dgoe" path="res://assets/art/canon/canon.png" id="18_qld6t"]
 [ext_resource type="PackedScene" uid="uid://dc27hwodjir5a" path="res://scenes/entities/wolf_depth.tscn" id="19_8iwk6"]
 [ext_resource type="Script" uid="uid://dbckv6wts1v5o" path="res://utilities/sprite_3d/vertical_sprite_3d.gd" id="19_8l1xj"]
@@ -40,6 +40,8 @@ size = Vector3(30, 2, 60)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rr8d4"]
 render_priority = 0
 shader = ExtResource("2")
+shader_parameter/shadow_light_color = Color(1, 0, 0, 1)
+shader_parameter/tint = Color(1, 0, 0, 1)
 shader_parameter/sprite_texture = ExtResource("2_fd3tu")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_g3cec"]
@@ -51,6 +53,8 @@ subdivide_depth = 2047
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5jk3x"]
 render_priority = 0
 shader = ExtResource("16_7ywox")
+shader_parameter/shadow_light_color = Color(1, 0, 0, 1)
+shader_parameter/tint = Color(1, 0, 0, 1)
 shader_parameter/sprite_texture = ExtResource("14_whl8h")
 shader_parameter/columns = 205.0
 shader_parameter/rows = 256.0
@@ -69,6 +73,8 @@ viewport_path = NodePath("SpriteViewport")
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("17_1i314")
+shader_parameter/shadow_light_color = Color(1, 0, 0, 1)
+shader_parameter/tint = Color(1, 0, 0, 1)
 shader_parameter/sprite_texture = ExtResource("18_qld6t")
 shader_parameter/opacity = 1.0
 shader_parameter/shaded = false

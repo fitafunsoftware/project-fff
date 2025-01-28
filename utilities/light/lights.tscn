@@ -2,12 +2,27 @@
 
 [node name="Lights" type="Node3D"]
 
-[node name="GlobalShadowLight" type="DirectionalLight3D" parent="."]
+[node name="GlobalLight" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 light_indirect_energy = 0.0
 light_bake_mode = 0
 shadow_enabled = true
 shadow_blur = 0.0
+shadow_caster_mask = 4293918721
+directional_shadow_mode = 0
+directional_shadow_fade_start = 1.0
+directional_shadow_max_distance = 8.0
+directional_shadow_pancake_size = 0.0
+sky_mode = 1
+
+[node name="GlobalShadowLight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+light_color = Color(1, 0, 0, 1)
+light_indirect_energy = 0.0
+light_bake_mode = 0
+shadow_enabled = true
+shadow_blur = 0.0
+shadow_caster_mask = 4293918722
 directional_shadow_mode = 0
 directional_shadow_fade_start = 1.0
 directional_shadow_max_distance = 8.0
