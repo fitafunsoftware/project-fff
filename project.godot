@@ -30,6 +30,7 @@ GlobalSettings="*res://utilities/autoloads/global_settings/global_settings.gd"
 GlobalTouchScreen="*res://utilities/autoloads/global_touch_screen/global_touch_screen.gd"
 GlobalEntitySpawner="*res://utilities/autoloads/global_entity_spawner/global_entity_spawner.gd"
 ControllerMapper="*res://utilities/autoloads/controller_mapper/controller_mapper.gd"
+Blackboard="*res://blackboard.gd"
 
 [display]
 
