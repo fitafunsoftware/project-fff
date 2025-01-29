@@ -1,7 +1,7 @@
 shader_type spatial;
 render_mode blend_mix,specular_disabled,world_vertex_coords,unshaded,wireframe;
 
-#include "includes/curved_world.gdshaderinc"
+#include "uid://bdsoodic2nyyb"
 
 uniform vec3 color : source_color;
 

@@ -1,11 +1,11 @@
 shader_type spatial;
 render_mode blend_mix,specular_disabled,world_vertex_coords;
 
-#include "includes/curved_world.gdshaderinc"
-#include "includes/distance_multiplier.gdshaderinc"
-#include "includes/dither_multiplier.gdshaderinc"
-#include "includes/sprite_diffuse.gdshaderinc"
-#include "includes/shadow_light.gdshaderinc"
+#include "uid://bdsoodic2nyyb"
+#include "uid://cbr6fenktk7wd"
+#include "uid://b0pyf475dypm5"
+#include "uid://bjjy0u5on1c51"
+#include "uid://boulc4k1hm5o8"
 
 global uniform float DITHER_SCALE_EXPONENT;
 global uniform float MAX_DITHER_RATIO;

@@ -1,9 +1,9 @@
 shader_type spatial;
 render_mode blend_mix,specular_disabled,world_vertex_coords;
 
-#include "includes/curved_world.gdshaderinc"
-#include "includes/sprite_diffuse.gdshaderinc"
-#include "includes/shadow_light.gdshaderinc"
+#include "uid://bdsoodic2nyyb"
+#include "uid://bjjy0u5on1c51"
+#include "uid://boulc4k1hm5o8"
 
 uniform vec4 color : source_color;
 
