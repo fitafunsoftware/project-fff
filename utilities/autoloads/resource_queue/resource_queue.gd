@@ -19,9 +19,8 @@ func _process(_delta: float):
 	
 	var to_clear: Array[int] = []
 	for index: int in _pending.size():
-		var path: String = _pending[index]
-		if ResourceLoader.has_cached(_uid_to_path(path)):
-			resource_loaded.emit(path)
+		if ResourceLoader.has_cached(_pending[index]):
+			resource_loaded.emit(_pending[index])
 			to_clear.append(index)
 	
 	to_clear.reverse()
@@ -31,7 +30,7 @@ func _process(_delta: float):
 
 ## Adds a resource to the queue to be loaded.
 func queue_resource(path: String):
-	if ResourceLoader.has_cached(_uid_to_path(path)):
+	if ResourceLoader.has_cached(path):
 		resource_loaded.emit(path)
 	elif path in _pending:
 		return
@@ -45,7 +44,7 @@ func queue_resource(path: String):
 ## not been queued.
 func get_progess(path: String) -> float:
 	var progress: float = -1.0
-	if ResourceLoader.has_cached(_uid_to_path(path)):
+	if ResourceLoader.has_cached(path):
 		progress = 1.0
 	elif path in _pending:
 		var return_array: Array = []
@@ -58,7 +57,7 @@ func get_progess(path: String) -> float:
 
 ## Checks if a resource is loaded.
 func is_ready(path: String) -> bool:
-	if ResourceLoader.has_cached(_uid_to_path(path)):
+	if ResourceLoader.has_cached(path):
 		return true
 	elif path in _pending:
 		var status: ResourceLoader.ThreadLoadStatus = ResourceLoader.load_threaded_get_status(path)
@@ -71,7 +70,7 @@ func is_ready(path: String) -> bool:
 ## Returns a resource that has been loaded. If the resource was not queued for 
 ## loading, the resource is loaded on the spot which can cause a lag spike.
 func get_resource(path: String) -> Resource:
-	if ResourceLoader.has_cached(_uid_to_path(path)):
+	if ResourceLoader.has_cached(path):
 		return ResourceLoader.load(path)
 	elif path in _pending:
 		var status: ResourceLoader.ThreadLoadStatus = ResourceLoader.load_threaded_get_status(path)
@@ -80,13 +79,3 @@ func get_resource(path: String) -> Resource:
 			return ResourceLoader.load_threaded_get(path)
 	
 	return load(path)
-
-
-# Changes uid to a proper path for ResourceLoader.
-func _uid_to_path(path: String) -> String:
-	if path.begins_with("uid://"):
-		var id: int = ResourceUID.text_to_id(path)
-		if ResourceUID.has_id(id):
-			return ResourceUID.get_id_path(id)
-	
-	return path
