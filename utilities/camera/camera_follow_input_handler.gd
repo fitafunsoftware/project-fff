@@ -21,35 +21,36 @@ extends Node
 
 
 func _physics_process(delta: float):
-	var target_velocity: Vector3 = _get_target_velocity(delta)
+	var velocity: Vector3 = _get_velocity(delta)
+	var velocity_2d := Vector2(velocity.x, velocity.z)
 	
-	var velocity_2d := Vector2(target_velocity.x, target_velocity.z)
-	
-	body.target_velocity_2d = velocity_2d
+	body.set_target_velocity_2d(velocity_2d)
 	
 	if target is CharacterBody3D:
 		# If the body is in the air but the target is on the floor, do not set
 		# the body y velocity to 0. Let gravity make the body fall to the floor.
 		if target.is_on_floor() and not body.is_on_floor():
-			if is_zero_approx(target_velocity.y):
+			if is_zero_approx(velocity.y):
 				return
 	
-	body.set_y_velocity(target_velocity.y)
+	body.set_y_velocity(velocity.y)
 
 
 # Gets the displacement between the body and the target, then leashes that
 # displacement based on the leash distance.
-func _get_target_velocity(delta: float) -> Vector3:
+func _get_velocity(delta: float) -> Vector3:
 	var displacement: Vector3 = target.position - body.position
 	var leashed_distance: Vector3 = displacement.abs() - leash_distance
 	
 	if displacement.y <= 0:
 		leashed_distance.y = absf(displacement.y) - negative_y_leash_distance
 	
-	leashed_distance.x = clampf(leashed_distance.x, 0.0, body.speed * delta)
-	leashed_distance.y = clampf(leashed_distance.y, 0.0, body.speed * delta)
-	leashed_distance.z = clampf(leashed_distance.z, 0.0, body.speed * delta)
+	leashed_distance.x = maxf(leashed_distance.x, 0.0)
+	leashed_distance.y = maxf(leashed_distance.y, 0.0)
+	leashed_distance.z = maxf(leashed_distance.z, 0.0)
 	
 	var leashed_displacement: Vector3 = displacement.sign() * leashed_distance
-	var target_velocity: Vector3 = leashed_displacement / delta
+	var target_velocity: Vector3 = leashed_displacement/delta
+	if target_velocity.length() > speed:
+		target_velocity = leashed_displacement.normalized() * speed
 	return target_velocity

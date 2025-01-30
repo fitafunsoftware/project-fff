@@ -9,9 +9,17 @@ extends Entity
 ## only block camera bodies, but not other entities. This is how you set
 ## camera boundaries.
 
-## Speed of the camera body.
+## Duration camera stays in snap to target mode.
+## Not how long it takes to snap to target.
+const SNAP_DURATION: float = 0.5
+
+## Max speed of the camera body.
 @export_range(0.0, 10.0, 0.01, "or_greater", "suffix:m/s", "hide_slider")
 var speed: float = 5.0
+
+## Max speed of the camera body in snap to target mode.
+@export_range(0.0, 10.0, 0.01, "or_greater", "suffix:m/s", "hide_slider")
+var snap_speed: float = 7.5
 
 ## Target for the camera body to follow.
 @export var target: Node3D
@@ -63,6 +71,9 @@ static var RADIUS: float = NAN
 @onready var _input_handler: CameraFollowInputHandler = $CameraFollowInputHandler
 @onready var _camera: Camera3D = $Camera3D
 
+# Bool for in snapping mode check.
+var _is_snapping: bool = false
+
 
 # Load globals and prepare the body.
 func _ready():
@@ -82,25 +93,35 @@ func _ready():
 	_set_input_handler_properties()
 
 
+func _physics_process(delta):
+	if Engine.is_editor_hint():
+		return
+	super(delta)
+
+
+func _unhandled_input(event: InputEvent):
+	if event.is_action_pressed("snap_camera"):
+		_snap_camera_to_target()
+
+
 # Set values for the input_handler. The input handler is what actually controls 
 # the movement of the body.
 func _set_input_handler_properties():
+	_input_handler.body = self
+	_input_handler.target = target
+	_set_leash_distances_and_speed()
+
+
+# Sets the leashe distance and speed to the exported variables.
+func _set_leash_distances_and_speed():
 	var x_distance: float = x_drag_margin * PIXEL_SIZE
 	var y_distance: float = y_drag_margin * PIXEL_SIZE
 	var negative_y_distance: float = negative_y_drag_margin * PIXEL_SIZE
 	var z_distance: float = z_drag_margin * PIXEL_SIZE / FLOOR_GRADIENT
 	
-	_input_handler.body = self
-	_input_handler.speed = speed
 	_input_handler.leash_distance = Vector3(x_distance, y_distance, z_distance)
 	_input_handler.negative_y_leash_distance = negative_y_distance
-	_input_handler.target = target
-
-
-func _physics_process(delta):
-	if Engine.is_editor_hint():
-		return
-	super(delta)
+	_input_handler.speed = speed
 
 
 # Places the camera the correct distance away from the body based on the above
@@ -132,3 +153,18 @@ func _move_camera():
 	
 	_camera.position = Vector3(0.0, height_from_origin, distance_from_origin)
 	_camera.global_position = GlobalParams.get_snapped_position(_camera.global_position)
+
+
+# Function for camera snap to target mode.
+func _snap_camera_to_target():
+	if _is_snapping:
+		return
+	
+	_is_snapping = true
+	_input_handler.speed = snap_speed
+	_input_handler.leash_distance = Vector3.ZERO
+	_input_handler.negative_y_leash_distance = 0.0
+	
+	await get_tree().create_timer(SNAP_DURATION).timeout
+	_set_leash_distances_and_speed()
+	_is_snapping = false

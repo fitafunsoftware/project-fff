@@ -14,7 +14,7 @@
 [ext_resource type="Shader" uid="uid://b24wm6l72qnrk" path="res://shaders/grass.gdshader" id="16_7ywox"]
 [ext_resource type="Script" uid="uid://ddpulv8l1joy0" path="res://scenes/entities/canon/canon.gd" id="16_rjcos"]
 [ext_resource type="Shader" uid="uid://dw80s0ocqcwb7" path="res://shaders/transparent_mesh.gdshader" id="17_1i314"]
-[ext_resource type="Script" uid="uid://dxw3hwrf0coja" path="res://utilities/sprite_3d/grass/grass_instance_3d.gd" id="17_qwvbc"]
+[ext_resource type="Script" path="res://utilities/sprite_3d/grass/grass_instance_3d.gd" id="17_qwvbc"]
 [ext_resource type="Texture2D" uid="uid://dyfrlesl3dgoe" path="res://assets/art/canon/canon.png" id="18_qld6t"]
 [ext_resource type="PackedScene" uid="uid://dc27hwodjir5a" path="res://scenes/entities/wolf_depth.tscn" id="19_8iwk6"]
 [ext_resource type="Script" uid="uid://dbckv6wts1v5o" path="res://utilities/sprite_3d/vertical_sprite_3d.gd" id="19_8l1xj"]
