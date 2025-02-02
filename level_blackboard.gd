@@ -22,17 +22,16 @@ func get_entity_level(entity_id: int) -> int:
 
 
 func add_entity_to_level(level_id: int, entity_id: int):
-	if _entities_level.has(entity_id):
-		if _entities_level[entity_id] == level_id:
-			return
-		else:
-			var old_level_id: int = _entities_level[entity_id]
-			_erase_entity_from_level(old_level_id, entity_id)
-	
-	var entities: Array[int] = _level_entities.get_or_add(level_id,
+	var level_entities: Array[int] = _level_entities.get_or_add(level_id,
 			Array([], TYPE_INT, "", null)) as Array[int]
-	entities.append(entity_id)
-	_entities_level[entity_id] = level_id
+	_add_entity_to_level(level_id, entity_id, level_entities)
+
+
+func add_entities_to_level(level_id: int, entity_ids: Array[int]):
+	var level_entities: Array[int] = _level_entities.get_or_add(level_id,
+			Array([], TYPE_INT, "", null)) as Array[int]
+	for entity_id: int in entity_ids:
+		_add_entity_to_level(level_id, entity_id, level_entities)
 
 
 func erase_level(level_id: int):
@@ -57,7 +56,7 @@ func erase_level_and_entities(level_id: int):
 
 func erase_entity_from_level(level_id: int, entity_id: int):
 	if _level_entities.has(level_id):
-		_erase_entity_from_level(level_id, entity_id)
+		_erase_entity_from_current_level(entity_id)
 		_entities_level[entity_id] = PLACEHOLDER_LEVEL_ID
 
 
@@ -65,12 +64,22 @@ func erase_entity(entity_id: int):
 	if not _entities_level.has(entity_id):
 		return
 	
-	var old_level_id: int = _entities_level[entity_id]
-	_erase_entity_from_level(old_level_id, entity_id)
+	_erase_entity_from_current_level(entity_id)
 	_entities_level.erase(entity_id)
 
 
 # Helper Functions
-func _erase_entity_from_level(level_id: int, entity_id: int):
+func _erase_entity_from_current_level(entity_id: int):
+	var level_id = _entities_level[entity_id]
 	if level_id != PLACEHOLDER_LEVEL_ID:
 		_level_entities[level_id].erase(entity_id)
+
+
+func _add_entity_to_level(level_id: int, entity_id: int, level_entities: Array[int]):
+	if _entities_level.has(entity_id):
+		if _entities_level[entity_id] == level_id:
+			return
+		_erase_entity_from_current_level(entity_id)
+	
+	level_entities.append(entity_id)
+	_entities_level[entity_id] = level_id
