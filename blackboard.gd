@@ -8,6 +8,11 @@ func _ready():
 	_append_blackboards()
 
 
+# LevelBlackboard
+func get_entity_level(entity_id: int) -> int:
+	return _level.get_entity_level(entity_id)
+
+
 func get_entities_in_level(level_id: int) -> Array[int]:
 	return _level.get_entities_in_level(level_id)
 
@@ -20,6 +25,7 @@ func erase_entity_from_level(level_id: int, entity_id: int):
 	_level.erase_entity_from_level(level_id, entity_id)
 
 
+# EntityBlackboard
 func get_entity_spawn_request(entity_id: int) -> EntitySpawnRequest:
 	return _entity.get_entity_spawn_request(entity_id)
 
