@@ -50,8 +50,7 @@ func erase_entity(entity_id: int):
 
 func erase_level_and_entities(level_id: int):
 	var entity_ids: Array[int] = _level.get_entities_in_level(level_id)
-	for entity_id: int in entity_ids:
-		_entity.erase_entity(entity_id)
+	_entity.erase_entities(entity_ids)
 	_level.erase_level_and_entities(level_id)
 
 
