@@ -3,8 +3,21 @@ extends Node
 
 const NO_LEVEL_ID = -1
 
+var _level_names: Dictionary[StringName, int]
 var _level_entities: Dictionary[int, Array]
 var _entities_level: Dictionary[int, int]
+
+
+func get_level_id_from_name(level_name: StringName) -> int:
+	return _level_names.get(level_name, NO_LEVEL_ID)
+
+
+func set_level_id_for_name(level_name: StringName, level_id: int):
+	_level_names[level_name] = level_id
+
+
+func erase_level_name(level_name: StringName):
+	_level_names.erase(level_name)
 
 
 func get_entity_level(entity_id: int) -> int:
