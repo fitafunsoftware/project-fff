@@ -1,6 +1,7 @@
 [gd_scene load_steps=33 format=3 uid="uid://clqhyj6p24vuh"]
 
 [ext_resource type="PackedScene" uid="uid://ypwkw5b68kln" path="res://utilities/light/lights.tscn" id="1_04on7"]
+[ext_resource type="Script" path="res://level.gd" id="1_qld6t"]
 [ext_resource type="Shader" uid="uid://d1k1is2iascea" path="res://shaders/opaque_mesh.gdshader" id="2"]
 [ext_resource type="Texture2D" uid="uid://b3o0nd4un4axh" path="res://assets/art/grass/ground.png" id="2_fd3tu"]
 [ext_resource type="Script" uid="uid://drah1qedcimhg" path="res://utilities/sprite_3d/horizontal_sprite_3d.gd" id="3_xqkqx"]
@@ -75,6 +76,7 @@ shader_parameter/opacity = 1.0
 shader_parameter/shaded = false
 
 [node name="World3D" type="Node3D"]
+script = ExtResource("1_qld6t")
 
 [node name="Bounds" type="Node3D" parent="."]
 
