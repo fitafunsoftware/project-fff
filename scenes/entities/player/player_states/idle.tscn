@@ -1,24 +1,24 @@
 [gd_scene load_steps=10 format=3 uid="uid://dqjnr3itbnkoc"]
 
-[ext_resource type="Script" path="res://utilities/state_machine/states/component_state.gd" id="1_22uxk"]
-[ext_resource type="Script" path="res://utilities/state_machine/states/state_components/decorators/function_activation_state_component.gd" id="2_gg65o"]
-[ext_resource type="Script" path="res://utilities/state_machine/states/state_components/node_state_components/update/transitions/less_than_transition_state_component.gd" id="3_sdlsg"]
-[ext_resource type="Script" path="res://utilities/state_machine/states/state_components/node_state_components/resume/resume_call_function_state_component.gd" id="4_hkdwl"]
-[ext_resource type="Script" path="res://utilities/state_machine/states/state_components/node_state_components/update/transitions/not_equals_transition_state_component.gd" id="4_m3nfv"]
-[ext_resource type="Script" path="res://utilities/state_machine/states/state_components/transitions/pressed_transition_state_component.gd" id="5_idx1b"]
-[ext_resource type="Script" path="res://utilities/entity/state_components/move_state_component.gd" id="6_53oco"]
-[ext_resource type="Script" path="res://utilities/state_machine/states/state_components/node_state_components/enter/enter_call_function_state_component.gd" id="7_ynbp3"]
-[ext_resource type="Script" path="res://utilities/entity/state_components/look_direction/look_direction_state_component.gd" id="9_r85xr"]
+[ext_resource type="Script" uid="uid://1hitqk53ho1f" path="res://utilities/state_machine/states/component_state.gd" id="1_22uxk"]
+[ext_resource type="Script" uid="uid://c2dxlnurknwrn" path="res://utilities/state_machine/states/state_components/decorators/function_activation_state_component.gd" id="2_gg65o"]
+[ext_resource type="Script" uid="uid://bxjqw60u0b13l" path="res://utilities/state_machine/states/state_components/node_state_components/update/transitions/less_than_transition_state_component.gd" id="3_sdlsg"]
+[ext_resource type="Script" uid="uid://g0cr3lq7la38" path="res://utilities/state_machine/states/state_components/node_state_components/resume/resume_call_function_state_component.gd" id="4_hkdwl"]
+[ext_resource type="Script" uid="uid://dyyjrhsahrk70" path="res://utilities/state_machine/states/state_components/node_state_components/update/transitions/not_equals_transition_state_component.gd" id="4_m3nfv"]
+[ext_resource type="Script" uid="uid://bamxjpmph08pu" path="res://utilities/state_machine/states/state_components/transitions/pressed_transition_state_component.gd" id="5_idx1b"]
+[ext_resource type="Script" uid="uid://bucwnhml8yg73" path="res://utilities/entity/state_components/move_state_component.gd" id="6_53oco"]
+[ext_resource type="Script" uid="uid://dc1oyhvb7je5d" path="res://utilities/state_machine/states/state_components/node_state_components/enter/enter_call_function_state_component.gd" id="7_ynbp3"]
+[ext_resource type="Script" uid="uid://co0u7un8obp75" path="res://utilities/entity/state_components/look_direction/look_direction_state_component.gd" id="9_r85xr"]
 
 [node name="Idle" type="Node"]
 script = ExtResource("1_22uxk")
-dependencies = {
-"animation": null,
-"body": null,
-"input": null,
-"look": null,
-"speed": 3.0
-}
+dependencies = Dictionary[StringName, Variant]({
+&"animation": null,
+&"body": null,
+&"input": null,
+&"look": null,
+&"speed": 3.0
+})
 state_name = &"idle"
 
 [node name="Move" type="Node" parent="."]

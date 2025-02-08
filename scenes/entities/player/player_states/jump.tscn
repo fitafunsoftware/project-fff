@@ -1,24 +1,24 @@
 [gd_scene load_steps=9 format=3 uid="uid://1ac5bgndark"]
 
-[ext_resource type="Script" path="res://utilities/state_machine/states/component_state.gd" id="1_1os74"]
-[ext_resource type="Script" path="res://utilities/entity/state_components/move_state_component.gd" id="2_tw2ci"]
-[ext_resource type="Script" path="res://utilities/state_machine/states/state_components/decorators/function_activation_state_component.gd" id="3_rko54"]
-[ext_resource type="Script" path="res://utilities/state_machine/states/state_components/node_state_components/update/transitions/less_than_transition_state_component.gd" id="4_4kco0"]
-[ext_resource type="Script" path="res://utilities/entity/state_components/look_direction/look_direction_state_component.gd" id="5_33cou"]
-[ext_resource type="Script" path="res://utilities/state_machine/states/state_components/node_state_components/update/transitions/equals_transition_state_component.gd" id="5_v6mg8"]
-[ext_resource type="Script" path="res://utilities/state_machine/states/state_components/node_state_components/enter/enter_call_function_variable_state_component.gd" id="6_5sdu4"]
-[ext_resource type="Script" path="res://utilities/state_machine/states/state_components/node_state_components/enter/enter_call_function_state_component.gd" id="7_ouqoe"]
+[ext_resource type="Script" uid="uid://1hitqk53ho1f" path="res://utilities/state_machine/states/component_state.gd" id="1_1os74"]
+[ext_resource type="Script" uid="uid://bucwnhml8yg73" path="res://utilities/entity/state_components/move_state_component.gd" id="2_tw2ci"]
+[ext_resource type="Script" uid="uid://c2dxlnurknwrn" path="res://utilities/state_machine/states/state_components/decorators/function_activation_state_component.gd" id="3_rko54"]
+[ext_resource type="Script" uid="uid://bxjqw60u0b13l" path="res://utilities/state_machine/states/state_components/node_state_components/update/transitions/less_than_transition_state_component.gd" id="4_4kco0"]
+[ext_resource type="Script" uid="uid://co0u7un8obp75" path="res://utilities/entity/state_components/look_direction/look_direction_state_component.gd" id="5_33cou"]
+[ext_resource type="Script" uid="uid://ccwmg4semswfr" path="res://utilities/state_machine/states/state_components/node_state_components/update/transitions/equals_transition_state_component.gd" id="5_v6mg8"]
+[ext_resource type="Script" uid="uid://bm6e8tui4ydm6" path="res://utilities/state_machine/states/state_components/node_state_components/enter/enter_call_function_variable_state_component.gd" id="6_5sdu4"]
+[ext_resource type="Script" uid="uid://dc1oyhvb7je5d" path="res://utilities/state_machine/states/state_components/node_state_components/enter/enter_call_function_state_component.gd" id="7_ouqoe"]
 
 [node name="Jump" type="Node"]
 script = ExtResource("1_1os74")
-dependencies = {
-"animation": null,
-"body": null,
-"input": null,
-"jump_velocity": 4.5,
-"look": null,
-"speed": 3.0
-}
+dependencies = Dictionary[StringName, Variant]({
+&"animation": null,
+&"body": null,
+&"input": null,
+&"jump_velocity": 4.5,
+&"look": null,
+&"speed": 3.0
+})
 state_name = &"jump"
 push_down = true
 overwrite = true

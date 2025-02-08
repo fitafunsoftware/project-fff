@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b0j03j1ik8a30" path="res://utilities/camera/camera_body.gd" id="1_7mak0"]
 [ext_resource type="Script" uid="uid://13k42mjqmnce" path="res://utilities/camera/camera_follow_input_handler.gd" id="2_76bii"]
-[ext_resource type="Script" path="res://utilities/camera/camera_3D.gd" id="3_1nvaa"]
+[ext_resource type="Script" uid="uid://dplle6usy2n6u" path="res://utilities/camera/camera_3D.gd" id="3_1nvaa"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qjuhv"]
 size = Vector3(0.5, 0.5, 0.5)

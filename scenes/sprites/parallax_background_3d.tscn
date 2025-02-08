@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dq24l2rpkfmwd"]
 
-[ext_resource type="Script" path="res://utilities/sprite_3d/parallax_sprite_3d.gd" id="1_qv7oa"]
-[ext_resource type="Script" path="res://utilities/sprite_3d/sprite_viewport/sprite_viewport.gd" id="2_gw3tw"]
+[ext_resource type="Script" uid="uid://drq5006sg8ywn" path="res://utilities/sprite_3d/parallax_sprite_3d.gd" id="1_qv7oa"]
+[ext_resource type="Script" uid="uid://cx10s0cb135q2" path="res://utilities/sprite_3d/sprite_viewport/sprite_viewport.gd" id="2_gw3tw"]
 [ext_resource type="Texture2D" uid="uid://drnwe6bfeqaet" path="res://assets/art/sky/sun.png" id="3_6kld1"]
 [ext_resource type="Texture2D" uid="uid://cn4hysrmpwtlu" path="res://assets/art/sky/clouds.png" id="4_5ci6a"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://vmu53hs5q5m7"]
 
-[ext_resource type="Script" path="res://utilities/screens/splash_screen/splash_screen.gd" id="1_jlf4u"]
+[ext_resource type="Script" uid="uid://cqqcm4yegaaoi" path="res://utilities/screens/splash_screen/splash_screen.gd" id="1_jlf4u"]
 
 [node name="SplashScreen" type="Control"]
 layout_mode = 3

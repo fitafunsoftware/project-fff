@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cn2xh132ksg"]
 
-[ext_resource type="Script" path="res://utilities/screens/exit_scene/exit_scene.gd" id="1_thbw6"]
+[ext_resource type="Script" uid="uid://7qwpdfgdqp67" path="res://utilities/screens/exit_scene/exit_scene.gd" id="1_thbw6"]
 
 [node name="exit_scene" type="Control"]
 layout_mode = 3

@@ -1,12 +1,12 @@
 [gd_scene load_steps=13 format=3 uid="uid://bg6n0slpar7eg"]
 
-[ext_resource type="Shader" path="res://shaders/transparent_mesh.gdshader" id="1_tp8x2"]
-[ext_resource type="Script" path="res://utilities/sprite_3d/sprite_viewport/sprite_viewport.gd" id="3_mud6f"]
-[ext_resource type="Script" path="res://utilities/sprite_3d/vertical_sprite_3d.gd" id="3_wcy8c"]
+[ext_resource type="Shader" uid="uid://dw80s0ocqcwb7" path="res://shaders/transparent_mesh.gdshader" id="1_tp8x2"]
+[ext_resource type="Script" uid="uid://cx10s0cb135q2" path="res://utilities/sprite_3d/sprite_viewport/sprite_viewport.gd" id="3_mud6f"]
+[ext_resource type="Script" uid="uid://dbckv6wts1v5o" path="res://utilities/sprite_3d/vertical_sprite_3d.gd" id="3_wcy8c"]
 [ext_resource type="Texture2D" uid="uid://cb04st06nawde" path="res://assets/art/shadow/shadow.png" id="4_2jx2n"]
 [ext_resource type="PackedScene" uid="uid://cs5vem3cobdyo" path="res://scenes/sprites/tree_sprite.tscn" id="4_4qkm2"]
-[ext_resource type="Script" path="res://utilities/entity/shadow/shadow.gd" id="5_mldb1"]
-[ext_resource type="Script" path="res://utilities/entity/detector/curved_entity_detector.gd" id="6_6rk15"]
+[ext_resource type="Script" uid="uid://dl1qanhnxxdf3" path="res://utilities/entity/shadow/shadow.gd" id="5_mldb1"]
+[ext_resource type="Script" uid="uid://cia27t4hm7wrm" path="res://utilities/entity/detector/curved_entity_detector.gd" id="6_6rk15"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_562ok"]
 viewport_path = NodePath("VerticalSprite3D/SpriteViewport")
@@ -15,9 +15,11 @@ viewport_path = NodePath("VerticalSprite3D/SpriteViewport")
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("1_tp8x2")
+shader_parameter/shadow_light_color = Color(1, 0, 0, 1)
+shader_parameter/tint = Color(1, 0, 0, 1)
+shader_parameter/sprite_texture = SubResource("ViewportTexture_562ok")
 shader_parameter/opacity = 1.0
 shader_parameter/shaded = false
-shader_parameter/sprite_texture = SubResource("ViewportTexture_562ok")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ew2uq"]
 points = PackedVector3Array(0.52, 0.61, -4.53334, 0.68, 0.85, -3.87394, 0.11, 2.16, -0.274748, -0.47, 1.08, -3.24202, 0.09, 0.6, -4.56081, 0.52, 0.61, 0, 0.68, 0.85, 0, 0.11, 2.16, 0, -0.02, 2.26, 0, -0.47, 1.08, 0, 0.09, 0.6, 0)

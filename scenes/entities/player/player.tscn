@@ -1,18 +1,18 @@
 [gd_scene load_steps=21 format=3 uid="uid://b5p4x0lyjysme"]
 
-[ext_resource type="Script" path="res://utilities/entity/entity.gd" id="1_dixje"]
-[ext_resource type="Shader" path="res://shaders/transparent_mesh.gdshader" id="2_cr2h3"]
+[ext_resource type="Script" uid="uid://ccr2f1e3rpx1m" path="res://utilities/entity/entity.gd" id="1_dixje"]
+[ext_resource type="Shader" uid="uid://dw80s0ocqcwb7" path="res://shaders/transparent_mesh.gdshader" id="2_cr2h3"]
 [ext_resource type="Texture2D" uid="uid://cum3245fwrm1q" path="res://assets/art/player/base.png" id="3_50vm0"]
-[ext_resource type="Script" path="res://utilities/sprite_3d/vertical_sprite_3d.gd" id="4_7c2wt"]
+[ext_resource type="Script" uid="uid://dbckv6wts1v5o" path="res://utilities/sprite_3d/vertical_sprite_3d.gd" id="4_7c2wt"]
 [ext_resource type="Texture2D" uid="uid://c7yoyyn7h1gel" path="res://assets/art/shadow/small_shadow.png" id="5_6tokq"]
-[ext_resource type="Script" path="res://utilities/entity/shadow/shadow.gd" id="6_yi3mh"]
-[ext_resource type="Script" path="res://utilities/state_machine/state_machine.gd" id="7_g40if"]
-[ext_resource type="Script" path="res://utilities/entity/input_handlers/player_input_handler.gd" id="7_pfar3"]
+[ext_resource type="Script" uid="uid://dl1qanhnxxdf3" path="res://utilities/entity/shadow/shadow.gd" id="6_yi3mh"]
+[ext_resource type="Script" uid="uid://d4jpvx28em1v5" path="res://utilities/state_machine/state_machine.gd" id="7_g40if"]
+[ext_resource type="Script" uid="uid://bll2tao04e8m6" path="res://utilities/entity/input_handlers/player_input_handler.gd" id="7_pfar3"]
 [ext_resource type="PackedScene" uid="uid://dqjnr3itbnkoc" path="res://scenes/entities/player/player_states/idle.tscn" id="8_16vu8"]
 [ext_resource type="PackedScene" uid="uid://bb8jb84y14rb3" path="res://scenes/entities/player/player_states/move.tscn" id="9_l5ks8"]
 [ext_resource type="PackedScene" uid="uid://1ac5bgndark" path="res://scenes/entities/player/player_states/jump.tscn" id="10_aglp1"]
 [ext_resource type="PackedScene" uid="uid://drqkgak83abbt" path="res://scenes/entities/player/player_states/fall.tscn" id="11_tlhgv"]
-[ext_resource type="Script" path="res://utilities/entity/look_direction/look_direction.gd" id="13_mhgbn"]
+[ext_resource type="Script" uid="uid://guylj3gp5o08" path="res://utilities/entity/look_direction/look_direction.gd" id="13_mhgbn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fn6na"]
 size = Vector3(0.2, 0.8, 0.22)
@@ -21,9 +21,11 @@ size = Vector3(0.2, 0.8, 0.22)
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_cr2h3")
+shader_parameter/shadow_light_color = Color(1, 0, 0, 1)
+shader_parameter/tint = Color(1, 0, 0, 1)
+shader_parameter/sprite_texture = ExtResource("3_50vm0")
 shader_parameter/opacity = 1.0
 shader_parameter/shaded = true
-shader_parameter/sprite_texture = ExtResource("3_50vm0")
 
 [sub_resource type="Animation" id="Animation_i637q"]
 length = 0.001
@@ -77,9 +79,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qhb7g"]
 _data = {
-"RESET": SubResource("Animation_i637q"),
-"idle": SubResource("Animation_4i11b"),
-"walk": SubResource("Animation_7frk5")
+&"RESET": SubResource("Animation_i637q"),
+&"idle": SubResource("Animation_4i11b"),
+&"walk": SubResource("Animation_7frk5")
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5kcq1"]
@@ -120,7 +122,7 @@ script = ExtResource("6_yi3mh")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_qhb7g")
+&"": SubResource("AnimationLibrary_qhb7g")
 }
 
 [node name="EntityDetectionArea" type="Area3D" parent="."]
@@ -140,41 +142,41 @@ active = true
 start_state = &"idle"
 
 [node name="Idle" parent="PlayerStateMachine" instance=ExtResource("8_16vu8")]
-dependencies = {
-"animation": NodePath("../../AnimationPlayer"),
-"body": NodePath("../.."),
-"input": NodePath("../../PlayerInput"),
-"look": NodePath("../../LookDirection"),
-"speed": 3.0
-}
+dependencies = Dictionary[StringName, Variant]({
+&"animation": NodePath("../../AnimationPlayer"),
+&"body": NodePath("../.."),
+&"input": NodePath("../../PlayerInput"),
+&"look": NodePath("../../LookDirection"),
+&"speed": 3.0
+})
 
 [node name="Move" parent="PlayerStateMachine" instance=ExtResource("9_l5ks8")]
-dependencies = {
-"animation": NodePath("../../AnimationPlayer"),
-"body": NodePath("../.."),
-"input": NodePath("../../PlayerInput"),
-"look": NodePath("../../LookDirection"),
-"speed": 3.0
-}
+dependencies = Dictionary[StringName, Variant]({
+&"animation": NodePath("../../AnimationPlayer"),
+&"body": NodePath("../.."),
+&"input": NodePath("../../PlayerInput"),
+&"look": NodePath("../../LookDirection"),
+&"speed": 3.0
+})
 
 [node name="Jump" parent="PlayerStateMachine" instance=ExtResource("10_aglp1")]
-dependencies = {
-"animation": NodePath("../../AnimationPlayer"),
-"body": NodePath("../.."),
-"input": NodePath("../../PlayerInput"),
-"jump_velocity": 5.0,
-"look": NodePath("../../LookDirection"),
-"speed": 3.0
-}
+dependencies = Dictionary[StringName, Variant]({
+&"animation": NodePath("../../AnimationPlayer"),
+&"body": NodePath("../.."),
+&"input": NodePath("../../PlayerInput"),
+&"jump_velocity": 5.0,
+&"look": NodePath("../../LookDirection"),
+&"speed": 3.0
+})
 
 [node name="Fall" parent="PlayerStateMachine" instance=ExtResource("11_tlhgv")]
-dependencies = {
-"animation": NodePath("../../AnimationPlayer"),
-"body": NodePath("../.."),
-"input": NodePath("../../PlayerInput"),
-"look": NodePath("../../LookDirection"),
-"speed": 3.0
-}
+dependencies = Dictionary[StringName, Variant]({
+&"animation": NodePath("../../AnimationPlayer"),
+&"body": NodePath("../.."),
+&"input": NodePath("../../PlayerInput"),
+&"look": NodePath("../../LookDirection"),
+&"speed": 3.0
+})
 
 [node name="LookDirection" type="Node" parent="."]
 script = ExtResource("13_mhgbn")

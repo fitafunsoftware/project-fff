@@ -1,20 +1,20 @@
 [gd_scene load_steps=6 format=3 uid="uid://drqkgak83abbt"]
 
-[ext_resource type="Script" path="res://utilities/state_machine/states/component_state.gd" id="1_ckch7"]
-[ext_resource type="Script" path="res://utilities/state_machine/states/state_components/node_state_components/enter/enter_call_function_state_component.gd" id="2_i7t6p"]
-[ext_resource type="Script" path="res://utilities/entity/state_components/move_state_component.gd" id="2_jxrbq"]
-[ext_resource type="Script" path="res://utilities/state_machine/states/state_components/node_state_components/update/transitions/equals_transition_state_component.gd" id="2_jxrfg"]
-[ext_resource type="Script" path="res://utilities/entity/state_components/look_direction/look_direction_state_component.gd" id="3_xgov5"]
+[ext_resource type="Script" uid="uid://1hitqk53ho1f" path="res://utilities/state_machine/states/component_state.gd" id="1_ckch7"]
+[ext_resource type="Script" uid="uid://dc1oyhvb7je5d" path="res://utilities/state_machine/states/state_components/node_state_components/enter/enter_call_function_state_component.gd" id="2_i7t6p"]
+[ext_resource type="Script" uid="uid://bucwnhml8yg73" path="res://utilities/entity/state_components/move_state_component.gd" id="2_jxrbq"]
+[ext_resource type="Script" uid="uid://ccwmg4semswfr" path="res://utilities/state_machine/states/state_components/node_state_components/update/transitions/equals_transition_state_component.gd" id="2_jxrfg"]
+[ext_resource type="Script" uid="uid://co0u7un8obp75" path="res://utilities/entity/state_components/look_direction/look_direction_state_component.gd" id="3_xgov5"]
 
 [node name="Fall" type="Node"]
 script = ExtResource("1_ckch7")
-dependencies = {
-"animation": null,
-"body": null,
-"input": null,
-"look": null,
-"speed": 3.0
-}
+dependencies = Dictionary[StringName, Variant]({
+&"animation": null,
+&"body": null,
+&"input": null,
+&"look": null,
+&"speed": 3.0
+})
 state_name = &"fall"
 push_down = true
 overwrite = true

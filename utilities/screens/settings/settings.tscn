@@ -1,12 +1,12 @@
 [gd_scene load_steps=13 format=3 uid="uid://cebaljtmx1h0h"]
 
-[ext_resource type="Script" path="res://utilities/screens/settings/scripts/settings.gd" id="1_4jrm6"]
-[ext_resource type="Script" path="res://utilities/screens/settings/scripts/aspect_ratio.gd" id="2_hf73j"]
-[ext_resource type="Script" path="res://utilities/screens/settings/scripts/scaling.gd" id="3_p75hu"]
-[ext_resource type="Script" path="res://utilities/screens/settings/scripts/fullscreen.gd" id="4_i323y"]
-[ext_resource type="Script" path="res://utilities/screens/settings/scripts/borderless.gd" id="5_7gqhl"]
-[ext_resource type="Script" path="res://utilities/screens/settings/scripts/vsync.gd" id="6_7jlka"]
-[ext_resource type="Script" path="res://utilities/screens/settings/scripts/touch_controls.gd" id="7_iifp2"]
+[ext_resource type="Script" uid="uid://bmq1od5nrinc5" path="res://utilities/screens/settings/scripts/settings.gd" id="1_4jrm6"]
+[ext_resource type="Script" uid="uid://cdwubu8bgle2r" path="res://utilities/screens/settings/scripts/aspect_ratio.gd" id="2_hf73j"]
+[ext_resource type="Script" uid="uid://dqa5vl3m6j0fc" path="res://utilities/screens/settings/scripts/scaling.gd" id="3_p75hu"]
+[ext_resource type="Script" uid="uid://cgp88opdtpd1u" path="res://utilities/screens/settings/scripts/fullscreen.gd" id="4_i323y"]
+[ext_resource type="Script" uid="uid://fty04kb6kiu8" path="res://utilities/screens/settings/scripts/borderless.gd" id="5_7gqhl"]
+[ext_resource type="Script" uid="uid://cmnm2ioiwh3f" path="res://utilities/screens/settings/scripts/vsync.gd" id="6_7jlka"]
+[ext_resource type="Script" uid="uid://be5uh4pjt8j6c" path="res://utilities/screens/settings/scripts/touch_controls.gd" id="7_iifp2"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a084d"]
 
