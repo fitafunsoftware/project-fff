@@ -1,4 +1,4 @@
 class_name LevelBridge
 extends Area3D
 
-@export var bridged_level: String
+@export var bridged_level: StringName
