@@ -24,9 +24,18 @@ void fragment() {
 void light() {
 	if (is_shadow_light(LIGHT_COLOR)) {
 		if (is_in_shadow(ATTENUATION)){
-			DIFFUSE_LIGHT *= get_tint_diffuse();
+			DIFFUSE_LIGHT += get_tint_diffuse();
+		}
+	} else if (is_test_light(LIGHT_COLOR)) {
+		if (!is_in_shadow(ATTENUATION)) {
+			DIFFUSE_LIGHT += get_test_diffuse(ATTENUATION, LIGHT_COLOR);
+		}
+	} else if (is_detail_light(LIGHT_COLOR)) {
+		if (!is_in_shadow(ATTENUATION)) {
+			DIFFUSE_LIGHT += get_detail_diffuse(ATTENUATION, LIGHT_COLOR);
 		}
 	} else {
 		DIFFUSE_LIGHT += get_sprite_diffuse(ATTENUATION, LIGHT_COLOR);
 	}
+	SPECULAR_LIGHT = vec3(0.0);
 }

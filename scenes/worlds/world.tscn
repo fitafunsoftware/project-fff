@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://clqhyj6p24vuh"]
+[gd_scene load_steps=35 format=3 uid="uid://clqhyj6p24vuh"]
 
 [ext_resource type="PackedScene" uid="uid://ypwkw5b68kln" path="res://utilities/light/lights.tscn" id="1_04on7"]
 [ext_resource type="Shader" uid="uid://d1k1is2iascea" path="res://shaders/opaque_mesh.gdshader" id="2"]
@@ -19,6 +19,8 @@
 [ext_resource type="PackedScene" uid="uid://dc27hwodjir5a" path="res://scenes/entities/wolf_depth.tscn" id="19_8iwk6"]
 [ext_resource type="Script" uid="uid://dbckv6wts1v5o" path="res://utilities/sprite_3d/vertical_sprite_3d.gd" id="19_8l1xj"]
 [ext_resource type="PackedScene" uid="uid://ddqvb0a4lifyo" path="res://utilities/camera/camera_follow_body.tscn" id="20_0bncb"]
+[ext_resource type="Texture2D" uid="uid://bi3dixrmvv8uf" path="res://assets/art/shadow/wolf_shadow.png" id="20_8l1xj"]
+[ext_resource type="Script" uid="uid://dl1qanhnxxdf3" path="res://utilities/entity/shadow/shadow.gd" id="21_5kpmn"]
 [ext_resource type="PackedScene" uid="uid://el2ckuxxvjmo" path="res://scenes/helpers/reset_to_main_menu.tscn" id="20_qld6t"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bm1cj"]
@@ -42,6 +44,8 @@ size = Vector3(30, 2, 60)
 render_priority = 0
 shader = ExtResource("2")
 shader_parameter/shadow_light_color = Color(1, 0, 0, 1)
+shader_parameter/test_light_color = Color(0, 1, 0, 1)
+shader_parameter/detail_light_color = Color(0, 0, 1, 1)
 shader_parameter/tint = Color(1, 0, 0, 1)
 shader_parameter/sprite_texture = ExtResource("2_fd3tu")
 
@@ -55,6 +59,8 @@ subdivide_depth = 2047
 render_priority = 0
 shader = ExtResource("16_7ywox")
 shader_parameter/shadow_light_color = Color(1, 0, 0, 1)
+shader_parameter/test_light_color = Color(0, 1, 0, 1)
+shader_parameter/detail_light_color = Color(0, 0, 1, 1)
 shader_parameter/tint = Color(1, 0, 0, 1)
 shader_parameter/sprite_texture = ExtResource("14_whl8h")
 shader_parameter/columns = 205.0
@@ -75,6 +81,8 @@ resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("17_1i314")
 shader_parameter/shadow_light_color = Color(1, 0, 0, 1)
+shader_parameter/test_light_color = Color(0, 1, 0, 1)
+shader_parameter/detail_light_color = Color(0, 0, 1, 1)
 shader_parameter/tint = Color(1, 0, 0, 1)
 shader_parameter/sprite_texture = ExtResource("18_qld6t")
 shader_parameter/opacity = 1.0
@@ -1744,5 +1752,17 @@ custom_aabb = AABB(-0.32, -2.72, 0, 0.64, 3.79, 0)
 texture = ExtResource("18_qld6t")
 script = ExtResource("19_8l1xj")
 metadata/_custom_type_script = "uid://dbckv6wts1v5o"
+
+[node name="Shadow3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+layers = 2
+cast_shadow = 3
+axis = 1
+double_sided = false
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("20_8l1xj")
+script = ExtResource("21_5kpmn")
+metadata/_custom_type_script = "uid://dl1qanhnxxdf3"
 
 [node name="ResetToMainMenu" parent="." instance=ExtResource("20_qld6t")]
