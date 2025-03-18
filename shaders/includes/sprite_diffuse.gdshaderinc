@@ -3,28 +3,50 @@
 global uniform float SHADOW_ATTENUATION;
 #endif
 
-const float max_additive_value = 1.0 / 3.0;
-const float main_ratio = 2.0;
-const float test_ratio = 4.0;
-const float detail_ratio = 1.0;
+#include "uid://boulc4k1hm5o8"
 
-vec3 get_sprite_diffuse(float attenuation, vec3 light_color) {
-	float main_mult = main_ratio / (test_ratio + detail_ratio + main_ratio);
+uniform vec3 tint : source_color = vec3(1.0, 0.0, 0.0);
+
+const float global_ratio = 2.0;
+const float indicator_ratio = 4.0;
+const float overall_ratio = 1.0;
+
+const float max_additive_value = 1.0 / (sign(global_ratio) + sign(indicator_ratio) + sign(overall_ratio));
+const float global_mult = global_ratio / (global_ratio + indicator_ratio + overall_ratio);
+const float indicator_mult = indicator_ratio / (global_ratio + indicator_ratio + overall_ratio);
+const float overall_mult = overall_ratio / (global_ratio + indicator_ratio + overall_ratio);
+
+float get_final_attenuation(float attenuation, float mult) {
 	float final_attenuation = attenuation < 1.0 ? SHADOW_ATTENUATION : 1.0;
-	final_attenuation *= max_additive_value * main_mult;
-	return  final_attenuation * light_color / PI;
+	return final_attenuation * max_additive_value * mult;
 }
 
-vec3 get_test_diffuse(float attenuation, vec3 light_color) {
-	float test_mult = test_ratio / (test_ratio + detail_ratio + main_ratio);
+vec3 get_global_diffuse(float attenuation, vec3 light_color) {
+	return  get_final_attenuation(attenuation, global_mult) * light_color / PI;
+}
+
+vec3 get_indicator_diffuse(float attenuation, vec3 light_color) {
 	vec3 true_light_color = vec3(light_color.g);
-	float final_attenuation = attenuation * max_additive_value * test_mult;
-	return final_attenuation * true_light_color / PI;
+	return get_final_attenuation(attenuation, indicator_mult) * true_light_color / PI;
 }
 
-vec3 get_detail_diffuse(float attenuation, vec3 light_color) {
-	float detail_mult = detail_ratio / (test_ratio + detail_ratio + main_ratio);
+vec3 get_overall_diffuse(float attenuation, vec3 light_color) {
 	vec3 true_light_color = vec3(light_color.b);
-	float final_attenuation = attenuation * max_additive_value * detail_mult;
-	return final_attenuation * true_light_color / PI;
+	return get_final_attenuation(attenuation, overall_mult) * true_light_color / PI;
+}
+
+vec3 get_tint_diffuse(float attenuation) {
+	return attenuation < 0.99 ? tint : vec3(0.0);
+}
+
+vec3 get_diffuse_light(float attenuation, vec3 light_color) {
+	if (is_shadow_light(light_color)) {
+		return get_tint_diffuse(attenuation);
+	} else if(is_indicator_light(light_color)) {
+		return get_indicator_diffuse(attenuation, light_color);
+	} else if (is_overall_light(light_color)) {
+		return get_overall_diffuse(attenuation, light_color);
+	} else {
+		return get_global_diffuse(attenuation, light_color);
+	}
 }

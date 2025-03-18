@@ -15,7 +15,7 @@ directional_shadow_max_distance = 8.0
 directional_shadow_pancake_size = 0.0
 sky_mode = 1
 
-[node name="Test" type="DirectionalLight3D" parent="."]
+[node name="IndicatorLight" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 light_color = Color(0, 1, 0, 1)
 light_indirect_energy = 0.0
@@ -29,7 +29,7 @@ directional_shadow_max_distance = 8.0
 directional_shadow_pancake_size = 0.0
 sky_mode = 1
 
-[node name="Detail" type="DirectionalLight3D" parent="."]
+[node name="OverallLight" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 light_color = Color(0, 0, 1, 1)
 light_indirect_energy = 0.0
