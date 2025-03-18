@@ -22,6 +22,8 @@ extends Control
 @export var information: Label
 @export var settings: Label
 
+var dev_combination: Array[StringName] = [&"back", &"rightshoulder"]
+
 ## The number of frames to keep in history for graph drawing and best/worst calculations.
 ## Currently, this also affects how FPS is measured.
 const HISTORY_NUM_FRAMES = 150
@@ -131,6 +133,13 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
+	if event.is_pressed():
+		for action: StringName in dev_combination:
+			if event.is_action(action):
+				if InputHelper.is_action_combo_pressed(dev_combination):
+					style = wrapi(style + 1, 0, Style.MAX) as Style
+					break
+	
 	if event.is_action_pressed("devbutton"):
 		style = wrapi(style + 1, 0, Style.MAX) as Style
 

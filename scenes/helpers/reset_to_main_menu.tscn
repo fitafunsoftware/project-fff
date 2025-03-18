@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://el2ckuxxvjmo"]
+
+[ext_resource type="Script" uid="uid://bgxv17ijuq0l4" path="res://utilities/helpers/reset_to_scene.gd" id="1_aljdc"]
+
+[node name="ResetToMainMenu" type="Node"]
+script = ExtResource("1_aljdc")
+reset_scene = "uid://dv33j0a4k3263"
+reset_combo = Array[StringName]([&"back", &"x", &"leftshoulder"])
+metadata/_custom_type_script = "uid://bgxv17ijuq0l4"

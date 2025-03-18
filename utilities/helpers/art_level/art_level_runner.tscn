@@ -4,11 +4,11 @@
 [ext_resource type="Script" uid="uid://0lel6cxqf687" path="res://utilities/main_game/game_viewport/game_viewport.gd" id="2_745nd"]
 [ext_resource type="Script" uid="uid://q5abck7ltj3d" path="res://utilities/main_game/game_viewport/next_scene_manager.gd" id="3_7apk3"]
 [ext_resource type="Shader" uid="uid://d1k1is2iascea" path="res://shaders/opaque_mesh.gdshader" id="4_iv4g8"]
-[ext_resource type="Texture2D" uid="uid://frfu1xd67ik2" path="res://utilities/editor_helpers/art_level/test_ground.png" id="5_mp3v7"]
+[ext_resource type="Texture2D" uid="uid://frfu1xd67ik2" path="res://utilities/helpers/art_level/test_ground.png" id="5_mp3v7"]
 [ext_resource type="Script" uid="uid://drah1qedcimhg" path="res://utilities/sprite_3d/horizontal_sprite_3d.gd" id="6_n6e51"]
 [ext_resource type="PackedScene" uid="uid://ddqvb0a4lifyo" path="res://utilities/camera/camera_follow_body.tscn" id="7_s2gye"]
 [ext_resource type="PackedScene" uid="uid://ypwkw5b68kln" path="res://utilities/light/lights.tscn" id="8_h0tod"]
-[ext_resource type="Script" uid="uid://1iqq0lxb5sar" path="res://utilities/editor_helpers/art_level/art_body.gd" id="9_5v2bp"]
+[ext_resource type="Script" uid="uid://1iqq0lxb5sar" path="res://utilities/helpers/art_level/art_body.gd" id="9_5v2bp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ekn3t"]
 render_priority = 0

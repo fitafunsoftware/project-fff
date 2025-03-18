@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://clqhyj6p24vuh"]
+[gd_scene load_steps=33 format=3 uid="uid://clqhyj6p24vuh"]
 
 [ext_resource type="PackedScene" uid="uid://ypwkw5b68kln" path="res://utilities/light/lights.tscn" id="1_04on7"]
 [ext_resource type="Shader" uid="uid://d1k1is2iascea" path="res://shaders/opaque_mesh.gdshader" id="2"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://dc27hwodjir5a" path="res://scenes/entities/wolf_depth.tscn" id="19_8iwk6"]
 [ext_resource type="Script" uid="uid://dbckv6wts1v5o" path="res://utilities/sprite_3d/vertical_sprite_3d.gd" id="19_8l1xj"]
 [ext_resource type="PackedScene" uid="uid://ddqvb0a4lifyo" path="res://utilities/camera/camera_follow_body.tscn" id="20_0bncb"]
+[ext_resource type="PackedScene" uid="uid://el2ckuxxvjmo" path="res://scenes/helpers/reset_to_main_menu.tscn" id="20_qld6t"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bm1cj"]
 size = Vector3(1, 4, 60)
@@ -1729,7 +1730,7 @@ texture = SubResource("ViewportTexture_wrfgr")
 
 [node name="EntitySpawner" type="Node3D" parent="."]
 script = ExtResource("15_svvlm")
-metadata/_custom_type_script = ExtResource("15_svvlm")
+metadata/_custom_type_script = "uid://c31ijlqk41jv5"
 
 [node name="Canon" type="Node3D" parent="EntitySpawner"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.44, 0)
@@ -1742,4 +1743,6 @@ cast_shadow = 0
 custom_aabb = AABB(-0.32, -2.72, 0, 0.64, 3.79, 0)
 texture = ExtResource("18_qld6t")
 script = ExtResource("19_8l1xj")
-metadata/_custom_type_script = ExtResource("19_8l1xj")
+metadata/_custom_type_script = "uid://dbckv6wts1v5o"
+
+[node name="ResetToMainMenu" parent="." instance=ExtResource("20_qld6t")]
