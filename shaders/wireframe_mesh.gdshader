@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode blend_mix,specular_disabled,world_vertex_coords,unshaded,wireframe;
+render_mode blend_mix,unshaded,wireframe,specular_disabled,world_vertex_coords,ambient_light_disabled;
 
 #include "uid://bdsoodic2nyyb"
 

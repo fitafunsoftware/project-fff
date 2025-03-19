@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode blend_mix,specular_disabled,world_vertex_coords;
+render_mode blend_mix,specular_disabled,world_vertex_coords,ambient_light_disabled;
 
 #include "uid://bdsoodic2nyyb"
 #include "uid://bjjy0u5on1c51"
@@ -31,5 +31,11 @@ void fragment() {
 }
 
 void light() {
-	DIFFUSE_LIGHT += get_diffuse_light(ATTENUATION, LIGHT_COLOR);
+	vec3 diffuse_light = get_diffuse_light(ATTENUATION, LIGHT_COLOR);
+#if CURRENT_RENDERER != RENDERER_COMPATIBILITY
+	if (is_shadow_light(LIGHT_COLOR))
+		DIFFUSE_LIGHT *= diffuse_light;
+	else
+#endif
+	DIFFUSE_LIGHT += diffuse_light;
 }

@@ -1,7 +1,4 @@
-#ifndef SHADOW_ATTENUATION_DEFINED
-#define SHADOW_ATTENUATION_DEFINED
 global uniform float SHADOW_ATTENUATION;
-#endif
 
 #include "uid://boulc4k1hm5o8"
 
@@ -17,12 +14,17 @@ const float indicator_mult = indicator_ratio / (global_ratio + indicator_ratio +
 const float overall_mult = overall_ratio / (global_ratio + indicator_ratio + overall_ratio);
 
 float get_final_attenuation(float attenuation, float mult) {
-	float final_attenuation = attenuation < 1.0 ? SHADOW_ATTENUATION : 1.0;
+#if CURRENT_RENDERER == RENDERER_COMPATIBILITY
+	float final_attenuation = attenuation < 1.0 ? 0.0 : 1.0;
 	return final_attenuation * max_additive_value * mult;
+#else
+	float final_attenuation = attenuation < 1.0 ? SHADOW_ATTENUATION : 1.0;
+	return final_attenuation;
+#endif
 }
 
 vec3 get_global_diffuse(float attenuation, vec3 light_color) {
-	return  get_final_attenuation(attenuation, global_mult) * light_color / PI;
+	return get_final_attenuation(attenuation, global_mult) * light_color / PI;
 }
 
 vec3 get_indicator_diffuse(float attenuation, vec3 light_color) {
@@ -36,7 +38,12 @@ vec3 get_overall_diffuse(float attenuation, vec3 light_color) {
 }
 
 vec3 get_tint_diffuse(float attenuation) {
-	return attenuation < 0.99 ? tint : vec3(0.0);
+#if CURRENT_RENDERER == RENDERER_COMPATIBILITY
+	vec3 no_tint = vec3(0.0);
+#else
+	vec3 no_tint = vec3(1.0);
+#endif
+	return attenuation < 0.99 ? tint : no_tint;
 }
 
 vec3 get_diffuse_light(float attenuation, vec3 light_color) {

@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://ypwkw5b68kln"]
+[gd_scene load_steps=2 format=3 uid="uid://ypwkw5b68kln"]
+
+[ext_resource type="Script" uid="uid://baytj6xbpo62m" path="res://utilities/light/lights.gd" id="1_mgngh"]
 
 [node name="Lights" type="Node3D"]
+script = ExtResource("1_mgngh")
 
 [node name="GlobalLight" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
