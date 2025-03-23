@@ -41,8 +41,6 @@ size = Vector3(30, 2, 60)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rr8d4"]
 render_priority = 0
 shader = ExtResource("2")
-shader_parameter/shadow_light_color = Color(1, 0, 0, 1)
-shader_parameter/tint = Color(1, 0, 0, 1)
 shader_parameter/sprite_texture = ExtResource("2_fd3tu")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_g3cec"]
@@ -54,8 +52,6 @@ subdivide_depth = 2047
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5jk3x"]
 render_priority = 0
 shader = ExtResource("16_7ywox")
-shader_parameter/shadow_light_color = Color(1, 0, 0, 1)
-shader_parameter/tint = Color(1, 0, 0, 1)
 shader_parameter/sprite_texture = ExtResource("14_whl8h")
 shader_parameter/columns = 205.0
 shader_parameter/rows = 256.0
@@ -74,8 +70,6 @@ viewport_path = NodePath("SpriteViewport")
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("17_1i314")
-shader_parameter/shadow_light_color = Color(1, 0, 0, 1)
-shader_parameter/tint = Color(1, 0, 0, 1)
 shader_parameter/sprite_texture = ExtResource("18_qld6t")
 shader_parameter/opacity = 1.0
 shader_parameter/shaded = false

@@ -17,7 +17,7 @@ float get_distance_multiplier(float z, float camera_z) {
 	bool fade_from_front = distance_to_camera <= DISTANCE_FRONT_START;
 	float front_fade_length = DISTANCE_FRONT_START - DISTANCE_FRONT_END;
 	float back_fade_length = DISTANCE_BACK_END - DISTANCE_BACK_START;
-	
+
 	float ratio = fade_from_front ?
 			(distance_to_camera - DISTANCE_FRONT_END)/front_fade_length :
 			(DISTANCE_BACK_END - distance_to_camera)/back_fade_length;
