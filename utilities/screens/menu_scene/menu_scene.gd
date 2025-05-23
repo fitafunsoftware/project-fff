@@ -18,7 +18,7 @@ var _menu_option_button: Resource = preload("uid://blnfliijmyoe2")
 @export var touch: Array[bool]
 
 # Container for the menu option buttons.
-@onready var _menu = $VBoxContainer/HBoxContainer/MenuOptions
+@onready var _menu = %MenuOptions
 
 
 func _ready():

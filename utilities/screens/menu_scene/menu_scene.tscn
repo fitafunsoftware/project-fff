@@ -31,28 +31,43 @@ theme_override_font_sizes/font_size = 55
 text = "Project FFF"
 horizontal_alignment = 1
 
-[node name="MiddlePadding" type="HSeparator" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 11
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="MenuContainer" type="VBoxContainer" parent="VBoxContainer"]
+clip_contents = true
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="LeftPadding" type="VSeparator" parent="VBoxContainer/HBoxContainer"]
+[node name="MiddlePadding" type="HSeparator" parent="VBoxContainer/MenuContainer"]
+layout_mode = 2
+theme_override_constants/separation = 11
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MenuContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LeftPadding" type="VSeparator" parent="VBoxContainer/MenuContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MenuOptions" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="MenuScroll" type="ScrollContainer" parent="VBoxContainer/MenuContainer/HBoxContainer"]
+clip_contents = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
+follow_focus = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="MenuOptions" type="VBoxContainer" parent="VBoxContainer/MenuContainer/HBoxContainer/MenuScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/separation = 4
 alignment = 1
 
-[node name="RightPadding" type="VSeparator" parent="VBoxContainer/HBoxContainer"]
+[node name="RightPadding" type="VSeparator" parent="VBoxContainer/MenuContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="BottomPadding" type="HSeparator" parent="VBoxContainer"]
+[node name="BottomPadding" type="HSeparator" parent="VBoxContainer/MenuContainer"]
 layout_mode = 2
