@@ -59,7 +59,8 @@ func _regenerate_grass():
 # Function to clear all the grass previously generated.
 func _clear_grass():
 	for child: Node in get_children():
-		child.queue_free()
+		if not child.is_queued_for_deletion():
+			child.free()
 	
 	_mesh = null
 
@@ -94,13 +95,13 @@ func _create_mesh():
 	var shader_material := ShaderMaterial.new()
 	shader_material.shader = GRASS_SHADER
 	shader_material.set_shader_parameter("sprite_texture", grass_texture)
-	shader_material.set_shader_parameter("columns", float(_columns))
-	shader_material.set_shader_parameter("rows", float(_rows))
+	shader_material.set_shader_parameter("grid", Vector2(_rows, _columns))
 	shader_material.set_shader_parameter("bitmap_texture", grass_map)
 	
 	var quad_mesh := QuadMesh.new()
 	quad_mesh.orientation = PlaneMesh.FACE_Z
 	quad_mesh.size = Vector2(_row_length, _row_height)
+	quad_mesh.center_offset = Vector3(_row_length/2.0, 0.0, 0.0)
 	quad_mesh.material = shader_material
 	quad_mesh.custom_aabb = _get_custom_aabb(quad_mesh)
 	
@@ -121,16 +122,11 @@ func _create_grass_instances():
 	if not grass_texture or not grass_map:
 		return
 	
-	var start_z_position: float = -_rows/2.0 * _distance_between_rows
-	var start_x_position: float = -_row_length/2.0
+	global_position = GlobalParams.get_snapped_position(global_position)
+	var grass_position := Vector3.ZERO
 	
-	var grass_position := Vector3(0.0, 0.0, 0.0)
-	grass_position.z = start_z_position
-	grass_position.x = snappedf(global_position.x, 0.01) + fmod(start_x_position, PIXEL_SIZE)
-	
-	var top_most: Vector3 = to_global(grass_position)
-	top_most = Vector3(_distance_between_rows * _rows, 0.0, top_most.z)
-	_mesh.material.set_shader_parameter("top_most", top_most)
+	var row_info := Vector2(_distance_between_rows*_rows, to_global(grass_position).z)
+	_mesh.material.set_shader_parameter("row_info", row_info)
 	
 	for row: int in _rows:
 		var grass_instance := GrassInstance3D.new()
