@@ -101,6 +101,7 @@ func _create_mesh():
 	var quad_mesh := QuadMesh.new()
 	quad_mesh.orientation = PlaneMesh.FACE_Z
 	quad_mesh.size = Vector2(_row_length, _row_height)
+	quad_mesh.center_offset = Vector3(_row_length/2.0, 0.0, 0.0)
 	quad_mesh.material = shader_material
 	quad_mesh.custom_aabb = _get_custom_aabb(quad_mesh)
 	
@@ -121,12 +122,8 @@ func _create_grass_instances():
 	if not grass_texture or not grass_map:
 		return
 	
-	var start_z_position: float = -_rows/2.0 * _distance_between_rows
-	var start_x_position: float = -_row_length/2.0
-	
-	var grass_position := Vector3(0.0, 0.0, 0.0)
-	grass_position.z = start_z_position
-	grass_position.x = snappedf(global_position.x, 0.01) + fmod(start_x_position, PIXEL_SIZE)
+	global_position = GlobalParams.get_snapped_position(global_position)
+	var grass_position := Vector3.ZERO
 	
 	var top_most: Vector3 = to_global(grass_position)
 	top_most = Vector3(_distance_between_rows * _rows, 0.0, top_most.z)
