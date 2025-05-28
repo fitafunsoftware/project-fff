@@ -1,0 +1,28 @@
+shader_type spatial;
+render_mode blend_mix,specular_disabled,world_vertex_coords;
+
+#include "uid://bdsoodic2nyyb"
+#include "uid://bjjy0u5on1c51"
+
+uniform sampler2D sprite_texture : source_color, filter_nearest, repeat_enable;
+uniform vec2 uniform_mesh_size;
+
+void vertex() {
+	float y_offset = get_curved_y(VERTEX.z, CAMERA_POSITION_WORLD.z);
+	vec3 final_position = VERTEX + vec3(0.0, y_offset, 0.0);
+	POSITION = PROJECTION_MATRIX * VIEW_MATRIX * vec4(final_position, 1.0);
+}
+
+void fragment() {
+	if (!FRONT_FACING) {
+		discard;
+	}
+	vec2 texture_size = vec2(textureSize(sprite_texture, 0));
+	vec2 scale_multiplier = uniform_mesh_size/texture_size;
+	vec4 color = texture(sprite_texture,UV*scale_multiplier);
+	ALBEDO = color.rgb;
+}
+
+void light() {
+	DIFFUSE_LIGHT += get_sprite_diffuse(ATTENUATION, LIGHT_COLOR);
+}
