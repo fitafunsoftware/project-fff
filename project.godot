@@ -12,7 +12,7 @@ config_version=5
 
 config/name="project-fff"
 run/main_scene="res://scenes/game.tscn"
-config/features=PackedStringArray("4.4")
+config/features=PackedStringArray("4.5")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
 boot_splash/use_filter=false
@@ -69,10 +69,10 @@ import/fbx/enabled=false
 
 [gui]
 
-theme/custom="res://utilities/resources/themes/pixel_theme.tres"
 theme/default_font_antialiasing=0
 theme/default_font_hinting=0
 theme/default_font_subpixel_positioning=0
+theme/custom="res://utilities/resources/themes/pixel_theme.tres"
 common/drop_mouse_on_gui_input_disabled=true
 
 [importer_defaults]
@@ -369,8 +369,8 @@ file_logging/enable_file_logging.pc=false
 2d/run_on_separate_thread=true
 3d/run_on_separate_thread=true
 3d/physics_engine="Jolt Physics"
-jolt_physics_3d/simulation/areas_detect_static_bodies=true
 common/enable_pause_aware_picking=true
+jolt_physics_3d/simulation/areas_detect_static_bodies=true
 
 [rendering]
 
