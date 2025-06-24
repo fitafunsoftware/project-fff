@@ -1,10 +1,10 @@
 @tool
+@abstract
 class_name VirtualJoystick
 extends Control
-## Base class for touch screen joysticks.
+## Abstract class for touch screen joysticks.
 ##
-## Base class for touch screen joysticks. As such, don't use this node. Instead,
-## use either the StaticJoystick or FloatingJoystick nodes.
+## Interface for touch screen joysticks.
 
 ## Signal for when the joystick vector changes value.
 signal input_vector_changed(input_vector: Vector2)

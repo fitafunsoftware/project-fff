@@ -2,9 +2,9 @@
 @icon("uid://cq18ibuhn8vbj")
 class_name ComponentState
 extends State
-## A state built using components.
+## A State built using components.
 ##
-## A state that you can build in-editor using StateComponents by attaching them
+## A State that you can build in-editor using StateComponents by attaching them
 ## them to this node as a descendent.
 
 ## Button to reload dependencies.

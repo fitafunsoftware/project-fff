@@ -1,9 +1,10 @@
 @icon("uid://blni7ty6jjh36")
+@abstract
 class_name InputHandler
 extends Node
-## Base class for InputHandlers.
+## Abstract class for handling inputs.
 ##
-## Meant to act as an interface.
+## A basic interface for processing input into actions.
 
 
 ## Input direction for movement.

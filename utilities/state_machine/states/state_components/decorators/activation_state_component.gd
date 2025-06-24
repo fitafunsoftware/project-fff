@@ -1,7 +1,9 @@
 @tool
-extends NestingStateComponent
+@abstract
 class_name ActivationStateComponent
-## A NestingStateComponent that activates or deactivates its descendent StateComponents.
+extends NestingStateComponent
+## An interface for a NestingStateComponent that activates or deactivates its
+## descendent StateComponents.
 
 const FORCE = true
 

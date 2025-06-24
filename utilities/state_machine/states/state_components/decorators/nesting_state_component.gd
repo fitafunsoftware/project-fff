@@ -1,7 +1,8 @@
 @tool
-extends StateComponent
+@abstract
 class_name NestingStateComponent
-## A StateComponent that holds other StateComponents.
+extends StateComponent
+## Abstract class for a StateComponent that holds other StateComponents.
 
 var _components: Array[StateComponent]
 

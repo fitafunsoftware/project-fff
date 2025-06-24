@@ -1,8 +1,9 @@
 @tool
 @icon("uid://bldsefv2ipwp4")
+@abstract
 class_name CallFunctionStateComponent
 extends NodeStateComponent
-## NodeStateComponent that calls the function on the node with the args as 
+## Abstract class for a NodeStateComponent that calls the function on the node with the args as 
 ## arguments to the function.
 
 ## Function to call.

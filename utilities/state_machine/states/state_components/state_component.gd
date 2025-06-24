@@ -1,11 +1,12 @@
 @tool
 @icon("uid://s0np8whnlvb2")
+@abstract
 class_name StateComponent
 extends Node
-## Base class for a StateComponent
+## Abstract class for a component of a ComponentState.
 ##
-## The components that ComponentState is built up from. Extend this class to make
-## a StateComponent of your own.
+## The interface for components that make up a ComponentState. Child components of a
+## ComponentState make up the logic for that ComponentState.
 
 ## Is this component active?
 @export var active := true: set = _set_active

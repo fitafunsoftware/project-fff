@@ -1,8 +1,9 @@
 @tool
 @icon("uid://c7ygp8h6xjx46")
+@abstract
 class_name NodeStateComponent
 extends StateComponent
-## Base StateComponent for components that interact with a node.
+## Abstract class for a StateComponent that interacts with a node.
 
 ## Key for the node dependency.
 @export var node_key: StringName = &"node_key"

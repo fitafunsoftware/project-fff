@@ -1,9 +1,10 @@
 @icon("uid://dfdf1wmt63krr")
+@abstract
 class_name State
 extends Node
-## Base class for StateMachine states.
+## Abstract class for StateMachine states.
 ##
-## An interface meant to be extended for use of making states for the StateMachine.
+## An interface meant to be extended for use of coding states for the StateMachine.
 
 ## Signal to request for a state change.[br]Instead of emitting this signal, call
 ## the finished function.

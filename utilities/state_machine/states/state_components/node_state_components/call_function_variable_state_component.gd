@@ -1,9 +1,10 @@
 @tool
 @icon("uid://dmsg2efeowwm7")
+@abstract
 class_name CallFunctionVariableStateComponent
 extends NodeStateComponent
-## NodeStateComponent that calls the function on the node with dependencies as 
-## the arguments to the function.
+## Abstract class for a NodeStateComponent that calls the function on the node with 
+## dependencies as the arguments to the function.
 
 ## Function to call.
 @export var function: StringName
