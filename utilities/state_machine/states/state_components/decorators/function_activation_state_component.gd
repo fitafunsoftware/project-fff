@@ -1,7 +1,7 @@
 @tool
 @icon("uid://cn6q1pqby1xqf")
-extends ActivationStateComponent
 class_name FunctionActivationStateComponent
+extends ActivationStateComponent
 ## StateComponent that activates or deactivates descendents based on a function.
 ##
 ## Calls the function on the node and compares it with equals. Activates or

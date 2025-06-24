@@ -1,7 +1,7 @@
 @tool
 @icon("uid://dbvkotl2ekdxh")
-extends ActivationStateComponent
 class_name DelayedActivationStateComponent
+extends ActivationStateComponent
 ## StateComponents that activates or deactivates descendents after a delay.
 
 ## Delay before activating or deactivating descendants.
