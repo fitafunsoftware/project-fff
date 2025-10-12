@@ -1,0 +1,222 @@
+[gd_scene format=3 uid="uid://qobw655k4wgt"]
+
+[ext_resource type="Script" uid="uid://bgxv17ijuq0l4" path="res://utilities/helpers/reset_to_scene.gd" id="1_wa7hy"]
+[ext_resource type="Script" uid="uid://dkc46s85igrsq" path="res://scenes/prototypes/movement/relative_movement/stage.gd" id="2_5bmp1"]
+[ext_resource type="Texture2D" uid="uid://cie4dgbix5qa8" path="res://assets/art/prototypes/range_1m.png" id="2_mktlt"]
+[ext_resource type="Script" uid="uid://bmv2eqgi106c8" path="res://scenes/prototypes/movement/relative_movement/borders.gd" id="3_43soe"]
+[ext_resource type="Script" uid="uid://dntoen5nyj7kj" path="res://scenes/prototypes/movement/relative_movement/player.gd" id="4_jo1j8"]
+[ext_resource type="PackedScene" uid="uid://dkv1ey0qvccts" path="res://scenes/prototypes/movement/relative_movement/counter.tscn" id="6_li8ti"]
+
+[node name="RelativeMovement" type="Node2D" unique_id=414777784]
+
+[node name="GamepadResetToMenu" type="Node" parent="." unique_id=1562639751]
+script = ExtResource("1_wa7hy")
+reset_scene = "uid://c87ds2v03qc1m"
+reset_combo = Array[StringName]([&"back", &"x", &"leftshoulder"])
+metadata/_custom_type_script = "uid://bgxv17ijuq0l4"
+
+[node name="KeybaordResetToMenu" type="Node" parent="." unique_id=809995616]
+script = ExtResource("1_wa7hy")
+reset_scene = "uid://c87ds2v03qc1m"
+reset_combo = Array[StringName]([&"ui_cancel", &"ui_accept"])
+metadata/_custom_type_script = "uid://bgxv17ijuq0l4"
+
+[node name="Stage" type="Node2D" parent="." unique_id=288291705]
+position = Vector2(320, 358)
+script = ExtResource("2_5bmp1")
+size = 32
+base_speed = 6.0
+sprint_speed = 10.0
+
+[node name="Player" type="Node2D" parent="Stage" unique_id=184426079]
+script = ExtResource("4_jo1j8")
+
+[node name="Sprite" type="ColorRect" parent="Stage/Player" unique_id=1991734185]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -64.0
+offset_right = 32.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.022599265, 0.4783516, 0.25335172, 1)
+
+[node name="Range" type="Node2D" parent="Stage" unique_id=1938851425]
+position = Vector2(0, 1)
+
+[node name="6m" type="Sprite2D" parent="Stage/Range" unique_id=1928005582]
+position = Vector2(279, 0)
+texture = ExtResource("2_mktlt")
+centered = false
+offset = Vector2(0, -16)
+
+[node name="5m" type="Sprite2D" parent="Stage/Range" unique_id=692868420]
+position = Vector2(179, 0)
+texture = ExtResource("2_mktlt")
+centered = false
+offset = Vector2(0, -16)
+
+[node name="4m" type="Sprite2D" parent="Stage/Range" unique_id=1927069780]
+position = Vector2(79, 0)
+texture = ExtResource("2_mktlt")
+centered = false
+offset = Vector2(0, -16)
+
+[node name="3m" type="Sprite2D" parent="Stage/Range" unique_id=506182831]
+position = Vector2(-21, 0)
+texture = ExtResource("2_mktlt")
+centered = false
+offset = Vector2(0, -16)
+
+[node name="2m" type="Sprite2D" parent="Stage/Range" unique_id=347227690]
+position = Vector2(-121, 0)
+texture = ExtResource("2_mktlt")
+centered = false
+offset = Vector2(0, -16)
+
+[node name="1m" type="Sprite2D" parent="Stage/Range" unique_id=1585534267]
+position = Vector2(-221, 0)
+texture = ExtResource("2_mktlt")
+centered = false
+offset = Vector2(0, -16)
+
+[node name="0m" type="Sprite2D" parent="Stage/Range" unique_id=576023183]
+position = Vector2(-321, 0)
+texture = ExtResource("2_mktlt")
+centered = false
+offset = Vector2(0, -16)
+
+[node name="Borders" type="Node2D" parent="Stage" unique_id=789768058]
+position = Vector2(0, 2)
+script = ExtResource("3_43soe")
+
+[node name="Left" type="Node2D" parent="Stage/Borders" unique_id=1535776993]
+position = Vector2(-320, 0)
+
+[node name="Left" type="ColorRect" parent="Stage/Borders/Left" unique_id=1980799319]
+custom_minimum_size = Vector2(360, 480)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -360.0
+offset_top = -360.0
+offset_bottom = 120.0
+grow_horizontal = 0
+grow_vertical = 0
+color = Color(0, 0, 0, 1)
+
+[node name="Right" type="Node2D" parent="Stage/Borders" unique_id=877837685]
+position = Vector2(320, 0)
+
+[node name="Right" type="ColorRect" parent="Stage/Borders/Right" unique_id=1050697195]
+custom_minimum_size = Vector2(360, 480)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -360.0
+offset_right = 400.0
+offset_bottom = 120.0
+grow_vertical = 0
+color = Color(0, 0, 0, 1)
+
+[node name="Top" type="Node2D" parent="Stage/Borders" unique_id=873782274]
+position = Vector2(0, -360)
+
+[node name="Top" type="ColorRect" parent="Stage/Borders/Top" unique_id=2057268765]
+custom_minimum_size = Vector2(680, 380)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -340.0
+offset_top = -360.0
+offset_right = 340.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0, 0, 1)
+
+[node name="Bottom" type="Node2D" parent="Stage/Borders" unique_id=130159002]
+
+[node name="Bottom" type="ColorRect" parent="Stage/Borders/Bottom" unique_id=1159323699]
+custom_minimum_size = Vector2(680, 140)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -340.0
+offset_right = 340.0
+offset_bottom = 280.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Counters" type="HBoxContainer" parent="Stage" unique_id=383650669]
+offset_left = -280.0
+offset_top = -350.0
+offset_right = 260.0
+offset_bottom = -256.0
+theme_override_constants/separation = 12
+
+[node name="A" type="VBoxContainer" parent="Stage/Counters" unique_id=1997771277]
+layout_mode = 2
+
+[node name="Width" parent="Stage/Counters/A" unique_id=535230044 instance=ExtResource("6_li8ti")]
+layout_mode = 2
+title = "Stage Width"
+
+[node name="Ratio" type="Label" parent="Stage/Counters/A" unique_id=483443312]
+layout_mode = 2
+text = "20x Player Size"
+
+[node name="B" type="VBoxContainer" parent="Stage/Counters" unique_id=935933353]
+layout_mode = 2
+
+[node name="Size" parent="Stage/Counters/B" unique_id=612558396 instance=ExtResource("6_li8ti")]
+layout_mode = 2
+title = "Player Size"
+max_value = 128
+
+[node name="C" type="VBoxContainer" parent="Stage/Counters" unique_id=1264413324]
+layout_mode = 2
+
+[node name="Base" parent="Stage/Counters/C" unique_id=566401083 instance=ExtResource("6_li8ti")]
+layout_mode = 2
+title = "Base Speed"
+max_value = 200
+min_value = 1
+is_tenth = true
+
+[node name="PixelSpeed" type="Label" parent="Stage/Counters/C" unique_id=2066030288]
+layout_mode = 2
+text = "Pixel Speed: 192"
+
+[node name="EndToEnd" type="Label" parent="Stage/Counters/C" unique_id=964935064]
+layout_mode = 2
+text = "End To End: 3.0s"
+
+[node name="D" type="VBoxContainer" parent="Stage/Counters" unique_id=937220770]
+layout_mode = 2
+
+[node name="Sprint" parent="Stage/Counters/D" unique_id=1932454855 instance=ExtResource("6_li8ti")]
+layout_mode = 2
+title = "Sprint Speed"
+max_value = 200
+min_value = 1
+is_tenth = true
+
+[node name="PixelSpeed" type="Label" parent="Stage/Counters/D" unique_id=1180872478]
+layout_mode = 2
+text = "Pixel Speed: 352"
+
+[node name="EndToEnd" type="Label" parent="Stage/Counters/D" unique_id=1957003208]
+layout_mode = 2
+text = "End To End: 1.0s"
+
+[connection signal="amount_changed" from="Stage/Counters/A/Width" to="Stage" method="_width_changed"]
+[connection signal="amount_changed" from="Stage/Counters/B/Size" to="Stage" method="_size_changed"]
+[connection signal="amount_changed" from="Stage/Counters/C/Base" to="Stage" method="_base_speed_changed"]
+[connection signal="amount_changed" from="Stage/Counters/D/Sprint" to="Stage" method="_sprint_speed_changed"]

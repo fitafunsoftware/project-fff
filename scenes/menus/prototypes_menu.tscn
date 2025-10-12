@@ -1,21 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://b24hjuc3yqldv"]
+[gd_scene format=3 uid="uid://b24hjuc3yqldv"]
 
 [ext_resource type="PackedScene" uid="uid://m1ira233pk6j" path="res://utilities/screens/menu_scene/menu_scene.tscn" id="1_25sx7"]
 [ext_resource type="Script" uid="uid://bgxv17ijuq0l4" path="res://utilities/helpers/reset_to_scene.gd" id="2_65c8y"]
 
-[node name="PrototypesMenu" instance=ExtResource("1_25sx7")]
-options = Array[String](["Combat", "Main Menu"])
-scenes = Array[String](["res://scenes/menus/prototype_menus/combat_prototype_menu.tscn", "res://scenes/menus/main_menu.tscn"])
+[node name="PrototypesMenu" unique_id=704131469 instance=ExtResource("1_25sx7")]
+options = Array[String](["Movement", "Main Menu"])
+scenes = Array[String](["res://scenes/menus/prototype_menus/movement_prototype_menu.tscn", "res://scenes/menus/main_menu.tscn"])
 loading = Array[bool]([false, false])
 touch = Array[bool]([false, false])
 
-[node name="Title" parent="VBoxContainer" index="1"]
+[node name="Title" parent="VBoxContainer" parent_id_path=PackedInt32Array(1251214552) index="1" unique_id=1088626753]
 text = "Prototypes"
 
-[node name="MenuOptions" parent="VBoxContainer/MenuContainer/HBoxContainer/MenuScroll" index="0"]
+[node name="MenuOptions" parent="VBoxContainer/MenuContainer/HBoxContainer/MenuScroll" parent_id_path=PackedInt32Array(1879519003) index="0" unique_id=1201269469]
 size_flags_vertical = 2
 
-[node name="ResetToScene" type="Node" parent="." index="1"]
+[node name="ResetToScene" type="Node" parent="." index="1" unique_id=1669312729]
 script = ExtResource("2_65c8y")
 reset_scene = "uid://dv33j0a4k3263"
 reset_combo = Array[StringName]([&"ui_cancel"])

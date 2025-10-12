@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://dkv1ey0qvccts"]
+
+[ext_resource type="Script" uid="uid://ckb00by2jyp42" path="res://scenes/prototypes/movement/relative_movement/counter.gd" id="1_nsg2r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_twrlw"]
+bg_color = Color(0.18932778, 0.1893278, 0.18932769, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.1882353, 0.1882353, 0.1882353, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_twrlw"]
+line_spacing = 0.0
+font_size = 22
+shadow_size = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nsg2r"]
+bg_color = Color(0.3470683, 0.3470683, 0.3470683, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_624mm"]
+bg_color = Color(0.16062862, 0.16062862, 0.16062862, 1)
+
+[node name="Counter" type="PanelContainer" unique_id=535230044]
+offset_right = 104.0
+offset_bottom = 30.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_twrlw")
+script = ExtResource("1_nsg2r")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=245360233]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Title" type="Label" parent="VBoxContainer" unique_id=387194012]
+layout_mode = 2
+text = "Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBox" type="HBoxContainer" parent="VBoxContainer" unique_id=1081886167]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Amount" type="Label" parent="VBoxContainer/HBox" unique_id=1328967976]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+text = "640"
+label_settings = SubResource("LabelSettings_twrlw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tens" type="VBoxContainer" parent="VBoxContainer/HBox" unique_id=810931094]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Increase" type="Button" parent="VBoxContainer/HBox/Tens" unique_id=50136594]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_nsg2r")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_624mm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nsg2r")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_nsg2r")
+theme_override_styles/focus = SubResource("StyleBoxFlat_nsg2r")
+action_mode = 0
+text = "n"
+
+[node name="Decrease" type="Button" parent="VBoxContainer/HBox/Tens" unique_id=297953224]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_nsg2r")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_624mm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nsg2r")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_nsg2r")
+theme_override_styles/focus = SubResource("StyleBoxFlat_nsg2r")
+action_mode = 0
+text = "v"
+
+[node name="Ones" type="VBoxContainer" parent="VBoxContainer/HBox" unique_id=326495830]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Increase" type="Button" parent="VBoxContainer/HBox/Ones" unique_id=675662661]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_nsg2r")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_624mm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nsg2r")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_nsg2r")
+theme_override_styles/focus = SubResource("StyleBoxFlat_nsg2r")
+action_mode = 0
+text = "n"
+
+[node name="Decrease" type="Button" parent="VBoxContainer/HBox/Ones" unique_id=372335603]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_nsg2r")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_624mm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nsg2r")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_nsg2r")
+theme_override_styles/focus = SubResource("StyleBoxFlat_nsg2r")
+action_mode = 0
+text = "v"
+
+[connection signal="pressed" from="VBoxContainer/HBox/Tens/Increase" to="." method="_increment" binds= [10]]
+[connection signal="pressed" from="VBoxContainer/HBox/Tens/Decrease" to="." method="_increment" binds= [-10]]
+[connection signal="pressed" from="VBoxContainer/HBox/Ones/Increase" to="." method="_increment" binds= [1]]
+[connection signal="pressed" from="VBoxContainer/HBox/Ones/Decrease" to="." method="_increment" binds= [-1]]
