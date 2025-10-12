@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://cr3sqr85dg7uf"]
+
+[ext_resource type="Script" uid="uid://bgxv17ijuq0l4" path="res://utilities/helpers/reset_to_scene.gd" id="1_85h8l"]
+
+[node name="OneDCombat" type="Node2D"]
+
+[node name="GamepadResetToMenu" type="Node" parent="."]
+script = ExtResource("1_85h8l")
+reset_scene = "uid://doffggswdlg6k"
+reset_combo = Array[StringName]([&"back", &"x", &"leftshoulder"])
+metadata/_custom_type_script = "uid://bgxv17ijuq0l4"
+
+[node name="KeybaordResetToMenu" type="Node" parent="."]
+script = ExtResource("1_85h8l")
+reset_scene = "uid://doffggswdlg6k"
+reset_combo = Array[StringName]([&"ui_cancel", &"ui_accept"])
+metadata/_custom_type_script = "uid://bgxv17ijuq0l4"

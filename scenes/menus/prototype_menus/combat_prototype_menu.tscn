@@ -4,10 +4,10 @@
 [ext_resource type="Script" uid="uid://bgxv17ijuq0l4" path="res://utilities/helpers/reset_to_scene.gd" id="2_jeobd"]
 
 [node name="Combat" instance=ExtResource("1_1f27r")]
-options = Array[String](["Back"])
-scenes = Array[String](["res://scenes/menus/prototypes_menu.tscn"])
-loading = Array[bool]([false])
-touch = Array[bool]([false])
+options = Array[String](["1D Combat", "Back"])
+scenes = Array[String](["res://scenes/prototypes/combat/one_d_combat/one_d_combat.tscn", "res://scenes/menus/prototypes_menu.tscn"])
+loading = Array[bool]([false, false])
+touch = Array[bool]([false, false])
 
 [node name="Title" parent="VBoxContainer" index="1"]
 text = "Combat Prototypes"
