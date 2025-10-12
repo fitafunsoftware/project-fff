@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://doffggswdlg6k"]
+
+[ext_resource type="PackedScene" uid="uid://m1ira233pk6j" path="res://utilities/screens/menu_scene/menu_scene.tscn" id="1_1f27r"]
+[ext_resource type="Script" uid="uid://bgxv17ijuq0l4" path="res://utilities/helpers/reset_to_scene.gd" id="2_jeobd"]
+
+[node name="Combat" instance=ExtResource("1_1f27r")]
+options = Array[String](["Back"])
+scenes = Array[String](["res://scenes/menus/prototypes_menu.tscn"])
+loading = Array[bool]([false])
+touch = Array[bool]([false])
+
+[node name="Title" parent="VBoxContainer" index="1"]
+text = "Combat Prototypes"
+
+[node name="MenuOptions" parent="VBoxContainer/MenuContainer/HBoxContainer/MenuScroll" index="0"]
+size_flags_vertical = 2
+
+[node name="ResetToScene" type="Node" parent="." index="1"]
+script = ExtResource("2_jeobd")
+reset_scene = "uid://b24hjuc3yqldv"
+reset_combo = Array[StringName]([&"ui_cancel"])
+metadata/_custom_type_script = "uid://bgxv17ijuq0l4"
