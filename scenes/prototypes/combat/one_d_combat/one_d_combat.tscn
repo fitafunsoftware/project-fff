@@ -62,7 +62,7 @@ offset = Vector2(-232, -128)
 
 [node name="Game" type="Node2D" parent="Stage"]
 script = ExtResource("4_f2amu")
-player_speed = 100.0
+enemy_speed = 150.0
 
 [node name="Player" type="Sprite2D" parent="Stage/Game"]
 unique_name_in_owner = true

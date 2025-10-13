@@ -2,7 +2,7 @@ extends Node2D
 
 @export var max_range: int = 480
 @export var player_speed: float = 100.0
-@export var enemy_speed: float = 120.0
+@export var enemy_speed: float = 150.0
 
 @onready var player: Node2D = %Player
 
@@ -10,13 +10,19 @@ extends Node2D
 var _player_direction: int = 0
 
 # Enemy private variables
-var _enemy_direction: int = 0 
+var _enemy_direction: int = 0
+const TOWARDS: int = -1
+const AWAY: int = 1
+var _range_divisions: float = 100.0
+var _in_action: bool = false
+var _move_duration: float = 1.2
 
 func _ready():
 	pass
 
 
 func _physics_process(delta: float):
+	_process_enemy_state()
 	_set_player_direction()
 	_move_player(delta)
 	_clamp_player_position()
@@ -41,3 +47,42 @@ func _clamp_player_position():
 	var x_position: float = player.position.x
 	x_position = clampf(x_position, 0.0, max_range)
 	player.position.x = x_position
+
+
+func _process_enemy_state():
+	if _in_action:
+		return
+	
+	var player_range: int = _get_player_range()
+
+	if player_range >= 3:
+		_move_towards_player()
+	
+	if player_range < 1:
+		_move_away_from_player()
+
+
+func _get_player_range() -> int:
+	return floori(player.position.x/_range_divisions)
+
+
+func _move_towards_player():
+	_in_action = true
+	_enemy_direction = TOWARDS
+
+	await get_tree().create_timer(_move_duration).timeout
+
+	_reset_action()
+
+func _move_away_from_player():
+	_in_action = true
+	_enemy_direction = AWAY
+
+	await get_tree().create_timer(_move_duration).timeout
+
+	_reset_action()
+
+
+func _reset_action():
+	_enemy_direction = 0
+	_in_action = false
