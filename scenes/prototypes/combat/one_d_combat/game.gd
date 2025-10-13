@@ -71,12 +71,22 @@ func _process_enemy_state():
 		return
 	
 	var player_range: int = _get_player_range()
-
-	if player_range >= 3:
-		_move_towards_player()
 	
-	if player_range < 1:
-		_move_away_from_player()
+	match player_range:
+		0:
+			_move_away_from_player()
+		1:
+			pass
+		2:
+			pass
+		3:
+			_move_towards_player()
+		4:
+			_move_towards_player()
+		5:
+			_move_towards_player()
+		_:
+			pass
 
 
 func _get_player_range() -> int:
