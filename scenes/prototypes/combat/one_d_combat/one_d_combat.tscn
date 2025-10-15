@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cr3sqr85dg7uf"]
+[gd_scene load_steps=11 format=3 uid="uid://cr3sqr85dg7uf"]
 
 [ext_resource type="Script" uid="uid://bgxv17ijuq0l4" path="res://utilities/helpers/reset_to_scene.gd" id="1_85h8l"]
 [ext_resource type="Texture2D" uid="uid://cie4dgbix5qa8" path="res://assets/art/prototypes/range_1m.png" id="2_tmk7a"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cktr21oj4f3we" path="res://assets/art/prototypes/right_arrow.png" id="7_n2p87"]
 [ext_resource type="Texture2D" uid="uid://cajalq6lxgv3l" path="res://assets/art/prototypes/right_right_arrow.png" id="8_mkfyb"]
 [ext_resource type="Texture2D" uid="uid://cbp3sjyjj1ynt" path="res://assets/art/prototypes/left_left_arrow.png" id="9_yte02"]
+[ext_resource type="Texture2D" uid="uid://cono3u8fwxaru" path="res://assets/art/prototypes/pause.png" id="10_n2p87"]
 
 [node name="OneDCombat" type="Node2D"]
 
@@ -97,3 +98,8 @@ texture = ExtResource("8_mkfyb")
 visible = false
 position = Vector2(-70, -60)
 texture = ExtResource("9_yte02")
+
+[node name="Stay" type="Sprite2D" parent="Stage/Game/WolfArrows"]
+visible = false
+position = Vector2(-70, -60)
+texture = ExtResource("10_n2p87")
