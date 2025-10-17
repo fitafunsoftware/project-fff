@@ -2,7 +2,8 @@ extends Node2D
 
 @export var max_range: int = 480
 @export var player_speed: float = 100.0
-@export var enemy_speed: float = 150.0
+@export var enemy_towards_speed: float = 150.0
+@export var enemy_away_speed: float = 75.0
 
 @onready var player: Node2D = $Player
 @onready var player_towards: Node2D = $Player/Towards
@@ -17,6 +18,7 @@ extends Node2D
 var _player_direction: int = 0
 
 # Enemy private variables
+var _enemy_speed: float = 0
 var _enemy_direction: int = 0
 const TOWARDS: int = -1
 const AWAY: int = 1
@@ -27,6 +29,7 @@ var _default_stay_duration: float = 1.0
 
 
 func _ready():
+	_enemy_speed = enemy_towards_speed
 	player_towards.hide()
 	player_away.hide()
 	enemy_towards.hide()
@@ -58,7 +61,7 @@ func _set_player_direction():
 
 func _move_player(delta: float):
 	var current_speed: float = \
-			enemy_speed * _enemy_direction + \
+			_enemy_speed * _enemy_direction + \
 			player_speed * _player_direction
 	
 	player.position.x += current_speed * delta
@@ -126,6 +129,7 @@ func _stay(duration: float):
 
 func _move_towards_player():
 	_in_action = true
+	_enemy_speed = enemy_towards_speed
 	_enemy_direction = TOWARDS
 	enemy_towards.show()
 	
@@ -135,6 +139,7 @@ func _move_towards_player():
 
 func _move_away_from_player():
 	_in_action = true
+	_enemy_speed = enemy_away_speed
 	_enemy_direction = AWAY
 	enemy_away.show()
 	
