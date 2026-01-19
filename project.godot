@@ -8,11 +8,15 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="project-fff"
 run/main_scene="res://scenes/game.tscn"
-config/features=PackedStringArray("4.5")
+config/features=PackedStringArray("4.6")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
 boot_splash/use_filter=false
@@ -394,7 +398,6 @@ anti_aliasing/screen_space_roughness_limiter/enabled=false
 textures/decals/filter=0
 textures/light_projectors/filter=0
 environment/glow/upscale_mode=0
-environment/screen_space_reflection/roughness_quality=0
 environment/subsurface_scattering/subsurface_scattering_quality=0
 limits/global_shader_variables/buffer_size=1024
 global_illumination/sdfgi/probe_ray_count=0
@@ -407,6 +410,7 @@ mesh_lod/lod_change/threshold_pixels=0.0
 lights_and_shadows/positional_shadow/atlas_size=1024
 lights_and_shadows/positional_shadow/atlas_size.mobile=1024
 environment/defaults/default_environment="res://utilities/resources/environments/default_environment.tres"
+environment/screen_space_reflection/roughness_quality=0
 shading/overrides/force_vertex_shading.mobile=false
 2d/snapping/use_gpu_pixel_snap=true
 textures/vram_compression/import_s3tc=true

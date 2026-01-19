@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dulrx0vcr1lr0"]
+[gd_scene format=3 uid="uid://dulrx0vcr1lr0"]
 
 [ext_resource type="PackedScene" uid="uid://vmu53hs5q5m7" path="res://utilities/screens/splash_screen/splash_screen.tscn" id="1_hjds4"]
 [ext_resource type="Texture2D" uid="uid://ib3tqwh3lhap" path="res://utilities/screens/splash_screen/logos/fita_fun_software/fita_fun_software_logo.png" id="2_pwwb3"]
 
-[node name="FitaSplash" instance=ExtResource("1_hjds4")]
+[node name="FitaSplash" unique_id=1506476917 instance=ExtResource("1_hjds4")]
 
 [node name="Logo" parent="." index="1"]
 offset_left = -250.0

@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://611jopnpjsx0"]
+[gd_scene format=3 uid="uid://611jopnpjsx0"]
 
 [ext_resource type="Script" uid="uid://ctgltlgm4uxpt" path="res://utilities/main_game/game_viewport/game_viewport_container.gd" id="1_wfct1"]
 [ext_resource type="Script" uid="uid://0lel6cxqf687" path="res://utilities/main_game/game_viewport/game_viewport.gd" id="2_e0aw5"]
 [ext_resource type="Script" uid="uid://q5abck7ltj3d" path="res://utilities/main_game/game_viewport/next_scene_manager.gd" id="3_dxr7d"]
 
-[node name="GameViewportContainer" type="SubViewportContainer"]
+[node name="GameViewportContainer" type="SubViewportContainer" unique_id=1120110021]
 texture_filter = 1
 custom_minimum_size = Vector2(640, 360)
 anchors_preset = 15
@@ -17,7 +17,7 @@ size_flags_vertical = 4
 stretch = true
 script = ExtResource("1_wfct1")
 
-[node name="GameViewport" type="SubViewport" parent="."]
+[node name="GameViewport" type="SubViewport" parent="." unique_id=493918034]
 handle_input_locally = false
 snap_2d_transforms_to_pixel = true
 snap_2d_vertices_to_pixel = true
@@ -27,5 +27,5 @@ size = Vector2i(640, 360)
 render_target_update_mode = 4
 script = ExtResource("2_e0aw5")
 
-[node name="NextSceneManager" type="Node" parent="GameViewport"]
+[node name="NextSceneManager" type="Node" parent="GameViewport" unique_id=908913945]
 script = ExtResource("3_dxr7d")

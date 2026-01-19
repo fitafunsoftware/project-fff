@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cebaljtmx1h0h"]
+[gd_scene format=3 uid="uid://cebaljtmx1h0h"]
 
 [ext_resource type="Script" uid="uid://bmq1od5nrinc5" path="res://utilities/screens/settings/scripts/settings.gd" id="1_4jrm6"]
 [ext_resource type="Script" uid="uid://cdwubu8bgle2r" path="res://utilities/screens/settings/scripts/aspect_ratio.gd" id="2_hf73j"]
@@ -30,7 +30,7 @@ anti_aliasing = false
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kuoyp"]
 
-[node name="Settings" type="Control"]
+[node name="Settings" type="Control" unique_id=1110620306]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -39,7 +39,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4jrm6")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1098341567]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -47,11 +47,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TopPadding" type="HSeparator" parent="VBoxContainer"]
+[node name="TopPadding" type="HSeparator" parent="VBoxContainer" unique_id=418201419]
 layout_mode = 2
 theme_override_constants/separation = 11
 
-[node name="Title" type="Label" parent="VBoxContainer"]
+[node name="Title" type="Label" parent="VBoxContainer" unique_id=456291545]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -60,26 +60,26 @@ theme_override_font_sizes/font_size = 44
 text = "Settings"
 horizontal_alignment = 1
 
-[node name="MiddlePadding" type="HSeparator" parent="VBoxContainer"]
+[node name="MiddlePadding" type="HSeparator" parent="VBoxContainer" unique_id=243904652]
 layout_mode = 2
 theme_override_constants/separation = 11
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1236336551]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="LeftPadding" type="VSeparator" parent="VBoxContainer/HBoxContainer"]
+[node name="LeftPadding" type="VSeparator" parent="VBoxContainer/HBoxContainer" unique_id=1995107702]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="SettingsOptions" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="SettingsOptions" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=1803909237]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 6.0
 theme_override_constants/separation = 4
 alignment = 1
 
-[node name="AspectRatio" type="PanelContainer" parent="VBoxContainer/HBoxContainer/SettingsOptions"]
+[node name="AspectRatio" type="PanelContainer" parent="VBoxContainer/HBoxContainer/SettingsOptions" unique_id=375603604]
 layout_mode = 2
 size_flags_vertical = 3
 focus_neighbor_bottom = NodePath("../Scaling")
@@ -87,16 +87,16 @@ focus_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_a084d")
 script = ExtResource("2_hf73j")
 
-[node name="Background" type="Panel" parent="VBoxContainer/HBoxContainer/SettingsOptions/AspectRatio"]
+[node name="Background" type="Panel" parent="VBoxContainer/HBoxContainer/SettingsOptions/AspectRatio" unique_id=44741485]
 visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_tyo75")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/SettingsOptions/AspectRatio"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/SettingsOptions/AspectRatio" unique_id=970647080]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/SettingsOptions/AspectRatio/HBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/SettingsOptions/AspectRatio/HBoxContainer" unique_id=587758207]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -105,24 +105,24 @@ text = "Aspect Ratio :"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Control" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/SettingsOptions/AspectRatio/HBoxContainer"]
+[node name="Control" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/SettingsOptions/AspectRatio/HBoxContainer" unique_id=933902970]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 1.5
 
-[node name="Previous" type="Button" parent="VBoxContainer/HBoxContainer/SettingsOptions/AspectRatio/HBoxContainer/Control"]
+[node name="Previous" type="Button" parent="VBoxContainer/HBoxContainer/SettingsOptions/AspectRatio/HBoxContainer/Control" unique_id=83746405]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
 theme_override_font_sizes/font_size = 33
 text = "<"
 
-[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer/SettingsOptions/AspectRatio/HBoxContainer/Control"]
+[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer/SettingsOptions/AspectRatio/HBoxContainer/Control" unique_id=420249662]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 5.0
 
-[node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer/SettingsOptions/AspectRatio/HBoxContainer/Control/Control"]
+[node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer/SettingsOptions/AspectRatio/HBoxContainer/Control/Control" unique_id=951496073]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -130,7 +130,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/SettingsOptions/AspectRatio/HBoxContainer/Control/Control"]
+[node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/SettingsOptions/AspectRatio/HBoxContainer/Control/Control" unique_id=1018966459]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -145,14 +145,14 @@ text = "Auto"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Next" type="Button" parent="VBoxContainer/HBoxContainer/SettingsOptions/AspectRatio/HBoxContainer/Control"]
+[node name="Next" type="Button" parent="VBoxContainer/HBoxContainer/SettingsOptions/AspectRatio/HBoxContainer/Control" unique_id=1168536638]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
 theme_override_font_sizes/font_size = 33
 text = ">"
 
-[node name="Scaling" type="PanelContainer" parent="VBoxContainer/HBoxContainer/SettingsOptions"]
+[node name="Scaling" type="PanelContainer" parent="VBoxContainer/HBoxContainer/SettingsOptions" unique_id=781723341]
 layout_mode = 2
 size_flags_vertical = 3
 focus_neighbor_top = NodePath("../AspectRatio")
@@ -161,16 +161,16 @@ focus_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_nmhhd")
 script = ExtResource("3_p75hu")
 
-[node name="Background" type="Panel" parent="VBoxContainer/HBoxContainer/SettingsOptions/Scaling"]
+[node name="Background" type="Panel" parent="VBoxContainer/HBoxContainer/SettingsOptions/Scaling" unique_id=652281670]
 visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_03182")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/SettingsOptions/Scaling"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/SettingsOptions/Scaling" unique_id=1166593642]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/SettingsOptions/Scaling/HBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/SettingsOptions/Scaling/HBoxContainer" unique_id=1353555220]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -179,24 +179,24 @@ text = "Resolution :"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Control" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/SettingsOptions/Scaling/HBoxContainer"]
+[node name="Control" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/SettingsOptions/Scaling/HBoxContainer" unique_id=969042871]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 1.5
 
-[node name="Previous" type="Button" parent="VBoxContainer/HBoxContainer/SettingsOptions/Scaling/HBoxContainer/Control"]
+[node name="Previous" type="Button" parent="VBoxContainer/HBoxContainer/SettingsOptions/Scaling/HBoxContainer/Control" unique_id=2043245697]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
 theme_override_font_sizes/font_size = 33
 text = "<"
 
-[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer/SettingsOptions/Scaling/HBoxContainer/Control"]
+[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer/SettingsOptions/Scaling/HBoxContainer/Control" unique_id=1481112108]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 5.0
 
-[node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer/SettingsOptions/Scaling/HBoxContainer/Control/Control"]
+[node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer/SettingsOptions/Scaling/HBoxContainer/Control/Control" unique_id=510418824]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -204,7 +204,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/SettingsOptions/Scaling/HBoxContainer/Control/Control"]
+[node name="Value" type="Label" parent="VBoxContainer/HBoxContainer/SettingsOptions/Scaling/HBoxContainer/Control/Control" unique_id=1417164753]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -219,14 +219,14 @@ text = "Auto"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Next" type="Button" parent="VBoxContainer/HBoxContainer/SettingsOptions/Scaling/HBoxContainer/Control"]
+[node name="Next" type="Button" parent="VBoxContainer/HBoxContainer/SettingsOptions/Scaling/HBoxContainer/Control" unique_id=1588001806]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
 theme_override_font_sizes/font_size = 33
 text = ">"
 
-[node name="Fullscreen" type="PanelContainer" parent="VBoxContainer/HBoxContainer/SettingsOptions"]
+[node name="Fullscreen" type="PanelContainer" parent="VBoxContainer/HBoxContainer/SettingsOptions" unique_id=1051378815]
 layout_mode = 2
 size_flags_vertical = 3
 focus_neighbor_top = NodePath("../Scaling")
@@ -235,16 +235,16 @@ focus_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_kuoyp")
 script = ExtResource("4_i323y")
 
-[node name="Background" type="Panel" parent="VBoxContainer/HBoxContainer/SettingsOptions/Fullscreen"]
+[node name="Background" type="Panel" parent="VBoxContainer/HBoxContainer/SettingsOptions/Fullscreen" unique_id=2063796281]
 visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_03182")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/SettingsOptions/Fullscreen"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/SettingsOptions/Fullscreen" unique_id=41021364]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/SettingsOptions/Fullscreen/HBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/SettingsOptions/Fullscreen/HBoxContainer" unique_id=838275634]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -253,14 +253,14 @@ text = "Fullscreen :"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Enabled" type="CheckButton" parent="VBoxContainer/HBoxContainer/SettingsOptions/Fullscreen/HBoxContainer"]
+[node name="Enabled" type="CheckButton" parent="VBoxContainer/HBoxContainer/SettingsOptions/Fullscreen/HBoxContainer" unique_id=509992301]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_stretch_ratio = 1.5
 focus_mode = 0
 flat = true
 
-[node name="Borderless" type="PanelContainer" parent="VBoxContainer/HBoxContainer/SettingsOptions"]
+[node name="Borderless" type="PanelContainer" parent="VBoxContainer/HBoxContainer/SettingsOptions" unique_id=525558237]
 layout_mode = 2
 size_flags_vertical = 3
 focus_neighbor_top = NodePath("../Fullscreen")
@@ -269,16 +269,16 @@ focus_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_kuoyp")
 script = ExtResource("5_7gqhl")
 
-[node name="Background" type="Panel" parent="VBoxContainer/HBoxContainer/SettingsOptions/Borderless"]
+[node name="Background" type="Panel" parent="VBoxContainer/HBoxContainer/SettingsOptions/Borderless" unique_id=151335590]
 visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_03182")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/SettingsOptions/Borderless"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/SettingsOptions/Borderless" unique_id=1896604776]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/SettingsOptions/Borderless/HBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/SettingsOptions/Borderless/HBoxContainer" unique_id=117031532]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -287,14 +287,14 @@ text = "Exclusive Fullscreen :"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Enabled" type="CheckButton" parent="VBoxContainer/HBoxContainer/SettingsOptions/Borderless/HBoxContainer"]
+[node name="Enabled" type="CheckButton" parent="VBoxContainer/HBoxContainer/SettingsOptions/Borderless/HBoxContainer" unique_id=1016776524]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_stretch_ratio = 1.5
 focus_mode = 0
 flat = true
 
-[node name="VSync" type="PanelContainer" parent="VBoxContainer/HBoxContainer/SettingsOptions"]
+[node name="VSync" type="PanelContainer" parent="VBoxContainer/HBoxContainer/SettingsOptions" unique_id=279175798]
 layout_mode = 2
 size_flags_vertical = 3
 focus_neighbor_top = NodePath("../Borderless")
@@ -303,16 +303,16 @@ focus_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_kuoyp")
 script = ExtResource("6_7jlka")
 
-[node name="Background" type="Panel" parent="VBoxContainer/HBoxContainer/SettingsOptions/VSync"]
+[node name="Background" type="Panel" parent="VBoxContainer/HBoxContainer/SettingsOptions/VSync" unique_id=884218360]
 visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_03182")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/SettingsOptions/VSync"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/SettingsOptions/VSync" unique_id=704165612]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/SettingsOptions/VSync/HBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/SettingsOptions/VSync/HBoxContainer" unique_id=1396667231]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -321,14 +321,14 @@ text = "V-Sync :"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Enabled" type="CheckButton" parent="VBoxContainer/HBoxContainer/SettingsOptions/VSync/HBoxContainer"]
+[node name="Enabled" type="CheckButton" parent="VBoxContainer/HBoxContainer/SettingsOptions/VSync/HBoxContainer" unique_id=1984936445]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_stretch_ratio = 1.5
 focus_mode = 0
 flat = true
 
-[node name="TouchControls" type="PanelContainer" parent="VBoxContainer/HBoxContainer/SettingsOptions"]
+[node name="TouchControls" type="PanelContainer" parent="VBoxContainer/HBoxContainer/SettingsOptions" unique_id=1923957441]
 layout_mode = 2
 size_flags_vertical = 3
 focus_neighbor_top = NodePath("../VSync")
@@ -337,16 +337,16 @@ focus_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_kuoyp")
 script = ExtResource("7_iifp2")
 
-[node name="Background" type="Panel" parent="VBoxContainer/HBoxContainer/SettingsOptions/TouchControls"]
+[node name="Background" type="Panel" parent="VBoxContainer/HBoxContainer/SettingsOptions/TouchControls" unique_id=611606296]
 visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_03182")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/SettingsOptions/TouchControls"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/SettingsOptions/TouchControls" unique_id=486494050]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/SettingsOptions/TouchControls/HBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/SettingsOptions/TouchControls/HBoxContainer" unique_id=1427601174]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -355,25 +355,25 @@ text = "Touch Controls :"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Enabled" type="CheckButton" parent="VBoxContainer/HBoxContainer/SettingsOptions/TouchControls/HBoxContainer"]
+[node name="Enabled" type="CheckButton" parent="VBoxContainer/HBoxContainer/SettingsOptions/TouchControls/HBoxContainer" unique_id=444604789]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_stretch_ratio = 1.5
 focus_mode = 0
 flat = true
 
-[node name="Back" type="Button" parent="VBoxContainer/HBoxContainer/SettingsOptions"]
+[node name="Back" type="Button" parent="VBoxContainer/HBoxContainer/SettingsOptions" unique_id=1589793851]
 layout_mode = 2
 size_flags_vertical = 3
 focus_neighbor_top = NodePath("../TouchControls")
 theme_override_font_sizes/font_size = 22
 text = "BACK"
 
-[node name="RightPadding" type="VSeparator" parent="VBoxContainer/HBoxContainer"]
+[node name="RightPadding" type="VSeparator" parent="VBoxContainer/HBoxContainer" unique_id=1529945401]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="BottomPadding" type="HSeparator" parent="VBoxContainer"]
+[node name="BottomPadding" type="HSeparator" parent="VBoxContainer" unique_id=329668584]
 layout_mode = 2
 theme_override_constants/separation = 11
 

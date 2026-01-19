@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddqvb0a4lifyo"]
+[gd_scene format=3 uid="uid://ddqvb0a4lifyo"]
 
 [ext_resource type="Script" uid="uid://b0j03j1ik8a30" path="res://utilities/camera/camera_body.gd" id="1_7mak0"]
 [ext_resource type="Script" uid="uid://13k42mjqmnce" path="res://utilities/camera/camera_follow_input_handler.gd" id="2_76bii"]
@@ -7,7 +7,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_qjuhv"]
 size = Vector3(0.5, 0.5, 0.5)
 
-[node name="CameraFollowBody" type="CharacterBody3D"]
+[node name="CameraFollowBody" type="CharacterBody3D" unique_id=1026098340]
 collision_layer = 0
 collision_mask = 64
 axis_lock_angular_x = true
@@ -29,19 +29,19 @@ max_speed = 20.0
 friction = 100.0
 acceleration = 100.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=886547184]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 shape = SubResource("BoxShape3D_qjuhv")
 
-[node name="CameraFollowInputHandler" type="Node" parent="." node_paths=PackedStringArray("body")]
+[node name="CameraFollowInputHandler" type="Node" parent="." unique_id=810495226 node_paths=PackedStringArray("body")]
 script = ExtResource("2_76bii")
 body = NodePath("..")
 speed = 5.0
-leash_distance = Vector3(1.8, 0.5, 2.19798)
+leash_distance = Vector3(1.8, 0.5, 2.1979818)
 negative_y_leash_distance = 0.2
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.7426)
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2056222356]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.742637)
 keep_aspect = 0
 projection = 1
 current = true

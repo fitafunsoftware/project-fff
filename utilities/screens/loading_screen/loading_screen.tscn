@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dk370qr54bmxk"]
+[gd_scene format=3 uid="uid://dk370qr54bmxk"]
 
 [ext_resource type="Script" uid="uid://dy5sr81vancir" path="res://utilities/screens/loading_screen/loading_screen.gd" id="1_oqmv3"]
 [ext_resource type="Texture2D" uid="uid://31alaqgednqo" path="res://assets/art/loading/loading1.png" id="2_1m62j"]
@@ -101,7 +101,7 @@ frame_30/duration = 0.05
 frame_31/texture = ExtResource("27_kgsu4")
 frame_31/duration = 0.05
 
-[node name="LoadingScreen" type="Control"]
+[node name="LoadingScreen" type="Control" unique_id=1090218109]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -110,7 +110,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_oqmv3")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1083775902]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -119,7 +119,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Loading" type="TextureRect" parent="."]
+[node name="Loading" type="TextureRect" parent="." unique_id=1389887117]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0

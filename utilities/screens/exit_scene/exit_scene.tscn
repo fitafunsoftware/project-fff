@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://cn2xh132ksg"]
+[gd_scene format=3 uid="uid://cn2xh132ksg"]
 
 [ext_resource type="Script" uid="uid://7qwpdfgdqp67" path="res://utilities/screens/exit_scene/exit_scene.gd" id="1_thbw6"]
 
-[node name="exit_scene" type="Control"]
+[node name="exit_scene" type="Control" unique_id=1316321877]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

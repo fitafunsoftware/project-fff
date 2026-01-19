@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://chon7b2ynn5md"]
+[gd_scene format=3 uid="uid://chon7b2ynn5md"]
 
 [ext_resource type="Script" uid="uid://ce0w2luwig0f4" path="res://utilities/main_game/main_game.gd" id="1_bljaj"]
 [ext_resource type="PackedScene" uid="uid://611jopnpjsx0" path="res://utilities/main_game/game_viewport/game_viewport.tscn" id="1_xkw8u"]
 [ext_resource type="PackedScene" uid="uid://bqbcsfkaiujt4" path="res://addons/debug_menu/debug_menu.tscn" id="2_ssqe5"]
 
-[node name="Game" type="Control"]
+[node name="Game" type="Control" unique_id=232859690]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,7 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bljaj")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1481019444]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,7 +22,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="GameViewportContainer" parent="." instance=ExtResource("1_xkw8u")]
+[node name="GameViewportContainer" parent="." unique_id=112154291 instance=ExtResource("1_xkw8u")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -35,7 +35,7 @@ offset_right = 320.0
 offset_bottom = 180.0
 focus_mode = 0
 
-[node name="DebugMenu" parent="." instance=ExtResource("2_ssqe5")]
+[node name="DebugMenu" parent="." unique_id=2130382428 instance=ExtResource("2_ssqe5")]
 layout_mode = 1
 anchors_preset = -1
 offset_left = -400.0

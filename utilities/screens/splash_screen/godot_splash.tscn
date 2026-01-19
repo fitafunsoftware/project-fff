@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://y8xyerc2baaf"]
+[gd_scene format=3 uid="uid://y8xyerc2baaf"]
 
 [ext_resource type="PackedScene" uid="uid://vmu53hs5q5m7" path="res://utilities/screens/splash_screen/splash_screen.tscn" id="1_v5gqv"]
 [ext_resource type="Texture2D" uid="uid://wdj1yd8vnyjw" path="res://utilities/screens/splash_screen/logos/godot/godot_logo_vertical.png" id="2_lgk5u"]
 
-[node name="GodotSplash" instance=ExtResource("1_v5gqv")]
+[node name="GodotSplash" unique_id=47341333 instance=ExtResource("1_v5gqv")]
 
 [node name="Logo" parent="." index="1"]
 offset_left = -119.5

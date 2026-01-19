@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://vmu53hs5q5m7"]
+[gd_scene format=3 uid="uid://vmu53hs5q5m7"]
 
 [ext_resource type="Script" uid="uid://cqqcm4yegaaoi" path="res://utilities/screens/splash_screen/splash_screen.gd" id="1_jlf4u"]
 
-[node name="SplashScreen" type="Control"]
+[node name="SplashScreen" type="Control" unique_id=1951448493]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,7 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jlf4u")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=34621860]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,7 +20,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Logo" type="TextureRect" parent="."]
+[node name="Logo" type="TextureRect" parent="." unique_id=942046161]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

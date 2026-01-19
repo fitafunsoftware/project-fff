@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://blnfliijmyoe2"]
+[gd_scene format=3 uid="uid://blnfliijmyoe2"]
 
 [ext_resource type="Script" uid="uid://crnq4mxp4k53f" path="res://utilities/screens/menu_scene/menu_option_button.gd" id="1_qbvvr"]
 
-[node name="MenuOptionButton" type="Button"]
+[node name="MenuOptionButton" type="Button" unique_id=1052543194]
 offset_right = 8.0
 offset_bottom = 8.0
 theme_override_font_sizes/font_size = 33
