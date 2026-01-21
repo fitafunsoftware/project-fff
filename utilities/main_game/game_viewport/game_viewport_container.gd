@@ -9,6 +9,9 @@ extends SubViewportContainer
 ## Auto, HD, Laptop, GBA, and SD aspect ratios. Auto tries to maintain 16:9 in
 ## windowed mode, but fills up the screen up to 4:3 in fullscreen mode.
 
+# Use of integer division is intended for calculating viewport size.
+@warning_ignore_start("integer_division")
+
 ## Minimum size for corresponding aspect ratios.
 const MIN_SIZE: Array[Vector2i] = [
 	Vector2i(640, 360), ## Auto, emulates 16:9

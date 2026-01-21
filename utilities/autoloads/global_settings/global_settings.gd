@@ -5,6 +5,10 @@ extends Node
 ## Currently saves settings to a JSON. This is to allow users to change the file
 ## to change the settings as well.
 
+# Use of integer division is intended for calculations relating to viewports
+# and windows.
+@warning_ignore_start("integer_division")
+
 signal aspect_ratio_changed(aspect_ratio)
 signal scaling_changed(scaling)
 signal window_properties_changed()
