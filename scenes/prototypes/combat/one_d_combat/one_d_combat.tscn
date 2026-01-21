@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cr3sqr85dg7uf"]
+[gd_scene format=3 uid="uid://cr3sqr85dg7uf"]
 
 [ext_resource type="Script" uid="uid://bgxv17ijuq0l4" path="res://utilities/helpers/reset_to_scene.gd" id="1_85h8l"]
 [ext_resource type="Texture2D" uid="uid://cie4dgbix5qa8" path="res://assets/art/prototypes/range_1m.png" id="2_tmk7a"]
@@ -11,64 +11,64 @@
 [ext_resource type="Texture2D" uid="uid://cbp3sjyjj1ynt" path="res://assets/art/prototypes/left_left_arrow.png" id="9_yte02"]
 [ext_resource type="Texture2D" uid="uid://cono3u8fwxaru" path="res://assets/art/prototypes/pause.png" id="10_n2p87"]
 
-[node name="OneDCombat" type="Node2D"]
+[node name="OneDCombat" type="Node2D" unique_id=2110289765]
 
-[node name="GamepadResetToMenu" type="Node" parent="."]
+[node name="GamepadResetToMenu" type="Node" parent="." unique_id=64501020]
 script = ExtResource("1_85h8l")
 reset_scene = "uid://doffggswdlg6k"
 reset_combo = Array[StringName]([&"back", &"x", &"leftshoulder"])
 metadata/_custom_type_script = "uid://bgxv17ijuq0l4"
 
-[node name="KeybaordResetToMenu" type="Node" parent="."]
+[node name="KeybaordResetToMenu" type="Node" parent="." unique_id=1543251453]
 script = ExtResource("1_85h8l")
 reset_scene = "uid://doffggswdlg6k"
 reset_combo = Array[StringName]([&"ui_cancel", &"ui_accept"])
 metadata/_custom_type_script = "uid://bgxv17ijuq0l4"
 
-[node name="Stage" type="Node2D" parent="."]
+[node name="Stage" type="Node2D" parent="." unique_id=1122187831]
 position = Vector2(150, 180)
 
-[node name="Range" type="Node2D" parent="Stage"]
+[node name="Range" type="Node2D" parent="Stage" unique_id=1302664644]
 position = Vector2(0, 1)
 
-[node name="0m" type="Sprite2D" parent="Stage/Range"]
+[node name="0m" type="Sprite2D" parent="Stage/Range" unique_id=1888498602]
 texture = ExtResource("2_tmk7a")
 centered = false
 offset = Vector2(0, -16)
 
-[node name="1m" type="Sprite2D" parent="Stage/Range"]
+[node name="1m" type="Sprite2D" parent="Stage/Range" unique_id=1914527288]
 position = Vector2(100, 0)
 texture = ExtResource("2_tmk7a")
 centered = false
 offset = Vector2(0, -16)
 
-[node name="2m" type="Sprite2D" parent="Stage/Range"]
+[node name="2m" type="Sprite2D" parent="Stage/Range" unique_id=1194820758]
 position = Vector2(200, 0)
 texture = ExtResource("2_tmk7a")
 centered = false
 offset = Vector2(0, -16)
 
-[node name="3m" type="Sprite2D" parent="Stage/Range"]
+[node name="3m" type="Sprite2D" parent="Stage/Range" unique_id=1990958082]
 position = Vector2(300, 0)
 texture = ExtResource("2_tmk7a")
 centered = false
 offset = Vector2(0, -16)
 
-[node name="4m" type="Sprite2D" parent="Stage/Range"]
+[node name="4m" type="Sprite2D" parent="Stage/Range" unique_id=769131925]
 position = Vector2(400, 0)
 texture = ExtResource("2_tmk7a")
 centered = false
 offset = Vector2(0, -16)
 
-[node name="Wolf" type="Sprite2D" parent="Stage"]
+[node name="Wolf" type="Sprite2D" parent="Stage" unique_id=755734306]
 texture = ExtResource("3_knb4v")
 centered = false
 offset = Vector2(-232, -128)
 
-[node name="Game" type="Node2D" parent="Stage"]
+[node name="Game" type="Node2D" parent="Stage" unique_id=139183964]
 script = ExtResource("4_f2amu")
 
-[node name="Player" type="Sprite2D" parent="Stage/Game"]
+[node name="Player" type="Sprite2D" parent="Stage/Game" unique_id=1365078712]
 unique_name_in_owner = true
 texture = ExtResource("4_knb4v")
 centered = false
@@ -77,29 +77,29 @@ flip_h = true
 hframes = 6
 vframes = 3
 
-[node name="Towards" type="Sprite2D" parent="Stage/Game/Player"]
+[node name="Towards" type="Sprite2D" parent="Stage/Game/Player" unique_id=281802306]
 visible = false
 position = Vector2(10, -100)
 texture = ExtResource("6_x3wuk")
 
-[node name="Away" type="Sprite2D" parent="Stage/Game/Player"]
+[node name="Away" type="Sprite2D" parent="Stage/Game/Player" unique_id=2050737567]
 visible = false
 position = Vector2(10, -100)
 texture = ExtResource("7_n2p87")
 
-[node name="WolfArrows" type="Node2D" parent="Stage/Game"]
+[node name="WolfArrows" type="Node2D" parent="Stage/Game" unique_id=2023333247]
 
-[node name="Towards" type="Sprite2D" parent="Stage/Game/WolfArrows"]
+[node name="Towards" type="Sprite2D" parent="Stage/Game/WolfArrows" unique_id=1071188714]
 visible = false
 position = Vector2(-70, -60)
 texture = ExtResource("8_mkfyb")
 
-[node name="Away" type="Sprite2D" parent="Stage/Game/WolfArrows"]
+[node name="Away" type="Sprite2D" parent="Stage/Game/WolfArrows" unique_id=1009488367]
 visible = false
 position = Vector2(-70, -60)
 texture = ExtResource("9_yte02")
 
-[node name="Stay" type="Sprite2D" parent="Stage/Game/WolfArrows"]
+[node name="Stay" type="Sprite2D" parent="Stage/Game/WolfArrows" unique_id=1672505950]
 visible = false
 position = Vector2(-70, -60)
 texture = ExtResource("10_n2p87")
