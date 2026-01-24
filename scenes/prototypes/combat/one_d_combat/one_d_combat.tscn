@@ -14,6 +14,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n2p87"]
 size = Vector2(24, 75)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mkfyb"]
+size = Vector2(230, 120)
+
 [node name="OneDCombat" type="Node2D" unique_id=2110289765]
 
 [node name="GamepadResetToMenu" type="Node" parent="." unique_id=64501020]
@@ -112,3 +115,12 @@ texture = ExtResource("9_yte02")
 visible = false
 position = Vector2(-70, -60)
 texture = ExtResource("10_n2p87")
+
+[node name="Wolf" type="Node2D" parent="Stage/Game" unique_id=505542961]
+position = Vector2(-150, -180)
+
+[node name="Hurtbox" type="Area2D" parent="Stage/Game/Wolf" unique_id=883236956]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stage/Game/Wolf/Hurtbox" unique_id=1174643903]
+position = Vector2(34, 118)
+shape = SubResource("RectangleShape2D_mkfyb")
