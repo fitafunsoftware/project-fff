@@ -11,6 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://cbp3sjyjj1ynt" path="res://assets/art/prototypes/left_left_arrow.png" id="9_yte02"]
 [ext_resource type="Texture2D" uid="uid://cono3u8fwxaru" path="res://assets/art/prototypes/pause.png" id="10_n2p87"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n2p87"]
+size = Vector2(24, 75)
+
 [node name="OneDCombat" type="Node2D" unique_id=2110289765]
 
 [node name="GamepadResetToMenu" type="Node" parent="." unique_id=64501020]
@@ -86,6 +89,12 @@ texture = ExtResource("6_x3wuk")
 visible = false
 position = Vector2(10, -100)
 texture = ExtResource("7_n2p87")
+
+[node name="Hurtbox" type="Area2D" parent="Stage/Game/Player" unique_id=107246218]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stage/Game/Player/Hurtbox" unique_id=1255964851]
+position = Vector2(12, -40)
+shape = SubResource("RectangleShape2D_n2p87")
 
 [node name="WolfArrows" type="Node2D" parent="Stage/Game" unique_id=2023333247]
 
