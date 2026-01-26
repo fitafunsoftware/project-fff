@@ -11,11 +11,14 @@
 [ext_resource type="Texture2D" uid="uid://cbp3sjyjj1ynt" path="res://assets/art/prototypes/left_left_arrow.png" id="9_yte02"]
 [ext_resource type="Texture2D" uid="uid://cono3u8fwxaru" path="res://assets/art/prototypes/pause.png" id="10_n2p87"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mkfyb"]
+size = Vector2(230, 120)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n2p87"]
 size = Vector2(24, 75)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mkfyb"]
-size = Vector2(230, 120)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yte02"]
+size = Vector2(45, 70)
 
 [node name="OneDCombat" type="Node2D" unique_id=2110289765]
 
@@ -74,6 +77,15 @@ offset = Vector2(-232, -128)
 [node name="Game" type="Node2D" parent="Stage" unique_id=139183964]
 script = ExtResource("4_f2amu")
 
+[node name="Wolf" type="Node2D" parent="Stage/Game" unique_id=505542961]
+position = Vector2(-150, -180)
+
+[node name="Hurtbox" type="Area2D" parent="Stage/Game/Wolf" unique_id=883236956]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stage/Game/Wolf/Hurtbox" unique_id=1174643903]
+position = Vector2(34, 118)
+shape = SubResource("RectangleShape2D_mkfyb")
+
 [node name="Player" type="Sprite2D" parent="Stage/Game" unique_id=1365078712]
 unique_name_in_owner = true
 texture = ExtResource("4_knb4v")
@@ -99,6 +111,13 @@ texture = ExtResource("7_n2p87")
 position = Vector2(12, -40)
 shape = SubResource("RectangleShape2D_n2p87")
 
+[node name="Hitbox" type="Area2D" parent="Stage/Game/Player" unique_id=1541876796]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stage/Game/Player/Hitbox" unique_id=1367805780]
+position = Vector2(-25, -40)
+shape = SubResource("RectangleShape2D_yte02")
+debug_color = Color(0.7019608, 0, 0, 0.41960785)
+
 [node name="WolfArrows" type="Node2D" parent="Stage/Game" unique_id=2023333247]
 
 [node name="Towards" type="Sprite2D" parent="Stage/Game/WolfArrows" unique_id=1071188714]
@@ -115,12 +134,3 @@ texture = ExtResource("9_yte02")
 visible = false
 position = Vector2(-70, -60)
 texture = ExtResource("10_n2p87")
-
-[node name="Wolf" type="Node2D" parent="Stage/Game" unique_id=505542961]
-position = Vector2(-150, -180)
-
-[node name="Hurtbox" type="Area2D" parent="Stage/Game/Wolf" unique_id=883236956]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Stage/Game/Wolf/Hurtbox" unique_id=1174643903]
-position = Vector2(34, 118)
-shape = SubResource("RectangleShape2D_mkfyb")
