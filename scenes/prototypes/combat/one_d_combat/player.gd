@@ -38,7 +38,9 @@ func _set_direction() -> void:
 	
 	if _direction < 0:
 		_towards.show()
+		_away.hide()
 	elif _direction > 0:
+		_towards.hide()
 		_away.show()
 	else:
 		_towards.hide()
