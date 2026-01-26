@@ -46,8 +46,7 @@ func _initialize_player() -> void:
 	player.max_range = max_range
 	player.speed = player_speed
 	player.attack_duration = player_attack_duration
-	player.enemy_speed = enemy_towards_speed
-	player.enemy_direction = 0
+	player.enemy_speed = 0.0
 
 
 func _physics_process(_delta: float):
@@ -110,8 +109,7 @@ func _stay(duration: float):
 
 func _move_towards_player():
 	_in_action = true
-	player.enemy_speed = enemy_towards_speed
-	player.enemy_direction = TOWARDS
+	player.enemy_speed = enemy_towards_speed * TOWARDS
 	enemy_towards.show()
 	
 	await get_tree().create_timer(_move_duration).timeout
@@ -120,8 +118,7 @@ func _move_towards_player():
 
 func _move_away_from_player():
 	_in_action = true
-	player.enemy_speed = enemy_away_speed
-	player.enemy_direction = AWAY
+	player.enemy_speed = enemy_away_speed * AWAY
 	enemy_away.show()
 	
 	await get_tree().create_timer(_move_duration).timeout
@@ -130,7 +127,7 @@ func _move_away_from_player():
 
 
 func _reset_action():
-	player.enemy_direction = 0
+	player.enemy_speed = 0.0
 	_in_action = false
 	enemy_towards.hide()
 	enemy_away.hide()

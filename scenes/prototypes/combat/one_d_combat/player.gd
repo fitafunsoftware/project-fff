@@ -5,7 +5,6 @@ var speed: float = 0.0
 var attack_duration: float = 0.0
 
 var enemy_speed: float = 0.0
-var enemy_direction: int = 0
 
 @onready var _towards: Sprite2D = $Towards
 @onready var _away: Sprite2D = $Away
@@ -49,8 +48,7 @@ func _set_direction() -> void:
 func _move(delta: float) -> void:
 	var player_speed: float = speed * _direction if not _is_attacking else 0.0
 	var current_speed: float = \
-			enemy_speed * enemy_direction + \
-			player_speed
+			enemy_speed + player_speed
 	
 	position.x += current_speed * delta
 
