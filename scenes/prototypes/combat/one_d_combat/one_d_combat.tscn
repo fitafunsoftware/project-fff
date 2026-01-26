@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://b4vm76uc473fl" path="res://scenes/prototypes/combat/one_d_combat/attack_hitboxes.gd" id="5_mkfyb"]
 [ext_resource type="Texture2D" uid="uid://cp6c1pby1ikmh" path="res://assets/art/prototypes/left_arrow.png" id="6_x3wuk"]
 [ext_resource type="Texture2D" uid="uid://cktr21oj4f3we" path="res://assets/art/prototypes/right_arrow.png" id="7_n2p87"]
+[ext_resource type="Script" uid="uid://bje8ekgqgk73q" path="res://scenes/prototypes/combat/one_d_combat/player.gd" id="7_yte02"]
 [ext_resource type="Texture2D" uid="uid://cajalq6lxgv3l" path="res://assets/art/prototypes/right_right_arrow.png" id="8_mkfyb"]
 [ext_resource type="Texture2D" uid="uid://cbp3sjyjj1ynt" path="res://assets/art/prototypes/left_left_arrow.png" id="9_yte02"]
 [ext_resource type="Texture2D" uid="uid://cono3u8fwxaru" path="res://assets/art/prototypes/pause.png" id="10_n2p87"]
@@ -143,6 +144,7 @@ offset = Vector2(-54, -112)
 flip_h = true
 hframes = 6
 vframes = 3
+script = ExtResource("7_yte02")
 
 [node name="Towards" type="Sprite2D" parent="Stage/Game/Player" unique_id=281802306]
 visible = false
