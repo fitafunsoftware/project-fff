@@ -4,10 +4,18 @@ extends Node2D
 	set(value):
 		max_range = value
 		player.max_range = value
+
+@export_category("Player")
 @export var player_speed: float = 100.0:
 	set(value):
 		player_speed = value
 		player.speed = value
+@export var player_attack_duration: float = 0.5:
+	set(value):
+		player_attack_duration = value
+		player.attack_duration = value
+
+@export_category("Enemy")
 @export var enemy_towards_speed: float = 150.0
 @export var enemy_away_speed: float = 75.0
 
@@ -28,13 +36,18 @@ var _default_stay_duration: float = 1.0
 
 
 func _ready():
-	player.speed = player_speed
-	player.max_range = max_range
-	player.enemy_speed = enemy_towards_speed
-	player.enemy_direction = 0
+	_initialize_player()
 	enemy_towards.hide()
 	enemy_away.hide()
 	enemy_stay.hide()
+
+
+func _initialize_player() -> void:
+	player.max_range = max_range
+	player.speed = player_speed
+	player.attack_duration = player_attack_duration
+	player.enemy_speed = enemy_towards_speed
+	player.enemy_direction = 0
 
 
 func _physics_process(_delta: float):
