@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cky26jpawej83" path="res://assets/art/wolf/wolf.png" id="3_knb4v"]
 [ext_resource type="Script" uid="uid://l5h3hpa2ci6v" path="res://scenes/prototypes/combat/one_d_combat/one_d_combat.gd" id="4_f2amu"]
 [ext_resource type="Texture2D" uid="uid://cum3245fwrm1q" path="res://assets/art/player/base.png" id="4_knb4v"]
+[ext_resource type="Script" uid="uid://b4vm76uc473fl" path="res://scenes/prototypes/combat/one_d_combat/attack_hitboxes.gd" id="5_mkfyb"]
 [ext_resource type="Texture2D" uid="uid://cp6c1pby1ikmh" path="res://assets/art/prototypes/left_arrow.png" id="6_x3wuk"]
 [ext_resource type="Texture2D" uid="uid://cktr21oj4f3we" path="res://assets/art/prototypes/right_arrow.png" id="7_n2p87"]
 [ext_resource type="Texture2D" uid="uid://cajalq6lxgv3l" path="res://assets/art/prototypes/right_right_arrow.png" id="8_mkfyb"]
@@ -101,48 +102,35 @@ position = Vector2(-150, -180)
 position = Vector2(34, 118)
 shape = SubResource("RectangleShape2D_mkfyb")
 
-[node name="AttackHitboxes" type="Node2D" parent="Stage/Game" unique_id=728908020]
+[node name="AttackHitboxes" type="Area2D" parent="Stage/Game" unique_id=1966197219]
+script = ExtResource("5_mkfyb")
 
-[node name="Range0" type="Area2D" parent="Stage/Game/AttackHitboxes" unique_id=1574470694]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Stage/Game/AttackHitboxes/Range0" unique_id=474743021]
+[node name="Range0" type="CollisionShape2D" parent="Stage/Game/AttackHitboxes" unique_id=562896917]
 position = Vector2(50, -64)
 shape = SubResource("RectangleShape2D_avyba")
 disabled = true
 debug_color = Color(0.69803923, 0, 0, 0.41960785)
 
-[node name="Range1" type="Area2D" parent="Stage/Game/AttackHitboxes" unique_id=1371300291]
-position = Vector2(100, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Stage/Game/AttackHitboxes/Range1" unique_id=241601704]
-position = Vector2(50, -64)
+[node name="Range1" type="CollisionShape2D" parent="Stage/Game/AttackHitboxes" unique_id=1999459870]
+position = Vector2(150, -64)
 shape = SubResource("RectangleShape2D_v1hsh")
 disabled = true
 debug_color = Color(0.69803923, 0, 0, 0.41960785)
 
-[node name="Range2" type="Area2D" parent="Stage/Game/AttackHitboxes" unique_id=1182957779]
-position = Vector2(200, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Stage/Game/AttackHitboxes/Range2" unique_id=1981710497]
-position = Vector2(50, -64)
+[node name="Range2" type="CollisionShape2D" parent="Stage/Game/AttackHitboxes" unique_id=1822101549]
+position = Vector2(250, -64)
 shape = SubResource("RectangleShape2D_ehwxo")
 disabled = true
 debug_color = Color(0.69803923, 0, 0, 0.41960785)
 
-[node name="Range3" type="Area2D" parent="Stage/Game/AttackHitboxes" unique_id=30922786]
-position = Vector2(300, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Stage/Game/AttackHitboxes/Range3" unique_id=1428750409]
-position = Vector2(50, -64)
+[node name="Range3" type="CollisionShape2D" parent="Stage/Game/AttackHitboxes" unique_id=1915599418]
+position = Vector2(350, -64)
 shape = SubResource("RectangleShape2D_2pvng")
 disabled = true
 debug_color = Color(0.69803923, 0, 0, 0.41960785)
 
-[node name="Range4" type="Area2D" parent="Stage/Game/AttackHitboxes" unique_id=141556581]
-position = Vector2(400, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Stage/Game/AttackHitboxes/Range4" unique_id=1806533993]
-position = Vector2(50, -64)
+[node name="Range4" type="CollisionShape2D" parent="Stage/Game/AttackHitboxes" unique_id=766470590]
+position = Vector2(450, -64)
 shape = SubResource("RectangleShape2D_r02tv")
 disabled = true
 debug_color = Color(0.69803923, 0, 0, 0.41960785)
