@@ -6,6 +6,7 @@ var attack_duration: float = 0.0
 
 var enemy_speed: float = 0.0
 
+@onready var _attack_sprite: Sprite2D = $Attack
 @onready var _towards: Sprite2D = $Towards
 @onready var _away: Sprite2D = $Away
 @onready var hitbox: CollisionShape2D = $Hitbox/CollisionShape2D
@@ -15,6 +16,7 @@ var _is_attacking: bool = false
 
 
 func _ready() -> void:
+	_attack_sprite.hide()
 	_towards.hide()
 	_away.hide()
 
@@ -32,17 +34,21 @@ func _set_direction() -> void:
 	_direction = int(input)
 	
 	if _is_attacking:
+		_attack_sprite.show()
 		_towards.hide()
 		_away.hide()
 		return
 	
 	if _direction < 0:
+		_attack_sprite.hide()
 		_towards.show()
 		_away.hide()
 	elif _direction > 0:
+		_attack_sprite.hide()
 		_towards.hide()
 		_away.show()
 	else:
+		_attack_sprite.hide()
 		_towards.hide()
 		_away.hide()
 
