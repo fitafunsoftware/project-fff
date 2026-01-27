@@ -4,20 +4,24 @@ extends Node2D
 	set(value):
 		max_range = value
 		player.max_range = value
+@export var unit_width: int = 25:
+	set(value):
+		unit_width = value
+		player.speed = player_speed * unit_width
 
 @export_category("Player")
-@export var player_speed: float = 100.0:
+@export var player_speed: float = 4.0:
 	set(value):
 		player_speed = value
-		player.speed = value
+		player.speed = player_speed * unit_width
 @export var player_attack_duration: float = 0.5:
 	set(value):
 		player_attack_duration = value
 		player.attack_duration = value
 
 @export_category("Enemy")
-@export var enemy_towards_speed: float = 150.0
-@export var enemy_away_speed: float = 75.0
+@export var enemy_towards_speed: float = 6.0
+@export var enemy_away_speed: float = 3.0
 
 @onready var player: Node2D = $Player
 
@@ -44,7 +48,7 @@ func _ready():
 
 func _initialize_player() -> void:
 	player.max_range = max_range
-	player.speed = player_speed
+	player.speed = player_speed * unit_width
 	player.attack_duration = player_attack_duration
 	player.enemy_speed = 0.0
 
@@ -109,7 +113,7 @@ func _stay(duration: float):
 
 func _move_towards_player():
 	_in_action = true
-	player.enemy_speed = enemy_towards_speed * TOWARDS
+	player.enemy_speed = enemy_towards_speed * unit_width * TOWARDS
 	enemy_towards.show()
 	
 	await get_tree().create_timer(_move_duration).timeout
@@ -118,7 +122,7 @@ func _move_towards_player():
 
 func _move_away_from_player():
 	_in_action = true
-	player.enemy_speed = enemy_away_speed * AWAY
+	player.enemy_speed = enemy_away_speed * unit_width * AWAY
 	enemy_away.show()
 	
 	await get_tree().create_timer(_move_duration).timeout
