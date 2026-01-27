@@ -52,7 +52,7 @@ reset_combo = Array[StringName]([&"ui_cancel", &"ui_accept"])
 metadata/_custom_type_script = "uid://bgxv17ijuq0l4"
 
 [node name="Stage" type="Node2D" parent="." unique_id=1122187831]
-position = Vector2(150, 180)
+position = Vector2(150, 340)
 
 [node name="Range" type="Node2D" parent="Stage" unique_id=1302664644]
 position = Vector2(0, 1)
