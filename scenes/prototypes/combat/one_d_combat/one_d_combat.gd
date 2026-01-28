@@ -71,7 +71,7 @@ func _process_enemy_state():
 
 # Enemy range methods
 func _range_0():
-	_move_away_from_player()
+	_stay(_default_stay_duration)
 
 
 func _range_1():
@@ -83,15 +83,15 @@ func _range_2():
 
 
 func _range_3():
-	_move_towards_player()
+	_stay(_default_stay_duration)
 
 
 func _range_4():
-	_move_towards_player()
+	_stay(_default_stay_duration)
 
 
 func _range_5():
-	_move_towards_player()
+	_stay(_default_stay_duration)
 
 
 func _range_default():
