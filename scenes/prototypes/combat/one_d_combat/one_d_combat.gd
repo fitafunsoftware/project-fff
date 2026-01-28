@@ -7,23 +7,26 @@ extends Node2D
 @export var unit_width: int = 25:
 	set(value):
 		unit_width = value
-		player.speed = player_speed * unit_width
+		if player:
+			player.speed = player_speed * unit_width
 
 @export_category("Player")
 @export var player_speed: float = 4.0:
 	set(value):
 		player_speed = value
-		player.speed = player_speed * unit_width
+		if player:
+			player.speed = player_speed * unit_width
 @export var player_attack_duration: float = 0.5:
 	set(value):
 		player_attack_duration = value
-		player.attack_duration = value
+		if player:
+			player.attack_duration = value
 
 @export_category("Enemy")
 @export var enemy_towards_speed: float = 6.0
 @export var enemy_away_speed: float = 3.0
 
-@onready var player: Node2D = $Player
+@onready var player: Node2D = %Player
 
 @onready var enemy_towards: Node2D = $WolfArrows/Towards
 @onready var enemy_away: Node2D = $WolfArrows/Away
