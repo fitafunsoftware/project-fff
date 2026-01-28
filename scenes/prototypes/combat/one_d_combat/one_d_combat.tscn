@@ -96,12 +96,11 @@ offset = Vector2(-232, -128)
 script = ExtResource("4_f2amu")
 
 [node name="Wolf" type="Node2D" parent="Stage/Game" unique_id=505542961]
-position = Vector2(-150, -180)
 
 [node name="Hurtbox" type="Area2D" parent="Stage/Game/Wolf" unique_id=883236956]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stage/Game/Wolf/Hurtbox" unique_id=1174643903]
-position = Vector2(34, 118)
+position = Vector2(-116, -62)
 shape = SubResource("RectangleShape2D_mkfyb")
 
 [node name="AttackHitboxes" type="Area2D" parent="Stage/Game" unique_id=1966197219]
