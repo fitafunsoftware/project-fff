@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bwk68mwyrryac" path="res://assets/art/prototypes/attack.png" id="10_v1hsh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mkfyb"]
-size = Vector2(230, 120)
+size = Vector2(220, 120)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_avyba"]
 size = Vector2(80, 100)
