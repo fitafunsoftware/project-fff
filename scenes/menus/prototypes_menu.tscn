@@ -4,10 +4,10 @@
 [ext_resource type="Script" uid="uid://bgxv17ijuq0l4" path="res://utilities/helpers/reset_to_scene.gd" id="2_65c8y"]
 
 [node name="PrototypesMenu" unique_id=704131469 instance=ExtResource("1_25sx7")]
-options = Array[String](["Movement", "Main Menu"])
-scenes = Array[String](["res://scenes/menus/prototype_menus/movement_prototype_menu.tscn", "res://scenes/menus/main_menu.tscn"])
-loading = Array[bool]([false, false])
-touch = Array[bool]([false, false])
+options = Array[String](["Movement", "Combat", "Main Menu"])
+scenes = Array[String](["res://scenes/menus/prototype_menus/movement_prototype_menu.tscn", "res://scenes/menus/prototype_menus/combat_prototype_menu.tscn", "res://scenes/menus/main_menu.tscn"])
+loading = Array[bool]([false, false, false])
+touch = Array[bool]([false, false, false])
 
 [node name="Title" parent="VBoxContainer" parent_id_path=PackedInt32Array(1251214552) index="1" unique_id=1088626753]
 text = "Prototypes"

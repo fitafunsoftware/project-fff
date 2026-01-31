@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://doffggswdlg6k"]
+
+[ext_resource type="PackedScene" uid="uid://m1ira233pk6j" path="res://utilities/screens/menu_scene/menu_scene.tscn" id="1_1f27r"]
+[ext_resource type="Script" uid="uid://bgxv17ijuq0l4" path="res://utilities/helpers/reset_to_scene.gd" id="2_jeobd"]
+
+[node name="Combat" unique_id=1072883358 instance=ExtResource("1_1f27r")]
+options = Array[String](["1D Combat", "Back"])
+scenes = Array[String](["res://scenes/prototypes/combat/one_d_combat/one_d_combat.tscn", "res://scenes/menus/prototypes_menu.tscn"])
+loading = Array[bool]([false, false])
+touch = Array[bool]([false, false])
+
+[node name="Title" parent="VBoxContainer" parent_id_path=PackedInt32Array(1251214552) index="1" unique_id=1088626753]
+text = "Combat Prototypes"
+
+[node name="MenuOptions" parent="VBoxContainer/MenuContainer/HBoxContainer/MenuScroll" parent_id_path=PackedInt32Array(1879519003) index="0" unique_id=1201269469]
+size_flags_vertical = 2
+
+[node name="ResetToScene" type="Node" parent="." index="1" unique_id=969737275]
+script = ExtResource("2_jeobd")
+reset_scene = "uid://b24hjuc3yqldv"
+reset_combo = Array[StringName]([&"ui_cancel"])
+metadata/_custom_type_script = "uid://bgxv17ijuq0l4"

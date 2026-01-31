@@ -1,0 +1,209 @@
+[gd_scene format=3 uid="uid://cr3sqr85dg7uf"]
+
+[ext_resource type="Script" uid="uid://bgxv17ijuq0l4" path="res://utilities/helpers/reset_to_scene.gd" id="1_85h8l"]
+[ext_resource type="Texture2D" uid="uid://cie4dgbix5qa8" path="res://assets/art/prototypes/range_1m.png" id="2_tmk7a"]
+[ext_resource type="Texture2D" uid="uid://cky26jpawej83" path="res://assets/art/wolf/wolf.png" id="3_knb4v"]
+[ext_resource type="Script" uid="uid://l5h3hpa2ci6v" path="res://scenes/prototypes/combat/one_d_combat/one_d_combat.gd" id="4_f2amu"]
+[ext_resource type="Texture2D" uid="uid://cum3245fwrm1q" path="res://assets/art/player/base.png" id="4_knb4v"]
+[ext_resource type="Script" uid="uid://b4vm76uc473fl" path="res://scenes/prototypes/combat/one_d_combat/attack_hitboxes.gd" id="5_mkfyb"]
+[ext_resource type="Texture2D" uid="uid://cp6c1pby1ikmh" path="res://assets/art/prototypes/left_arrow.png" id="6_x3wuk"]
+[ext_resource type="Texture2D" uid="uid://cktr21oj4f3we" path="res://assets/art/prototypes/right_arrow.png" id="7_n2p87"]
+[ext_resource type="Script" uid="uid://bje8ekgqgk73q" path="res://scenes/prototypes/combat/one_d_combat/player.gd" id="7_yte02"]
+[ext_resource type="Texture2D" uid="uid://cajalq6lxgv3l" path="res://assets/art/prototypes/right_right_arrow.png" id="8_mkfyb"]
+[ext_resource type="Texture2D" uid="uid://cbp3sjyjj1ynt" path="res://assets/art/prototypes/left_left_arrow.png" id="9_yte02"]
+[ext_resource type="Texture2D" uid="uid://cono3u8fwxaru" path="res://assets/art/prototypes/pause.png" id="10_n2p87"]
+[ext_resource type="Texture2D" uid="uid://bwk68mwyrryac" path="res://assets/art/prototypes/attack.png" id="10_v1hsh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mkfyb"]
+size = Vector2(220, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_avyba"]
+size = Vector2(80, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v1hsh"]
+size = Vector2(80, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ehwxo"]
+size = Vector2(80, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2pvng"]
+size = Vector2(80, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r02tv"]
+size = Vector2(80, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n2p87"]
+size = Vector2(24, 75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yte02"]
+size = Vector2(45, 70)
+
+[node name="OneDCombat" type="Node2D" unique_id=2110289765]
+
+[node name="GamepadResetToMenu" type="Node" parent="." unique_id=64501020]
+script = ExtResource("1_85h8l")
+reset_scene = "uid://doffggswdlg6k"
+reset_combo = Array[StringName]([&"back", &"x", &"leftshoulder"])
+metadata/_custom_type_script = "uid://bgxv17ijuq0l4"
+
+[node name="KeybaordResetToMenu" type="Node" parent="." unique_id=1543251453]
+script = ExtResource("1_85h8l")
+reset_scene = "uid://doffggswdlg6k"
+reset_combo = Array[StringName]([&"ui_cancel", &"ui_accept"])
+metadata/_custom_type_script = "uid://bgxv17ijuq0l4"
+
+[node name="Stage" type="Node2D" parent="." unique_id=1122187831]
+position = Vector2(150, 340)
+
+[node name="Range" type="Node2D" parent="Stage" unique_id=1302664644]
+position = Vector2(0, 1)
+
+[node name="0m" type="Sprite2D" parent="Stage/Range" unique_id=1888498602]
+texture = ExtResource("2_tmk7a")
+centered = false
+offset = Vector2(0, -16)
+
+[node name="1m" type="Sprite2D" parent="Stage/Range" unique_id=1914527288]
+position = Vector2(100, 0)
+texture = ExtResource("2_tmk7a")
+centered = false
+offset = Vector2(0, -16)
+
+[node name="2m" type="Sprite2D" parent="Stage/Range" unique_id=1194820758]
+position = Vector2(200, 0)
+texture = ExtResource("2_tmk7a")
+centered = false
+offset = Vector2(0, -16)
+
+[node name="3m" type="Sprite2D" parent="Stage/Range" unique_id=1990958082]
+position = Vector2(300, 0)
+texture = ExtResource("2_tmk7a")
+centered = false
+offset = Vector2(0, -16)
+
+[node name="4m" type="Sprite2D" parent="Stage/Range" unique_id=769131925]
+position = Vector2(400, 0)
+texture = ExtResource("2_tmk7a")
+centered = false
+offset = Vector2(0, -16)
+
+[node name="Wolf" type="Sprite2D" parent="Stage" unique_id=755734306]
+texture = ExtResource("3_knb4v")
+centered = false
+offset = Vector2(-232, -128)
+
+[node name="Game" type="Node2D" parent="Stage" unique_id=139183964]
+script = ExtResource("4_f2amu")
+player_base_speed = 7.0
+player_sprint_speed = 11.0
+
+[node name="Wolf" type="Node2D" parent="Stage/Game" unique_id=505542961]
+
+[node name="Hurtbox" type="Area2D" parent="Stage/Game/Wolf" unique_id=883236956]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stage/Game/Wolf/Hurtbox" unique_id=1174643903]
+position = Vector2(-116, -62)
+shape = SubResource("RectangleShape2D_mkfyb")
+
+[node name="AttackHitboxes" type="Area2D" parent="Stage/Game" unique_id=1966197219]
+script = ExtResource("5_mkfyb")
+
+[node name="Range0" type="CollisionShape2D" parent="Stage/Game/AttackHitboxes" unique_id=562896917]
+position = Vector2(50, -64)
+shape = SubResource("RectangleShape2D_avyba")
+disabled = true
+debug_color = Color(0.69803923, 0, 0, 0.41960785)
+
+[node name="Range1" type="CollisionShape2D" parent="Stage/Game/AttackHitboxes" unique_id=1999459870]
+position = Vector2(150, -64)
+shape = SubResource("RectangleShape2D_v1hsh")
+disabled = true
+debug_color = Color(0.69803923, 0, 0, 0.41960785)
+
+[node name="Range2" type="CollisionShape2D" parent="Stage/Game/AttackHitboxes" unique_id=1822101549]
+position = Vector2(250, -64)
+shape = SubResource("RectangleShape2D_ehwxo")
+disabled = true
+debug_color = Color(0.69803923, 0, 0, 0.41960785)
+
+[node name="Range3" type="CollisionShape2D" parent="Stage/Game/AttackHitboxes" unique_id=1915599418]
+position = Vector2(350, -64)
+shape = SubResource("RectangleShape2D_2pvng")
+disabled = true
+debug_color = Color(0.69803923, 0, 0, 0.41960785)
+
+[node name="Range4" type="CollisionShape2D" parent="Stage/Game/AttackHitboxes" unique_id=766470590]
+position = Vector2(450, -64)
+shape = SubResource("RectangleShape2D_r02tv")
+disabled = true
+debug_color = Color(0.69803923, 0, 0, 0.41960785)
+
+[node name="Player" type="Sprite2D" parent="Stage/Game" unique_id=1365078712]
+unique_name_in_owner = true
+texture = ExtResource("4_knb4v")
+centered = false
+offset = Vector2(-54, -112)
+flip_h = true
+hframes = 6
+vframes = 3
+script = ExtResource("7_yte02")
+
+[node name="Towards" type="Node2D" parent="Stage/Game/Player" unique_id=1263968034]
+visible = false
+
+[node name="Base" type="Sprite2D" parent="Stage/Game/Player/Towards" unique_id=281802306]
+position = Vector2(10, -100)
+texture = ExtResource("6_x3wuk")
+
+[node name="Sprint" type="Sprite2D" parent="Stage/Game/Player/Towards" unique_id=1867296765]
+visible = false
+position = Vector2(10, -100)
+texture = ExtResource("9_yte02")
+
+[node name="Away" type="Node2D" parent="Stage/Game/Player" unique_id=1923652784]
+visible = false
+
+[node name="Base" type="Sprite2D" parent="Stage/Game/Player/Away" unique_id=2050737567]
+position = Vector2(10, -100)
+texture = ExtResource("7_n2p87")
+
+[node name="Sprint" type="Sprite2D" parent="Stage/Game/Player/Away" unique_id=429434021]
+visible = false
+position = Vector2(10, -100)
+texture = ExtResource("8_mkfyb")
+
+[node name="Attack" type="Sprite2D" parent="Stage/Game/Player" unique_id=643249279]
+visible = false
+position = Vector2(10, -100)
+texture = ExtResource("10_v1hsh")
+
+[node name="Hurtbox" type="Area2D" parent="Stage/Game/Player" unique_id=107246218]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stage/Game/Player/Hurtbox" unique_id=1255964851]
+position = Vector2(12, -40)
+shape = SubResource("RectangleShape2D_n2p87")
+
+[node name="Hitbox" type="Area2D" parent="Stage/Game/Player" unique_id=1541876796]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stage/Game/Player/Hitbox" unique_id=1367805780]
+position = Vector2(-25, -40)
+shape = SubResource("RectangleShape2D_yte02")
+disabled = true
+debug_color = Color(0.7019608, 0, 0, 0.41960785)
+
+[node name="WolfArrows" type="Node2D" parent="Stage/Game" unique_id=2023333247]
+
+[node name="Towards" type="Sprite2D" parent="Stage/Game/WolfArrows" unique_id=1071188714]
+visible = false
+position = Vector2(-70, -60)
+texture = ExtResource("8_mkfyb")
+
+[node name="Away" type="Sprite2D" parent="Stage/Game/WolfArrows" unique_id=1009488367]
+visible = false
+position = Vector2(-70, -60)
+texture = ExtResource("9_yte02")
+
+[node name="Stay" type="Sprite2D" parent="Stage/Game/WolfArrows" unique_id=1672505950]
+visible = false
+position = Vector2(-70, -60)
+texture = ExtResource("10_n2p87")
