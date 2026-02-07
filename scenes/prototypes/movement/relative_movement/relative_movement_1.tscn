@@ -1,35 +1,35 @@
 [gd_scene format=3 uid="uid://qobw655k4wgt"]
 
-[ext_resource type="Script" uid="uid://bgxv17ijuq0l4" path="res://utilities/helpers/reset_to_scene.gd" id="1_wa7hy"]
-[ext_resource type="Script" uid="uid://dkc46s85igrsq" path="res://scenes/prototypes/movement/relative_movement/stage.gd" id="2_5bmp1"]
-[ext_resource type="Texture2D" uid="uid://cie4dgbix5qa8" path="res://assets/art/prototypes/range_1m.png" id="2_mktlt"]
-[ext_resource type="Script" uid="uid://bmv2eqgi106c8" path="res://scenes/prototypes/movement/relative_movement/borders.gd" id="3_43soe"]
-[ext_resource type="Script" uid="uid://dntoen5nyj7kj" path="res://scenes/prototypes/movement/relative_movement/player.gd" id="4_jo1j8"]
-[ext_resource type="PackedScene" uid="uid://dkv1ey0qvccts" path="res://scenes/prototypes/movement/relative_movement/counter.tscn" id="6_li8ti"]
+[ext_resource type="Script" uid="uid://bgxv17ijuq0l4" path="res://utilities/helpers/reset_to_scene.gd" id="1_xhn2o"]
+[ext_resource type="Script" uid="uid://dkc46s85igrsq" path="res://scenes/prototypes/movement/relative_movement/stage.gd" id="2_jj3ef"]
+[ext_resource type="Script" uid="uid://dntoen5nyj7kj" path="res://scenes/prototypes/movement/relative_movement/player.gd" id="3_pn42w"]
+[ext_resource type="Texture2D" uid="uid://cie4dgbix5qa8" path="res://assets/art/prototypes/range_1m.png" id="4_sk3rg"]
+[ext_resource type="Script" uid="uid://bmv2eqgi106c8" path="res://scenes/prototypes/movement/relative_movement/borders.gd" id="5_qepw4"]
+[ext_resource type="PackedScene" uid="uid://dkv1ey0qvccts" path="res://scenes/prototypes/movement/relative_movement/counter.tscn" id="6_ygxu7"]
 
-[node name="RelativeMovement" type="Node2D" unique_id=414777784]
+[node name="RelativeMovement1" type="Node2D" unique_id=414777784]
 
 [node name="GamepadResetToMenu" type="Node" parent="." unique_id=1562639751]
-script = ExtResource("1_wa7hy")
+script = ExtResource("1_xhn2o")
 reset_scene = "uid://c87ds2v03qc1m"
 reset_combo = Array[StringName]([&"back", &"x", &"leftshoulder"])
 metadata/_custom_type_script = "uid://bgxv17ijuq0l4"
 
 [node name="KeybaordResetToMenu" type="Node" parent="." unique_id=809995616]
-script = ExtResource("1_wa7hy")
+script = ExtResource("1_xhn2o")
 reset_scene = "uid://c87ds2v03qc1m"
 reset_combo = Array[StringName]([&"ui_cancel", &"ui_accept"])
 metadata/_custom_type_script = "uid://bgxv17ijuq0l4"
 
 [node name="Stage" type="Node2D" parent="." unique_id=288291705]
 position = Vector2(320, 358)
-script = ExtResource("2_5bmp1")
+script = ExtResource("2_jj3ef")
 size = 32
 base_speed = 6.0
 sprint_speed = 10.0
 
 [node name="Player" type="Node2D" parent="Stage" unique_id=184426079]
-script = ExtResource("4_jo1j8")
+script = ExtResource("3_pn42w")
 
 [node name="Sprite" type="ColorRect" parent="Stage/Player" unique_id=1991734185]
 anchors_preset = 7
@@ -49,49 +49,49 @@ position = Vector2(0, 1)
 
 [node name="6m" type="Sprite2D" parent="Stage/Range" unique_id=1928005582]
 position = Vector2(279, 0)
-texture = ExtResource("2_mktlt")
+texture = ExtResource("4_sk3rg")
 centered = false
 offset = Vector2(0, -16)
 
 [node name="5m" type="Sprite2D" parent="Stage/Range" unique_id=692868420]
 position = Vector2(179, 0)
-texture = ExtResource("2_mktlt")
+texture = ExtResource("4_sk3rg")
 centered = false
 offset = Vector2(0, -16)
 
 [node name="4m" type="Sprite2D" parent="Stage/Range" unique_id=1927069780]
 position = Vector2(79, 0)
-texture = ExtResource("2_mktlt")
+texture = ExtResource("4_sk3rg")
 centered = false
 offset = Vector2(0, -16)
 
 [node name="3m" type="Sprite2D" parent="Stage/Range" unique_id=506182831]
 position = Vector2(-21, 0)
-texture = ExtResource("2_mktlt")
+texture = ExtResource("4_sk3rg")
 centered = false
 offset = Vector2(0, -16)
 
 [node name="2m" type="Sprite2D" parent="Stage/Range" unique_id=347227690]
 position = Vector2(-121, 0)
-texture = ExtResource("2_mktlt")
+texture = ExtResource("4_sk3rg")
 centered = false
 offset = Vector2(0, -16)
 
 [node name="1m" type="Sprite2D" parent="Stage/Range" unique_id=1585534267]
 position = Vector2(-221, 0)
-texture = ExtResource("2_mktlt")
+texture = ExtResource("4_sk3rg")
 centered = false
 offset = Vector2(0, -16)
 
 [node name="0m" type="Sprite2D" parent="Stage/Range" unique_id=576023183]
 position = Vector2(-321, 0)
-texture = ExtResource("2_mktlt")
+texture = ExtResource("4_sk3rg")
 centered = false
 offset = Vector2(0, -16)
 
 [node name="Borders" type="Node2D" parent="Stage" unique_id=789768058]
 position = Vector2(0, 2)
-script = ExtResource("3_43soe")
+script = ExtResource("5_qepw4")
 
 [node name="Left" type="Node2D" parent="Stage/Borders" unique_id=1535776993]
 position = Vector2(-320, 0)
@@ -164,7 +164,7 @@ theme_override_constants/separation = 12
 [node name="A" type="VBoxContainer" parent="Stage/Counters" unique_id=1997771277]
 layout_mode = 2
 
-[node name="Width" parent="Stage/Counters/A" unique_id=535230044 instance=ExtResource("6_li8ti")]
+[node name="Width" parent="Stage/Counters/A" unique_id=535230044 instance=ExtResource("6_ygxu7")]
 layout_mode = 2
 title = "Stage Width"
 
@@ -175,7 +175,7 @@ text = "20x Player Size"
 [node name="B" type="VBoxContainer" parent="Stage/Counters" unique_id=935933353]
 layout_mode = 2
 
-[node name="Size" parent="Stage/Counters/B" unique_id=612558396 instance=ExtResource("6_li8ti")]
+[node name="Size" parent="Stage/Counters/B" unique_id=612558396 instance=ExtResource("6_ygxu7")]
 layout_mode = 2
 title = "Player Size"
 max_value = 128
@@ -183,7 +183,7 @@ max_value = 128
 [node name="C" type="VBoxContainer" parent="Stage/Counters" unique_id=1264413324]
 layout_mode = 2
 
-[node name="Base" parent="Stage/Counters/C" unique_id=566401083 instance=ExtResource("6_li8ti")]
+[node name="Base" parent="Stage/Counters/C" unique_id=566401083 instance=ExtResource("6_ygxu7")]
 layout_mode = 2
 title = "Base Speed"
 max_value = 200
@@ -201,7 +201,7 @@ text = "End To End: 3.0s"
 [node name="D" type="VBoxContainer" parent="Stage/Counters" unique_id=937220770]
 layout_mode = 2
 
-[node name="Sprint" parent="Stage/Counters/D" unique_id=1932454855 instance=ExtResource("6_li8ti")]
+[node name="Sprint" parent="Stage/Counters/D" unique_id=1932454855 instance=ExtResource("6_ygxu7")]
 layout_mode = 2
 title = "Sprint Speed"
 max_value = 200

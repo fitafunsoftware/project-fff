@@ -4,10 +4,10 @@
 [ext_resource type="Script" uid="uid://bgxv17ijuq0l4" path="res://utilities/helpers/reset_to_scene.gd" id="2_idp53"]
 
 [node name="Movement" unique_id=786691486 instance=ExtResource("1_ut8cg")]
-options = Array[String](["Relative Movement", "Back"])
-scenes = Array[String](["res://scenes/prototypes/movement/relative_movement/relative_movement.tscn", "res://scenes/menus/prototypes_menu.tscn"])
-loading = Array[bool]([false, false])
-touch = Array[bool]([false, false])
+options = Array[String](["Relative Movement 2", "Relative Movement 1", "Back"])
+scenes = Array[String](["res://scenes/prototypes/movement/relative_movement/relative_movement_2.tscn", "res://scenes/prototypes/movement/relative_movement/relative_movement_1.tscn", "res://scenes/menus/prototypes_menu.tscn"])
+loading = Array[bool]([false, false, false])
+touch = Array[bool]([false, false, false])
 
 [node name="Title" parent="VBoxContainer" parent_id_path=PackedInt32Array(1251214552) index="1" unique_id=1088626753]
 text = "Movement Prototypes"
