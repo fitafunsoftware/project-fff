@@ -4,23 +4,18 @@ extends Node2D
 	set(value):
 		max_range = value
 		player.max_range = value
-@export var unit_width: int = 25:
-	set(value):
-		unit_width = value
-		if player:
-			player.base_speed = player_base_speed * unit_width
 
 @export_category("Player")
-@export var player_base_speed: float = 4.0:
+@export var player_base_speed: int = 160:
 	set(value):
 		player_base_speed = value
 		if player:
-			player.base_speed = player_base_speed * unit_width
-@export var player_sprint_speed: float = 12.0:
+			player.base_speed = float(player_base_speed)
+@export var player_sprint_ratio: float = 1.5:
 	set(value):
-		player_sprint_speed = value
+		player_sprint_ratio = value
 		if player:
-			player.sprint_speed = player_sprint_speed * unit_width
+			player.sprint_speed = player_sprint_ratio * player_base_speed
 @export var player_attack_duration: float = 0.5:
 	set(value):
 		player_attack_duration = value
@@ -28,8 +23,9 @@ extends Node2D
 			player.attack_duration = value
 
 @export_category("Enemy")
-@export var enemy_towards_speed: float = 6.0
-@export var enemy_away_speed: float = 3.0
+@export var enemy_base_speed: int = 320
+@export var enemy_towards_ratio: float = 1.0
+@export var enemy_away_ratio: float = 0.75
 
 @onready var player: Node2D = %Player
 
@@ -56,8 +52,8 @@ func _ready():
 
 func _initialize_player() -> void:
 	player.max_range = max_range
-	player.base_speed = player_base_speed * unit_width
-	player.sprint_speed = player_sprint_speed * unit_width
+	player.base_speed = float(player_base_speed)
+	player.sprint_speed = player_sprint_ratio * player_base_speed
 	player.attack_duration = player_attack_duration
 	player.enemy_speed = 0.0
 
@@ -122,7 +118,7 @@ func _stay(duration: float):
 
 func _move_towards_player():
 	_in_action = true
-	player.enemy_speed = enemy_towards_speed * unit_width * TOWARDS
+	player.enemy_speed = enemy_base_speed * enemy_towards_ratio * TOWARDS
 	enemy_towards.show()
 	
 	await get_tree().create_timer(_move_duration).timeout
@@ -131,7 +127,7 @@ func _move_towards_player():
 
 func _move_away_from_player():
 	_in_action = true
-	player.enemy_speed = enemy_away_speed * unit_width * AWAY
+	player.enemy_speed = enemy_base_speed * enemy_away_ratio * AWAY
 	enemy_away.show()
 	
 	await get_tree().create_timer(_move_duration).timeout

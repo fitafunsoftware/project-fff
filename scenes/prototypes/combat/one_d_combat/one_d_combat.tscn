@@ -94,8 +94,6 @@ offset = Vector2(-232, -128)
 
 [node name="Game" type="Node2D" parent="Stage" unique_id=139183964]
 script = ExtResource("4_f2amu")
-player_base_speed = 7.0
-player_sprint_speed = 11.0
 
 [node name="Wolf" type="Node2D" parent="Stage/Game" unique_id=505542961]
 
