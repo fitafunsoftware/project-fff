@@ -3,6 +3,10 @@
 [ext_resource type="Script" uid="uid://bgxv17ijuq0l4" path="res://utilities/helpers/reset_to_scene.gd" id="1_wrch0"]
 [ext_resource type="Texture2D" uid="uid://cie4dgbix5qa8" path="res://assets/art/prototypes/range_1m.png" id="2_hsis4"]
 [ext_resource type="Script" uid="uid://fuihe6nf05wi" path="res://scenes/prototypes/movement/waltz/player.gd" id="2_jpvsm"]
+[ext_resource type="Script" uid="uid://dpdfhribvol1i" path="res://scenes/prototypes/movement/waltz/goal.gd" id="3_cjgdn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cjgdn"]
+size = Vector2(80, 100)
 
 [node name="Waltz" type="Node2D" unique_id=542349425]
 
@@ -36,6 +40,29 @@ offset_right = 16.0
 grow_horizontal = 2
 grow_vertical = 0
 color = Color(0.8, 0.8, 0.8, 1)
+
+[node name="Goal" type="Node2D" parent="Stage" unique_id=1857956516]
+script = ExtResource("3_cjgdn")
+size = 80
+
+[node name="Sprite" type="ColorRect" parent="Stage/Goal" unique_id=273277308]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -100.0
+offset_right = 40.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.10880002, 0.68, 0.13735998, 0.40784314)
+
+[node name="Hitbox" type="Area2D" parent="Stage/Goal" unique_id=498057919]
+
+[node name="Shape" type="CollisionShape2D" parent="Stage/Goal/Hitbox" unique_id=577241466]
+position = Vector2(0, -50)
+shape = SubResource("RectangleShape2D_cjgdn")
 
 [node name="Range" type="Node2D" parent="Stage" unique_id=200021272]
 position = Vector2(0, 1)
