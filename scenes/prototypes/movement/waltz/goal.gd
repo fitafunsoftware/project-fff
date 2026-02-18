@@ -7,9 +7,9 @@ signal player_exited()
 const HEIGHT: int = 100
 const MAX_RANGE: int = 320
 
-@export var size: int = 64:
+var size: int = 80:
 	set(value):
-		size = clampi(value, 2, 640)
+		size = value
 		_set_size()
 
 var base_speed: int = 128
