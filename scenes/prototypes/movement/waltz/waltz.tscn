@@ -1,0 +1,128 @@
+[gd_scene format=3 uid="uid://bjhy1nufj3hle"]
+
+[ext_resource type="Script" uid="uid://bgxv17ijuq0l4" path="res://utilities/helpers/reset_to_scene.gd" id="1_wrch0"]
+[ext_resource type="Texture2D" uid="uid://cie4dgbix5qa8" path="res://assets/art/prototypes/range_1m.png" id="2_hsis4"]
+[ext_resource type="Script" uid="uid://fuihe6nf05wi" path="res://scenes/prototypes/movement/waltz/player_base.gd" id="2_jpvsm"]
+[ext_resource type="Script" uid="uid://d3ahp1rlatvsd" path="res://scenes/prototypes/movement/waltz/waltz.gd" id="2_pqydb"]
+[ext_resource type="Script" uid="uid://dpdfhribvol1i" path="res://scenes/prototypes/movement/waltz/goal_base.gd" id="4_sn44s"]
+[ext_resource type="PackedScene" uid="uid://b0dgbdpcqpdrd" path="res://scenes/prototypes/movement/waltz/scoreboard.tscn" id="6_sn44s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pqydb"]
+size = Vector2(32, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cjgdn"]
+size = Vector2(80, 100)
+
+[node name="Waltz" type="Node2D" unique_id=542349425]
+
+[node name="GamepadResetToMenu" type="Node" parent="." unique_id=1634217890]
+script = ExtResource("1_wrch0")
+reset_scene = "uid://c87ds2v03qc1m"
+reset_combo = Array[StringName]([&"back", &"x", &"leftshoulder"])
+metadata/_custom_type_script = "uid://bgxv17ijuq0l4"
+
+[node name="KeybaordResetToMenu" type="Node" parent="." unique_id=1307988760]
+script = ExtResource("1_wrch0")
+reset_scene = "uid://c87ds2v03qc1m"
+reset_combo = Array[StringName]([&"ui_cancel", &"ui_accept"])
+metadata/_custom_type_script = "uid://bgxv17ijuq0l4"
+
+[node name="Stage" type="Node2D" parent="." unique_id=12246339]
+position = Vector2(320, 220)
+script = ExtResource("2_pqydb")
+
+[node name="Player" type="Node2D" parent="Stage" unique_id=440077696]
+script = ExtResource("2_jpvsm")
+
+[node name="Sprite" type="ColorRect" parent="Stage/Player" unique_id=556803767]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -80.0
+offset_right = 16.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.8, 0.8, 0.8, 1)
+
+[node name="Hitbox" type="Area2D" parent="Stage/Player" unique_id=1289381377]
+
+[node name="Shape" type="CollisionShape2D" parent="Stage/Player/Hitbox" unique_id=1416595144]
+position = Vector2(0, -40)
+shape = SubResource("RectangleShape2D_pqydb")
+
+[node name="Goal" type="Node2D" parent="Stage" unique_id=1857956516]
+script = ExtResource("4_sn44s")
+
+[node name="Sprite" type="ColorRect" parent="Stage/Goal" unique_id=273277308]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -100.0
+offset_right = 40.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.10880002, 0.68, 0.13735998, 0.40784314)
+
+[node name="Hitbox" type="Area2D" parent="Stage/Goal" unique_id=498057919]
+
+[node name="Shape" type="CollisionShape2D" parent="Stage/Goal/Hitbox" unique_id=577241466]
+position = Vector2(0, -50)
+shape = SubResource("RectangleShape2D_cjgdn")
+
+[node name="Range" type="Node2D" parent="Stage" unique_id=200021272]
+position = Vector2(0, 1)
+
+[node name="6m" type="Sprite2D" parent="Stage/Range" unique_id=1545264920]
+position = Vector2(279, 0)
+texture = ExtResource("2_hsis4")
+centered = false
+offset = Vector2(0, -16)
+
+[node name="5m" type="Sprite2D" parent="Stage/Range" unique_id=392757816]
+position = Vector2(179, 0)
+texture = ExtResource("2_hsis4")
+centered = false
+offset = Vector2(0, -16)
+
+[node name="4m" type="Sprite2D" parent="Stage/Range" unique_id=1314352974]
+position = Vector2(79, 0)
+texture = ExtResource("2_hsis4")
+centered = false
+offset = Vector2(0, -16)
+
+[node name="3m" type="Sprite2D" parent="Stage/Range" unique_id=1051424543]
+position = Vector2(-21, 0)
+texture = ExtResource("2_hsis4")
+centered = false
+offset = Vector2(0, -16)
+
+[node name="2m" type="Sprite2D" parent="Stage/Range" unique_id=1254970050]
+position = Vector2(-121, 0)
+texture = ExtResource("2_hsis4")
+centered = false
+offset = Vector2(0, -16)
+
+[node name="1m" type="Sprite2D" parent="Stage/Range" unique_id=373316163]
+position = Vector2(-221, 0)
+texture = ExtResource("2_hsis4")
+centered = false
+offset = Vector2(0, -16)
+
+[node name="0m" type="Sprite2D" parent="Stage/Range" unique_id=616015994]
+position = Vector2(-321, 0)
+texture = ExtResource("2_hsis4")
+centered = false
+offset = Vector2(0, -16)
+
+[node name="Scoreboard" parent="Stage" unique_id=1787456905 instance=ExtResource("6_sn44s")]
+
+[connection signal="player_entered" from="Stage/Goal" to="Stage" method="_player_entered"]
+[connection signal="player_exited" from="Stage/Goal" to="Stage" method="_player_exited"]
+[connection signal="area_entered" from="Stage/Goal/Hitbox" to="Stage/Goal" method="_on_player_enter"]
+[connection signal="area_exited" from="Stage/Goal/Hitbox" to="Stage/Goal" method="_on_player_exit"]

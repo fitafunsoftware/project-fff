@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://b0dgbdpcqpdrd"]
+
+[ext_resource type="Script" uid="uid://btwiug0pi2g10" path="res://scenes/prototypes/movement/waltz/score.gd" id="1_1rpox"]
+
+[node name="Scoreboard" type="VBoxContainer" unique_id=1787456905]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -31.0
+offset_top = 20.0
+offset_right = 31.0
+offset_bottom = 60.0
+grow_horizontal = 2
+script = ExtResource("1_1rpox")
+
+[node name="Title" type="Label" parent="." unique_id=2094776612]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Time In Range:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="." unique_id=1076643539]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "2.03s"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TotalTitle" type="Label" parent="." unique_id=1378890873]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Total Time:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Total" type="Label" parent="." unique_id=707865506]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "2.03s"
+horizontal_alignment = 1
+vertical_alignment = 1
