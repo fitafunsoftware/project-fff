@@ -35,7 +35,7 @@ offset_top = -80.0
 offset_right = 16.0
 grow_horizontal = 2
 grow_vertical = 0
-color = Color(0.022599265, 0.4783516, 0.25335172, 1)
+color = Color(0.8, 0.8, 0.8, 1)
 
 [node name="Range" type="Node2D" parent="Stage" unique_id=200021272]
 position = Vector2(0, 1)
