@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bgxv17ijuq0l4" path="res://utilities/helpers/reset_to_scene.gd" id="1_wrch0"]
 [ext_resource type="Texture2D" uid="uid://cie4dgbix5qa8" path="res://assets/art/prototypes/range_1m.png" id="2_hsis4"]
+[ext_resource type="Script" uid="uid://fuihe6nf05wi" path="res://scenes/prototypes/movement/waltz/player.gd" id="2_jpvsm"]
 
 [node name="Waltz" type="Node2D" unique_id=542349425]
 
@@ -21,6 +22,7 @@ metadata/_custom_type_script = "uid://bgxv17ijuq0l4"
 position = Vector2(320, 220)
 
 [node name="Player" type="Node2D" parent="Stage" unique_id=440077696]
+script = ExtResource("2_jpvsm")
 
 [node name="Sprite" type="ColorRect" parent="Stage/Player" unique_id=556803767]
 anchors_preset = 7
