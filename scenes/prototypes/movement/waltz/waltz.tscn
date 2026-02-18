@@ -5,6 +5,9 @@
 [ext_resource type="Script" uid="uid://fuihe6nf05wi" path="res://scenes/prototypes/movement/waltz/player.gd" id="2_jpvsm"]
 [ext_resource type="Script" uid="uid://dpdfhribvol1i" path="res://scenes/prototypes/movement/waltz/goal.gd" id="3_cjgdn"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pqydb"]
+size = Vector2(32, 80)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cjgdn"]
 size = Vector2(80, 100)
 
@@ -40,6 +43,12 @@ offset_right = 16.0
 grow_horizontal = 2
 grow_vertical = 0
 color = Color(0.8, 0.8, 0.8, 1)
+
+[node name="Hitbox" type="Area2D" parent="Stage/Player" unique_id=1289381377]
+
+[node name="Shape" type="CollisionShape2D" parent="Stage/Player/Hitbox" unique_id=1416595144]
+position = Vector2(0, -40)
+shape = SubResource("RectangleShape2D_pqydb")
 
 [node name="Goal" type="Node2D" parent="Stage" unique_id=1857956516]
 script = ExtResource("3_cjgdn")
@@ -108,3 +117,6 @@ position = Vector2(-321, 0)
 texture = ExtResource("2_hsis4")
 centered = false
 offset = Vector2(0, -16)
+
+[connection signal="area_entered" from="Stage/Goal/Hitbox" to="Stage/Goal" method="_on_player_enter"]
+[connection signal="area_exited" from="Stage/Goal/Hitbox" to="Stage/Goal" method="_on_player_exit"]

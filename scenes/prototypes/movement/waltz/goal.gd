@@ -1,6 +1,9 @@
 @tool
 extends Node2D
 
+signal player_entered()
+signal player_exited()
+
 const HEIGHT: int = 100
 
 @export var size: int = 64:
@@ -26,3 +29,11 @@ func _set_size() -> void:
 	_hitbox_shape.position.y = -HEIGHT/2.0
 	var shape: RectangleShape2D = _hitbox_shape.shape
 	shape.size = Vector2(size, HEIGHT)
+
+
+func _on_player_enter(_area: Area2D) -> void:
+	player_entered.emit()
+
+
+func _on_player_exit(_area: Area2D) -> void:
+	player_exited.emit()
