@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5f4d2dsqrma2"]
+[gd_scene format=3 uid="uid://b5f4d2dsqrma2"]
 
 [ext_resource type="Shader" uid="uid://dw80s0ocqcwb7" path="res://shaders/transparent_mesh.gdshader" id="1_pwhyv"]
 [ext_resource type="Texture2D" uid="uid://cky26jpawej83" path="res://assets/art/wolf/wolf.png" id="2_ba56n"]
@@ -10,13 +10,11 @@
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("1_pwhyv")
-shader_parameter/shadow_light_color = Color(1, 0, 0, 1)
-shader_parameter/tint = Color(1, 0, 0, 1)
 shader_parameter/sprite_texture = ExtResource("2_ba56n")
 shader_parameter/opacity = 1.0
 shader_parameter/shaded = false
 
-[node name="WolfFlat" type="Sprite3D"]
+[node name="WolfFlat" type="Sprite3D" unique_id=2016427621]
 material_override = SubResource("ShaderMaterial_h8kd5")
 cast_shadow = 0
 centered = false
@@ -24,7 +22,7 @@ offset = Vector2(-116, 0)
 texture = ExtResource("2_ba56n")
 script = ExtResource("3_ucr1e")
 
-[node name="Shadow3D" type="Sprite3D" parent="."]
+[node name="Shadow3D" type="Sprite3D" parent="." unique_id=1742347423]
 transform = Transform3D(1.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 cast_shadow = 3
 axis = 1

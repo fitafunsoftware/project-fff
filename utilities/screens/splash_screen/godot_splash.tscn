@@ -5,7 +5,7 @@
 
 [node name="GodotSplash" unique_id=47341333 instance=ExtResource("1_v5gqv")]
 
-[node name="Logo" parent="." index="1"]
+[node name="Logo" parent="." index="1" unique_id=942046161]
 offset_left = -119.5
 offset_top = -140.0
 offset_right = 119.5

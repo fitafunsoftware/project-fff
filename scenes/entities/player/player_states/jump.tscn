@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://1ac5bgndark"]
+[gd_scene format=3 uid="uid://1ac5bgndark"]
 
 [ext_resource type="Script" uid="uid://1hitqk53ho1f" path="res://utilities/state_machine/states/component_state.gd" id="1_1os74"]
 [ext_resource type="Script" uid="uid://bucwnhml8yg73" path="res://utilities/entity/state_components/move_state_component.gd" id="2_tw2ci"]
@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://bm6e8tui4ydm6" path="res://utilities/state_machine/states/state_components/node_state_components/enter/enter_call_function_variable_state_component.gd" id="6_5sdu4"]
 [ext_resource type="Script" uid="uid://dc1oyhvb7je5d" path="res://utilities/state_machine/states/state_components/node_state_components/enter/enter_call_function_state_component.gd" id="7_ouqoe"]
 
-[node name="Jump" type="Node"]
+[node name="Jump" type="Node" unique_id=547620891]
 script = ExtResource("1_1os74")
 dependencies = Dictionary[StringName, Variant]({
 &"animation": null,
@@ -23,45 +23,45 @@ state_name = &"jump"
 push_down = true
 overwrite = true
 
-[node name="Move" type="Node" parent="."]
+[node name="Move" type="Node" parent="." unique_id=1283600007]
 script = ExtResource("2_tw2ci")
 entity_key = &"body"
 input_key = &"input"
 speed_key = &"speed"
 
-[node name="Jump" type="Node" parent="."]
+[node name="Jump" type="Node" parent="." unique_id=2018443222]
 script = ExtResource("6_5sdu4")
 function = &"set_y_velocity"
 variables = Array[StringName]([&"jump_velocity"])
 node_key = &"body"
 
-[node name="Animation" type="Node" parent="."]
+[node name="Animation" type="Node" parent="." unique_id=323342482]
 script = ExtResource("7_ouqoe")
 function = &"play"
 args = ["idle"]
 node_key = &"animation"
 
-[node name="Look" type="Node" parent="."]
+[node name="Look" type="Node" parent="." unique_id=170298191]
 script = ExtResource("5_33cou")
 look_key = &"look"
 input_key = &"input"
 
-[node name="Transitions" type="Node" parent="."]
+[node name="Transitions" type="Node" parent="." unique_id=1698540191]
 
-[node name="InAir" type="Node" parent="Transitions"]
+[node name="InAir" type="Node" parent="Transitions" unique_id=1613426238]
 script = ExtResource("3_rko54")
 node_key = &"body"
 function = &"is_on_floor"
 equals = [false]
 
-[node name="Falling" type="Node" parent="Transitions/InAir"]
+[node name="Falling" type="Node" parent="Transitions/InAir" unique_id=218048710]
 script = ExtResource("4_4kco0")
 next_state = "fall"
 function = "get_y_velocity"
 less_than = [0.0]
 node_key = &"body"
 
-[node name="Grounded" type="Node" parent="Transitions"]
+[node name="Grounded" type="Node" parent="Transitions" unique_id=1444029790]
 script = ExtResource("5_v6mg8")
 next_state = "previous"
 function = "is_on_floor"

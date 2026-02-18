@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dc27hwodjir5a"]
+[gd_scene format=3 uid="uid://dc27hwodjir5a"]
 
 [ext_resource type="Shader" uid="uid://dw80s0ocqcwb7" path="res://shaders/transparent_mesh.gdshader" id="2_0odbi"]
 [ext_resource type="Texture2D" uid="uid://cahkygs8hx2dn" path="res://assets/art/wolf/wolf_middle.png" id="2_oqjhw"]
@@ -16,8 +16,6 @@ size = Vector3(2, 1.28, 1.209)
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_0odbi")
-shader_parameter/shadow_light_color = Color(1, 0, 0, 1)
-shader_parameter/tint = Color(1, 0, 0, 1)
 shader_parameter/sprite_texture = ExtResource("4_p3aa3")
 shader_parameter/opacity = 1.0
 shader_parameter/shaded = true
@@ -26,8 +24,6 @@ shader_parameter/shaded = true
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_0odbi")
-shader_parameter/shadow_light_color = Color(1, 0, 0, 1)
-shader_parameter/tint = Color(1, 0, 0, 1)
 shader_parameter/sprite_texture = ExtResource("5_3gm1a")
 shader_parameter/opacity = 1.0
 shader_parameter/shaded = true
@@ -36,13 +32,11 @@ shader_parameter/shaded = true
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_0odbi")
-shader_parameter/shadow_light_color = Color(1, 0, 0, 1)
-shader_parameter/tint = Color(1, 0, 0, 1)
 shader_parameter/sprite_texture = ExtResource("2_oqjhw")
 shader_parameter/opacity = 1.0
 shader_parameter/shaded = true
 
-[node name="Entity" type="CharacterBody3D"]
+[node name="Entity" type="CharacterBody3D" unique_id=1181305702]
 collision_mask = 129
 platform_on_leave = 1
 platform_floor_layers = 128
@@ -50,11 +44,11 @@ script = ExtResource("8_rs3fi")
 friction = 10.0
 acceleration = 10.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1925056062]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64, 0)
 shape = SubResource("BoxShape3D_8no2n")
 
-[node name="Front" type="Sprite3D" parent="."]
+[node name="Front" type="Sprite3D" parent="." unique_id=319730782]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64, 0.192323)
 material_override = SubResource("ShaderMaterial_f5n2d")
 cast_shadow = 0
@@ -64,7 +58,7 @@ texture = ExtResource("4_p3aa3")
 script = ExtResource("3_7pnnf")
 z_pixel_offset = 7
 
-[node name="Back" type="Sprite3D" parent="."]
+[node name="Back" type="Sprite3D" parent="." unique_id=1216993923]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64, -0.192323)
 material_override = SubResource("ShaderMaterial_drnd7")
 cast_shadow = 0
@@ -74,7 +68,7 @@ texture = ExtResource("5_3gm1a")
 script = ExtResource("3_7pnnf")
 z_pixel_offset = -7
 
-[node name="Shadow3D" type="Sprite3D" parent="."]
+[node name="Shadow3D" type="Sprite3D" parent="." unique_id=104958199]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 cast_shadow = 3
 axis = 1
@@ -84,7 +78,7 @@ texture_filter = 0
 texture = ExtResource("6_vc81l")
 script = ExtResource("7_tr2xj")
 
-[node name="WolfDepth" type="Sprite3D" parent="."]
+[node name="WolfDepth" type="Sprite3D" parent="." unique_id=198264949]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64, 0)
 material_override = SubResource("ShaderMaterial_4ov1q")
 cast_shadow = 0

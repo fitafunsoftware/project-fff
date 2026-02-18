@@ -5,7 +5,7 @@
 
 [node name="FitaSplash" unique_id=1506476917 instance=ExtResource("1_hjds4")]
 
-[node name="Logo" parent="." index="1"]
+[node name="Logo" parent="." index="1" unique_id=942046161]
 offset_left = -250.0
 offset_top = -67.5
 offset_right = 250.0

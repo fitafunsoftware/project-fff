@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b5p4x0lyjysme"]
+[gd_scene format=3 uid="uid://b5p4x0lyjysme"]
 
 [ext_resource type="Script" uid="uid://ccr2f1e3rpx1m" path="res://utilities/entity/entity.gd" id="1_dixje"]
 [ext_resource type="Shader" uid="uid://dw80s0ocqcwb7" path="res://shaders/transparent_mesh.gdshader" id="2_cr2h3"]
@@ -21,8 +21,6 @@ size = Vector3(0.2, 0.8, 0.22)
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_cr2h3")
-shader_parameter/shadow_light_color = Color(1, 0, 0, 1)
-shader_parameter/tint = Color(1, 0, 0, 1)
 shader_parameter/sprite_texture = ExtResource("3_50vm0")
 shader_parameter/opacity = 1.0
 shader_parameter/shaded = true
@@ -87,7 +85,7 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_5kcq1"]
 size = Vector3(0.6, 1, 0.02)
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" unique_id=133427360]
 collision_mask = 129
 platform_on_leave = 1
 platform_floor_layers = 128
@@ -95,11 +93,11 @@ script = ExtResource("1_dixje")
 friction = 10.0
 acceleration = 10.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=583542045]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
 shape = SubResource("BoxShape3D_fn6na")
 
-[node name="Sprite" type="Sprite3D" parent="."]
+[node name="Sprite" type="Sprite3D" parent="." unique_id=898961881]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48, 0)
 material_override = SubResource("ShaderMaterial_trapo")
 cast_shadow = 0
@@ -110,7 +108,7 @@ hframes = 6
 vframes = 3
 script = ExtResource("4_7c2wt")
 
-[node name="Shadow3D" type="Sprite3D" parent="."]
+[node name="Shadow3D" type="Sprite3D" parent="." unique_id=55818965]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03, 0.2, 0)
 cast_shadow = 3
 axis = 1
@@ -120,28 +118,26 @@ texture_filter = 0
 texture = ExtResource("5_6tokq")
 script = ExtResource("6_yi3mh")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_qhb7g")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1233611994]
+libraries/ = SubResource("AnimationLibrary_qhb7g")
 
-[node name="EntityDetectionArea" type="Area3D" parent="."]
+[node name="EntityDetectionArea" type="Area3D" parent="." unique_id=2015139794]
 collision_mask = 0
 monitoring = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="EntityDetectionArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EntityDetectionArea" unique_id=466609785]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.025)
 shape = SubResource("BoxShape3D_5kcq1")
 
-[node name="PlayerInput" type="Node" parent="."]
+[node name="PlayerInput" type="Node" parent="." unique_id=1924017275]
 script = ExtResource("7_pfar3")
 
-[node name="PlayerStateMachine" type="Node" parent="."]
+[node name="PlayerStateMachine" type="Node" parent="." unique_id=696789276]
 script = ExtResource("7_g40if")
 active = true
 start_state = &"idle"
 
-[node name="Idle" parent="PlayerStateMachine" instance=ExtResource("8_16vu8")]
+[node name="Idle" parent="PlayerStateMachine" unique_id=1002627270 instance=ExtResource("8_16vu8")]
 dependencies = Dictionary[StringName, Variant]({
 &"animation": NodePath("../../AnimationPlayer"),
 &"body": NodePath("../.."),
@@ -150,7 +146,7 @@ dependencies = Dictionary[StringName, Variant]({
 &"speed": 3.0
 })
 
-[node name="Move" parent="PlayerStateMachine" instance=ExtResource("9_l5ks8")]
+[node name="Move" parent="PlayerStateMachine" unique_id=306768969 instance=ExtResource("9_l5ks8")]
 dependencies = Dictionary[StringName, Variant]({
 &"animation": NodePath("../../AnimationPlayer"),
 &"body": NodePath("../.."),
@@ -159,7 +155,7 @@ dependencies = Dictionary[StringName, Variant]({
 &"speed": 3.0
 })
 
-[node name="Jump" parent="PlayerStateMachine" instance=ExtResource("10_aglp1")]
+[node name="Jump" parent="PlayerStateMachine" unique_id=1384100026 instance=ExtResource("10_aglp1")]
 dependencies = Dictionary[StringName, Variant]({
 &"animation": NodePath("../../AnimationPlayer"),
 &"body": NodePath("../.."),
@@ -169,7 +165,7 @@ dependencies = Dictionary[StringName, Variant]({
 &"speed": 3.0
 })
 
-[node name="Fall" parent="PlayerStateMachine" instance=ExtResource("11_tlhgv")]
+[node name="Fall" parent="PlayerStateMachine" unique_id=1647326603 instance=ExtResource("11_tlhgv")]
 dependencies = Dictionary[StringName, Variant]({
 &"animation": NodePath("../../AnimationPlayer"),
 &"body": NodePath("../.."),
@@ -178,7 +174,7 @@ dependencies = Dictionary[StringName, Variant]({
 &"speed": 3.0
 })
 
-[node name="LookDirection" type="Node" parent="."]
+[node name="LookDirection" type="Node" parent="." unique_id=1032791003]
 script = ExtResource("13_mhgbn")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="PlayerStateMachine" method="_on_animation_finished"]

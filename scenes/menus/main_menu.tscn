@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dv33j0a4k3263"]
+[gd_scene format=3 uid="uid://dv33j0a4k3263"]
 
 [ext_resource type="PackedScene" uid="uid://m1ira233pk6j" path="res://utilities/screens/menu_scene/menu_scene.tscn" id="1_i1ml0"]
 
-[node name="MenuScene" instance=ExtResource("1_i1ml0")]
+[node name="MenuScene" unique_id=1372599437 instance=ExtResource("1_i1ml0")]
 options = Array[String](["Play", "Prototypes", "Settings", "Exit"])
 scenes = Array[String](["res://scenes/worlds/world.tscn", "res://scenes/menus/prototypes_menu.tscn", "res://scenes/menus/settings_menu.tscn", "res://scenes/exit_scene.tscn"])
 loading = Array[bool]([true, false, false, false])

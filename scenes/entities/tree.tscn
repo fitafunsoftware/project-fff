@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bg6n0slpar7eg"]
+[gd_scene format=3 uid="uid://bg6n0slpar7eg"]
 
 [ext_resource type="Shader" uid="uid://dw80s0ocqcwb7" path="res://shaders/transparent_mesh.gdshader" id="1_tp8x2"]
 [ext_resource type="Script" uid="uid://cx10s0cb135q2" path="res://utilities/sprite_3d/sprite_viewport/sprite_viewport.gd" id="3_mud6f"]
@@ -15,8 +15,6 @@ viewport_path = NodePath("VerticalSprite3D/SpriteViewport")
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("1_tp8x2")
-shader_parameter/shadow_light_color = Color(1, 0, 0, 1)
-shader_parameter/tint = Color(1, 0, 0, 1)
 shader_parameter/sprite_texture = SubResource("ViewportTexture_562ok")
 shader_parameter/opacity = 1.0
 shader_parameter/shaded = false
@@ -30,9 +28,9 @@ points = PackedVector3Array(-0.14, 0, -6.2093, 0.17, 0, -6.2093, 0.09, 0.6, -4.5
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_du2ar"]
 points = PackedVector3Array(-0.55, 0.63, -4.47839, -0.11, 0.59, -4.58829, 0.09, 0.6, -4.56081, -0.47, 1.08, -3.24202, -0.65, 0.81, -3.98384, -0.55, 0.63, 0, -0.11, 0.59, 0, 0.09, 0.6, 0, -0.47, 1.08, 0, -0.65, 0.81, 0)
 
-[node name="Tree" type="StaticBody3D"]
+[node name="Tree" type="StaticBody3D" unique_id=1955817010]
 
-[node name="VerticalSprite3D" type="Sprite3D" parent="."]
+[node name="VerticalSprite3D" type="Sprite3D" parent="." unique_id=900325050]
 material_override = SubResource("ShaderMaterial_ybiw3")
 cast_shadow = 0
 custom_aabb = AABB(-0.7, -2.4, 0, 1.4, 5.55, 0)
@@ -41,15 +39,15 @@ texture = SubResource("ViewportTexture_562ok")
 script = ExtResource("3_wcy8c")
 entity_detected_opacity = 0.7
 
-[node name="SpriteViewport" type="SubViewport" parent="VerticalSprite3D"]
+[node name="SpriteViewport" type="SubViewport" parent="VerticalSprite3D" unique_id=475566749]
 transparent_bg = true
 canvas_item_default_texture_filter = 0
 size = Vector2i(160, 240)
 script = ExtResource("3_mud6f")
 
-[node name="TreeSprite" parent="VerticalSprite3D/SpriteViewport" instance=ExtResource("4_4qkm2")]
+[node name="TreeSprite" parent="VerticalSprite3D/SpriteViewport" unique_id=2041387810 instance=ExtResource("4_4qkm2")]
 
-[node name="Shadow3D" type="Sprite3D" parent="."]
+[node name="Shadow3D" type="Sprite3D" parent="." unique_id=1992645765]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, 0)
 cast_shadow = 3
 axis = 1
@@ -59,18 +57,18 @@ texture_filter = 0
 texture = ExtResource("4_2jx2n")
 script = ExtResource("5_mldb1")
 
-[node name="CurvedEntityDetector" type="Area3D" parent="." node_paths=PackedStringArray("_sprites")]
+[node name="CurvedEntityDetector" type="Area3D" parent="." unique_id=1923734158 node_paths=PackedStringArray("_sprites")]
 monitorable = false
 script = ExtResource("6_6rk15")
 _sprites = [NodePath("../VerticalSprite3D")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CurvedEntityDetector"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CurvedEntityDetector" unique_id=1718503666]
 shape = SubResource("ConvexPolygonShape3D_ew2uq")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="CurvedEntityDetector"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CurvedEntityDetector" unique_id=883637028]
 shape = SubResource("ConvexPolygonShape3D_eif4w")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="CurvedEntityDetector"]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="CurvedEntityDetector" unique_id=731983904]
 shape = SubResource("ConvexPolygonShape3D_du2ar")
 
 [connection signal="entity_detected" from="CurvedEntityDetector" to="VerticalSprite3D" method="_on_entity_detected"]

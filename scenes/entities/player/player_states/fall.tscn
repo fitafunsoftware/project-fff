@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://drqkgak83abbt"]
+[gd_scene format=3 uid="uid://drqkgak83abbt"]
 
 [ext_resource type="Script" uid="uid://1hitqk53ho1f" path="res://utilities/state_machine/states/component_state.gd" id="1_ckch7"]
 [ext_resource type="Script" uid="uid://dc1oyhvb7je5d" path="res://utilities/state_machine/states/state_components/node_state_components/enter/enter_call_function_state_component.gd" id="2_i7t6p"]
@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://ccwmg4semswfr" path="res://utilities/state_machine/states/state_components/node_state_components/update/transitions/equals_transition_state_component.gd" id="2_jxrfg"]
 [ext_resource type="Script" uid="uid://co0u7un8obp75" path="res://utilities/entity/state_components/look_direction/look_direction_state_component.gd" id="3_xgov5"]
 
-[node name="Fall" type="Node"]
+[node name="Fall" type="Node" unique_id=1343432469]
 script = ExtResource("1_ckch7")
 dependencies = Dictionary[StringName, Variant]({
 &"animation": null,
@@ -19,24 +19,24 @@ state_name = &"fall"
 push_down = true
 overwrite = true
 
-[node name="Move" type="Node" parent="."]
+[node name="Move" type="Node" parent="." unique_id=1071502505]
 script = ExtResource("2_jxrbq")
 entity_key = &"body"
 input_key = &"input"
 speed_key = &"speed"
 
-[node name="Look" type="Node" parent="."]
+[node name="Look" type="Node" parent="." unique_id=150879172]
 script = ExtResource("3_xgov5")
 look_key = &"look"
 input_key = &"input"
 
-[node name="Animation" type="Node" parent="."]
+[node name="Animation" type="Node" parent="." unique_id=1339091860]
 script = ExtResource("2_i7t6p")
 function = &"play"
 args = ["idle"]
 node_key = &"animation"
 
-[node name="Grounded" type="Node" parent="."]
+[node name="Grounded" type="Node" parent="." unique_id=26178975]
 script = ExtResource("2_jxrfg")
 next_state = "previous"
 function = "is_on_floor"
