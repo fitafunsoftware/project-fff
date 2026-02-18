@@ -3,9 +3,11 @@ extends Node2D
 
 const MAX_RANGE: int = 320
 const MAX_DURATION: float = 1.0
-const STOP_PROBABILITY: float = 0.1
+const STOP_MODIFIER: float = 1.6
+
+const STOP_PROBABILITY: float = 0.2
 const SPRINT_PROBABILITY: float = 0.2
-const CONT_PROBABILITY: float = 0.4
+const CONT_PROBABILITY: float = 0.3
 
 @export var time_to_start: float = 1.0
 
@@ -44,13 +46,13 @@ func _start() -> void:
 func _next_move() -> void:
 	var duration: float = clampf(randfn(MAX_DURATION*3.0/4.0, 1.0), 0.0, MAX_DURATION)
 	if randf() > CONT_PROBABILITY:
-		_set_new_movement()
+		duration = _set_new_movement(duration)
 	
 	await get_tree().create_timer(duration).timeout
 	_next_move()
 
 
-func _set_new_movement() -> void:
+func _set_new_movement(duration: float) -> float:
 	var move: bool = randf() > STOP_PROBABILITY
 	var direction: int = _get_weighted_direction() if move else 0
 	var sprint: bool = randf() < SPRINT_PROBABILITY if move else false
@@ -58,6 +60,11 @@ func _set_new_movement() -> void:
 	if _goal:
 		_goal.direction = direction
 		_goal.is_sprinting = sprint
+	
+	if not move:
+		return duration * STOP_MODIFIER
+	else:
+		return duration
 
 
 func _get_weighted_direction() -> int:
