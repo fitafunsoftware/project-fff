@@ -59,8 +59,12 @@ func _clamp_position() -> void:
 
 
 func _on_player_enter(_area: Area2D) -> void:
+	if Engine.is_editor_hint():
+		return
 	player_entered.emit()
 
 
 func _on_player_exit(_area: Area2D) -> void:
+	if Engine.is_editor_hint():
+		return
 	player_exited.emit()

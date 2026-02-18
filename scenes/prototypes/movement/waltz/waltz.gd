@@ -10,8 +10,8 @@ extends Node2D
 @export var base_speed: int = 128
 @export var sprint_ratio: float = 1.5
 
-
 @onready var _goal: Node2D = $Goal
+@onready var _scoreboard: Control = $Scoreboard
 
 
 func _ready() -> void:
@@ -24,3 +24,11 @@ func _ready() -> void:
 	if _goal:
 		_goal.base_speed = base_speed
 		_goal.sprint_ratio = sprint_ratio
+
+
+func _player_entered() -> void:
+	_scoreboard.is_in_range = true
+
+
+func _player_exited() -> void:
+	_scoreboard.is_in_range = false
