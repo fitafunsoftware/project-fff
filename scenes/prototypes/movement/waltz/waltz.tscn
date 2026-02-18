@@ -30,6 +30,7 @@ metadata/_custom_type_script = "uid://bgxv17ijuq0l4"
 [node name="Stage" type="Node2D" parent="." unique_id=12246339]
 position = Vector2(320, 220)
 script = ExtResource("2_pqydb")
+time_to_start = null
 
 [node name="Player" type="Node2D" parent="Stage" unique_id=440077696]
 script = ExtResource("2_jpvsm")
