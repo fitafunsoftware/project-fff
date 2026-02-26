@@ -7,13 +7,14 @@ signal player_exited()
 const HEIGHT: int = 100
 const MAX_RANGE: int = 320
 
-var size: int = 80:
+@export_category("Player Attributes")
+@export var size: int = 80:
 	set(value):
 		size = value
 		_set_size()
+@export var base_speed: int = 100
+@export var sprint_ratio: float = 1.5
 
-var base_speed: int = 128
-var sprint_ratio: float = 1.5
 var direction: int = 0
 var is_sprinting: bool = false
 
@@ -45,6 +46,10 @@ func _physics_process(delta: float) -> void:
 	_clamp_position()
 
 
+func start_move() -> void:
+	pass
+
+
 func _move(delta: float) -> void:
 	var current_speed: float = \
 			(sprint_ratio if is_sprinting else 1.0)*base_speed
@@ -58,13 +63,15 @@ func _clamp_position() -> void:
 	position.x = x_position
 
 
-func _on_player_enter(_area: Area2D) -> void:
+func _on_player_enter(area: Area2D) -> void:
 	if Engine.is_editor_hint():
 		return
-	player_entered.emit()
+	if area.is_in_group("Player"):
+		player_entered.emit()
 
 
-func _on_player_exit(_area: Area2D) -> void:
+func _on_player_exit(area: Area2D) -> void:
 	if Engine.is_editor_hint():
 		return
-	player_exited.emit()
+	if area.is_in_group("Player"):
+		player_exited.emit()

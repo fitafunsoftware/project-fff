@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://bgxv17ijuq0l4" path="res://utilities/helpers/reset_to_scene.gd" id="1_wrch0"]
 [ext_resource type="Texture2D" uid="uid://cie4dgbix5qa8" path="res://assets/art/prototypes/range_1m.png" id="2_hsis4"]
-[ext_resource type="Script" uid="uid://fuihe6nf05wi" path="res://scenes/prototypes/movement/waltz/player.gd" id="2_jpvsm"]
+[ext_resource type="Script" uid="uid://fuihe6nf05wi" path="res://scenes/prototypes/movement/waltz/player_base.gd" id="2_jpvsm"]
 [ext_resource type="Script" uid="uid://d3ahp1rlatvsd" path="res://scenes/prototypes/movement/waltz/waltz.gd" id="2_pqydb"]
-[ext_resource type="Script" uid="uid://dpdfhribvol1i" path="res://scenes/prototypes/movement/waltz/goal.gd" id="3_cjgdn"]
-[ext_resource type="Script" uid="uid://btwiug0pi2g10" path="res://scenes/prototypes/movement/waltz/score.gd" id="6_sn44s"]
+[ext_resource type="Script" uid="uid://b6d2hptkrf6u6" path="res://scenes/prototypes/movement/waltz/goal_1.gd" id="4_sn44s"]
+[ext_resource type="PackedScene" uid="uid://b0dgbdpcqpdrd" path="res://scenes/prototypes/movement/waltz/scoreboard.tscn" id="6_sn44s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pqydb"]
 size = Vector2(32, 80)
@@ -30,7 +30,6 @@ metadata/_custom_type_script = "uid://bgxv17ijuq0l4"
 [node name="Stage" type="Node2D" parent="." unique_id=12246339]
 position = Vector2(320, 220)
 script = ExtResource("2_pqydb")
-base_speed = 100
 
 [node name="Player" type="Node2D" parent="Stage" unique_id=440077696]
 script = ExtResource("2_jpvsm")
@@ -55,7 +54,7 @@ position = Vector2(0, -40)
 shape = SubResource("RectangleShape2D_pqydb")
 
 [node name="Goal" type="Node2D" parent="Stage" unique_id=1857956516]
-script = ExtResource("3_cjgdn")
+script = ExtResource("4_sn44s")
 
 [node name="Sprite" type="ColorRect" parent="Stage/Goal" unique_id=273277308]
 anchors_preset = 7
@@ -121,30 +120,7 @@ texture = ExtResource("2_hsis4")
 centered = false
 offset = Vector2(0, -16)
 
-[node name="Scoreboard" type="VBoxContainer" parent="Stage" unique_id=1642726461]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -31.0
-offset_top = 20.0
-offset_right = 31.0
-offset_bottom = 60.0
-grow_horizontal = 2
-script = ExtResource("6_sn44s")
-
-[node name="Title" type="Label" parent="Stage/Scoreboard" unique_id=253104145]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "Time In Range:"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Score" type="Label" parent="Stage/Scoreboard" unique_id=993891089]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "2.03s"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Scoreboard" parent="Stage" unique_id=1787456905 instance=ExtResource("6_sn44s")]
 
 [connection signal="player_entered" from="Stage/Goal" to="Stage" method="_player_entered"]
 [connection signal="player_exited" from="Stage/Goal" to="Stage" method="_player_exited"]

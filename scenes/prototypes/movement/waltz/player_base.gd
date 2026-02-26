@@ -9,7 +9,12 @@ var _is_sprinting: bool = false
 
 
 func _ready() -> void:
-	pass
+	_register_hitbox()
+
+
+func _register_hitbox() -> void:
+	var hitbox: Area2D = $Hitbox
+	hitbox.add_to_group("Player")
 
 
 func _unhandled_input(event: InputEvent) -> void:
