@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cie4dgbix5qa8" path="res://assets/art/prototypes/range_1m.png" id="2_hsis4"]
 [ext_resource type="Script" uid="uid://fuihe6nf05wi" path="res://scenes/prototypes/movement/waltz/player_base.gd" id="2_jpvsm"]
 [ext_resource type="Script" uid="uid://d3ahp1rlatvsd" path="res://scenes/prototypes/movement/waltz/waltz.gd" id="2_pqydb"]
-[ext_resource type="Script" uid="uid://b6d2hptkrf6u6" path="res://scenes/prototypes/movement/waltz/goal_1.gd" id="4_sn44s"]
+[ext_resource type="Script" uid="uid://dpdfhribvol1i" path="res://scenes/prototypes/movement/waltz/goal_base.gd" id="4_sn44s"]
 [ext_resource type="PackedScene" uid="uid://b0dgbdpcqpdrd" path="res://scenes/prototypes/movement/waltz/scoreboard.tscn" id="6_sn44s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pqydb"]
