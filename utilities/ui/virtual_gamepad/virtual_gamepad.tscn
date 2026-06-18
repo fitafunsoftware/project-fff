@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://b5wk4kvqafrb0"]
 
-[ext_resource type="Script" uid="uid://w1t33monmasn" path="res://utilities/ui/virtual_joypad/virtual_joypad.gd" id="1_4xuw6"]
-[ext_resource type="Script" uid="uid://bf04ur6jc0ask" path="res://utilities/ui/virtual_joypad/virtual_joystick/static_joystick.gd" id="1_mdig8"]
-[ext_resource type="Script" uid="uid://c2km6tlcd782v" path="res://utilities/ui/virtual_joypad/action_button/action_button.gd" id="2_atgva"]
+[ext_resource type="Script" uid="uid://w1t33monmasn" path="res://utilities/ui/virtual_gamepad/virtual_gamepad.gd" id="1_l8hvh"]
+[ext_resource type="Script" uid="uid://bf04ur6jc0ask" path="res://utilities/ui/virtual_gamepad/virtual_control_stick/static_control_stick.gd" id="2_l8hvh"]
+[ext_resource type="Script" uid="uid://c2km6tlcd782v" path="res://utilities/ui/virtual_gamepad/action_button/action_button.gd" id="3_fv3qm"]
 
-[node name="VirtualJoypad" type="Control" unique_id=565082024]
+[node name="VirtualGamepad" type="Control" unique_id=565082024]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,9 +12,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("1_4xuw6")
+script = ExtResource("1_l8hvh")
 
-[node name="StaticJoystick" type="Control" parent="." unique_id=2090301698]
+[node name="StaticControlStick" type="Control" parent="." unique_id=2090301698]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -22,7 +22,7 @@ anchor_bottom = 1.0
 offset_top = -180.0
 offset_right = 256.0
 grow_vertical = 0
-script = ExtResource("1_mdig8")
+script = ExtResource("2_l8hvh")
 negative_x = &"move_left"
 positive_x = &"move_right"
 negative_y = &"move_up"
@@ -45,5 +45,5 @@ offset_right = -48.0
 offset_bottom = -38.0
 grow_horizontal = 0
 grow_vertical = 0
-script = ExtResource("2_atgva")
+script = ExtResource("3_fv3qm")
 action = &"a"

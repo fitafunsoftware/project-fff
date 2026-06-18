@@ -1,4 +1,4 @@
-class_name VirtualJoypad
+class_name VirtualGamepad
 extends Control
 
 

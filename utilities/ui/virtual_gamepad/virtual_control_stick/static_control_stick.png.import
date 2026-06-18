@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kunmpwve00a5"
-path="res://.godot/imported/action_button.png-ba35d9118f39c4dd64d922ad0347e1bf.ctex"
+uid="uid://dsskt5w70j6d2"
+path="res://.godot/imported/static_control_stick.png-4a3408a788e12925a1311fda32b3dbb8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://utilities/ui/virtual_joypad/action_button/action_button.png"
-dest_files=["res://.godot/imported/action_button.png-ba35d9118f39c4dd64d922ad0347e1bf.ctex"]
+source_file="res://utilities/ui/virtual_gamepad/virtual_control_stick/static_control_stick.png"
+dest_files=["res://.godot/imported/static_control_stick.png-4a3408a788e12925a1311fda32b3dbb8.ctex"]
 
 [params]
 

@@ -1,7 +1,7 @@
 @tool
 @icon("uid://ditc5sklxiv3y")
-class_name FloatingJoystick
-extends VirtualJoystick
+class_name FloatingControlStick
+extends VirtualControlStick
 ## Floating Joystick for touch inputs.
 ##
 ## Node for adding a floating joystick to the scene. A floating joystick is a joystick

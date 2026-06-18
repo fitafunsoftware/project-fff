@@ -1,6 +1,6 @@
 @tool
 @abstract
-class_name VirtualJoystick
+class_name VirtualControlStick
 extends Control
 ## Abstract class for touch screen joysticks.
 ##
