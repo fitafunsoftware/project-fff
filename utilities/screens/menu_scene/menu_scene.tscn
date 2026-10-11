@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://m1ira233pk6j"]
 
 [ext_resource type="Script" uid="uid://bsalijjrcs66w" path="res://utilities/screens/menu_scene/menu_scene.gd" id="1_2a5yg"]
+[ext_resource type="Script" uid="uid://bgxv17ijuq0l4" path="res://utilities/helpers/reset_to_scene.gd" id="2_v4ixh"]
 
 [node name="MenuScene" type="Control" unique_id=353873245]
 layout_mode = 3
@@ -28,7 +29,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 55
-text = "Project FFF"
+text = "Menu Title"
 horizontal_alignment = 1
 
 [node name="MenuContainer" type="VBoxContainer" parent="VBoxContainer" unique_id=1405541782]
@@ -71,3 +72,7 @@ size_flags_horizontal = 3
 
 [node name="BottomPadding" type="HSeparator" parent="VBoxContainer/MenuContainer" unique_id=1476237321]
 layout_mode = 2
+
+[node name="ResetToScene" type="Node" parent="." unique_id=1853769457]
+script = ExtResource("2_v4ixh")
+metadata/_custom_type_script = "uid://bgxv17ijuq0l4"

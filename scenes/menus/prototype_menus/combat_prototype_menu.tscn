@@ -1,13 +1,17 @@
 [gd_scene format=3 uid="uid://doffggswdlg6k"]
 
 [ext_resource type="PackedScene" uid="uid://m1ira233pk6j" path="res://utilities/screens/menu_scene/menu_scene.tscn" id="1_jeobd"]
-[ext_resource type="Script" uid="uid://bgxv17ijuq0l4" path="res://utilities/helpers/reset_to_scene.gd" id="2_qf73u"]
+[ext_resource type="Script" uid="uid://o3hu44ns3ahs" path="res://utilities/screens/menu_scene/menu_option.gd" id="2_twh8q"]
+
+[sub_resource type="Resource" id="Resource_idp53"]
+resource_name = "Back"
+script = ExtResource("2_twh8q")
+name = "Back"
+scene = "uid://b24hjuc3yqldv"
+metadata/_custom_type_script = "uid://o3hu44ns3ahs"
 
 [node name="Combat" unique_id=353873245 instance=ExtResource("1_jeobd")]
-options = Array[String](["Back"])
-scenes = Array[String](["res://scenes/menus/prototypes_menu.tscn"])
-loading = Array[bool]([false])
-touch = Array[bool]([false])
+menu_options = Array[ExtResource("2_twh8q")]([SubResource("Resource_idp53")])
 
 [node name="Title" parent="VBoxContainer" parent_id_path=PackedInt32Array(1251214552) index="1" unique_id=1088626753]
 text = "Combat Prototypes"
@@ -15,8 +19,6 @@ text = "Combat Prototypes"
 [node name="MenuOptions" parent="VBoxContainer/MenuContainer/HBoxContainer/MenuScroll" parent_id_path=PackedInt32Array(1879519003) index="0" unique_id=1201269469]
 size_flags_vertical = 2
 
-[node name="ResetToScene" type="Node" parent="." index="1" unique_id=1195574348]
-script = ExtResource("2_qf73u")
+[node name="ResetToScene" parent="." index="1" unique_id=1853769457]
 reset_scene = "uid://b24hjuc3yqldv"
 reset_combo = Array[StringName]([&"ui_cancel"])
-metadata/_custom_type_script = "uid://bgxv17ijuq0l4"

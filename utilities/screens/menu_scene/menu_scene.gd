@@ -4,18 +4,11 @@ extends Control
 ## Control Node that creates a basic menu with options that change to different
 ## scenes.
 
-# The basic menu option option.
+# The basic menu option button.
 var _menu_option_button: Resource = preload("uid://blnfliijmyoe2")
 
-## An array of strings that will be name for the buttons.
-@export var options: Array[String]
-## An array of strings that are the paths for the scenes to be loaded.
-@export var scenes: Array[String]
-## An array of bools that determine whether a loading screen is used.
-@export var loading: Array[bool]
-## An array of bools that determine whether touch controls are enabled for the
-## next scene.
-@export var touch: Array[bool]
+## An array of the menu options to show.
+@export var menu_options: Array[MenuOption]
 
 # Container for the menu option buttons.
 @onready var _menu = %MenuOptions
@@ -27,16 +20,13 @@ func _ready():
 
 # Fill the menu with buttons and set up their UI neighbors.
 func _populate_menu():
-	var option_size: int = mini(options.size(), scenes.size())
-	loading.resize(option_size)
 	var prev_button: Button = null
 	
-	for option: int in option_size:
-		if not ResourceLoader.exists(scenes[option]):
+	for option in menu_options:
+		if not ResourceLoader.exists(option.scene):
 			continue
 		
-		var button: Button = _create_button(options[option], scenes[option],
-				loading[option], touch[option])
+		var button: Button = _create_button(option)
 		_menu.add_child(button)
 		if prev_button:
 			button.focus_neighbor_top = button.get_path_to(prev_button)
@@ -57,8 +47,8 @@ func _populate_menu():
 
 
 # Make a button and set it up.
-func _create_button(option: String, scene: String, load_scene: bool, 
-		touch_controls: bool) -> Button :
+func _create_button(option: MenuOption) -> Button :
 	var new_button: Button = _menu_option_button.instantiate()
-	new_button.setup_button(option, scene, load_scene, touch_controls)
+	new_button.setup_button(option.name, option.scene, option.load_scene, 
+			option.touch)
 	return new_button

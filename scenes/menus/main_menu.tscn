@@ -1,9 +1,40 @@
 [gd_scene format=3 uid="uid://dv33j0a4k3263"]
 
 [ext_resource type="PackedScene" uid="uid://m1ira233pk6j" path="res://utilities/screens/menu_scene/menu_scene.tscn" id="1_i1ml0"]
+[ext_resource type="Script" uid="uid://o3hu44ns3ahs" path="res://utilities/screens/menu_scene/menu_option.gd" id="2_ovrgc"]
+
+[sub_resource type="Resource" id="Resource_k63tr"]
+resource_name = "Play"
+script = ExtResource("2_ovrgc")
+name = "Play"
+scene = "uid://clqhyj6p24vuh"
+load_scene = true
+touch = true
+metadata/_custom_type_script = "uid://o3hu44ns3ahs"
+
+[sub_resource type="Resource" id="Resource_ibepv"]
+resource_name = "Prototypes"
+script = ExtResource("2_ovrgc")
+name = "Prototypes"
+scene = "uid://b24hjuc3yqldv"
+metadata/_custom_type_script = "uid://o3hu44ns3ahs"
+
+[sub_resource type="Resource" id="Resource_0nfl8"]
+resource_name = "Settings"
+script = ExtResource("2_ovrgc")
+name = "Settings"
+scene = "uid://kaurdswohn31"
+metadata/_custom_type_script = "uid://o3hu44ns3ahs"
+
+[sub_resource type="Resource" id="Resource_by3fj"]
+resource_name = "Exit"
+script = ExtResource("2_ovrgc")
+name = "Exit"
+scene = "uid://hntfci47pp7m"
+metadata/_custom_type_script = "uid://o3hu44ns3ahs"
 
 [node name="MenuScene" unique_id=1372599437 instance=ExtResource("1_i1ml0")]
-options = Array[String](["Play", "Prototypes", "Settings", "Exit"])
-scenes = Array[String](["res://scenes/worlds/world.tscn", "res://scenes/menus/prototypes_menu.tscn", "res://scenes/menus/settings_menu.tscn", "res://scenes/exit_scene.tscn"])
-loading = Array[bool]([true, false, false, false])
-touch = Array[bool]([true, false, false, false])
+menu_options = Array[ExtResource("2_ovrgc")]([SubResource("Resource_k63tr"), SubResource("Resource_ibepv"), SubResource("Resource_0nfl8"), SubResource("Resource_by3fj")])
+
+[node name="Title" parent="VBoxContainer" parent_id_path=PackedInt32Array(1251214552) index="1" unique_id=1088626753]
+text = "Project FFF"

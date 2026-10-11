@@ -1,13 +1,31 @@
 [gd_scene format=3 uid="uid://b24hjuc3yqldv"]
 
 [ext_resource type="PackedScene" uid="uid://m1ira233pk6j" path="res://utilities/screens/menu_scene/menu_scene.tscn" id="1_25sx7"]
-[ext_resource type="Script" uid="uid://bgxv17ijuq0l4" path="res://utilities/helpers/reset_to_scene.gd" id="2_65c8y"]
+[ext_resource type="Script" uid="uid://o3hu44ns3ahs" path="res://utilities/screens/menu_scene/menu_option.gd" id="2_dj7xd"]
+
+[sub_resource type="Resource" id="Resource_ovrgc"]
+resource_name = "Movement"
+script = ExtResource("2_dj7xd")
+name = "Movement"
+scene = "uid://c87ds2v03qc1m"
+metadata/_custom_type_script = "uid://o3hu44ns3ahs"
+
+[sub_resource type="Resource" id="Resource_2o76q"]
+resource_name = "Combat"
+script = ExtResource("2_dj7xd")
+name = "Combat"
+scene = "uid://doffggswdlg6k"
+metadata/_custom_type_script = "uid://o3hu44ns3ahs"
+
+[sub_resource type="Resource" id="Resource_6bivr"]
+resource_name = "Main Menu"
+script = ExtResource("2_dj7xd")
+name = "Main Menu"
+scene = "uid://dv33j0a4k3263"
+metadata/_custom_type_script = "uid://o3hu44ns3ahs"
 
 [node name="PrototypesMenu" unique_id=704131469 instance=ExtResource("1_25sx7")]
-options = Array[String](["Movement", "Combat", "Main Menu"])
-scenes = Array[String](["res://scenes/menus/prototype_menus/movement_prototype_menu.tscn", "res://scenes/menus/prototype_menus/combat_prototype_menu.tscn", "res://scenes/menus/main_menu.tscn"])
-loading = Array[bool]([false, false, false])
-touch = Array[bool]([false, false, false])
+menu_options = Array[ExtResource("2_dj7xd")]([SubResource("Resource_ovrgc"), SubResource("Resource_2o76q"), SubResource("Resource_6bivr")])
 
 [node name="Title" parent="VBoxContainer" parent_id_path=PackedInt32Array(1251214552) index="1" unique_id=1088626753]
 text = "Prototypes"
@@ -15,8 +33,6 @@ text = "Prototypes"
 [node name="MenuOptions" parent="VBoxContainer/MenuContainer/HBoxContainer/MenuScroll" parent_id_path=PackedInt32Array(1879519003) index="0" unique_id=1201269469]
 size_flags_vertical = 2
 
-[node name="ResetToScene" type="Node" parent="." index="1" unique_id=1669312729]
-script = ExtResource("2_65c8y")
+[node name="ResetToScene" parent="." index="1" unique_id=1853769457]
 reset_scene = "uid://dv33j0a4k3263"
 reset_combo = Array[StringName]([&"ui_cancel"])
-metadata/_custom_type_script = "uid://bgxv17ijuq0l4"
