@@ -1,0 +1,185 @@
+[gd_scene format=3 uid="uid://bqeukikg5f5c4"]
+
+[ext_resource type="Script" uid="uid://dpdgujgrnmrnp" path="res://scenes/prototypes/combat/basic_combo/basic_combo.gd" id="1_fe3rm"]
+[ext_resource type="Script" uid="uid://c21n51day3el4" path="res://scenes/prototypes/combat/basic_combo/swing_stats.gd" id="2_rhilm"]
+[ext_resource type="Script" uid="uid://c5cyctlky1k3d" path="res://scenes/prototypes/combat/basic_combo/swing.gd" id="3_jjd47"]
+[ext_resource type="Script" uid="uid://bgxv17ijuq0l4" path="res://utilities/helpers/reset_to_scene.gd" id="4_bkf02"]
+
+[sub_resource type="Resource" id="Resource_8qiyk"]
+resource_name = "Up1"
+script = ExtResource("2_rhilm")
+pause_time = 0.4
+
+[sub_resource type="Resource" id="Resource_7mrn7"]
+resource_name = "Down2"
+script = ExtResource("2_rhilm")
+up_swing = false
+swing_time = 0.4
+pause_time = 0.4
+
+[sub_resource type="Resource" id="Resource_mh0vb"]
+resource_name = "Up3"
+script = ExtResource("2_rhilm")
+swing_time = 0.3
+pause_time = 0.4
+
+[sub_resource type="Resource" id="Resource_371np"]
+resource_name = "Down4"
+script = ExtResource("2_rhilm")
+up_swing = false
+swing_time = 0.2
+pause_time = 0.7
+
+[node name="BasicCombo" type="Node2D" unique_id=681948747]
+script = ExtResource("1_fe3rm")
+cooldown_time = 0.4
+swings = Array[ExtResource("2_rhilm")]([SubResource("Resource_8qiyk"), SubResource("Resource_7mrn7"), SubResource("Resource_mh0vb"), SubResource("Resource_371np")])
+
+[node name="Stage" type="Node2D" parent="." unique_id=710428514]
+position = Vector2(356, 240)
+
+[node name="Player" type="ColorRect" parent="Stage" unique_id=1995325349]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -86.0
+offset_top = -80.0
+offset_right = -54.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.7977378, 0.7977378, 0.7977378, 1)
+
+[node name="Attacks" type="Node2D" parent="Stage" unique_id=1429075977]
+
+[node name="UpSwing" type="Node2D" parent="Stage/Attacks" unique_id=1729821286]
+position = Vector2(0, -80)
+script = ExtResource("3_jjd47")
+
+[node name="Color" type="ColorRect" parent="Stage/Attacks/UpSwing" unique_id=588273766]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = 70.0
+offset_right = 30.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(1, 0, 0, 1)
+
+[node name="Flash" type="Node2D" parent="Stage/Attacks/UpSwing" unique_id=1044645348]
+position = Vector2(30, 5)
+
+[node name="Polygon2D" type="Polygon2D" parent="Stage/Attacks/UpSwing/Flash" unique_id=16297410]
+color = Color(1, 0, 0, 1)
+polygon = PackedVector2Array(-8, -5, 0, -5, 17, 2, 5, 4, 8, 16, -1, 10, -7, 22, -9, 8, -18, 10)
+
+[node name="Node2D" type="Node2D" parent="Stage/Attacks/UpSwing/Flash" unique_id=1716038657]
+visible = false
+position = Vector2(0, -5)
+
+[node name="Base" type="ColorRect" parent="Stage/Attacks/UpSwing/Flash/Node2D" unique_id=557291621]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 0, 1)
+
+[node name="Diagonal" type="ColorRect" parent="Stage/Attacks/UpSwing/Flash/Node2D" unique_id=2041312041]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -7.0
+offset_right = 10.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.7853982
+color = Color(1, 1, 0, 1)
+
+[node name="DownSwing" type="Node2D" parent="Stage/Attacks" unique_id=2087627262]
+position = Vector2(0, -10)
+script = ExtResource("3_jjd47")
+up_swing = false
+
+[node name="Color" type="ColorRect" parent="Stage/Attacks/DownSwing" unique_id=862460226]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -70.0
+offset_right = 30.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(1, 0, 0, 1)
+
+[node name="Flash" type="Node2D" parent="Stage/Attacks/DownSwing" unique_id=1726386018]
+position = Vector2(30, 5)
+
+[node name="Polygon2D" type="Polygon2D" parent="Stage/Attacks/DownSwing/Flash" unique_id=2044002660]
+color = Color(1, 0, 0, 1)
+polygon = PackedVector2Array(0, 5, 18, 0, 5, -1, 12, -15, 1, -8, -2, -17, -8, -8, -19, -11, -5, 5)
+
+[node name="Node2D" type="Node2D" parent="Stage/Attacks/DownSwing/Flash" unique_id=289601219]
+visible = false
+position = Vector2(0, 5)
+rotation = 0.3926991
+
+[node name="Base" type="ColorRect" parent="Stage/Attacks/DownSwing/Flash/Node2D" unique_id=1935002564]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0000305
+offset_top = -5.0
+offset_right = 4.9999695
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 0, 1)
+
+[node name="Diagonal" type="ColorRect" parent="Stage/Attacks/DownSwing/Flash/Node2D" unique_id=739344564]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -6.9999847
+offset_right = 10.0
+offset_bottom = 3.0000153
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.7853982
+color = Color(1, 1, 0, 1)
+
+[node name="GamepadResetToMenu" type="Node" parent="." unique_id=1723810768]
+script = ExtResource("4_bkf02")
+reset_scene = "uid://doffggswdlg6k"
+reset_combo = Array[StringName]([&"back", &"x", &"leftshoulder"])
+metadata/_custom_type_script = "uid://bgxv17ijuq0l4"
+
+[node name="KeybaordResetToMenu" type="Node" parent="." unique_id=1532850434]
+script = ExtResource("4_bkf02")
+reset_scene = "uid://doffggswdlg6k"
+reset_combo = Array[StringName]([&"ui_cancel", &"ui_accept"])
+metadata/_custom_type_script = "uid://bgxv17ijuq0l4"
+
+[connection signal="done" from="Stage/Attacks/UpSwing" to="." method="_on_swing_done"]
+[connection signal="done" from="Stage/Attacks/DownSwing" to="." method="_on_swing_done"]

@@ -3,6 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://m1ira233pk6j" path="res://utilities/screens/menu_scene/menu_scene.tscn" id="1_jeobd"]
 [ext_resource type="Script" uid="uid://o3hu44ns3ahs" path="res://utilities/screens/menu_scene/menu_option.gd" id="2_twh8q"]
 
+[sub_resource type="Resource" id="Resource_pba8j"]
+resource_name = "Basic Combo"
+script = ExtResource("2_twh8q")
+name = "Basic Combo"
+scene = "uid://bqeukikg5f5c4"
+metadata/_custom_type_script = "uid://o3hu44ns3ahs"
+
 [sub_resource type="Resource" id="Resource_idp53"]
 resource_name = "Back"
 script = ExtResource("2_twh8q")
@@ -11,7 +18,7 @@ scene = "uid://b24hjuc3yqldv"
 metadata/_custom_type_script = "uid://o3hu44ns3ahs"
 
 [node name="Combat" unique_id=353873245 instance=ExtResource("1_jeobd")]
-menu_options = Array[ExtResource("2_twh8q")]([SubResource("Resource_idp53")])
+menu_options = Array[ExtResource("2_twh8q")]([SubResource("Resource_pba8j"), SubResource("Resource_idp53")])
 
 [node name="Title" parent="VBoxContainer" parent_id_path=PackedInt32Array(1251214552) index="1" unique_id=1088626753]
 text = "Combat Prototypes"
